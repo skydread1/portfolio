@@ -173,34 +173,33 @@
 
 (defn user-info
   [user-name date action]
-  (when-not (and (= action :editor) (not date))
-    [:div.post-author
-     (concat
-      (when user-name
-        [[:div {:key "pen-icon"} svg/pen-icon]
-         [:div {:key "user-name"} "Loic Blanchard"]])
-      (when date
-        [[:div {:key "clock-icon"} svg/clock-icon]
-         [:div {:key "date"} (format-date date)]])
-      (when (or user-name date)
-        [[:div {:key "action"} (if (= :editor action) "(Last Edited)" "(Authored)")]]))]))
+  [:div.post-author
+   (concat
+    (when user-name
+      [[:div {:key "pen-icon"} svg/pen-icon]
+       [:div {:key "user-name"} "Loic Blanchard"]])
+    (when date
+      [[:div {:key "clock-icon"} svg/clock-icon]
+       [:div {:key "date"} (format-date date)]])
+    (when (or user-name date)
+      [[:div {:key "action"} (if (= :editor action) "(Last Edited)" "(Authored)")]]))])
 
 (defn post-authors
   [{:post/keys [show-authors? creation-date last-edit-date show-dates?]}]
   (cond (and show-authors? show-dates?)
         [:div.post-authors
          [user-info true creation-date :author]
-         [user-info true last-edit-date :editor]]
+         (when last-edit-date [user-info true last-edit-date :editor])]
         
         (and show-authors? (not show-dates?))
         [:div.post-authors
          [user-info true nil :author]
-         [user-info true nil :editor]]
+         (when last-edit-date [user-info true nil :editor])]
         
         show-dates?
         [:div.post-authors
          [user-info false creation-date :author]
-         [user-info false last-edit-date :editor]]
+         (when last-edit-date [user-info false last-edit-date :editor])]
         
         :else
         nil))
