@@ -3,33 +3,36 @@
     color-scheme: light dark;
 
     /* common */
-    --link-primary-color: #38bdf8;
-    --border-primary-color: #22c55e;
+    --link-primary-color: #129bd8;
     --pulse-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
     /* dark theme */
-    --bg-primary-color: #18181b;
-    --bg-secondary-color: #27272a;
+    --bg-primary-color: #010c12;
+    --bg-secondary-color: #212e42;
 
-    --text-primary-color: #bae6fd;
-    --text-secondary-color: #f0f9ff;
+    --text-primary-color: #86d2ff;
+    --text-secondary-color: #ffffff;
 
     --button-primary-color: black;
 
     --error-primary-color: #f09295;
+
+    --border-primary-color: #5f9de8;
 }
 
 :root.light {
     /* light theme */
-    --bg-primary-color: #fafafa;
-    --bg-secondary-color: #f0f9ff;
+    --bg-primary-color: #ffffff;
+    --bg-secondary-color: #def1ff;
 
-    --text-primary-color: #0ea5e9;
-    --text-secondary-color: #18181b;
+    --text-primary-color: #212e42;
+    --text-secondary-color: #010c12;
 
     --button-primary-color: white;
 
     --error-primary-color: #991b1b;
+
+    --border-primary-color: #00349d;
 }
 
 /* General */
@@ -254,22 +257,13 @@ header .menu div img {
 }
 
 header .menu div img:hover {
-    filter: brightness(200%);
+    filter: brightness(100%);
 }
 
 .menu-top div .txt,
 .menu-center div .txt,
 .menu-bottom div .txt {
-    transition: text-shadow 2s;
-}
-
-.menu-top div:hover .txt,
-.menu-center div:hover .txt,
-.menu-bottom div:hover .txt {
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff;
+    text-transform: uppercase;
 }
 
 .menu-center {
@@ -323,7 +317,7 @@ header .menu div img:hover {
 
 .menu-center .menu-right .txt {
     font-size: 2rem;
-    transform: translateX(60%);
+    padding-left: 2rem;
 }
 
 .menu-center .menu-left img{
@@ -338,7 +332,7 @@ header .menu div img:hover {
 
 .menu-center .menu-left .txt {
     font-size: 2rem;
-    transform: translateX(-60%);
+    padding-right: 2rem;
 }
 
 .menu-top {
@@ -467,6 +461,7 @@ nav p {
 nav a {
     margin: 1.5rem;
     text-decoration: none;
+    color: var(--text-secondary-color);
 }
 
 @media (max-width: 1024px) {
@@ -498,7 +493,7 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--text-secondary-color);
+    color: var(--link-primary-color);
 }
 
 nav .active {
