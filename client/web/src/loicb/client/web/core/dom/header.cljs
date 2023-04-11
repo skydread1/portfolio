@@ -11,6 +11,7 @@
   ([page-name text reitit?]
    (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
      [:a {:href                     (rfe/href page-name)
+          :on-click                 #(rf/dispatch [:evt.nav/close-navbar])
           :class                    (when (= page-name current-page) "active")
           :data-reitit-handle-click reitit?}
       text])))
@@ -49,7 +50,7 @@
      [:div.menu-mid
       (theme-link
        [:img
-        {:alt "nav center"
+        {:alt "nav mid"
          :src "assets/nav-center.png"}])]
      (internal-link
       :loicb/blog
@@ -70,7 +71,7 @@
 
 (defn navbar []
   (->> (navbar-content) (cons :nav.show) vec)
-  #_(if @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+  (if @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
     (->> (navbar-content) (cons :nav.show) vec)
     (->> (navbar-content) (cons :nav.hidden) vec)))
 
@@ -84,5 +85,11 @@
       [:div
        [:img.user-pic
         {:alt (str name " profile picture")
-         :src picture}]])]
+         :src picture}]])
+    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.nav/toggle-navbar])}
+       [:img
+        {:alt "nav toggle"
+         :src "assets/nav-menu.png"}]])]
    [navbar]])

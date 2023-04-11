@@ -45,7 +45,8 @@
 }
 
 .show {
-    display: block
+    display: block;
+    height: 90vh;
 }
 
 html {
@@ -127,7 +128,7 @@ li a {
     padding: 0;
 }
 
-button {
+section button {
     padding: 0.5rem;
     background-color: var(--bg-primary-color);
     border-radius: 0.25rem;
@@ -426,8 +427,6 @@ svg:hover {
 /* Header */
 
 header {
-    height: 100vh;
-    width: 100vh;
     margin: auto;
     text-align: center;
     border-bottom-style: solid;
@@ -440,6 +439,7 @@ header .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 10vh;
 }
 
 .pointer {
@@ -505,8 +505,14 @@ nav .active {
     color: var(--border-primary-color);
 }
 
-header .burger-btn {
+header .nav-btn {
     display: block;
+    background-color: inherit;
+    border: none;
+}
+
+header .nav-btn img {
+    width: 4rem;
 }
 
 /* Footer */

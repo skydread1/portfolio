@@ -81,7 +81,7 @@
                    :app/current-view current-view
                    :app/theme        app-theme
                    :user/mode        :reader
-                   :nav/navbar-open? false)
+                   :nav/navbar-open? true)
       :http-xhrio {:method          :post
                    :uri             "/posts/all"
                    :params {:posts
