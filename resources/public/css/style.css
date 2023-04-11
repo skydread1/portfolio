@@ -274,6 +274,7 @@ header .menu div img:hover {
 
 .menu-center>* {
     flex-basis: 100%;
+    min-width: 0%;
 }
 
 .menu-center .menu-left{
