@@ -289,6 +289,10 @@ header .menu div img:hover {
     max-width: fit-content;
 }
 
+.menu-center .menu-mid a {
+    cursor: pointer;
+}
+
 .menu-center .menu-left,
 .menu-center .menu-mid,
 .menu-center .menu-right {
@@ -504,6 +508,7 @@ header .nav-btn {
     display: block;
     background-color: inherit;
     border: none;
+    cursor: pointer;
 }
 
 header .nav-btn img {

@@ -10,16 +10,19 @@
   [["/"
     {:name :loicb/home
      :page-name :home
+     :title "Portfolio"
      :view #(page :home)}]
 
    ["/about"
     {:name :loicb/about
      :page-name :about
+     :title "About me"
      :view #(page :about)}]
    
    ["/blog"
     {:name :loicb/blog
      :page-name :blog
+     :title "Blog"
      :view #(page :blog)}] 
 
    ["#footer-contact"

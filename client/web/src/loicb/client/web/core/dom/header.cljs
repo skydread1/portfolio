@@ -25,9 +25,8 @@
 (defn login-link
   "Link to the server for the login/logout of a user."
   []
-  (if @(rf/subscribe [:subs/pattern '{:app/user ?x}])
-    [:a {:href "" :on-click #(rf/dispatch [:evt.user/logout])} "Logout"]
-    [:a {:href "oauth/google/login"} "Login"]))
+  (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
+    [:a {:href "" :on-click #(rf/dispatch [:evt.user/logout])} "Logout"]))
 
 (defn navbar-content []
   [[:div.menu
@@ -79,6 +78,14 @@
 (defn header-comp []
   [:header.container
    [:div.top
+    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.nav/toggle-navbar])}
+       [:img
+        {:alt "nav toggle"
+         :src "assets/nav-menu.png"}]])
+    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+      [:h1 @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])])
     (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
       [svg/user-mode-logo])
     (when-let [{:user/keys [name picture]} @(rf/subscribe [:subs/pattern '{:app/user ?x}])]
@@ -86,10 +93,5 @@
        [:img.user-pic
         {:alt (str name " profile picture")
          :src picture}]])
-    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
-      [:button.nav-btn.hidden
-       {:on-click #(rf/dispatch [:evt.nav/toggle-navbar])}
-       [:img
-        {:alt "nav toggle"
-         :src "assets/nav-menu.png"}]])]
+    [login-link]]
    [navbar]])
