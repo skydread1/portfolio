@@ -6,13 +6,25 @@
 (defn page
   "Given the `page-name`, returns the page content."
   [page-name]
-  (let [all-posts (->> @(rf/subscribe [:subs.post/posts page-name])
-                       (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %)))))
-        new-post  {:post/id "new-post-temp-id"}
-        posts     (conj all-posts new-post)]
+  (let [all-posts      (->> @(rf/subscribe [:subs.post/posts page-name])
+                            (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %)))))
+        new-post       {:post/id "new-post-temp-id"}
+        posts          (conj all-posts new-post)
+        active-post-id @(rf/subscribe [:subs/pattern '{:page/post-active ?x}])
+        active-post    (->> posts
+                            (filter #(= active-post-id (:post/id %)))
+                            first)]
     [:section.container
      {:id (name page-name)
       :key   (name page-name)}
-     (doall
-      (for [post posts]
-        (page-post page-name post)))]))
+     [:div.left
+      (doall
+       (for [post posts
+             :let [{:post/keys [id title]} post]]
+         (when title
+           [:a
+            {:key title
+             :on-click #(rf/dispatch [:evt.page/set-active-post id])}
+            title])))]
+     [:div.right
+      (page-post page-name active-post)]]))

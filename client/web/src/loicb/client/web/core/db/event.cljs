@@ -160,6 +160,13 @@
 
 ;; ---------- Post ----------
 
+;; page
+
+(rf/reg-event-db
+ :evt.page/set-active-post
+ (fn [db [_ post-id]]
+   (assoc db :page/post-active post-id)))
+
 ;; Mode
 
 (defn set-post-modes

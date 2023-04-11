@@ -8,9 +8,4 @@
      {:rel "noreferrer",
       :target "_blank",
       :href "https://www.linkedin.com/in/blanchardloic"}
-     "LinkedIn"]
-    [:a
-     {:rel "noreferrer",
-      :target "_blank",
-      :href "https://github.com/skydread1"}
-     "GitHub"]]])
+     "LinkedIn"]]])

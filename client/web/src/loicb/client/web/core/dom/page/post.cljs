@@ -209,21 +209,14 @@
   (let [{:image/keys [src src-dark alt]} image-beside
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
               src-dark src)]
-    (if (seq src)
-    ;; returns 2 hiccup divs to be displayed in 2 columns
-      [:div.post-body
-       {:class css-class}
+    [:div.post-body
+     {:class css-class}
+     (when src
        [:div.image
-        [:img {:src src :alt alt}]]
-       [:div.text
-        [post-authors post]
-        hiccup-content]]
-    ;; returns 1 hiccup div
-      [:div.post-body
-       {:class css-class}
-       [:div.textonly
-        [post-authors post]
-        hiccup-content]])))
+        [:img {:src src :alt alt}]])
+     [:div.text
+      [post-authors post]
+      hiccup-content]]))
 
 ;;---------- Post ----------
 
