@@ -11,7 +11,7 @@
         new-post  {:post/id "new-post-temp-id"}
         posts     (conj all-posts new-post)]
     [:section.container
-     {:class (name page-name)
+     {:id (name page-name)
       :key   (name page-name)}
      (doall
       (for [post posts]

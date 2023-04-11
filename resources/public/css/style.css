@@ -238,6 +238,148 @@ input[type=button] {
 
 /* Assets */
 
+header .menu {
+    padding: 12rem;
+}
+
+header .menu a {
+    display: block;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+header .menu div img {
+    filter: brightness(100%);
+}
+
+header .menu div img:hover {
+    filter: brightness(200%);
+}
+
+.menu-top div .txt,
+.menu-center div .txt,
+.menu-bottom div .txt {
+    transition: text-shadow 2s;
+}
+
+.menu-top div:hover .txt,
+.menu-center div:hover .txt,
+.menu-bottom div:hover .txt {
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff;
+}
+
+.menu-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-center>* {
+    flex-basis: 100%;
+}
+
+.menu-center .menu-left{
+    justify-content: flex-end;
+}
+
+.menu-center img {
+    margin: 0;
+}
+
+.menu-center .menu-mid {
+    align-self: center;
+    max-width: fit-content;
+}
+
+.menu-center .menu-left,
+.menu-center .menu-mid,
+.menu-center .menu-right {
+    display: flex;
+    align-items: center;
+}
+
+.menu-center .menu-mid img{
+    width: 6rem;
+    transition: transform 5s;
+}
+
+.menu-center .menu-mid:hover img {
+    transform: rotate(180deg);
+}
+
+.menu-center .menu-right img {
+    max-width: 12rem;
+    transform: translateX(-6%);
+    transition: transform 1s;
+}
+
+.menu-center .menu-right:hover img {
+    transform: translateX(-3%);
+}
+
+.menu-center .menu-right .txt {
+    font-size: 2rem;
+    transform: translateX(60%);
+}
+
+.menu-center .menu-left img{
+    max-width: 12rem;
+    transform: rotate(180deg) translateX(-6%);
+    transition: transform 1s;
+}
+
+.menu-center .menu-left:hover img{
+    transform: rotate(180deg) translateX(-3%);
+}
+
+.menu-center .menu-left .txt {
+    font-size: 2rem;
+    transform: translateX(-60%);
+}
+
+.menu-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-top div img {
+    width: 12rem;
+    transform: rotate(270deg) translateX(30%);
+    transition: transform 1s;
+}
+
+.menu-top div:hover img {
+    transform: rotate(270deg) translateX(33%);
+}
+
+.menu-top div .txt {
+    font-size: 2rem;
+    transform: translateY(-600%);
+}
+
+.menu-bottom div img {
+    width: 12rem;
+    transform: rotate(90deg) translateX(30%);
+    transition: transform 1s;
+}
+
+.menu-bottom div:hover img {
+    transform: rotate(90deg) translateX(33%);
+}
+
+.menu-bottom div .txt {
+    font-size: 2rem;
+    transform: translateY(600%);
+}
+
 .user-pic {
     width: 2rem;
 }
@@ -284,6 +426,8 @@ svg:hover {
 /* Header */
 
 header {
+    height: 100vh;
+    width: 100vh;
     margin: auto;
     text-align: center;
     border-bottom-style: solid;
