@@ -7,14 +7,24 @@
 (rf/reg-sub
  :subs/pattern
  ;; `pattern` is the pull pattern
- ;; in case of named-var (such as '?my-var), only the named var value is returned
- ;; in case of no named-var (only '?), returns the value of the key '&?
- (fn [db [_ pattern]]
+ ;; if `all?` is true, returns the raw pulled data (i.e. {&? ... var1 ... var2 ...})
+ ;; in case of pattenr with a named-var (such as '?my-var), only the named var value is returned
+ ;; in case of multiple named-var requested, returns the raw pulled data
+ ;; returns nil if no match
+ (fn [db [_ pattern all?]]
    (let [data ((pull/query pattern) db)]
      (when (-> data (get '&?) seq)
-       (if (= 1 (-> data keys count))
-         (-> data (get '&?))
-         (-> data (dissoc '&?) vals first))))))
+       (cond all?
+             data
+
+             (= 1 (-> data keys count))
+             nil
+
+             (= 2 (-> data keys count))
+             (-> data (dissoc '&?) vals first)
+
+             :else
+             data)))))
 
 (rf/reg-sub
  :subs.post/posts
