@@ -8,11 +8,13 @@
   [page-name]
   (let [all-posts      (->> @(rf/subscribe [:subs.post/posts page-name])
                             (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %)))))
-        new-post       {:post/id "new-post-temp-id"}
-        posts          (conj all-posts new-post)
+        new-post       {:post/id "new-post-temp-id" :post/title "New Post"}
+        posts          (if @(rf/subscribe [:subs/pattern '{:app/user ?x}])
+                         (conj all-posts new-post)
+                         all-posts)
         active-post-id @(rf/subscribe [:subs/pattern '{:page/active-post ?x}])
         _              (when-not active-post-id
-                         (rf/dispatch [:evt.page/set-active-post (:post/id (first all-posts))]))
+                         (rf/dispatch [:evt.page/set-active-post (:post/id (first posts))]))
         active-post    (->> posts
                             (filter #(= active-post-id (:post/id %)))
                             first)]
@@ -24,16 +26,15 @@
        (doall
         (for [post posts
               :let [{:post/keys [id title]} post]]
-          (when title
-            [:li {:key title}
-             [:a
-              {:key title
-               :on-click #(rf/dispatch [:evt.page/set-active-post id])}
-              [:div
-               (when (= active-post-id id) {:class "active"})
-               [:img
-                {:alt "nav left"
-                 :src "assets/nav-arrow.png"}]
-               title]]])))]]
+          [:li {:key title}
+           [:a
+            {:key title
+             :on-click #(rf/dispatch [:evt.page/set-active-post id])}
+            [:div
+             (when (= active-post-id id) {:class "active"})
+             [:img
+              {:alt "nav left"
+               :src "assets/nav-arrow.png"}]
+             title]]]))]]
      [:div.right
       (page-post page-name active-post)]]))
