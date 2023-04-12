@@ -127,7 +127,9 @@
 (rf/reg-event-db
  :evt.page/set-current-view
  (fn [db [_ new-match]]
-   (assoc db :app/current-view new-match)))
+   (-> db
+       (assoc :app/current-view new-match)
+       (dissoc :page/active-post))))
 
 ;; ---------- Navbar ----------
 
@@ -165,7 +167,7 @@
 (rf/reg-event-db
  :evt.page/set-active-post
  (fn [db [_ post-id]]
-   (assoc db :page/post-active post-id)))
+   (assoc db :page/active-post post-id)))
 
 ;; Mode
 

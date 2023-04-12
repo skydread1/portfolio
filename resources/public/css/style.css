@@ -4,6 +4,7 @@
 
     /* common */
     --link-primary-color: #129bd8;
+    --active-primary-color: #6aff20;
     --pulse-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
     /* dark theme */
@@ -510,8 +511,8 @@ nav a:hover {
     color: var(--link-primary-color);
 }
 
-nav .active {
-    color: var(--border-primary-color);
+.active {
+    color: var(--active-primary-color);
 }
 
 header .nav-btn {
@@ -558,16 +559,48 @@ section {
 
 section div.left {
     background-color: var(--bg-secondary-color);
-    padding: 2.5rem;
+    padding: 2rem;
     width: 30%;
     border-right-style: solid;
     border-right-width: 1px;
     border-right-color: var(--border-primary-color);
 }
 
+section div.left ul{
+    list-style-type: none;
+}
+
+section div.left ul li{
+    padding: 0;
+    cursor: pointer;
+    border-bottom: groove;
+    border-bottom-width: thin;
+    border-color: var(--border-primary-color);
+}
+
+section div.left ul li:hover img{
+    transform: translateX(6%);
+}
+
+section div.left ul li a{
+    display: block;
+    padding: 1rem;
+}
+
+section div.left ul li a div{
+    display: flex;
+    align-items: center;
+}
+
+section div.left ul li img{
+    width: 5rem;
+    margin: 0;
+    padding: 1rem;
+}
+
 section div.right {
     background-color: var(--bg-primary-color);
-    padding: 2.5rem;
+    padding: 2rem;
     width: 70%;
 }
 
@@ -642,6 +675,7 @@ section .socials img {
 .post-authors {
     border-bottom: groove;
     border-bottom-width: thin;
+    border-color: var(--border-primary-color);
 }
 
 .post-author {
