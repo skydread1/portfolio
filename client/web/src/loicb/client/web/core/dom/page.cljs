@@ -17,24 +17,30 @@
                          (rf/dispatch [:evt.page/set-active-post (:post/id (first posts))]))
         active-post    (->> posts
                             (filter #(= active-post-id (:post/id %)))
-                            first)]
+                            first)
+        left-menu-open? @(rf/subscribe [:subs/pattern '{:nav.left-menu/open? ?x}])]
     [:section.container
-     {:id (name page-name)
-      :key   (name page-name)}
+     {:id  (name page-name)
+      :key (name page-name)}
      [:div.left
-      [:ul
-       (doall
-        (for [post posts
-              :let [{:post/keys [id title]} post]]
-          [:li {:key title}
-           [:a
-            {:key title
-             :on-click #(rf/dispatch [:evt.page/set-active-post id])}
-            [:div
-             (when (= active-post-id id) {:class "active"})
-             [:img
-              {:alt "nav left"
-               :src "assets/nav-arrow.png"}]
-             title]]]))]]
+      [:div.menu-icon
+       [:a
+        {:on-click #(rf/dispatch [:evt.nav/toggle :left-menu])}
+        (if left-menu-open? "<" ">")]]
+      (when left-menu-open?
+        [:ul
+         (doall
+          (for [post posts
+                :let [{:post/keys [id title]} post]]
+            [:li {:key title}
+             [:a
+              {:key title
+               :on-click #(rf/dispatch [:evt.page/set-active-post id])}
+              [:div
+               (when (= active-post-id id) {:class "active"})
+               [:img
+                {:alt "nav left"
+                 :src "assets/nav-arrow.png"}]
+               title]]]))])]
      [:div.right
       (page-post page-name active-post)]]))

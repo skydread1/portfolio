@@ -11,7 +11,7 @@
   ([page-name text reitit?]
    (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
      [:a {:href                     (rfe/href page-name)
-          :on-click                 #(rf/dispatch [:evt.nav/close-navbar])
+          :on-click                 #(rf/dispatch [:evt.nav/close-navbar :main])
           :class                    (when (= page-name current-page) "active")
           :data-reitit-handle-click reitit?}
       text])))
@@ -70,7 +70,7 @@
 
 (defn navbar []
   (->> (navbar-content) (cons :nav.show) vec)
-  (if @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+  (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
     (->> (navbar-content) (cons :nav.show) vec)
     (->> (navbar-content) (cons :nav.hidden) vec)))
 
@@ -78,13 +78,13 @@
 (defn header-comp []
   [:header.container
    [:div.top
-    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+    (when-not @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
       [:button.nav-btn.hidden
-       {:on-click #(rf/dispatch [:evt.nav/toggle-navbar])}
+       {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
        [:img
         {:alt "nav toggle"
          :src "assets/nav-menu.png"}]])
-    (when-not @(rf/subscribe [:subs/pattern '{:nav/navbar-open? ?x}])
+    (when-not @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
       [:h1 @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])])
     (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
       [svg/user-mode-logo])

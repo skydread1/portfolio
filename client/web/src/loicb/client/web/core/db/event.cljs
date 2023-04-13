@@ -81,7 +81,8 @@
                    :app/current-view current-view
                    :app/theme        app-theme
                    :user/mode        :reader
-                   :nav/navbar-open? true)
+                   :nav.main/open? true
+                   :nav.left-menu/open? true)
       :http-xhrio {:method          :post
                    :uri             "/posts/all"
                    :params {:posts
@@ -131,17 +132,21 @@
        (assoc :app/current-view new-match)
        (dissoc :page/active-post))))
 
-;; ---------- Navbar ----------
+;; ---------- Navbars ----------
 
 (rf/reg-event-db
- :evt.nav/toggle-navbar
- (fn [db [_]]
-   (update db :nav/navbar-open? not)))
+ :evt.nav/toggle
+ (fn [db [_ navbar]]
+   (case navbar
+     :main (update db :nav.main/open? not)
+     :left-menu (update db :nav.left-menu/open? not))))
 
 (rf/reg-event-db
  :evt.nav/close-navbar
- (fn [db [_]]
-   (assoc db :nav/navbar-open? false)))
+ (fn [db [_ navbar]]
+   (case navbar
+     :main (assoc db :nav.main/open? false)
+     :left-menu (assoc db :nav.left-menu/open? false))))
 
 ;; ---------- User ----------
 
