@@ -41,10 +41,8 @@
                :on-click #(rf/dispatch [:evt.page/set-active-post id])}
               [:div
                (when (= active-post-id id) {:class "active"})
-               [:img
-                {:alt "nav left"
-                 :src "assets/nav-arrow.png"}]
-               title]]]))]]
+               [svg/right-arrow]
+               [:h2 title]]]]))]]
        [:div.left-close
         [:div.menu-title
          [:button.burger-btn

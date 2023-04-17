@@ -701,7 +701,7 @@ section div.left ul li{
     cursor: pointer;
 }
 
-section div.left ul li:hover img{
+section div.left ul li:hover svg{
     transform: translateX(6%);
 }
 
@@ -714,10 +714,26 @@ section div.left ul li a div{
     align-items: center;
 }
 
-section div.left ul li img{
-    width: 5rem;
+section div.left ul li svg{
+    fill: var(--border-primary-color);
+    flex-basis: 20%;
+    flex-shrink: 0;
+    flex-grow: 0;
     margin: 0;
     padding: 1rem;
+}
+
+section div.left .active svg{
+    fill: var(--active-primary-color);
+}
+
+section div.left .active h2{
+    color: var(--active-primary-color);
+}
+
+section div.left ul li h2{
+    font-size: 1.2rem;
+    color: var(--border-primary-color);
 }
 
 section div.right {
