@@ -1,5 +1,8 @@
 (ns loicb.client.web.core.dom.common.svg
-  (:require [re-frame.core :as rf]))
+  (:require [loicb.client.web.core.dom.common.svg.nav-diamond :as diamond]
+            [loicb.client.web.core.dom.common.svg.nav-arrow :as arrow]
+            [loicb.client.web.core.dom.common.svg.nav-menu :as menu]
+            [re-frame.core :as rf]))
 
 ;; theme
 
@@ -19,7 +22,7 @@
   []
   [:div.pointer
    {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-   (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?theme}]))
+   (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
      sun-icon
      moon-icon)])
 
@@ -120,3 +123,9 @@
    [:polygon {:points "16 3 20 7 6 21 2 21 2 17 16 3" :fill "#059cf7" :opacity "0.1" :stroke-width "0"}]
    [:polygon {:points "16 3 20 7 6 21 2 21 2 17 16 3"}]
    [:line {:x1 "12" :y1 "21" :x2 "22" :y2 "21"}]])
+
+;; navigation
+
+(def right-arrow arrow/item)
+(def diamond diamond/item)
+(def menu menu/item)

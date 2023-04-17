@@ -28,70 +28,96 @@
   (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
     [:a {:href "" :on-click #(rf/dispatch [:evt.user/logout])} "Logout"]))
 
-(defn navbar-content []
-  [[:div.menu
+(defn navbar-content-browser []
+  [:nav.browser
+   {:id "browser-nav"}
+   [:div.menu
     [:div.menu-top
      (internal-link
       :loicb/about
       [:div
        [:div.txt "About Me"]
-       [:img
-        {:alt "nav top"
-         :src "assets/nav-arrow.png"}]])]
+       [svg/right-arrow]])]
     [:div.menu-center
      (internal-link
       :loicb/home
       [:div.menu-left
        [:div.txt "Portfolio"]
-       [:img
-        {:alt "nav left"
-         :src "assets/nav-arrow.png"}]])
+       [svg/right-arrow]])
      [:div.menu-mid
       (theme-link
-       [:img
-        {:alt "nav mid"
-         :src "assets/nav-center.png"}])]
+       [svg/diamond])]
      (internal-link
       :loicb/blog
       [:div.menu-right
-       [:img
-        {:alt "nav right"
-         :src "assets/nav-arrow.png"}]
+       [svg/right-arrow]
        [:div.txt "Blog"]])]
     (internal-link
      :loicb/contact
      [:div.menu-bottom
       [:div
-       [:img
-        {:alt "nav bottom"
-         :src "assets/nav-arrow.png"}]
+       [svg/right-arrow]
        [:div.txt "Contact"]]]
      false)]])
 
-(defn navbar []
-  (->> (navbar-content) (cons :nav.show) vec)
-  (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
-    (->> (navbar-content) (cons :nav.show) vec)
-    (->> (navbar-content) (cons :nav.hidden) vec)))
+(defn navbar-content-mobile []
+  [:nav.mobile
+   {:id "mobile-nav"}
+   [:div.menu
+    (theme-link
+     [svg/diamond])
+    (internal-link
+     :loicb/about
+     [:div.menu-right
+      [svg/right-arrow]
+      [:div.txt "About Me"]])
+    (internal-link
+     :loicb/home
+     [:div.menu-right
+      [svg/right-arrow]
+      [:div.txt "Portfolio"]])
+    (internal-link
+     :loicb/blog
+     [:div.menu-right
+      [svg/right-arrow]
+      [:div.txt "Blog"]])
+    (internal-link
+     :loicb/contact
+     [:div.menu-right
+      [svg/right-arrow]
+      [:div.txt "Contact"]]
+     false)]])
 
+(defn navbar [navbar-content]
+  (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
+    (assoc-in navbar-content [1 :class] "show")
+    (assoc-in navbar-content [1 :class] "hidden")))
 
 (defn header-comp []
-  [:header.container
-   [:div.top
-    (when-not @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
+  (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]
+    [:header.container
+     [:div.top
+      (when nav-open? {:class "hidden"})
+      (when-not nav-open?
+        [:button.nav-btn.hidden
+         {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+         [svg/menu]])
+      (when-not nav-open?
+        [:h1.top-name "Loic Blanchard"])
+      (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
+        [svg/user-mode-logo])
+      (when-let [{:user/keys [name picture]} @(rf/subscribe [:subs/pattern '{:app/user ?x}])]
+        [:div
+         [:img.user-pic
+          {:alt (str name " profile picture")
+           :src picture}]])
+      [login-link]
       [:button.nav-btn.hidden
-       {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
-       [:img
-        {:alt "nav toggle"
-         :src "assets/nav-menu.png"}]])
-    (when-not @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
-      [:h1 @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])])
-    (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
-      [svg/user-mode-logo])
-    (when-let [{:user/keys [name picture]} @(rf/subscribe [:subs/pattern '{:app/user ?x}])]
-      [:div
-       [:img.user-pic
-        {:alt (str name " profile picture")
-         :src picture}]])
-    [login-link]]
-   [navbar]])
+       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+       [svg/diamond]]]
+     (when nav-open?
+       [:div.name
+        [:h1 "Loic Blanchard"]
+        [:h2 "Software Engineer in Functional Programming (Clojure)"]])
+     [navbar (navbar-content-browser)]
+     [navbar (navbar-content-mobile)]]))
