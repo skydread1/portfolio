@@ -184,11 +184,12 @@
 
 (defn post-authors
   [{:post/keys [show-dates? creation-date last-edit-date]}]
-  [:div.post-dates
-   (when (and show-dates? creation-date)
-     [:h4 (str (format-date creation-date) " (Audited)")])
-   (when (and show-dates? last-edit-date) 
-     [:h4 (str (format-date last-edit-date) " (Edited)")])])
+  (when show-dates?
+    [:div.post-dates
+     (when creation-date
+       [:h4 (str (format-date creation-date) " (Audited)")])
+     (when last-edit-date
+       [:h4 (str (format-date last-edit-date) " (Edited)")])]))
 
 (defn post-view
   [{:post/keys [css-class image-beside hiccup-content] :as post}]

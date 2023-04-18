@@ -742,14 +742,17 @@ section div.left ul li h2{
 section div.right {
     background-color: var(--bg-primary-color);
     padding: 1rem;
-    flex-basis: 75%;
     flex-grow: 1;
-    flex-shrink: 0;
+    flex-shrink: 1;
 }
 
 @media (max-width: 1024px) {
     section .post {
         padding: 0.5rem;
+    }
+
+    section div.left ul li h2{
+        text-align: left;
     }
 }
 

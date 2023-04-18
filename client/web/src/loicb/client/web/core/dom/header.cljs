@@ -117,7 +117,7 @@
        [svg/diamond]]]
      (when nav-open?
        [:div.name
-        [:h1 "Loic Blanchard"]
+        [:h1 "Loïc Blanchard"]
         [:h2 "Software Engineer in Functional Programming (Clojure)"]])
      [navbar (navbar-content-browser)]
      [navbar (navbar-content-mobile)]]))
