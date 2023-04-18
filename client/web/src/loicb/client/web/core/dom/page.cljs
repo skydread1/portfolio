@@ -8,7 +8,9 @@
   "Given the `page-name`, returns the page content."
   [page-name]
   (let [all-posts       (->> @(rf/subscribe [:subs.post/posts page-name])
-                             (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %)))))
+                             (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %))))
+                             (sort-by :post/order)
+                             reverse)
         new-post        {:post/id "new-post-temp-id" :post/title "New Post"}
         posts           (if @(rf/subscribe [:subs/pattern '{:app/user ?x}])
                           (conj all-posts new-post)

@@ -84,6 +84,17 @@
                                  :post/title
                                  (.. % -target -value)])}]
      [:br]
+     [:label {:for "order"} "Order in page:"]
+     [:br]
+     [:input
+      {:type "number"
+       :name "order"
+       :placeholder "0"
+       :value @(rf/subscribe [:subs/pattern '{:form/fields {:post/order ?x}}])
+       :on-change #(rf/dispatch [:evt.post.form/set-field
+                                 :post/order
+                                 (.. % -target -value)])}]
+     [:br]
      [:label {:for "css-class"} "Optional css class:"]
      [:br]
      [:input
@@ -171,38 +182,13 @@
   (-> (js/Intl.DateTimeFormat. "en-GB")
       (.format date)))
 
-(defn user-info
-  [user-name date action]
-  [:div.post-author
-   (concat
-    (when user-name
-      [[:div {:key "pen-icon"} svg/pen-icon]
-       [:div {:key "user-name"} "Loic Blanchard"]])
-    (when date
-      [[:div {:key "clock-icon"} svg/clock-icon]
-       [:div {:key "date"} (format-date date)]])
-    (when (or user-name date)
-      [[:div {:key "action"} (if (= :editor action) "(Last Edited)" "(Authored)")]]))])
-
 (defn post-authors
-  [{:post/keys [show-authors? creation-date last-edit-date show-dates?]}]
-  (cond (and show-authors? show-dates?)
-        [:div.post-authors
-         [user-info true creation-date :author]
-         (when last-edit-date [user-info true last-edit-date :editor])]
-        
-        (and show-authors? (not show-dates?))
-        [:div.post-authors
-         [user-info true nil :author]
-         (when last-edit-date [user-info true nil :editor])]
-        
-        show-dates?
-        [:div.post-authors
-         [user-info false creation-date :author]
-         (when last-edit-date [user-info false last-edit-date :editor])]
-        
-        :else
-        nil))
+  [{:post/keys [show-dates? creation-date last-edit-date]}]
+  [:div.post-dates
+   (when (and show-dates? creation-date)
+     [:h4 (str (format-date creation-date) " (Audited)")])
+   (when (and show-dates? last-edit-date) 
+     [:h4 (str (format-date last-edit-date) " (Edited)")])])
 
 (defn post-view
   [{:post/keys [css-class image-beside hiccup-content] :as post}]

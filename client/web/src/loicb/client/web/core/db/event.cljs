@@ -88,6 +88,7 @@
                    :params {:posts
                             {(list :all :with [nil])
                              [{:post/id '?
+                               :post/order '?
                                :post/page '?
                                :post/title '?
                                :post/css-class '?
@@ -248,6 +249,7 @@
                      :params          {:posts
                                        {(list :new-post :with [post])
                                         {:post/id '?
+                                         :post/order '?
                                          :post/page '?
                                          :post/title '?
                                          :post/css-class '?
@@ -272,6 +274,7 @@
    (if (utils/temporary-id? post-id)
      {:db         (assoc db :form/fields
                          {:post/id   post-id
+                          :post/order 0
                           :post/page (-> db :app/current-view :data :page-name)
                           :post/mode :edit
                           :post/creation-date (utils/mk-date)})}
@@ -280,6 +283,7 @@
                    :params          {:posts
                                      {(list :post :with [post-id])
                                       {:post/id '?
+                                       :post/order '?
                                        :post/page '?
                                        :post/title '?
                                        :post/css-class '?
