@@ -109,21 +109,6 @@
    {:viewBox "0 0 24 24"}
    [:path {:d "M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"}]])
 
-;; post authors
-
-(def clock-icon
-  [:svg.post-icon
-   {:viewBox "0 0 32 32" :fill "none"}
-   [:circle {:cx "16" :cy "16" :r "13" :stroke "#535358" :stroke-width "2"}]
-   [:path {:stroke "#535358" :stroke-linecap "round" :stroke-linejoin "round" :stroke-width "2" :d "M16 8v8l4 4"}]])
-
-(def pen-icon
-  [:svg.post-icon
-   {:stroke "#535358" :fill "none" :stroke-linejoin "miter" :viewBox "0 0 24 24" :xmlns "http://www.w3.org/2000/svg" :stroke-linecap "round" :stroke-width "1"}
-   [:polygon {:points "16 3 20 7 6 21 2 21 2 17 16 3" :fill "#059cf7" :opacity "0.1" :stroke-width "0"}]
-   [:polygon {:points "16 3 20 7 6 21 2 21 2 17 16 3"}]
-   [:line {:x1 "12" :y1 "21" :x2 "22" :y2 "21"}]])
-
 ;; navigation
 
 (def right-arrow arrow/item)

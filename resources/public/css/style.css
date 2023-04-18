@@ -4,7 +4,6 @@
 
     /* common */
     --link-primary-color: #129bd8;
-    --active-primary-color: #6aff20;
     --pulse-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
     /* dark theme */
@@ -19,6 +18,8 @@
     --error-primary-color: #f09295;
 
     --border-primary-color: #7c7c7c;
+
+    --active-primary-color: #6fed63;
 }
 
 :root.light {
@@ -34,6 +35,8 @@
     --error-primary-color: #991b1b;
 
     --border-primary-color: #375271c2;
+
+    --active-primary-color: #1f167b;
 }
 
 /* General */
@@ -812,21 +815,24 @@ section .socials img {
 
 /* Post */
 
-.post-authors {
+.post-dates {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     border-bottom: groove;
     border-bottom-width: thin;
     border-color: var(--border-primary-color);
 }
 
-.post-author {
-    display: flex;
-    align-items: center;
+.post-dates h4 {
     font-size: 0.8rem;
+    margin: 0rem 1rem;
+    color: var(--border-primary-color);
 }
 
 @media (max-width: 1024px) {
-    .post-author {
-        font-size: 0.7rem;
+    .post-dates {
+        justify-content: center;
     }
 }
 
