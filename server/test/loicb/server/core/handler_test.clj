@@ -138,6 +138,7 @@
                              {:posts
                               {(list :post :with [s/post-1-id])
                                {:post/id '?
+                                :post/order '?
                                 :post/page '?
                                 :post/title '?
                                 :post/css-class '?
@@ -157,6 +158,7 @@
                                {:posts
                                 {(list :new-post :with [s/post-3])
                                  {:post/id '?
+                                  :post/order '?
                                   :post/title '?
                                   :post/page '?
                                   :post/creation-date '?

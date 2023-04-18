@@ -24,6 +24,7 @@
     (with-redefs [utils/mk-uuid (constantly s/post-2-id)
                   utils/mk-date (constantly s/post-2-create-date)]
       (let [post {:post/id            "new-post-temp-id"
+                  :post/order         1
                   :post/title         "Title 2"
                   :post/page          :home
                   :post/css-class     "post-2"
@@ -32,6 +33,7 @@
   (testing "Edition of a post."
     (with-redefs [utils/mk-date (constantly s/post-1-edit-date)]
       (let [post {:post/id             s/post-1-id
+                  :post/order          0
                   :post/title          "Title 1"
                   :post/page           :home
                   :post/css-class      "post-1"

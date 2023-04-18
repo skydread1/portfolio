@@ -17,6 +17,7 @@
 (def post-schema
   [:map {:closed true}
    [:post/id :uuid]
+   [:post/order :int]
    [:post/page :keyword]
    [:post/title :string]
    [:post/css-class {:optional true} :string]
@@ -97,5 +98,6 @@
     (-> post
         (dissoc :post/view :post/mode :post/to-delete?)
         (update :post/id (if temp-id? (constantly (u/mk-uuid)) identity))
-        (assoc date-field (u/mk-date)))))
+        (assoc date-field (u/mk-date))
+        (update :post/order u/str->int))))
 

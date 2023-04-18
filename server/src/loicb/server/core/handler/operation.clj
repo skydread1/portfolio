@@ -1,6 +1,5 @@
 (ns loicb.server.core.handler.operation
-  (:require [loicb.server.core.handler.operation.db :as db]
-            [loicb.common.utils :as utils]))
+  (:require [loicb.server.core.handler.operation.db :as db]))
 
 ;;---------- No Effect Ops ----------
 

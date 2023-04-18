@@ -22,6 +22,7 @@
 (def post-3-create-date (u/mk-date))
 
 (def post-1 {:post/id             post-1-id
+             :post/order          0
              :post/page           :home
              :post/title          "Title 1"
              :post/css-class      "post-1"
@@ -34,12 +35,14 @@
              :post/show-dates?    true
              :post/show-authors?  true})
 (def post-2 {:post/id            post-2-id
+             :post/order         1
              :post/title         "Title 2"
              :post/page          :home
              :post/css-class     "post-2"
              :post/md-content    "#Some content 2"
              :post/creation-date post-2-create-date})
 (def post-3 {:post/id            post-3-id
+             :post/order         2
              :post/title         "Title 3"
              :post/page          :home
              :post/md-content    "Content"

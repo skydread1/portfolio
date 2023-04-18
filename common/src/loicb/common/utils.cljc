@@ -9,6 +9,10 @@
   []
   #?(:clj (java.util.Date.) :cljs (js/Date.)))
 
+(defn str->int
+  [s]
+  #?(:clj (Integer/parseInt s) :cljs (js/parseInt s)))
+
 (defn temporary-id?
   [id]
   (= "new-post-temp-id" id))

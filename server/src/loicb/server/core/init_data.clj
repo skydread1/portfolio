@@ -20,12 +20,14 @@
 
 (def about-posts
   [#:post{:id (u/mk-uuid)
+          :post 1
           :page :about
           :title "My Background"
           :css-class "background"
           :creation-date (u/mk-date)
           :md-content (slurp-md "about" "background.md")}
    #:post{:id (u/mk-uuid)
+          :post 0
           :page :about
           :title "My Socials"
           :css-class "socials"
@@ -34,6 +36,7 @@
 
 (def blog-posts
   [#:post{:id (u/mk-uuid)
+          :post 0
           :page :blog
           :title "Welcome to my website"
           :css-class "welcome"
@@ -43,6 +46,7 @@
           :show-authors? true
           :md-content (slurp-md "blog" "welcome.md")}
    #:post{:id (u/mk-uuid)
+          :post 1
           :page :blog
           :title "Some md samples to validate good UI behaviour"
           :css-class "md-example"
@@ -57,6 +61,7 @@
 
 (def home-posts
   [#:post{:id (u/mk-uuid)
+          :post 1
           :page :home
           :title "Project 1"
           :css-class "proj-1"
@@ -66,6 +71,7 @@
                                 :src-dark "assets/clojure-logo-dark-mode.svg"
                                 :alt "Clojure Logo"}}
    #:post{:id (u/mk-uuid)
+          :post 0
           :page :home
           :title "Project 2"
           :css-class "proj-2"

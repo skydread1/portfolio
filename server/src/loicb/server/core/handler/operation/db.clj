@@ -29,6 +29,8 @@
   [{:db/ident :post/id
     :db/valueType :db.type/uuid
     :db/unique :db.unique/identity}
+   {:db/ident :post/order
+    :db/valueType :db.type/long}
    {:db/ident :post/page
     :db/valueType :db.type/keyword}
    {:db/ident :post/title
@@ -93,6 +95,7 @@
 
 (def post-pull-pattern
   [:post/id
+   :post/order
    :post/page
    :post/title
    :post/css-class
