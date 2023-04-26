@@ -17,13 +17,9 @@
 
 (rf/reg-event-fx
  :fx.http/all-success
- (fn [{:keys [db]} [_ {:keys [pages posts users]}]]
+ (fn [{:keys [db]} [_ {:keys [posts users]}]]
    (let [user (-> users :auth :logged)]
-     {:db (merge db {:app/pages (->> pages
-                                     :all
-                                     (map #(assoc % :page/mode :read))
-                                     (utils/to-indexed-maps :page/name))
-                     :app/posts (->> posts
+     {:db (merge db {:app/posts (->> posts
                                      :all
                                      (map #(assoc % :post/mode :read))
                                      (utils/to-indexed-maps :post/id))
