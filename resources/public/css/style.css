@@ -10,7 +10,7 @@
     --bg-primary-color: #010c12;
     --bg-secondary-color: #212e42;
 
-    --text-primary-color: #6fed63;
+    --text-primary-color: #f3c30e;
     --text-secondary-color: #ffffff;
 
     --button-primary-color: black;
@@ -19,7 +19,7 @@
 
     --border-primary-color: #7c7c7c;
 
-    --active-primary-color: #6fed63;
+    --active-primary-color: #f3c30e;
 }
 
 :root.light {
@@ -38,6 +38,10 @@
 
     --active-primary-color: #1f167b;
 }
+
+/* Animated background */
+/* https://alvarotrigo.com/blog/animated-backgrounds-css/ */
+
 
 /* General */
 
@@ -467,7 +471,7 @@ header svg:hover {
 }
 
 #browser-nav .menu-center .menu-right svg {
-    max-width: 12rem;
+    width: 12rem;
     transform: translateX(-6%);
     transition: transform 1s;
 }
@@ -482,7 +486,7 @@ header svg:hover {
 }
 
 #browser-nav .menu-center .menu-left svg{
-    max-width: 12rem;
+    width: 12rem;
     transform: rotate(180deg) translateX(-6%);
     transition: transform 1s;
 }
@@ -774,14 +778,19 @@ section .post-body {
     width: 100%;
 }
 
-section .image>img {
+section img {
     max-width: 50%;
+    text-align: center;
 }
 
 @media (max-width: 1024px) {
     section .post .post-body {
         padding: 0.5rem;
         display: block;
+    }
+
+    section img {
+        max-width: 100%;
     }
 }
 
