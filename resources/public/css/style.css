@@ -618,10 +618,9 @@ section {
 
 section div.left,
 section div.left-close {
-    background-color: var(--bg-secondary-color);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: var(--border-primary-color);
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
 }
 
 section div.left {
@@ -748,6 +747,9 @@ section div.right {
     padding: 1rem;
     flex-grow: 1;
     flex-shrink: 1;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: var(--border-primary-color);
 }
 
 @media (max-width: 1024px) {
