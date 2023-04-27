@@ -96,14 +96,14 @@
 (defn header-comp []
   (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]
     [:header.container
+     (when nav-open? {:class "full-screen"})
      [:div.top
-      (when nav-open? {:class "hidden"})
-      (when-not nav-open?
-        [:button.nav-btn.hidden
-         {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
-         [svg/menu]])
-      (when-not nav-open?
-        [:h1.top-name "Loic Blanchard"])
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+       [svg/menu]]
+      [:div.name
+       [:h1 "Loïc Blanchard"]
+       (when nav-open? [:h2 "Software Engineer in Functional Programming (Clojure)"])]
       (when @(rf/subscribe [:subs/pattern '{:app/user ?x}])
         [svg/user-mode-logo])
       (when-let [{:user/keys [name picture]} @(rf/subscribe [:subs/pattern '{:app/user ?x}])]
@@ -115,9 +115,5 @@
       [:button.nav-btn.hidden
        {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
        [svg/diamond]]]
-     (when nav-open?
-       [:div.name
-        [:h1 "Loïc Blanchard"]
-        [:h2 "Software Engineer in Functional Programming (Clojure)"]])
      [navbar (navbar-content-browser)]
      [navbar (navbar-content-mobile)]]))
