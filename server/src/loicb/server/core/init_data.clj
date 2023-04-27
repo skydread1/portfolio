@@ -20,14 +20,14 @@
 
 (def about-posts
   [#:post{:id (u/mk-uuid)
-          :post 1
+          :order 1
           :page :about
           :title "My Background"
           :css-class "background"
           :creation-date (u/mk-date)
           :md-content (slurp-md "about" "background.md")}
    #:post{:id (u/mk-uuid)
-          :post 0
+          :order 0
           :page :about
           :title "My Socials"
           :css-class "socials"
@@ -36,7 +36,7 @@
 
 (def blog-posts
   [#:post{:id (u/mk-uuid)
-          :post 0
+          :order 0
           :page :blog
           :title "Welcome to my website"
           :css-class "welcome"
@@ -46,7 +46,7 @@
           :show-authors? true
           :md-content (slurp-md "blog" "welcome.md")}
    #:post{:id (u/mk-uuid)
-          :post 1
+          :order 1
           :page :blog
           :title "Some md samples to validate good UI behaviour"
           :css-class "md-example"
@@ -61,25 +61,25 @@
 
 (def home-posts
   [#:post{:id (u/mk-uuid)
-          :post 1
+          :order 1
           :page :home
-          :title "Project 1"
-          :css-class "proj-1"
+          :title "Flybot Website"
+          :css-class "flybot-website"
           :creation-date (u/mk-date)
-          :md-content (slurp-md "home" "project1.md")
-          :image-beside #:image{:src "assets/clojure-logo.svg"
-                                :src-dark "assets/clojure-logo-dark-mode.svg"
-                                :alt "Clojure Logo"}}
+          :md-content (slurp-md "home" "flybot_website.md")
+          :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
+                                :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
+                                :alt "Flybot Logo"}}
    #:post{:id (u/mk-uuid)
-          :post 0
+          :order 2
           :page :home
-          :title "Project 2"
-          :css-class "proj-2"
+          :title "Flybot Mobile App"
+          :css-class "flybot-mobile-app"
           :creation-date (u/mk-date)
-          :md-content (slurp-md "home" "project2.md")
-          :image-beside #:image{:src "assets/lambda-logo.svg"
-                                :src-dark "assets/lambda-logo-dark-mode.svg"
-                                :alt "Lambda Logo"}}])
+          :md-content (slurp-md "home" "flybot_mobile_app.md")
+          :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
+                                :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
+                                :alt "Flybot Logo"}}])
 
 (def posts
   (concat home-posts about-posts blog-posts))
