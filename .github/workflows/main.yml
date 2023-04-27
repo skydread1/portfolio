@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+env:
+  OAUTH2: ""
+  ADMIN_USER: ""
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@10.2
+        with:
+          cli: latest
+          
+      - name: Run the clj tests
+        run: clojure -A:jvm-base:test-clj
+
+      - name: Run the cljs tests
+        run: clojure -A:jvm-base:fig:cljs/test-headless

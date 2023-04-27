@@ -1,0 +1,3 @@
+{:main loicb.client.web.core
+ :optimizations :advanced
+ :output-to     "resources/public/main.js"}
