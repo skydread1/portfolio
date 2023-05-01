@@ -278,7 +278,7 @@
      {:db         (assoc db :form/fields
                          {:post/id   post-id
                           :post/order 0
-                          :post/page (-> db :app/current-view :data :page-name)
+                          :post/page (-> db :app/current-view :data :db-page-name)
                           :post/mode :edit
                           :post/creation-date (utils/mk-date)})}
      {:http-xhrio {:method          :post
