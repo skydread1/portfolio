@@ -784,7 +784,7 @@ section .post-body {
 }
 
 section img {
-    max-width: 50%;
+    max-width: 30%;
     text-align: center;
 }
 
@@ -808,10 +808,6 @@ section button {
 }
 
 /* About Me page */
-
-section.type-2 {
-    text-align: center;
-}
 
 section .socials {
     text-align: center;

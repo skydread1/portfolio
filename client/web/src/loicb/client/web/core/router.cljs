@@ -1,10 +1,19 @@
 (ns loicb.client.web.core.router
-  (:require [loicb.client.web.core.dom.page :refer [page-type-1 page-type-2]] 
+  (:require [loicb.client.web.core.dom.page :refer [page-type-1]] 
             [goog.object :as gobj]
             [reitit.frontend :as rei]
             [reitit.frontend.easy :as rfe]
             [reitit.frontend.history :as rfh]
             [re-frame.core :as rf]))
+
+(def route-controllers
+  [{:parameters {:path [:post-id]}
+    :start (fn [parameters]
+             (rf/dispatch [:evt.nav/close-navbar :main])
+             (rf/dispatch [:evt.page/set-active-post
+                           (-> parameters :path :post-id uuid)]))
+    :stop  (fn [_]
+             (rf/dispatch [:evt.page/clear-active-post]))}])
 
 (def routes
   [["/"
@@ -19,13 +28,7 @@
      :db-page-name :home
      :title "Portfolio"
      :view  page-type-1
-     :controllers [{:parameters {:path [:post-id]}
-                    :start (fn [parameters]
-                             (rf/dispatch [:evt.nav/close-navbar :main])
-                             (rf/dispatch [:evt.page/set-active-post
-                                           (-> parameters :path :post-id uuid)]))
-                    :stop  (fn [_]
-                             (rf/dispatch [:evt.page/clear-active-post]))}]}]
+     :controllers route-controllers}]
 
    ["/blog"
     [""
@@ -40,22 +43,37 @@
       :db-page-name :blog
       :title "Blog"
       :view  page-type-1
-      :controllers [{:parameters {:path [:post-id]}
-                     :start (fn [parameters]
-                              (rf/dispatch [:evt.nav/close-navbar :main])
-                              (rf/dispatch [:evt.page/set-active-post
-                                            (-> parameters :path :post-id uuid)]))
-                     :stop  (fn [_]
-                              (rf/dispatch [:evt.page/clear-active-post]))}]}]]
+      :controllers route-controllers}]]
    
    ["/about"
-    {:name :about
+    [""
+     {:name :about
+      :db-page-name :about
+      :post-route :about/post
+      :title "About Me"
+      :view page-type-1}]
+    
+    ["/:post-id"
+    {:name :about/post
      :db-page-name :about
-     :title "About me"
-     :view page-type-2}]
+     :title "About Me"
+     :view page-type-1
+     :controllers route-controllers}]]
 
-   ["#footer-contact"
-    {:name :contact}]])
+   ["/contact"
+    [""
+     {:name :contact
+      :db-page-name :contact
+      :post-route :contact/post
+      :title "Contact"
+      :view page-type-1}]
+    
+    ["/:post-id"
+     {:name :contact/post
+      :db-page-name :contact
+      :title "Contact"
+      :view page-type-1
+      :controllers route-controllers}]]])
 
 (def router
   (rei/router routes))
