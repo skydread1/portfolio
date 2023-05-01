@@ -1,9 +1,10 @@
 (ns loicb.client.web.core.db.event
-  (:require [loicb.common.utils :as utils :refer [toggle]]
-            [loicb.common.validation :as valid]
-            [ajax.edn :refer [edn-request-format edn-response-format]]
+  (:require [ajax.edn :refer [edn-request-format edn-response-format]]
             [day8.re-frame.http-fx]
+            [loicb.common.utils :as utils :refer [toggle]]
+            [loicb.common.validation :as valid]
             [re-frame.core :as rf]
+            [reitit.frontend.controllers :as rfc]
             [reitit.frontend.easy :as rfe]))
 
 ;; ---------- http success/failure ----------
@@ -75,6 +76,7 @@
      {:db         (assoc
                    db
                    :app/current-view current-view
+                   :app/match        nil
                    :app/theme        app-theme
                    :user/mode        :reader
                    :nav.main/open? true
@@ -125,9 +127,9 @@
 (rf/reg-event-db
  :evt.page/set-current-view
  (fn [db [_ new-match]]
-   (-> db
-       (assoc :app/current-view new-match)
-       (dissoc :page/active-post))))
+   (let [old-match (-> db :app/current-view)
+         match (assoc new-match :controllers (rfc/apply-controllers (:controllers old-match) new-match))]
+     (assoc db :app/current-view match))))
 
 ;; ---------- Navbars ----------
 
@@ -170,6 +172,11 @@
  :evt.page/set-active-post
  (fn [db [_ post-id]]
    (assoc db :page/active-post post-id)))
+
+(rf/reg-event-db
+ :evt.page/clear-active-post
+ (fn [db _]
+   (dissoc db :page/active-post)))
 
 ;; Mode
 

@@ -4,17 +4,13 @@
             [reitit.frontend.easy :as rfe]))
 
 (defn internal-link
-  "Reitit internal link for the navbar.
-   Setting `reitit?` to false allows the use of a regular browser link (good for anchor link)."
-  ([page-name text]
-   (internal-link page-name text true))
-  ([page-name text reitit?]
-   (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
-     [:a {:href                     (rfe/href page-name)
-          :on-click                 #(rf/dispatch [:evt.nav/close-navbar :main])
-          :class                    (when (= page-name current-page) "active")
-          :data-reitit-handle-click reitit?}
-      text])))
+  "Reitit internal link for the navbar." 
+  [page-name text]
+  (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
+    [:a {:href     (rfe/href page-name)
+         :on-click #(rf/dispatch [:evt.nav/close-navbar :main])
+         :class    (when (= page-name current-page) "active")}
+     text]))
 
 (defn theme-link
   "dark/light mode switch"
@@ -34,13 +30,13 @@
    [:div.menu
     [:div.menu-top
      (internal-link
-      :loicb/about
+      :about
       [:div
        [:div.txt "About Me"]
        [svg/right-arrow]])]
     [:div.menu-center
      (internal-link
-      :loicb/home
+      :home
       [:div.menu-left
        [:div.txt "Portfolio"]
        [svg/right-arrow]])
@@ -48,45 +44,41 @@
       (theme-link
        [svg/diamond])]
      (internal-link
-      :loicb/blog
+      :blog
       [:div.menu-right
        [svg/right-arrow]
        [:div.txt "Blog"]])]
     (internal-link
-     :loicb/contact
+     :contact
      [:div.menu-bottom
       [:div
        [svg/right-arrow]
-       [:div.txt "Contact"]]]
-     false)]])
+       [:div.txt "Contact"]]])]])
 
 (defn navbar-content-mobile []
   [:nav.mobile
    {:id "mobile-nav"}
    [:div.menu
-    (theme-link
-     [svg/diamond])
     (internal-link
-     :loicb/about
+     :about
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "About Me"]])
     (internal-link
-     :loicb/home
+     :home
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "Portfolio"]])
     (internal-link
-     :loicb/blog
+     :blog
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "Blog"]])
     (internal-link
-     :loicb/contact
+     :contact
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Contact"]]
-     false)]])
+      [:div.txt "Contact"]])]])
 
 (defn navbar [navbar-content]
   (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])

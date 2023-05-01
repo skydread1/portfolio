@@ -666,7 +666,7 @@ section div.left-close h1{
     transform: rotate(-90deg) translateX(-30%);
 }
 
-section div.left-close div.menu-title button {
+section div.left-close div.menu-title a {
     cursor: pointer;
     border: none;
     background-color: inherit;
@@ -715,6 +715,7 @@ section div.left ul li:hover svg{
 
 section div.left a{
     display: block;
+    text-decoration: none;
 }
 
 section div.left ul li a div{
@@ -806,7 +807,11 @@ section button {
     margin: 0.5rem;
 }
 
-/* About Us page */
+/* About Me page */
+
+section.type-2 {
+    text-align: center;
+}
 
 section .socials {
     text-align: center;
