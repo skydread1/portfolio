@@ -784,7 +784,7 @@ section .post-body {
 }
 
 section img {
-    max-width: 30%;
+    max-width: 50%;
     text-align: center;
 }
 

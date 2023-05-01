@@ -1,4 +1,4 @@
-# 🇫🇷 CPE Lyon: Master degree
+# 🇫🇷 Master degree | CPE | Lyon, France
 
 ## 🎓 Master in Web development
 - Specialization in software engineering.
