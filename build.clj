@@ -36,7 +36,7 @@
   (b/uber {:class-dir class-dir
            :uber-file uber-file
            :basis     basis
-           :main      'flybot.server.core}))
+           :main      'loicb.server.core}))
 
 ;; ---------- Build Server+Client----------
 
