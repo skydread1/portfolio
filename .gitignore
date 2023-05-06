@@ -22,9 +22,6 @@ admin.edn
 ## build
 target
 
-## figwheel
-main.js
-
 ## datalevin
 datalevin
 
