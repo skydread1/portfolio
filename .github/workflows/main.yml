@@ -30,4 +30,6 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: 'resources/public/main.js'
+          committer_name: GitHub Action
+          default_author: github_actions
           message: 'Compiled the cljs to the js bundle: main.js'
