@@ -1,5 +1,5 @@
 {:prod     {:http-port       8123
-            :db-uri          "datalevin/prod/loicbdb"
+            :db-uri          "datalevin/prod/db"
             :oauth2-callback "https://loicblanchard.me/oauth/google/callback"}
  :dev      {:http-port       8123
             :db-uri          "datalevin/dev/db"
