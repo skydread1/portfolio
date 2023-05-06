@@ -93,8 +93,8 @@
   "Given a `post` from the post form and the `user-id`,
    returns a post matching server format requirements."
   [post]
-  (let [temp-id?     (-> post :post/id u/temporary-id?)
-        date-field   (if temp-id? :post/creation-date :post/last-edit-date)]
+  (let [temp-id?   (-> post :post/id u/temporary-id?)
+        date-field (if temp-id? :post/creation-date :post/last-edit-date)]
     (-> post
         (dissoc :post/view :post/mode :post/to-delete?)
         (update :post/id (if temp-id? (constantly (u/mk-uuid)) identity))

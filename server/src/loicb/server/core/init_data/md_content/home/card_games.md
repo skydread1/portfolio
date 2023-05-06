@@ -1,3 +1,3 @@
  # Card Games Composition in Clojure
 
- TODO
+ Coming soon

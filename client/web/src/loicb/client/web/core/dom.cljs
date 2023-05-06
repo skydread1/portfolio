@@ -1,15 +1,15 @@
 (ns loicb.client.web.core.dom
-  (:require [loicb.client.web.core.dom.header :refer [header-comp]]
-            [loicb.client.web.core.dom.page :refer [page]]
+  (:require [loicb.client.web.core.db]
             [loicb.client.web.core.dom.footer :refer [footer-comp]]
-            [loicb.client.web.core.db]
-            [re-frame.core :as rf]))
+            [loicb.client.web.core.dom.header :refer [header-comp]]
+            [re-frame.core :as rf]
+            [reitit.frontend.easy :as rfe]))
 
 (defn current-page []
   (let [view @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:view ?view}}}])]
     (if view
       (view)
-      (page :home))))
+      (rfe/href :home))))
 
 ;; App Component
 

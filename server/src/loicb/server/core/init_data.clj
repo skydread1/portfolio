@@ -20,16 +20,44 @@
 
 (def about-posts
   [#:post{:id (u/mk-uuid)
+          :order 5
+          :page :about
+          :title "Recap"
+          :css-class "recap"
+          :creation-date (u/mk-date)
+          :md-content (slurp-md "about" "recap.md")}
+   #:post{:id (u/mk-uuid)
+          :order 4
+          :page :about
+          :title "Flybot | 2020 - now"
+          :css-class "flybot"
+          :creation-date (u/mk-date)
+          :md-content (slurp-md "about" "flybot.md")}
+   #:post{:id (u/mk-uuid)
+          :order 3
+          :page :about
+          :title "Bosch SEA | 2019"
+          :css-class "bosch"
+          :creation-date (u/mk-date)
+          :md-content (slurp-md "about" "bosch.md")}
+   #:post{:id (u/mk-uuid)
+          :order 2
+          :page :about
+          :title "Electriduct | 2017"
+          :css-class "electriduct"
+          :creation-date (u/mk-date)
+          :md-content (slurp-md "about" "electriduct.md")}
+   #:post{:id (u/mk-uuid)
           :order 1
           :page :about
-          :title "My Background"
-          :css-class "background"
+          :title "CPE Lyon | 2014-2019"
+          :css-class "cpe"
           :creation-date (u/mk-date)
-          :md-content (slurp-md "about" "background.md")}
+          :md-content (slurp-md "about" "cpe.md")}
    #:post{:id (u/mk-uuid)
           :order 0
           :page :about
-          :title "My Socials"
+          :title "Socials"
           :css-class "socials"
           :creation-date (u/mk-date)
           :md-content (slurp-md "about" "socials.md")}])
@@ -38,26 +66,21 @@
   [#:post{:id (u/mk-uuid)
           :order 0
           :page :blog
-          :title "Welcome to my website"
-          :css-class "welcome"
+          :title "Host Clojure Full Stack on AWS"
+          :css-class "clojure-aws"
           :creation-date (u/mk-date)
-          :last-edit-date (u/mk-date)
           :show-dates? true
           :show-authors? true
-          :md-content (slurp-md "blog" "welcome.md")}
-   #:post{:id (u/mk-uuid)
-          :order 1
-          :page :blog
-          :title "Some md samples to validate good UI behaviour"
-          :css-class "md-example"
+          :md-content (slurp-md "blog" "deploy_clojure_aws.md")}])
+
+(def contact-posts
+  [#:post{:id (u/mk-uuid)
+          :order 0
+          :page :contact
+          :title "Contact me"
+          :css-class "contact-me"
           :creation-date (u/mk-date)
-          :last-edit-date (u/mk-date)
-          :show-dates? true
-          :show-authors? true
-          :md-content (slurp-md "blog" "mdsample.md")
-          :image-beside #:image{:src "https://octodex.github.com/images/dojocat.jpg"
-                                :src-dark "https://octodex.github.com/images/stormtroopocat.jpg"
-                                :alt "Cat Logo"}}])
+          :md-content (slurp-md "contact" "contact_me.md")}])
 
 (def home-posts
   [#:post{:id (u/mk-uuid)
@@ -82,7 +105,7 @@
                                 :alt "Flybot Logo"}}])
 
 (def posts
-  (concat home-posts about-posts blog-posts))
+  (concat home-posts about-posts blog-posts contact-posts))
 
 (def init-data
   (concat posts user))
