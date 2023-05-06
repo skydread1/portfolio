@@ -5,10 +5,6 @@ on:
     branches-ignore:
       - master
 
-env:
-  OAUTH2: ""
-  ADMIN_USER: ""
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,10 +26,3 @@ jobs:
 
       - name: Build main.js
         run: clojure -T:build js-bundle
-
-      - name: Build image and push to ECR
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          ECR_REPO: ${{ secrets.ECR_REPO }}
-        run: clojure -T:jib build

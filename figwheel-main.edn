@@ -1,2 +1,1 @@
-{:ring-handler loicb.server.systems/figwheel-handler
- :auto-testing true}
+{:auto-testing true}
