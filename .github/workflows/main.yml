@@ -26,3 +26,8 @@ jobs:
 
       - name: Build main.js
         run: clojure -T:build js-bundle
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: 'resources/public/main.js'
+          message: 'Compiled the cljs to the js bundle: main.js'
