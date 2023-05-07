@@ -18,7 +18,6 @@
      {:db         (assoc
                    db
                    :app/current-view current-view
-                   :app/match        nil
                    :app/theme        app-theme
                    :nav.main/open? true
                    :nav.left-menu/open? true
