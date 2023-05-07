@@ -1,28 +1,22 @@
-{:deps    {;; both frontend and backend
-           org.clojure/clojure                   {:mvn/version "1.11.1"}
+{:deps    {org.clojure/clojure                   {:mvn/version "1.11.1"}
            metosin/malli                         {:mvn/version "0.10.2"}
            metosin/reitit                        {:mvn/version "0.6.0"}
            metosin/muuntaja                      {:mvn/version "0.6.8"}
-           sg.flybot/lasagna-pull                {:mvn/version "0.4.150"}}
- :paths   ["src" "resources"]
+           sg.flybot/lasagna-pull                {:mvn/version "0.4.150"}
+           com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
+           org.clojure/clojurescript             {:mvn/version "1.11.60"}
+           reagent/reagent                       {:mvn/version "1.2.0"}
+           cljsjs/react                          {:mvn/version "18.2.0-1"}
+           cljsjs/react-dom                      {:mvn/version "18.2.0-1"}
+           markdown-to-hiccup/markdown-to-hiccup {:mvn/version "0.6.2"}
+           re-frame/re-frame                     {:mvn/version "1.3.0"}
+           day8.re-frame/test                    {:mvn/version "0.1.5"}}
+ :paths   ["src" "resources" "target" "test"]
  :aliases
  {;; Run clj tests
   :server/test {:extra-paths ["test"]
                 :extra-deps  {lambdaisland/kaocha {:mvn/version "1.80.1274"}}
                 :main-opts   ["-m" "kaocha.runner"]}
-
-  ;;---------- CLIENT ----------
-  :client  {:extra-deps {com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
-                         org.clojure/clojurescript             {:mvn/version "1.11.60"}
-                         reagent/reagent                       {:mvn/version "1.2.0"}
-                         cljsjs/react                          {:mvn/version "18.2.0-1"}
-                         cljsjs/react-dom                      {:mvn/version "18.2.0-1"}
-                         markdown-to-hiccup/markdown-to-hiccup {:mvn/version "0.6.2"}
-                         cljs-ajax/cljs-ajax                   {:mvn/version "0.8.4"}
-                         re-frame/re-frame                     {:mvn/version "1.3.0"}
-                         day8.re-frame/http-fx                 {:mvn/version "0.2.4"}
-                         day8.re-frame/test                    {:mvn/version "0.1.5"}}
-            :extra-paths ["target"]}
 
   ;;---------- WEB ----------
   ;; cljs repl for figwheel hot reloading development/testing
@@ -34,7 +28,7 @@
   ;; build the optimised js bundle
   :web/prod {:main-opts ["--main"       "figwheel.main"
                          "--build-once" "prod"]}
-
+  
   ;; Run the cljs tests
   :web/test {:main-opts ["-m" "figwheel.main"
                          "-m" "loicb.client.test-runner"]}
@@ -44,13 +38,10 @@
                                   "-co" "tests.cljs.edn"
                                   "-m" "loicb.client.test-runner"]}
 
-  ;;---------- BUILD ----------
-  ;; build frontend js bundle : clj -T:build js-bundle
-  ;; build backend uberjar: clj -T:build uber
-  ;; build both js and jar : clj -T:build uber+js
+  ;;---------- BUILD ---------- 
   :build {:deps       {io.github.clojure/tools.build {:git/tag "v0.9.4" :git/sha "76b78fe"}}
-          :ns-default build} 
-  
+          :ns-default build}
+
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}}}

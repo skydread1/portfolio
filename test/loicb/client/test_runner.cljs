@@ -1,4 +1,4 @@
-(ns loicb.test-runner
+(ns loicb.client.test-runner
   (:require
     [figwheel.main.testing :refer-macros [run-tests-async]]
     ;; require all the namespaces that have tests in them
