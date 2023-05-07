@@ -34,9 +34,7 @@
                          "-m" "loicb.client.test-runner"]}
 
   ;; Run the cljs tests with chrome headless
-  :web/test-headless {:extra-paths ["test"]
-                      
-                      :main-opts ["-m" "figwheel.main"
+  :web/test-headless {:main-opts ["-m" "figwheel.main"
                                   "-co" "tests.cljs.edn"
                                   "-m" "loicb.client.test-runner"]}
 
