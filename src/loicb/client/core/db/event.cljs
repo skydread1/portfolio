@@ -14,7 +14,7 @@
  [(rf/inject-cofx :cofx.app/local-store-theme :theme)]
  (fn [{:keys [db local-store-theme]} _]
    (let [app-theme    (or local-store-theme :dark)
-         current-view (or (:app/current-view db) (rfe/push-state :loicb/home))]
+         current-view (or (:app/current-view db) (rfe/push-state :home))]
      {:db         (assoc
                    db
                    :app/current-view current-view
