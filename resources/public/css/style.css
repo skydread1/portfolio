@@ -125,7 +125,21 @@ h5 {
 }
 
 p {
-    padding: 0.5rem 0rem;
+    font-size: 1rem;
+    line-height: 1.5em; 
+    margin: 1rem 0rem;
+}
+
+pre {
+    font-size: 1rem;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    background-color: var(--bg-secondary-color);
+}
+
+code {
+    font-size: 1rem;
+    color: var(--text-primary-color);
 }
 
 a {
@@ -831,6 +845,32 @@ section .socials img {
 }
 
 /* Post */
+
+.post h1 {
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-primary-color);
+    background-color: var(--bg-secondary-color);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--text-primary-color);
+}
+
+.post h2 {
+    margin: 1rem 0rem;
+    color: var(--text-primary-color);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: var(--text-primary-color);
+}
+
+.post h3 {
+    margin: 1rem 0rem;
+    color: var(--border-primary-color);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: var(--border-primary-color);
+}
 
 .post-dates {
     display: flex;
