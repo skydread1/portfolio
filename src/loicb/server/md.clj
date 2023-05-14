@@ -33,7 +33,9 @@
    Returns a map with the post info"
   [file-path]
   (let [raw (slurp file-path)
-        [content config] (reverse (str/split raw #"\+\+\+"))
+        [content config] (->> (str/split raw #"\+\+\+")
+                              (take 2)
+                              reverse)
         post (-> config
                  edn/read-string
                  (assoc :post/md-content content
