@@ -1,6 +1,6 @@
 (ns loicb.client.core.db.event
   (:require [loicb.common.utils :as utils :refer [toggle]]
-            [loicb.client.core.md :as posts]
+            [loicb.client.core.md :as md]
             [re-frame.core :as rf]
             [reitit.frontend.controllers :as rfc]
             [reitit.frontend.easy :as rfe]))
@@ -21,7 +21,7 @@
                    :app/theme        app-theme
                    :nav.main/open? true
                    :nav.left-menu/open? true
-                   :app/posts (utils/to-indexed-maps :post/id (posts/load-posts)))
+                   :app/posts (utils/to-indexed-maps :post/id md/posts))
       :fx         [[:fx.app/update-html-class app-theme]]})))
 
 ;; Theme (dark/light)

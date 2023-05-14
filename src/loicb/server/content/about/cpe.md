@@ -1,6 +1,6 @@
 #:post{:order 1
        :page :about
-       :title "CPE Lyon | 2014-2019"
+       :title "2014-2019 | CPE Lyon"
        :css-class "cpe"}
 +++
 # 🇫🇷 Master degree | CPE | Lyon, France

@@ -1,6 +1,6 @@
 #:post{:order 4
        :page :about
-       :title "Flybot | 2020 - now"
+       :title "2020 - now | Flybot"
        :css-class "flybot"}
 +++
 # 🇸🇬 Senior Software Engineer | Flybot Pte Ltd | Singapore

@@ -1,6 +1,14 @@
-# portfolio
+#:post{:order 5
+       :page :home
+       :title "2023 | Portfolio Website"
+       :css-class "portfolio"
+       :image-beside #:image{:src "assets/loic-logo.png"
+                             :src-dark "assets/loic-logo.png"
+                             :alt "Logo referencing Aperture Science"}}
++++
+# Clojure SPA - portfolio Website (2023)
 
-Personal Website - [loicblanchard.me](https://www.loicblanchard.me/)
+The website you are currently visiting was made with ClojureScript.
 
 ## Stack
 
@@ -53,19 +61,19 @@ Each post has its own markdown files in the folder of the page it belongs to.
 ### Config Clojure map
 
 A markdown file of a post is divided into 2 parts:
-- above the demarcation `+++` is a clojure map of configs (title, page, order etc.)
-- below the demarcation `+++` is the post content as markdown.
+- above the demarcation `+ + +` is a clojure map of configs (title, page, order etc.)
+- below the demarcation `+ + +` is the post content as markdown.
 
 Here is an example of clojure map for a post:
 
-```clojure
+```
 #:post{:order 0
        :page :home
        :title "Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "assets/loic-logo.png"
-                             :src-dark "assets/loic-logo.png"
-                             :alt "Logo referencing Aperture Science"}}
+       :image-beside #:image{:src "assets/data.jpg"
+                             :src-dark "assets/data.jpg"
+                             :alt "Data"}}
 ```
 
 ## Compile
