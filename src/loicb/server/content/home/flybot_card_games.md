@@ -1,6 +1,6 @@
-#:post{:order 4
+#:post{:order 1
        :page :home
-       :title "Card Games Backends"
+       :title "2020-2021 | Card Games Backends"
        :css-class "card-games"
        :image-beside #:image{:src "assets/cards.jpg"
                              :src-dark "assets/cards.jpg"

@@ -1,6 +1,6 @@
-#:post{:order 3
+#:post{:order 2
        :page :home
-       :title "Magic Compiler and Nostrand"
+       :title "2021-2022 | Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
        :image-beside #:image{:src "assets/datawp.jpg"
                              :src-dark "assets/datawp.jpg"

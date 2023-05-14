@@ -1,6 +1,6 @@
 #:post{:order 3
        :page :about
-       :title "Bosch SEA | 2019"
+       :title "2019 | Bosch SEA"
        :css-class "bosch"}
 +++
 # 🇸🇬 Cloud Architecture Intern | Bosch Southeast Asia | Singapore

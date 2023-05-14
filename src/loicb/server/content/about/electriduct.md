@@ -1,6 +1,6 @@
 #:post{:order 2
        :page :about
-       :title "Electriduct | 2017"
+       :title "2017 | Electriduct"
        :css-class "electriduct"}
 +++
 # 🇺🇸 Software Developer Intern | Electriduct | Fort Lauderdale, USA

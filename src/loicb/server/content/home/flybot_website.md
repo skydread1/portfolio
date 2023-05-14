@@ -1,6 +1,6 @@
-#:post{:order 1
+#:post{:order 3
        :page :home
-       :title "Flybot Website"
+       :title "2022 | Flybot Website"
        :css-class "flybot-website"
        :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
                              :src-dark "https://www.flybot.sg/assets/flybot-logo.png"

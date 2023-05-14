@@ -1,12 +1,12 @@
-#:post{:order 0
+#:post{:order 5
        :page :home
-       :title "Portfolio Website"
+       :title "2023 | Portfolio Website"
        :css-class "portfolio"
        :image-beside #:image{:src "assets/loic-logo.png"
                              :src-dark "assets/loic-logo.png"
                              :alt "Logo referencing Aperture Science"}}
 +++
-# Clojure SPA - portfolio Website
+# Clojure SPA - portfolio Website (2023)
 
 The website you are currently visiting was made with ClojureScript.
 
