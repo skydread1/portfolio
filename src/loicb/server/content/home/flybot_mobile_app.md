@@ -81,7 +81,7 @@ For the rest, most re-frame events remain the same between the 2 frontends, henc
 I tested the app on iOS only via the iOS Simulator in Xcode locally.
 The app has not been deployed on any Store yet.
 
-## More info
+## Learn more
 
 Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
 

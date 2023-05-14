@@ -14,7 +14,7 @@
 
 The purpose of this project was to demonstrate how the "lasagna stack" ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
 
-The [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg) repo was then created and is open-source so all Clojure developers can see the benefit of the pull pattern and fun map as well as a good example of the usage of other very good open-source libraries of the Clojure community.
+The [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg) repo was then created and is open-source so all Clojure developers can see the benefit of the `pull pattern` and `fun map` as well as a good example of the usage of other very good open-source libraries of the Clojure community.
 
 ## Stack
 
@@ -99,7 +99,7 @@ When new GitHub PR is merged, the new container image is automatically generated
 
 [figwheel-main](https://github.com/bhauman/figwheel-main) allows us to do hot reloading when a file is saved and provide clj/cljs REPL to print at anytime the re-frame DB for instant feedback. It also allow us to generate an optimized js bundle from the cljs files. The configuration params are very well thought and the library makes the development experience a bliss. Figwheel also allows us to run our own ring server by providing a ring-handler in the config. This feature works very well with our fun-map system.
 
-## More info
+## Learn more
 
 Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
 
