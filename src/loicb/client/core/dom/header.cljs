@@ -20,7 +20,7 @@
 
 (defn navbar-content-browser []
   [:nav.browser
-   {:id "browser-nav"}
+   {:id "browser-nav" :class "browser-only"}
    [:div.menu
     [:div.menu-top
      (internal-link
@@ -51,7 +51,7 @@
 
 (defn navbar-content-mobile []
   [:nav.mobile
-   {:id "mobile-nav"}
+   {:id "mobile-nav" :class "mobile-only"}
    [:div.menu
     (internal-link
      :about
@@ -79,19 +79,45 @@
     (assoc-in navbar-content [1 :class] "show")
     (assoc-in navbar-content [1 :class] "hidden")))
 
+(defn top-browser
+  [nav-open?]
+  [:div.top
+   {:class "browser-only"}
+   [:button.nav-btn.hidden
+    {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+    [svg/menu]]
+   [:div.name
+    [:h1 "Loïc Blanchard"]
+    (when nav-open? [:h2 "Software Engineer in Functional Programming (Clojure)"])]
+   [:button.nav-btn.hidden
+    {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+    [svg/diamond]]])
+
+(defn top-mobile
+  [nav-open?]
+  [:<>
+   [:div.top
+    {:class "mobile-only"}
+    [:button.nav-btn.hidden
+     {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+     [svg/menu]]
+    (when-not nav-open?
+      [:div.name
+       [:h1 "Loïc Blanchard"]])
+    [:button.nav-btn.hidden
+     {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+     [svg/diamond]]]
+   (when nav-open?
+     [:div.name
+      {:class "mobile-only"}
+      [:h1 "Loïc Blanchard"]
+      [:h2 "Software Engineer in Functional Programming (Clojure)"]])])
+
 (defn header-comp []
   (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]
     [:header.container
      (when nav-open? {:class "full-screen"})
-     [:div.top
-      [:button.nav-btn.hidden
-       {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
-       [svg/menu]]
-      [:div.name
-       [:h1 "Loïc Blanchard"]
-       (when nav-open? [:h2 "Software Engineer in Functional Programming (Clojure)"])]
-      [:button.nav-btn.hidden
-       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-       [svg/diamond]]]
+     [top-browser nav-open?]
+     [top-mobile nav-open?]
      [navbar (navbar-content-browser)]
      [navbar (navbar-content-mobile)]]))

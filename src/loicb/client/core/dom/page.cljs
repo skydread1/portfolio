@@ -9,7 +9,7 @@
   ([page-name text params]
    (internal-link page-name text params false))
   ([page-name text params mobile?]
-   [:a {:class                    (if mobile? "left-link-mobile" "left-link-browser")
+   [:a {:class                    (if mobile? "mobile-only" "browser-only")
         :href                     (rfe/href page-name params)
         :on-click                 (when mobile? #(rf/dispatch [:evt.nav/close-navbar :left-menu]))
         :key                      (:title params)
