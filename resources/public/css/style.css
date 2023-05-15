@@ -131,6 +131,7 @@ p {
 }
 
 pre {
+    overflow-x: scroll;
     font-size: 1rem;
     margin: 1rem 0rem;
     padding: 1rem;
@@ -400,17 +401,6 @@ header .name h2 {
     border-color: var(--border-primary-color);
 }
 
-header .top .name {
-    margin: 0rem;
-    border: none;
-}
-
-@media (max-width: 1024px) {
-    header .top .top-name {
-        display: none;
-    }
-}
-
 /* Header: navbar */
 
 header svg {
@@ -547,7 +537,9 @@ header svg:hover {
 }
 
 @media (max-width: 1024px) {
-    nav#browser-nav {
+    #browser-nav,
+    div.left ul li .browser-only,
+    header .browser-only {
         display: none;
     }
 }
@@ -555,7 +547,9 @@ header svg:hover {
 /* MOBILE */
 
 @media (min-width: 1024px) {
-    nav#mobile-nav {
+    #mobile-nav,
+    div.left ul li .mobile-only,
+    header .mobile-only {
         display: none;
     }
 }

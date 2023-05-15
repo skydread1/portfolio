@@ -5,16 +5,15 @@
             [re-frame.core :as rf]))
 
 (defn internal-link
-  "Reitit internal link for the navbar.
-   Setting `reitit?` to false allows the use of a regular browser link (good for anchor link)."
-  ([page-name text]
-   (internal-link page-name text nil))
+  "Reitit internal link for the navbar."
   ([page-name text params]
-   (internal-link page-name text params true))
-  ([page-name text params reitit?]
-   [:a {:href                     (rfe/href page-name params)
+   (internal-link page-name text params false))
+  ([page-name text params mobile?]
+   [:a {:class                    (if mobile? "mobile-only" "browser-only")
+        :href                     (rfe/href page-name params)
+        :on-click                 (when mobile? #(rf/dispatch [:evt.nav/close-navbar :left-menu]))
         :key                      (:title params)
-        :data-reitit-handle-click reitit?}
+        :data-reitit-handle-click true}
     text]))
 
 (defn format-date
@@ -97,7 +96,15 @@
                (when (= active-post-id id) {:class "active"})
                [svg/right-arrow]
                [:h2 title]]
-              {:post-id id :title title})]))]]
+              {:post-id id :title title})
+             (internal-link
+              (or post-route page-name)
+              [:div
+               (when (= active-post-id id) {:class "active"})
+               [svg/right-arrow]
+               [:h2 title]]
+              {:post-id id :title title}
+              true)]))]]
        [:div.left-close
         [:div.menu-title
          [:button.burger-btn
