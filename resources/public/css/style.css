@@ -131,6 +131,7 @@ p {
 }
 
 pre {
+    overflow-x: scroll;
     font-size: 1rem;
     margin: 1rem 0rem;
     padding: 1rem;
@@ -629,6 +630,18 @@ section {
 
     section div.right {
         width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    div.left ul li .left-link-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    div.left ul li .left-link-browser {
+        display: none;
     }
 }
 
