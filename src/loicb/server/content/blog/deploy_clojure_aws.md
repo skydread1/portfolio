@@ -11,7 +11,7 @@ This is an example of how to deploy a containerized full-stack Clojure app in AW
 
 I will use the [flybot.sg website](https://github.com/skydread1/flybot.sg) as example of app to deploy.
 
-## Prerequesites
+## Prerequisites
 
 - Use an external DNS manager such as goDaddy for instance
 - The app does not handle SSL and domain/protocols redirect
