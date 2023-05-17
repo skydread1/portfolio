@@ -12,7 +12,7 @@
    [:a {:class                    (if mobile? "mobile-only" "browser-only")
         :href                     (rfe/href page-name params)
         :on-click                 (when mobile? #(rf/dispatch [:evt.nav/close-navbar :left-menu]))
-        :key                      (:title params)
+        :key                      (str (when mobile? "phone-") (:title params))
         :data-reitit-handle-click true}
     text]))
 
