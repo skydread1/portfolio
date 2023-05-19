@@ -2,7 +2,7 @@
 
 (defn temporary-id?
   [id]
-  (= "new-post-temp-id" (str id)))
+  (= "new-post-temp-id" id))
 
 (defn to-indexed-maps
   "Transforms a vector of maps `v` to a map of maps using the given key `k` as index.

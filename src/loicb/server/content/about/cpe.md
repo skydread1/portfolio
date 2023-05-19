@@ -1,4 +1,5 @@
-#:post{:order 1
+#:post{:id "cpe-lyon-master"
+       :order 1
        :page :about
        :title "2014-2019 | CPE Lyon"
        :css-class "cpe"}

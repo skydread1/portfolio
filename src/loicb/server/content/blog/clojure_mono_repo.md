@@ -1,9 +1,10 @@
-#:post{:order 1
+#:post{:id "clojure-mono-repo"
+       :order 1
        :page :blog
        :title "Host full-stack Clojure app in a mono-repo"
        :css-class "clojure-mono-repo"
-       :show-dates? true
-       :show-authors? true}
+       :creation-date "18/05/2023"
+       :show-dates? true}
 +++
 
 # Clojure Mono Repo example : server + 2 clients

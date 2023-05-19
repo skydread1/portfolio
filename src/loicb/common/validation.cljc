@@ -12,15 +12,14 @@
 
 (def post-schema
   [:map {:closed true}
-   [:post/id :uuid]
+   [:post/id :string]
    [:post/order :int]
    [:post/page :keyword]
    [:post/title :string]
    [:post/css-class {:optional true} :string]
-   [:post/creation-date inst?]
-   [:post/last-edit-date {:optional true} inst?]
+   [:post/creation-date {:optional true} :string]
+   [:post/last-edit-date {:optional true} :string]
    [:post/show-dates? {:optional true} :boolean]
-   [:post/show-authors? {:optional true} :boolean]
    [:post/md-content :string]
    [:post/image-beside
     {:optional true}

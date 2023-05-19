@@ -1,4 +1,5 @@
-#:post{:order 2
+#:post{:id "electriduct-internship"
+       :order 2
        :page :about
        :title "2017 | Electriduct"
        :css-class "electriduct"}

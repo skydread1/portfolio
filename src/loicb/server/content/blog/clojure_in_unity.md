@@ -1,9 +1,10 @@
-#:post{:order 4
+#:post{:id "run-clojure-in-unity"
+       :order 4
        :page :blog
        :title "Pack, Push and Import Clojure to Unity"
        :css-class "clojure-magic-unity"
-       :show-dates? true
-       :show-authors? true}
+       :creation-date "18/05/2023"
+       :show-dates? true}
 +++
 # Pack, Push and Import Clojure to Unity
 
