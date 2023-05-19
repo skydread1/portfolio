@@ -1,4 +1,5 @@
-#:post{:order 3
+#:post{:id "bosch-sea-internship"
+       :order 3
        :page :about
        :title "2019 | Bosch SEA"
        :css-class "bosch"}

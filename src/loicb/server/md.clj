@@ -38,9 +38,7 @@
                               reverse)
         post (-> config
                  edn/read-string
-                 (assoc :post/md-content content
-                        :post/id (random-uuid)
-                        :post/creation-date (java.util.Date.)))]
+                 (assoc :post/md-content content))]
     (try
       (-> post
           (v/validate v/post-schema))

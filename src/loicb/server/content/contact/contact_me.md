@@ -1,4 +1,5 @@
-#:post{:order 0
+#:post{:id "contact-me"
+       :order 0
        :page :contact
        :title "Contact me"
        :css-class "contact-me"}

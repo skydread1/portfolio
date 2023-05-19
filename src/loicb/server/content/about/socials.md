@@ -1,4 +1,5 @@
-#:post{:order 0
+#:post{:id "social-media-links"
+       :order 0
        :page :about
        :title "Socials"
        :css-class "socials"}

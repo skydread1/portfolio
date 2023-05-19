@@ -11,7 +11,7 @@
     :start (fn [parameters]
              (rf/dispatch [:evt.nav/close-navbar :main])
              (rf/dispatch [:evt.page/set-active-post
-                           (-> parameters :path :post-id uuid)]))
+                           (-> parameters :path :post-id)]))
     :stop  (fn [_]
              (rf/dispatch [:evt.page/clear-active-post]))}])
 

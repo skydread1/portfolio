@@ -1,9 +1,10 @@
-#:post{:order 0
+#:post{:id "host-clojure-fullstack-in-aws"
+       :order 0
        :page :blog
        :title "Host Clojure Full Stack on AWS"
        :css-class "clojure-aws"
-       :show-dates? true
-       :show-authors? true}
+       :creation-date "18/05/2023"
+       :show-dates? true}
 +++
 # How to deploy full stack Clojure website to AWS
 

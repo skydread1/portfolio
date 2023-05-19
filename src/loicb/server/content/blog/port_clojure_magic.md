@@ -1,9 +1,10 @@
-#:post{:order 2
+#:post{:id "port-clojure-to-clr-with-magic"
+       :order 2
        :page :blog
        :title "Port Clojure to CLR with Magic"
        :css-class "clojure-magic-port"
-       :show-dates? true
-       :show-authors? true}
+       :creation-date "18/05/2023"
+       :show-dates? true}
 +++
 
 # Port your Clojure lib to the CLR with MAGIC

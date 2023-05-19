@@ -16,19 +16,14 @@
         :data-reitit-handle-click true}
     text]))
 
-(defn format-date
-  [date]
-  (-> (js/Intl.DateTimeFormat. "en-GB")
-      (.format date)))
-
 (defn post-authors
   [{:post/keys [show-dates? creation-date last-edit-date]}]
   (when show-dates?
     [:div.post-dates
      (when creation-date
-       [:h4 (str (format-date creation-date) " (Audited)")])
+       [:h4 (str creation-date " (Audited)")])
      (when last-edit-date
-       [:h4 (str (format-date last-edit-date) " (Edited)")])]))
+       [:h4 (str last-edit-date " (Edited)")])]))
 
 (defn post-view
   [{:post/keys [css-class image-beside hiccup-content] :as post}]
@@ -65,7 +60,7 @@
                              (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %))))
                              (sort-by :post/order)
                              reverse)
-        new-post        {:post/id (uuid "new-post-temp-id") :post/title "New Post"}
+        new-post        {:post/id "new-post-temp-id" :post/title "New Post"}
         posts           (if @(rf/subscribe [:subs/pattern '{:app/user ?x}])
                           (conj all-posts new-post)
                           all-posts)

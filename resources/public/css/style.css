@@ -682,7 +682,8 @@ section div.menu-title h1 {
 }
 
 section div.left-close h1{
-    transform: rotate(-90deg) translateX(-30%);
+    writing-mode:vertical-rl; 
+    transform: rotate(-180deg);
 }
 
 section div.left-close div.menu-title a {
@@ -710,6 +711,7 @@ section div.left-close div.menu-title a {
     section div.left-close h1,
     section div.left h1 {
         transform: none;
+        writing-mode: horizontal-tb
     }
 }
 
