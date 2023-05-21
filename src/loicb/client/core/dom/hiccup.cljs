@@ -13,15 +13,27 @@
     [tag (assoc props :src (:srcdark props)) value]
     [tag props value]))
 
-(defn post-hiccup
-  "Given the hiccup, apply some customisation."
+(defn link-target
+  "Add '_blank' target to open external links in new tab"
   [hiccup]
-  (->> hiccup
-       (postwalk
-        (fn [h]
-          (if (and (vector? h) (= :img (first h)))
-            (md-dark-image h)
-            h)))))
+  [:a
+   (-> hiccup second (assoc :rel "noreferrer" :target "_blank"))
+   (last hiccup)])
+
+(defn post-hiccup
+  "Given the hiccup-info, modify the hiccup."
+  [content]
+  (postwalk
+   (fn [h]
+     (cond (and (associative? h) (= :a (first h)))
+           (link-target h)
+
+           (and (vector? h) (= :img (first h)))
+           (md-dark-image h)
+
+           :else
+           h))
+   content))
 
 ;; ---------- Markdown to Hiccup ----------
 
