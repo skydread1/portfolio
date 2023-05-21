@@ -1,9 +1,9 @@
 #:post{:id "datomic-free-local-setups"
-       :order 3
+       :order 1
        :page :blog
        :title "Datomic: local free setup examples"
        :css-class "clojure-mono-repo"
-       :creation-date "18/05/2023"
+       :creation-date "02/12/2022"
        :show-dates? true}
 +++
 # Datomic: local free setup examples

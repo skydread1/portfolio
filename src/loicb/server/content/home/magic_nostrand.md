@@ -1,5 +1,5 @@
 #:post{:id "magic-clojure-compiler-to-clr"
-       :order 2
+       :order 1
        :page :home
        :title "2021-2022 | Magic Compiler and Nostrand"
        :css-class "magic-nostrand"

@@ -1,9 +1,9 @@
 #:post{:id "clojure-mono-repo"
-       :order 1
+       :order 5
        :page :blog
        :title "Host full-stack Clojure app in a mono-repo"
        :css-class "clojure-mono-repo"
-       :creation-date "18/05/2023"
+       :creation-date "16/02/2023"
        :show-dates? true}
 +++
 

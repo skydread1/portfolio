@@ -1,9 +1,9 @@
 #:post{:id "clojure-lasagna-pull"
-       :order 5
+       :order 2
        :page :blog
        :title "Pull Pattern: precisely select data"
        :css-class "lasagna-pull"
-       :creation-date "18/05/2023"
+       :creation-date "04/12/2022"
        :show-dates? true}
 +++
 # Pull Pattern: Query in deep nested data structure
@@ -461,3 +461,9 @@ Calling in your code looks like this:
 ```
 
 Just go through the [web/core/dom/header.cljs](https://github.com/skydread1/flybot.sg/blob/master/client/web/src/flybot/client/web/core/dom/header.cljs) in the web frontend to see how using the pattern is convenient to fetch data from your re-frame db.
+
+## Learn more
+
+Feel free to have a look at the `lasagna-pull` [README](https://github.com/flybot-sg/lasagna-pull)
+
+You can also look at the [flybot.sg](https://github.com/skydread1/flybot.sg) repo for a complete example on how to use the pull pattern in a web/mobile app.
