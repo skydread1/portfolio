@@ -38,3 +38,9 @@ We also have easy integration of the compiler to the game Engine Unity. Just imp
 
 For my first cljs project, I created a Single Page Application webpage for our company so we can explain what our company does and what are the job offers available at the moment. I first designed the SPA using common JavaScript framework such as React. I then quickly switched to ClojureScript to prove myself how efficient it is to use the available open source Clojure projects (Reitit, Malli, Figwheel, Hiccup etc). It took me just a few weeks to get familiar with Clojure frontend development and convert the website from js to cljs.
 This SPA has since then been turned into a full-stack Clojure web application and you can read more about it in the Senior Software Engineer Position’s description.
+
+## Learn more
+
+Visit the [portfolio](https://www.loicblanchard.me) page to learn more about the different projects I worked on at Flybot.
+
+The [blog](https://www.loicblanchard.me/#/blog) page contains some articles related to Flybot's projects as well.

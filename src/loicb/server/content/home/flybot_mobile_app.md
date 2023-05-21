@@ -1,5 +1,5 @@
 #:post{:id "clojure-mobile-app"
-       :order 4
+       :order 3
        :page :home
        :title "2023 | Flybot Mobile App"
        :css-class "flybot-mobile-app"

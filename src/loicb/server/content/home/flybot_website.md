@@ -1,5 +1,5 @@
 #:post{:id "clojure-full-stack-webapp"
-       :order 3
+       :order 2
        :page :home
        :title "2022 | Flybot Website"
        :css-class "flybot-website"

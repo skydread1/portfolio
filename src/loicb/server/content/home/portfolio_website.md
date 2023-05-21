@@ -1,5 +1,5 @@
 #:post{:id "portfolio-clojurescipt-spa"
-       :order 5
+       :order 4
        :page :home
        :title "2023 | Portfolio Website"
        :css-class "portfolio"

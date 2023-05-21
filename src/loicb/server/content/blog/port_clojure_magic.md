@@ -1,9 +1,9 @@
 #:post{:id "port-clojure-to-clr-with-magic"
-       :order 2
+       :order 0
        :page :blog
        :title "Port Clojure to CLR with Magic"
        :css-class "clojure-magic-port"
-       :creation-date "18/05/2023"
+       :creation-date "08/04/2022"
        :show-dates? true}
 +++
 
@@ -328,3 +328,8 @@ nos dotnet/run-tests
 
 An example of a Clojure library that has been ported to Magic is [skydread1/clr.test.check](https://github.com/skydread1/clr.test.check/tree/magic), a fork of clojure/clr.test.check.
 My fork uses reader conditionals so it can be run and tested in both JVM and CLR.
+
+## Learn more
+
+Now that your library is compiled to dotnet, you can learn how to package it to nuget, push in to your host repo and import in Unity in this article:
+- [Pack, Push and Import Clojure to Unity](https://www.loicblanchard.me/#/blog/run-clojure-in-unity)

@@ -1,5 +1,5 @@
 #:post{:id "profile-recap"
-       :order 5
+       :order 10
        :page :about
        :title "Recap"
        :css-class "recap"}

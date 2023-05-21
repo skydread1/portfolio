@@ -1,16 +1,16 @@
 #:post{:id "run-clojure-in-unity"
-       :order 4
+       :order 3
        :page :blog
        :title "Pack, Push and Import Clojure to Unity"
        :css-class "clojure-magic-unity"
-       :creation-date "18/05/2023"
+       :creation-date "22/04/2022"
        :show-dates? true}
 +++
 # Pack, Push and Import Clojure to Unity
 
 ## Prerequisites
 
-- Read the article: Port your Clojure lib to the CLR with MAGIC
+- Read the article: [Port your Clojure lib to the CLR with MAGIC](https://www.loicblanchard.me/#/blog/port-clojure-to-clr-with-magic)
 
 ## Build the dlls with Nostrand
 
