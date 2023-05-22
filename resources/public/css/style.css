@@ -613,12 +613,15 @@ footer {
     border-color: var(--border-primary-color);
 }
 
-footer div {
-    margin: 2.5rem;
+footer .contact-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-footer p {
-    padding: 0.2rem;
+footer .contact-icons img {
+    margin: 2rem;
+    width: 5rem;
 }
 
 /* Page - all pages */
