@@ -37,11 +37,10 @@
      [:div.menu-mid
       (theme-link
        [svg/diamond])]
-     (internal-link
-      :blog
+     [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
       [:div.menu-right
        [svg/right-arrow]
-       [:div.txt "Blog"]])]
+       [:div.txt "Blog"]]]]
     (internal-link
      :contact
      [:div.menu-bottom
@@ -63,11 +62,10 @@
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "Portfolio"]])
-    (internal-link
-     :blog
+    [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Blog"]])
+      [:div.txt "Blog"]]]
     (internal-link
      :contact
      [:div.menu-right
