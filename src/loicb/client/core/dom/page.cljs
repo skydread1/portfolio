@@ -1,20 +1,8 @@
 (ns loicb.client.core.dom.page
   (:require [loicb.client.core.dom.hiccup :as h]
+            [loicb.client.core.dom.common.link :refer [internal-link]]
             [loicb.client.core.dom.common.svg :as svg]
-            [reitit.frontend.easy :as rfe]
             [re-frame.core :as rf]))
-
-(defn internal-link
-  "Reitit internal link for the navbar."
-  ([page-name text params]
-   (internal-link page-name text params false))
-  ([page-name text params mobile?]
-   [:a {:class                    (if mobile? "mobile-only" "browser-only")
-        :href                     (rfe/href page-name params)
-        :on-click                 (when mobile? #(rf/dispatch [:evt.nav/close-navbar :left-menu]))
-        :key                      (str (when mobile? "phone-") (:title params))
-        :data-reitit-handle-click true}
-    text]))
 
 (defn post-authors
   [{:post/keys [show-dates? creation-date last-edit-date]}]
@@ -82,20 +70,20 @@
                 :let [{:post/keys [id title]} post]]
             [:li {:key title}
              (internal-link
-              (or post-route page-name)
               [:div
                (when (= active-post-id id) {:class "active"})
                [svg/right-arrow]
                [:h2 title]]
-              {:post-id id :title title})
+              {:post-id id
+               :page-name (or post-route page-name)})
              (internal-link
-              (or post-route page-name)
               [:div
                (when (= active-post-id id) {:class "active"})
                [svg/right-arrow]
                [:h2 title]]
-              {:post-id id :title title}
-              true)]))]]
+              {:post-id id
+               :page-name (or post-route page-name)
+               :mobile? true})]))]]
        [:div.left-close
         [:div.menu-title
          [:button.burger-btn
