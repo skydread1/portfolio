@@ -1,6 +1,6 @@
 #:post{:id "clojure-full-stack-webapp"
        :order 2
-       :page :home
+       :page :portfolio
        :title "2022 | Flybot Website"
        :css-class "flybot-website"
        :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"

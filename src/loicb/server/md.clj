@@ -7,7 +7,7 @@
 ;; ---------- IO ----------
 
 (def directory "./src/loicb/server/content/")
-(def sub-dirs ["about" "blog" "contact" "home"])
+(def sub-dirs ["about" "portfolio"])
 
 (defn files-of
   "Returns a map with the

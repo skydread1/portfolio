@@ -1,10 +1,10 @@
 #:post{:id "card-games-api"
        :order 0
-       :page :home
+       :page :portfolio
        :title "2020-2021 | Card Games Backends"
        :css-class "card-games"
-       :image-beside #:image{:src "assets/cards.jpg"
-                             :src-dark "assets/cards.jpg"
+       :image-beside #:image{:src "/assets/cards.jpg"
+                             :src-dark "/assets/cards.jpg"
                              :alt "Card Deck"}}
 +++
 # Flybot: Clojure Card Games Backend APIs (2020 - 2021)

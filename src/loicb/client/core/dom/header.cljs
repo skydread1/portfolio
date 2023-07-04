@@ -4,13 +4,16 @@
             [reitit.frontend.easy :as rfe]))
 
 (defn internal-link
-  "Reitit internal link for the navbar." 
-  [page-name text]
-  (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
-    [:a {:href     (rfe/href page-name)
-         :on-click #(rf/dispatch [:evt.nav/close-navbar :main])
-         :class    (when (= page-name current-page) "active")}
-     text]))
+  "Reitit internal link for the navbar."
+  ([page-name text]
+   (internal-link page-name text true))
+  ([page-name text with-reitit?]
+   (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
+     [:a {:href     (rfe/href page-name)
+          :on-click #(rf/dispatch [:evt.nav/close-navbar :main])
+          :class    (when (= page-name current-page) "active")
+          :data-reitit-handle-click with-reitit?}
+      text])))
 
 (defn theme-link
   "dark/light mode switch"
@@ -30,7 +33,7 @@
        [svg/right-arrow]])]
     [:div.menu-center
      (internal-link
-      :home
+      :portfolio
       [:div.menu-left
        [:div.txt "Portfolio"]
        [svg/right-arrow]])
@@ -46,7 +49,8 @@
      [:div.menu-bottom
       [:div
        [svg/right-arrow]
-       [:div.txt "Contact"]]])]])
+       [:div.txt "Contact"]]]
+     false)]])
 
 (defn navbar-content-mobile []
   [:nav.mobile
@@ -58,7 +62,7 @@
       [svg/right-arrow]
       [:div.txt "About Me"]])
     (internal-link
-     :home
+     :portfolio
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "Portfolio"]])
@@ -70,7 +74,8 @@
      :contact
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Contact"]])]])
+      [:div.txt "Contact"]]
+     false)]])
 
 (defn navbar [navbar-content]
   (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])

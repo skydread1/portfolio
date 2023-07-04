@@ -63,8 +63,8 @@ Here is an example of clojure map for a post:
        :page :home
        :title "Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "assets/loic-logo.png"
-                             :src-dark "assets/loic-logo.png"
+       :image-beside #:image{:src "/assets/loic-logo.png"
+                             :src-dark "/assets/loic-logo.png"
                              :alt "Logo referencing Aperture Science"}}
 ```
 
