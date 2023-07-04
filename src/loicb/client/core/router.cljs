@@ -7,28 +7,30 @@
             [re-frame.core :as rf]))
 
 (def route-controllers
-  [{:parameters {:path [:post-id]}
-    :start (fn [parameters]
+  [{:start (fn [_]
              (rf/dispatch [:evt.nav/close-navbar :main])
-             (rf/dispatch [:evt.page/set-active-post
-                           (-> parameters :path :post-id)]))
-    :stop  (fn [_]
-             (rf/dispatch [:evt.page/clear-active-post]))}])
+             (rf/dispatch [:evt.nav/close-navbar :left-menu]))}])
 
 (def routes
   [["/"
     {:name :home
-     :db-page-name :home
-     :post-route :portfolio/post
-     :title "Portfolio"
-     :view page-type-1}]
+     :view (constantly [:<>])}]
    
-   ["/portfolio/:post-id"
-    {:name :portfolio/post
-     :db-page-name :home
-     :title "Portfolio"
-     :view  page-type-1
-     :controllers route-controllers}]
+   ["/portfolio"
+    [""
+     {:name :portfolio
+      :db-page-name :portfolio
+      :post-route :portfolio/post
+      :title "Portfolio"
+      :view  page-type-1
+      :controllers route-controllers}]
+    
+    ["/:post-id"
+     {:name :portfolio/post
+      :db-page-name :portfolio
+      :title "Portfolio"
+      :view  page-type-1
+      :controllers route-controllers}]]
 
    ["/blog"
     [""
@@ -36,7 +38,8 @@
       :db-page-name :blog
       :post-route :blog/post
       :title "Blog"
-      :view page-type-1}]
+      :view page-type-1
+      :controllers route-controllers}]
     
     ["/:post-id"
      {:name :blog/post
@@ -51,29 +54,18 @@
       :db-page-name :about
       :post-route :about/post
       :title "About Me"
-      :view page-type-1}]
-    
-    ["/:post-id"
-    {:name :about/post
-     :db-page-name :about
-     :title "About Me"
-     :view page-type-1
-     :controllers route-controllers}]]
-
-   ["/contact"
-    [""
-     {:name :contact
-      :db-page-name :contact
-      :post-route :contact/post
-      :title "Contact"
-      :view page-type-1}]
-    
-    ["/:post-id"
-     {:name :contact/post
-      :db-page-name :contact
-      :title "Contact"
       :view page-type-1
-      :controllers route-controllers}]]])
+      :controllers route-controllers}]
+    
+    ["/:post-id"
+     {:name :about/post
+      :db-page-name :about
+      :title "About Me"
+      :view page-type-1
+      :controllers route-controllers}]]
+   
+   ["#footer-contact"
+    {:name :contact}]])
 
 (def router
   (rei/router routes))
@@ -95,5 +87,5 @@
   (rfe/start!
    router
    on-navigate
-   {:use-fragment true
+   {:use-fragment false
     :ignore-anchor-click? ignore-anchor-click?}))

@@ -1,1 +1,2 @@
-{:auto-testing true}
+{:ring-handler loicb.server.core/handler
+ :auto-testing true}

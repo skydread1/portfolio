@@ -1,20 +1,8 @@
 (ns loicb.client.core.dom.page
   (:require [loicb.client.core.dom.hiccup :as h]
+            [loicb.client.core.dom.common.link :refer [internal-link]]
             [loicb.client.core.dom.common.svg :as svg]
-            [reitit.frontend.easy :as rfe]
             [re-frame.core :as rf]))
-
-(defn internal-link
-  "Reitit internal link for the navbar."
-  ([page-name text params]
-   (internal-link page-name text params false))
-  ([page-name text params mobile?]
-   [:a {:class                    (if mobile? "mobile-only" "browser-only")
-        :href                     (rfe/href page-name params)
-        :on-click                 (when mobile? #(rf/dispatch [:evt.nav/close-navbar :left-menu]))
-        :key                      (str (when mobile? "phone-") (:title params))
-        :data-reitit-handle-click true}
-    text]))
 
 (defn post-authors
   [{:post/keys [show-dates? creation-date last-edit-date]}]
@@ -56,16 +44,12 @@
         page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
         db-page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
         post-route @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:post-route ?x}}}])
-        all-posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
+        posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
                              (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %))))
                              (sort-by :post/order)
                              reverse)
-        new-post        {:post/id "new-post-temp-id" :post/title "New Post"}
-        posts           (if @(rf/subscribe [:subs/pattern '{:app/user ?x}])
-                          (conj all-posts new-post)
-                          all-posts)
-        active-post-id  (or @(rf/subscribe [:subs/pattern '{:page/active-post ?x}])
-                            (-> all-posts first :post/id))
+        active-post-id  (or @(rf/subscribe [:subs/pattern '{:app/current-view {:path-params {:post-id ?x}}}])
+                            (-> posts first :post/id))
         active-post     (->> posts
                              (filter #(= active-post-id (:post/id %)))
                              first)
@@ -86,20 +70,20 @@
                 :let [{:post/keys [id title]} post]]
             [:li {:key title}
              (internal-link
-              (or post-route page-name)
               [:div
                (when (= active-post-id id) {:class "active"})
                [svg/right-arrow]
                [:h2 title]]
-              {:post-id id :title title})
+              {:post-id id
+               :page-name (or post-route page-name)})
              (internal-link
-              (or post-route page-name)
               [:div
                (when (= active-post-id id) {:class "active"})
                [svg/right-arrow]
                [:h2 title]]
-              {:post-id id :title title}
-              true)]))]]
+              {:post-id id
+               :page-name (or post-route page-name)
+               :mobile? true})]))]]
        [:div.left-close
         [:div.menu-title
          [:button.burger-btn

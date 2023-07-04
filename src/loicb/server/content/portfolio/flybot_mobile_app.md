@@ -1,6 +1,6 @@
 #:post{:id "clojure-mobile-app"
        :order 3
-       :page :home
+       :page :portfolio
        :title "2023 | Flybot Mobile App"
        :css-class "flybot-mobile-app"
        :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"

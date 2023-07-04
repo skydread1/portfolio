@@ -11,8 +11,8 @@
        {:href "https://github.com/skydread1" :rel "noreferrer" :target "_blank"}
        [:img
         {:alt "Github Logo"
-         :src "assets/github-mark-logo.png"
-         :srcdark "assets/github-mark-logo-dark-mode.png"
+         :src "/assets/github-mark-logo.png"
+         :srcdark "/assets/github-mark-logo-dark-mode.png"
          :title "github"}
         nil]]]
      [:div
@@ -20,5 +20,5 @@
        {:href "https://www.linkedin.com/in/blanchardloic" :rel "noreferrer" :target "_blank"}
        [:img
         {:alt "Linkedin Logo"
-         :src "assets/linkedin-logo.png"}
+         :src "/assets/linkedin-logo.png"}
         nil]]]]]))

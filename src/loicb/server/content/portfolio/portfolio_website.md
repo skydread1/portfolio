@@ -1,10 +1,10 @@
 #:post{:id "portfolio-clojurescipt-spa"
        :order 4
-       :page :home
+       :page :portfolio
        :title "2023 | Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "assets/loic-logo.png"
-                             :src-dark "assets/loic-logo.png"
+       :image-beside #:image{:src "/assets/loic-logo.png"
+                             :src-dark "/assets/loic-logo.png"
                              :alt "Logo referencing Aperture Science"}}
 +++
 # Clojure SPA - portfolio Website (2023)
@@ -72,8 +72,8 @@ Here is an example of clojure map for a post:
        :page :home
        :title "Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "assets/data.jpg"
-                             :src-dark "assets/data.jpg"
+       :image-beside #:image{:src "/assets/data.jpg"
+                             :src-dark "/assets/data.jpg"
                              :alt "Data"}}
 ```
 

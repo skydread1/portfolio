@@ -60,17 +60,3 @@
      :main (assoc db :nav.main/open? false)
      :left-menu (assoc db :nav.left-menu/open? false))))
 
-;; ---------- Post ----------
-
-;; page
-
-(rf/reg-event-db
- :evt.page/set-active-post
- (fn [db [_ post-id]]
-   (assoc db :page/active-post post-id)))
-
-(rf/reg-event-db
- :evt.page/clear-active-post
- (fn [db _]
-   (dissoc db :page/active-post)))
-

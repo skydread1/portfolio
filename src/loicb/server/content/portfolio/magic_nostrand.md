@@ -1,10 +1,10 @@
 #:post{:id "magic-clojure-compiler-to-clr"
        :order 1
-       :page :home
+       :page :portfolio
        :title "2021-2022 | Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
-       :image-beside #:image{:src "assets/datawp.jpg"
-                             :src-dark "assets/datawp.jpg"
+       :image-beside #:image{:src "/assets/datawp.jpg"
+                             :src-dark "/assets/datawp.jpg"
                              :alt "Data Light Wallpaper"}}
 +++
 # Port Clojure libraries to Unity using Magic (2021 - 2022)

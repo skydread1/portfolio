@@ -1,16 +1,7 @@
 (ns loicb.client.core.dom.header 
-  (:require [loicb.client.core.dom.common.svg :as svg]
-            [re-frame.core :as rf]
-            [reitit.frontend.easy :as rfe]))
-
-(defn internal-link
-  "Reitit internal link for the navbar." 
-  [page-name text]
-  (let [current-page @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])]
-    [:a {:href     (rfe/href page-name)
-         :on-click #(rf/dispatch [:evt.nav/close-navbar :main])
-         :class    (when (= page-name current-page) "active")}
-     text]))
+  (:require [loicb.client.core.dom.common.link :refer [internal-link]]
+            [loicb.client.core.dom.common.svg :as svg]
+            [re-frame.core :as rf]))
 
 (defn theme-link
   "dark/light mode switch"
@@ -24,55 +15,57 @@
    [:div.menu
     [:div.menu-top
      (internal-link
-      :about
       [:div
        [:div.txt "About Me"]
-       [svg/right-arrow]])]
+       [svg/right-arrow]]
+      {:page-name :about})]
     [:div.menu-center
      (internal-link
-      :home
       [:div.menu-left
        [:div.txt "Portfolio"]
-       [svg/right-arrow]])
+       [svg/right-arrow]]
+      {:page-name :portfolio})
      [:div.menu-mid
       (theme-link
        [svg/diamond])]
-     (internal-link
-      :blog
+     [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
       [:div.menu-right
        [svg/right-arrow]
-       [:div.txt "Blog"]])]
+       [:div.txt "Blog"]]]]
     (internal-link
-     :contact
      [:div.menu-bottom
       [:div
        [svg/right-arrow]
-       [:div.txt "Contact"]]])]])
+       [:div.txt "Contact"]]]
+     {:page-name :contact
+      :with-reitit? false})]])
 
 (defn navbar-content-mobile []
   [:nav.mobile
    {:id "mobile-nav" :class "mobile-only"}
    [:div.menu
     (internal-link
-     :about
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "About Me"]])
+      [:div.txt "About Me"]]
+     {:page-name :about
+      :mobile? true})
     (internal-link
-     :home
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Portfolio"]])
-    (internal-link
-     :blog
+      [:div.txt "Portfolio"]]
+     {:page-name :portfolio
+      :mobile? true})
+    [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Blog"]])
-    (internal-link
-     :contact
+      [:div.txt "Blog"]]]
+    (internal-link 
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Contact"]])]])
+      [:div.txt "Contact"]]
+     {:page-name :contact
+      :with-reitit? false})]])
 
 (defn navbar [navbar-content]
   (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
