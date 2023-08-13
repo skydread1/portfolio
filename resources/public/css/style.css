@@ -403,6 +403,10 @@ header .nav-btn svg {
     width: 4rem;
 }
 
+header .name {
+    width: 100%;
+}
+
 header .name h2 {
     padding: 0;
     text-transform: capitalize;
