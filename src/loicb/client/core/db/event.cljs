@@ -20,7 +20,6 @@
                    :app/current-view current-view
                    :app/theme        app-theme
                    :nav.main/open? true
-                   :nav.left-menu/open? true
                    :app/posts (utils/to-indexed-maps :post/id md/posts))
       :fx         [[:fx.app/update-html-class app-theme]]})))
 
@@ -48,15 +47,11 @@
 
 (rf/reg-event-db
  :evt.nav/toggle
- (fn [db [_ navbar]]
-   (case navbar
-     :main (update db :nav.main/open? not)
-     :left-menu (update db :nav.left-menu/open? not))))
+ (fn [db _]
+   (update db :nav.main/open? not)))
 
 (rf/reg-event-db
  :evt.nav/close-navbar
- (fn [db [_ navbar]]
-   (case navbar
-     :main (assoc db :nav.main/open? false)
-     :left-menu (assoc db :nav.left-menu/open? false))))
+ (fn [db _]
+   (assoc db :nav.main/open? false)))
 

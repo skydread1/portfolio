@@ -8,7 +8,7 @@
 (defn md-dark-image
   "Extract the dark mode src from the markdown
    and add it to the hiccup props."
-  [[tag {:keys [srcdark] :as props} value]] 
+  [[tag {:keys [srcdark] :as props} value]]
   (if (and srcdark (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?theme}])))
     [tag (assoc props :src (:srcdark props)) value]
     [tag props value]))

@@ -76,35 +76,39 @@
   [nav-open?]
   [:div.top
    {:class "browser-only"}
-   [:button.nav-btn.hidden
-    {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
-    [svg/menu]]
+   (when-not nav-open?
+     [:button.nav-btn.hidden
+      {:on-click #(rf/dispatch [:evt.nav/toggle])}
+      [svg/menu]])
    [:div.name
-    [:h1 "Loïc Blanchard"]
-    (when nav-open? [:h2 "Software Engineer in Functional Programming (Clojure)"])]
-   [:button.nav-btn.hidden
-    {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-    [svg/diamond]]])
+    [:h2 "Loïc Blanchard"]
+    (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure)"])]
+   (when-not nav-open?
+     [:button.nav-btn.hidden
+      {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+      [svg/diamond]])])
 
 (defn top-mobile
   [nav-open?]
   [:<>
    [:div.top
     {:class "mobile-only"}
-    [:button.nav-btn.hidden
-     {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
-     [svg/menu]]
+    (when-not nav-open?
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.nav/toggle])}
+       [svg/menu]])
     (when-not nav-open?
       [:div.name
-       [:h1 "Loïc Blanchard"]])
-    [:button.nav-btn.hidden
-     {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-     [svg/diamond]]]
+       [:h2 "Loïc Blanchard"]])
+    (when-not nav-open?
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+       [svg/diamond]])]
    (when nav-open?
      [:div.name
       {:class "mobile-only"}
-      [:h1 "Loïc Blanchard"]
-      [:h2 "Software Engineer in Functional Programming (Clojure)"]])])
+      [:h2 "Loïc Blanchard"]
+      [:h3 "Software Engineer in Functional Programming (Clojure)"]])])
 
 (defn header-comp []
   (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]

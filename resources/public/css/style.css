@@ -39,10 +39,6 @@
     --active-primary-color: #1f167b;
 }
 
-/* Animated background */
-/* https://alvarotrigo.com/blog/animated-backgrounds-css/ */
-
-
 /* General */
 
 * {
@@ -65,144 +61,18 @@ html {
 
 body {
     min-height: 100vh;
-    background-image: linear-gradient(to right, var(--bg-secondary-color) 15%, var(--bg-primary-color) 85%);
     color: var(--text-secondary-color);
 }
 
+body, header {
+    background-image: linear-gradient(to right, var(--bg-secondary-color) 15%, var(--bg-primary-color) 85%);
+}
+
 @media(max-width: 1024px) {
-    body {
+    body, header {
         background-image: linear-gradient(to right, var(--bg-secondary-color), var(--bg-primary-color));
     }
 }
-
-/* Background Animation */
-
-.glowing-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1;
-  }
-
-.glowing {
-    transform-origin: right;
-    animation: colorChange 10s linear infinite;
-    min-width: 700px;
-    height: 550px;
-    margin: -150px;
-}
-  
-.glowing:nth-child(even) {
-    transform-origin: left;
-}
-  
-@keyframes colorChange {
-    0% {
-        filter: hue-rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        filter: hue-rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-  
-.glowing span {
-    position: absolute;
-    top: calc(80px * var(--i));
-    left: calc(80px * var(--i));
-    bottom: calc(80px * var(--i));
-    right: calc(80px * var(--i));
-}
-
-.glowing span::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -8px;
-    width: 15px;
-    height: 15px;
-    background: #f00;
-    border-radius: 50%;
-}
-  
-.glowing span:nth-child(3n + 1)::before {
-    background: yellowgreen;
-    box-shadow: 0 0 20px yellowgreen,
-        0 0 40px yellowgreen,
-        0 0 60px yellowgreen,
-        0 0 80px yellowgreen,
-        0 0 0 8px var(--bg-secondary-color);
-}
-
-.glowing span:nth-child(3n + 2)::before {
-    background: orange;
-    box-shadow: 0 0 20px orange,
-        0 0 40px orange,
-        0 0 60px orange,
-        0 0 80px orange,
-        0 0 0 8px var(--bg-secondary-color);
-}
-
-.glowing span:nth-child(3n + 3)::before {
-    background: cyan;
-    box-shadow: 0 0 20px cyan,
-        0 0 40px cyan,
-        0 0 60px cyan,
-        0 0 80px cyan,
-        0 0 0 8px var(--bg-secondary-color);
-}
-
-.glowing span:nth-child(3n + 1) {
-    animation: animate 100s alternate infinite;
-}
-
-.glowing span:nth-child(3n + 2) {
-    animation: animate-reverse 60s alternate infinite;
-}
-
-.glowing span:nth-child(3n + 3) {
-    animation: animate 80s alternate infinite; 
-}
-
-@keyframes animate {
-    0% {
-      transform: rotate(180deg);
-    }
-    25% {
-      transform: rotate(90deg);
-    }
-    50% {
-      transform: rotate(0deg);
-    }
-    75% {
-      transform: rotate(-90deg);
-    }
-    100% {
-      transform: rotate(-180deg);
-    }
-  }
-  
-  @keyframes animate-reverse {
-    0% {
-      transform: rotate(-180deg);
-    }
-    25% {
-      transform: rotate(-90deg);
-    }
-    50% {
-      transform: rotate(0deg);
-    }
-    75% {
-      transform: rotate(90deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
-  }
 
 /* header section footer */
 
@@ -224,9 +94,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 1.8rem;
+    padding: 1rem;
+    text-align: center;
     color: var(--text-primary-color);
-    text-transform: uppercase;
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--text-primary-color);
 }
 
 h2 {
@@ -455,11 +328,13 @@ svg:hover {
 /* Header */
 
 header {
+    position: sticky;
+    top: 0;
     margin: auto;
     text-align: center;
-    border-bottom-style: solid;
+    border-bottom-style: groove;
     border-bottom-width: 1px;
-    border-color: var(--border-primary-color);
+    border-bottom-color: var(--text-primary-color);
 }
 
 header.full-screen {
@@ -533,12 +408,16 @@ header .nav-btn svg {
     width: 4rem;
 }
 
-header .name h1 {
+header .name {
+    width: 100%;
+}
+
+header .name h2 {
     padding: 0;
     text-transform: capitalize;
 }
 
-header .name h2 {
+header .name h3 {
     font-size: 1.2rem;
     padding: 0.7rem;
     text-transform: capitalize;
@@ -684,7 +563,6 @@ header svg:hover {
 
 @media (max-width: 1024px) {
     #browser-nav,
-    div.left ul li .browser-only,
     header .browser-only {
         display: none;
     }
@@ -694,7 +572,6 @@ header svg:hover {
 
 @media (min-width: 1024px) {
     #mobile-nav,
-    div.left ul li .mobile-only,
     header .mobile-only {
         display: none;
     }
@@ -743,9 +620,6 @@ header svg:hover {
 footer {
     padding: 1.5rem;
     text-align: center;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-color: var(--border-primary-color);
 }
 
 footer .contact-icons {
@@ -759,170 +633,86 @@ footer .contact-icons img {
     width: 5rem;
 }
 
-/* Page - all pages */
+/* Vignettes */
 
-section {
+.vignettes {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-@media (max-width: 1024px) {
-    section {
-        display: block;
-    }
-
-    section div.right {
-        width: 100%;
-    }
-}
-
-section div.left,
-section div.left-close {
-    position: sticky;
-    align-self: flex-start;
-    top: 0;
-}
-
-section div.left {
-    flex-basis: 25%;
-    flex-grow: 0;
-    flex-shrink: 0;
-}
-
-section div.left-close {
-    width: 10%;
-}
-
-section div.menu-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-section div.left div.menu-title {
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--border-primary-color);
-}
-
-section div.left-close div.menu-title {
-    flex-direction: column;
-}
-
-section div.menu-title button {
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
-}
-
-section div.menu-title h1 {
-    text-align: center;
-    padding: 1rem;
-}
-
-section div.left-close h1{
-    writing-mode:vertical-rl; 
-    transform: rotate(-180deg);
-}
-
-section div.left-close div.menu-title a {
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
-}
-
-@media (max-width: 1024px) {
-    section div.left-close div.menu-title,
-    section div.left div.menu-title {
-        flex-direction: row;
-    }
-    
-    section div.left-close,
-    section div.left {
-        width: 100%;
-        background-color: var(--bg-secondary-color);
-        border: none;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--border-primary-color);
-    }
-
-    section div.left-close h1,
-    section div.left h1 {
-        transform: none;
-        writing-mode: horizontal-tb
-    }
-}
-
-section div.left ul {
-    list-style-type: none;
-}
-
-@media (max-width: 1024px) {
-    section div.left ul  {
-        width: 100%;
-    }
-}
-
-section div.left ul li{
-    padding: 0;
-    cursor: pointer;
-}
-
-section div.left ul li:hover svg{
-    transform: translateX(6%);
-}
-
-section div.left a{
-    display: block;
-    text-decoration: none;
-}
-
-section div.left ul li a div{
-    display: flex;
-    align-items: center;
-}
-
-section div.left ul li svg{
-    fill: var(--border-primary-color);
-    flex-basis: 20%;
-    flex-shrink: 0;
-    flex-grow: 0;
-    margin: 0;
-    padding: 0.5rem;
-}
-
-section div.left .active svg{
-    fill: var(--active-primary-color);
-}
-
-section div.left .active h2{
-    color: var(--active-primary-color);
-}
-
-section div.left ul li h2{
-    padding: 0.5rem;
-    font-size: 1rem;
-    color: var(--border-primary-color);
-}
-
-section div.right {
-    background-color: var(--bg-primary-color);
+.vignette {
+    flex-basis: 40%;
+    margin: 2rem;
     padding: 1rem;
     flex-grow: 1;
-    flex-shrink: 1;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: var(--border-primary-color);
+    text-align: justify;
+    border-style: groove;
+    border-width: 1px;
+    border-color: var(--border-primary-color);
+    background-color: var(--bg-secondary-color);
 }
 
 @media (max-width: 1024px) {
-    section div.right {
-        padding: 0.2rem;
-    }
-    section div.left ul li h2{
+    .vignette {
+        margin: 0;
         text-align: left;
     }
 }
+
+.vignette .image {
+    padding: 0.5rem;
+}
+
+.vignette a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.vignette h2 {
+    text-decoration: none;
+}
+
+.vignette h2, .vignette h5 {
+    text-align: center;
+}
+
+.post-body .links {
+    padding: 0
+}
+
+.links .link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.links img {
+    margin: 0.1rem;
+    width: 2rem;
+}
+
+.links a {
+    padding: 0;
+    display: block;
+    text-align: left;
+}
+
+.vignette .links .img {
+    flex-basis: 10%;
+}
+
+@media (max-width: 1024px) {
+    .vignette .links .img {
+        flex-basis: 15%;
+    }
+}
+
+.post .links .img {
+    flex-basis: 4%;
+}
+
+/* Page - all pages */
 
 section .post .post-body {
     display: block;
@@ -940,6 +730,10 @@ section .post-body>div {
 
 section .post-body {
     width: 100%;
+}
+
+section .post-body .info {
+    text-align: center;
 }
 
 section img {
@@ -987,31 +781,7 @@ section .socials img {
 
 /* Post */
 
-.post h1 {
-    padding: 1rem;
-    text-align: center;
-    color: var(--text-primary-color);
-    background-color: var(--bg-secondary-color);
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--text-primary-color);
-}
 
-.post h2 {
-    margin: 1rem 0rem;
-    color: var(--text-primary-color);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: var(--text-primary-color);
-}
-
-.post h3 {
-    margin: 1rem 0rem;
-    color: var(--border-primary-color);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: var(--border-primary-color);
-}
 
 .post-dates {
     display: flex;
@@ -1036,10 +806,6 @@ section .socials img {
 
 .post-author>div {
     padding: 0.3rem;
-}
-
-.post-header h1 {
-    text-align: center;
 }
 
 .error {

@@ -1,14 +1,22 @@
 #:post{:id "card-games-api"
        :order 0
        :page :portfolio
-       :title "2020-2021 | Card Games Backends"
+       :employer "Flybot Pte Ltd" 
+       :date "2020-2021"
+       :title "Clojure Card Games Backend APIs"
        :css-class "card-games"
-       :image-beside #:image{:src "/assets/cards.jpg"
-                             :src-dark "/assets/cards.jpg"
-                             :alt "Card Deck"}}
+       :image #:image{:src "/assets/cards.jpg"
+                      :src-dark "/assets/cards.jpg"
+                      :alt "Card Deck"}}
 +++
-# Flybot: Clojure Card Games Backend APIs (2020 - 2021)
+At Flybot, I had the opportunity to create popular Asian Card Games API.
 
+I worked on game such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
+
+I also worked on a Library we called MetaGame that allows us to compose several `pdk` or `big-two` (or a mix of both) in tournaments for instance.
+
+The repositories are closed-source because private to Flybot Pte. Ltd.
++++
 ## Rational
 
 At Flybot, I had the opportunity to create popular Asian Card Games API.

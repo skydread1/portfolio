@@ -1,14 +1,24 @@
 #:post{:id "magic-clojure-compiler-to-clr"
        :order 1
        :page :portfolio
-       :title "2021-2022 | Magic Compiler and Nostrand"
+       :employer "Flybot Pte Ltd" 
+       :date "2021-2022"
+       :repos [["Magic" "https://github.com/nasser/magic"] 
+               ["Nostrand" "https://github.com/nasser/nostrand"]
+               ["Magic.Unity" "https://github.com/nasser/Magic.Unity"] 
+               ["magic-pipeline" "https://github.com/magic-clojure/magic"]]
+       :articles [["Port your Clojure lib to the CLR with MAGIC" "https://blog.loicblanchard.me/post/1"]
+                  ["Pack, Push and Import Clojure to Unity" "https://blog.loicblanchard.me/post/4"]]
+       :title "Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
-       :image-beside #:image{:src "/assets/datawp.jpg"
+       :image #:image{:src "/assets/datawp.jpg"
                              :src-dark "/assets/datawp.jpg"
                              :alt "Data Light Wallpaper"}}
 +++
-# Port Clojure libraries to Unity using Magic (2021 - 2022)
+More acting as a devops this time, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
 
+Working closely with the author of the Magic compiler [Ramsey Nasser](https://github.com/nasser), I help improving the tooling around the Magic compiler so it integrates well with our workflow Clojure Backend/Unity Frontend.
++++
 ## Rational
 
 More acting as a devops this time, I worked on integrating the Magic Compiler and its tooling to our own development workflow.

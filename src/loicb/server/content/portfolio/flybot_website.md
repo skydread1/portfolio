@@ -1,14 +1,22 @@
 #:post{:id "clojure-full-stack-webapp"
        :order 2
        :page :portfolio
-       :title "2022 | Flybot Website"
+       :employer "Flybot Pte Ltd" 
+       :date "2022"
+       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
+       :articles [["How to deploy full stack Clojure website to AWS" "https://blog.loicblanchard.me/post/3"]
+                  ["Lasagna-pull Pattern applied to flybot.sg backend" "https://blog.loicblanchard.me/post/7"]
+                  ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
+       :title "Flybot Website"
        :css-class "flybot-website"
-       :image-beside #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                             :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                             :alt "Flybot Logo"}}
+       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
+                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
+                      :alt "Flybot Logo"}}
 +++
-# Flybot.sg: Clojure full-stack website (2022)
+[flybot.sg](https://www.flybot.sg/) is an open-source full-stack Clojure web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
 
+The purpose of this project was to demonstrate how the `lasagna stack` ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
++++
 ## Rational
 
 [flybot.sg](https://www.flybot.sg/) is an open-source full-stack Clojure web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.

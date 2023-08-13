@@ -16,12 +16,14 @@
    [:post/order :int]
    [:post/page :keyword]
    [:post/title :string]
+   [:post/date :string]
+   [:post/employer {:optional true} :string]
    [:post/css-class {:optional true} :string]
-   [:post/creation-date {:optional true} :string]
-   [:post/last-edit-date {:optional true} :string]
-   [:post/show-dates? {:optional true} :boolean]
    [:post/md-content :string]
-   [:post/image-beside
+   [:post/md-content-short :string]
+   [:post/repos {:optional true} [:vector [:vector :string]]]
+   [:post/articles {:optional true} [:vector [:vector :string]]]
+   [:post/image
     {:optional true}
     [:map
      [:image/src :string]
