@@ -61,12 +61,15 @@ html {
 
 body {
     min-height: 100vh;
-    background-image: linear-gradient(to right, var(--bg-secondary-color) 15%, var(--bg-primary-color) 85%);
     color: var(--text-secondary-color);
 }
 
+body, header {
+    background-image: linear-gradient(to right, var(--bg-secondary-color) 15%, var(--bg-primary-color) 85%);
+}
+
 @media(max-width: 1024px) {
-    body {
+    body, header {
         background-image: linear-gradient(to right, var(--bg-secondary-color), var(--bg-primary-color));
     }
 }
@@ -94,9 +97,6 @@ h1 {
     padding: 1rem;
     text-align: center;
     color: var(--text-primary-color);
-    border-top-style: groove;
-    border-top-width: 1px;
-    border-top-color: var(--text-primary-color);
     border-bottom-style: groove;
     border-bottom-width: 1px;
     border-bottom-color: var(--text-primary-color);
@@ -328,8 +328,13 @@ svg:hover {
 /* Header */
 
 header {
+    position: sticky;
+    top: 0;
     margin: auto;
     text-align: center;
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--text-primary-color);
 }
 
 header.full-screen {
