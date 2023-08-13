@@ -7,7 +7,7 @@
 ;; ---------- IO ----------
 
 (def directory "./src/loicb/server/content/")
-(def sub-dirs ["about" "portfolio"])
+(def sub-dirs ["portfolio"])
 
 (defn files-of
   "Returns a map with the
@@ -33,12 +33,13 @@
    Returns a map with the post info"
   [file-path]
   (let [raw (slurp file-path)
-        [content config] (->> (str/split raw #"\+\+\+")
-                              (take 2)
+        [post-full post-short config] (->> (str/split raw #"\+\+\+")
+                              (take 3)
                               reverse)
-        post (-> config
+        post (-> config 
                  edn/read-string
-                 (assoc :post/md-content content))]
+                 (assoc :post/md-content post-full
+                        :post/md-content-short post-short))]
     (try
       (-> post
           (v/validate v/post-schema))
