@@ -1,16 +1,20 @@
 #:post{:id "portfolio-clojurescipt-spa"
        :order 4
        :page :portfolio
-       :title "2023 | Portfolio Website"
+       :date "2023"
+       :title "Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "/assets/loic-logo.png"
+       :image #:image{:src "/assets/loic-logo.png"
                              :src-dark "/assets/loic-logo.png"
                              :alt "Logo referencing Aperture Science"}}
 +++
-# Clojure SPA - portfolio Website (2023)
+This website is a Single Page Application written in ClojureScript.
 
-The website you are currently visiting was made with ClojureScript.
-
+The website:
+- contains a blog page to write articles in markdown
+- supports dark mode.
+- is fully responsive.
++++
 ## Stack
 
 This website is a Single Page Application written in ClojureScript.
@@ -72,7 +76,7 @@ Here is an example of clojure map for a post:
        :page :home
        :title "Portfolio Website"
        :css-class "portfolio"
-       :image-beside #:image{:src "/assets/data.jpg"
+       :image #:image{:src "/assets/data.jpg"
                              :src-dark "/assets/data.jpg"
                              :alt "Data"}}
 ```
