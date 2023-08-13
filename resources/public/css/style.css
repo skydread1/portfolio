@@ -611,9 +611,6 @@ header svg:hover {
 footer {
     padding: 1.5rem;
     text-align: center;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-color: var(--border-primary-color);
 }
 
 footer .contact-icons {
@@ -671,6 +668,10 @@ footer .contact-icons img {
     text-align: center;
 }
 
+.post-body .links {
+    padding: 0
+}
+
 .links .link {
     display: flex;
     align-items: center;
@@ -690,6 +691,12 @@ footer .contact-icons img {
 
 .vignette .links .img {
     flex-basis: 10%;
+}
+
+@media (max-width: 1024px) {
+    .vignette .links .img {
+        flex-basis: 15%;
+    }
 }
 
 .post .links .img {
@@ -765,21 +772,7 @@ section .socials img {
 
 /* Post */
 
-.post h2 {
-    margin: 1rem 0rem;
-    color: var(--text-primary-color);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: var(--text-primary-color);
-}
 
-.post h3 {
-    margin: 1rem 0rem;
-    color: var(--border-primary-color);
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-color: var(--border-primary-color);
-}
 
 .post-dates {
     display: flex;

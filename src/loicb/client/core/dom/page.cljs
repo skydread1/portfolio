@@ -111,7 +111,6 @@
   (let [page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
         db-page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
-                         (map #(assoc % :post/hiccup-content (h/md->hiccup (:post/md-content %))))
                          (sort-by :post/order)
                          reverse)
         active-post-id  (or @(rf/subscribe [:subs/pattern '{:app/current-view {:path-params {:post-id ?x}}}])
@@ -123,3 +122,13 @@
      {:id  (name page-name)
       :key (name page-name)}
      (post active-post)]))
+
+(defn about-page
+  []
+  (let [page-name     @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
+        db-page-name  @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
+        about-me-post (first @(rf/subscribe [:subs.post/posts db-page-name]))]
+    [:section.container
+     {:id  (name page-name)
+      :key (name page-name)}
+     (post about-me-post)]))
