@@ -77,7 +77,7 @@
   [:div.top
    {:class "browser-only"}
    [:button.nav-btn.hidden
-    {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+    {:on-click #(rf/dispatch [:evt.nav/toggle])}
     [svg/menu]]
    [:div.name
     [:h1 "Loïc Blanchard"]
@@ -92,7 +92,7 @@
    [:div.top
     {:class "mobile-only"}
     [:button.nav-btn.hidden
-     {:on-click #(rf/dispatch [:evt.nav/toggle :main])}
+     {:on-click #(rf/dispatch [:evt.nav/toggle])}
      [svg/menu]]
     (when-not nav-open?
       [:div.name

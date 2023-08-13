@@ -551,7 +551,6 @@ header svg:hover {
 
 @media (max-width: 1024px) {
     #browser-nav,
-    div.left ul li .browser-only,
     header .browser-only {
         display: none;
     }
@@ -561,7 +560,6 @@ header svg:hover {
 
 @media (min-width: 1024px) {
     #mobile-nav,
-    div.left ul li .mobile-only,
     header .mobile-only {
         display: none;
     }
@@ -626,170 +624,21 @@ footer .contact-icons img {
     width: 5rem;
 }
 
-/* Page - all pages */
+/* Vignettes */
 
-section {
+.vignettes {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-@media (max-width: 1024px) {
-    section {
-        display: block;
-    }
-
-    section div.right {
-        width: 100%;
-    }
-}
-
-section div.left,
-section div.left-close {
-    position: sticky;
-    align-self: flex-start;
-    top: 0;
-}
-
-section div.left {
-    flex-basis: 25%;
-    flex-grow: 0;
-    flex-shrink: 0;
-}
-
-section div.left-close {
-    width: 10%;
-}
-
-section div.menu-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-section div.left div.menu-title {
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--border-primary-color);
-}
-
-section div.left-close div.menu-title {
-    flex-direction: column;
-}
-
-section div.menu-title button {
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
-}
-
-section div.menu-title h1 {
-    text-align: center;
-    padding: 1rem;
-}
-
-section div.left-close h1{
-    writing-mode:vertical-rl; 
-    transform: rotate(-180deg);
-}
-
-section div.left-close div.menu-title a {
-    cursor: pointer;
-    border: none;
-    background-color: inherit;
-}
-
-@media (max-width: 1024px) {
-    section div.left-close div.menu-title,
-    section div.left div.menu-title {
-        flex-direction: row;
-    }
-    
-    section div.left-close,
-    section div.left {
-        width: 100%;
-        background-color: var(--bg-secondary-color);
-        border: none;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--border-primary-color);
-    }
-
-    section div.left-close h1,
-    section div.left h1 {
-        transform: none;
-        writing-mode: horizontal-tb
-    }
-}
-
-section div.left ul {
-    list-style-type: none;
-}
-
-@media (max-width: 1024px) {
-    section div.left ul  {
-        width: 100%;
-    }
-}
-
-section div.left ul li{
-    padding: 0;
-    cursor: pointer;
-}
-
-section div.left ul li:hover svg{
-    transform: translateX(6%);
-}
-
-section div.left a{
-    display: block;
-    text-decoration: none;
-}
-
-section div.left ul li a div{
-    display: flex;
-    align-items: center;
-}
-
-section div.left ul li svg{
-    fill: var(--border-primary-color);
-    flex-basis: 20%;
-    flex-shrink: 0;
-    flex-grow: 0;
-    margin: 0;
-    padding: 0.5rem;
-}
-
-section div.left .active svg{
-    fill: var(--active-primary-color);
-}
-
-section div.left .active h2{
-    color: var(--active-primary-color);
-}
-
-section div.left ul li h2{
-    padding: 0.5rem;
-    font-size: 1rem;
-    color: var(--border-primary-color);
-}
-
-section div.right {
-    background-color: var(--bg-primary-color);
-    padding: 1rem;
+.vignettes>.vignette {
+    flex-basis: 50%;
     flex-grow: 1;
-    flex-shrink: 1;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: var(--border-primary-color);
+    text-align: center;
 }
 
-@media (max-width: 1024px) {
-    section div.right {
-        padding: 0.2rem;
-    }
-    section div.left ul li h2{
-        text-align: left;
-    }
-}
+/* Page - all pages */
 
 section .post .post-body {
     display: block;

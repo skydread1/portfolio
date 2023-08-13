@@ -1,5 +1,5 @@
 (ns loicb.client.core.router
-  (:require [loicb.client.core.dom.page :refer [page-type-1]] 
+  (:require [loicb.client.core.dom.page :refer [page-with-vignettes page-with-a-post]] 
             [goog.object :as gobj]
             [reitit.frontend :as rei]
             [reitit.frontend.easy :as rfe]
@@ -8,8 +8,7 @@
 
 (def route-controllers
   [{:start (fn [_]
-             (rf/dispatch [:evt.nav/close-navbar :main])
-             (rf/dispatch [:evt.nav/close-navbar :left-menu]))}])
+             (rf/dispatch [:evt.nav/close-navbar]))}])
 
 (def routes
   [["/"
@@ -22,31 +21,14 @@
       :db-page-name :portfolio
       :post-route :portfolio/post
       :title "Portfolio"
-      :view  page-type-1
+      :view  page-with-vignettes
       :controllers route-controllers}]
     
     ["/:post-id"
      {:name :portfolio/post
       :db-page-name :portfolio
       :title "Portfolio"
-      :view  page-type-1
-      :controllers route-controllers}]]
-
-   ["/blog"
-    [""
-     {:name :blog
-      :db-page-name :blog
-      :post-route :blog/post
-      :title "Blog"
-      :view page-type-1
-      :controllers route-controllers}]
-    
-    ["/:post-id"
-     {:name :blog/post
-      :db-page-name :blog
-      :title "Blog"
-      :view  page-type-1
-      :controllers route-controllers}]]
+      :view  page-with-a-post}]]
    
    ["/about"
     [""
@@ -54,15 +36,14 @@
       :db-page-name :about
       :post-route :about/post
       :title "About Me"
-      :view page-type-1
+      :view page-with-vignettes
       :controllers route-controllers}]
     
     ["/:post-id"
      {:name :about/post
       :db-page-name :about
       :title "About Me"
-      :view page-type-1
-      :controllers route-controllers}]]
+      :view page-with-a-post}]]
    
    ["#footer-contact"
     {:name :contact}]])

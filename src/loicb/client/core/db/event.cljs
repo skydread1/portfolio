@@ -48,15 +48,11 @@
 
 (rf/reg-event-db
  :evt.nav/toggle
- (fn [db [_ navbar]]
-   (case navbar
-     :main (update db :nav.main/open? not)
-     :left-menu (update db :nav.left-menu/open? not))))
+ (fn [db _]
+   (update db :nav.main/open? not)))
 
 (rf/reg-event-db
  :evt.nav/close-navbar
- (fn [db [_ navbar]]
-   (case navbar
-     :main (assoc db :nav.main/open? false)
-     :left-menu (assoc db :nav.left-menu/open? false))))
+ (fn [db _]
+   (assoc db :nav.main/open? false)))
 
