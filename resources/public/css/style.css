@@ -91,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+    text-align: center;
     font-size: 1.8rem;
     color: var(--text-primary-color);
     text-transform: uppercase;
@@ -633,9 +634,57 @@ footer .contact-icons img {
 }
 
 .vignettes>.vignette {
-    flex-basis: 50%;
+    flex-basis: 40%;
+    margin: 2rem;
+    padding: 1rem;
     flex-grow: 1;
+    text-align: justify;
+    border-style: groove;
+    border-width: 1px;
+    border-color: var(--border-primary-color);
+    background-color: var(--bg-secondary-color);
+}
+
+.vignette .image {
+    padding: 0.5rem;
+}
+
+.vignette a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.vignette h2 {
+    text-decoration: none;
+}
+
+.vignette h2, .vignette h5 {
     text-align: center;
+}
+
+.vignette .repos .repo,
+.vignette .articles .article {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.vignette .repos img,
+.vignette .articles img {
+    margin: 0.1rem;
+    width: 2rem;
+}
+
+.vignette .repos a,
+.vignette .articles a {
+    padding: 0;
+    display: block;
+    text-align: left;
+}
+
+.vignette .repos .img,
+.vignette .articles .img {
+    flex-basis: 10%;
 }
 
 /* Page - all pages */

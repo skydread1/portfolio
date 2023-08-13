@@ -20,7 +20,6 @@
                    :app/current-view current-view
                    :app/theme        app-theme
                    :nav.main/open? true
-                   :nav.left-menu/open? true
                    :app/posts (utils/to-indexed-maps :post/id md/posts))
       :fx         [[:fx.app/update-html-class app-theme]]})))
 
