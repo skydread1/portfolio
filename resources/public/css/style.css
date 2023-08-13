@@ -635,7 +635,7 @@ footer .contact-icons img {
     flex-wrap: wrap;
 }
 
-.vignettes>.vignette {
+.vignette {
     flex-basis: 40%;
     margin: 2rem;
     padding: 1rem;
@@ -645,6 +645,13 @@ footer .contact-icons img {
     border-width: 1px;
     border-color: var(--border-primary-color);
     background-color: var(--bg-secondary-color);
+}
+
+@media (max-width: 1024px) {
+    .vignette {
+        margin: 0;
+        text-align: left;
+    }
 }
 
 .vignette .image {
