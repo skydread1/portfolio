@@ -24,8 +24,8 @@
 
 :root.light {
     /* light theme */
-    --bg-primary-color: #e9f6ff;
-    --bg-secondary-color: #f5fff4;
+    --bg-primary-color: white;
+    --bg-secondary-color: #e2eeff;
 
     --text-primary-color: #5c7b9f;
     --text-secondary-color: #08080a;
@@ -674,7 +674,6 @@ footer .contact-icons img {
     border-style: solid;
     border-width: 1px;
     border-color: var(--text-primary-color);
-    background-color: var(--bg-secondary-color);
 
     --g: 1px;     /* the gap */
     --b: 2px;    /* border thickness*/
@@ -687,6 +686,7 @@ footer .contact-icons img {
         var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
         var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
     background-size: 200% var(--b),var(--b) 200%;
+    background-color: var(--bg-primary-color);
     transition: .3s;
 }
 
