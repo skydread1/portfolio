@@ -2,7 +2,8 @@
   (:require [loicb.client.core.db.class-utils :as cu]
             [loicb.client.core.db.localstorage :as l-storage]
             [clojure.edn :as edn]
-            [re-frame.core :as rf]))
+            [re-frame.core :as rf]
+            [reagent.core :as reagent]))
 
 ;; ---------- Logging ----------
 
@@ -29,6 +30,11 @@
     (. js/document -documentElement)
     cur-theme
     next-theme)))
+
+(rf/reg-fx
+ :fx.app/scroll-to-top
+ (fn []
+   (reagent/after-render #(.scrollIntoView (.getElementById js/document "app")))))
 
 ;; ---------- Local Storage ----------
 
