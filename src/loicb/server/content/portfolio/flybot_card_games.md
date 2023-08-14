@@ -5,6 +5,7 @@
        :date "2020-2021"
        :title "Clojure Card Games Backend APIs"
        :css-class "card-games"
+       :tags ["Clojure" "Clojure Spec" "Magic Compiler" "Interop CLR"]
        :image #:image{:src "/assets/cards.jpg"
                       :src-dark "/assets/cards.jpg"
                       :alt "Card Deck"}}

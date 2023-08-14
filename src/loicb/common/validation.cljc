@@ -21,6 +21,7 @@
    [:post/css-class {:optional true} :string]
    [:post/md-content :string]
    [:post/md-content-short :string]
+   [:post/tags {:optional true} [:vector :string]]
    [:post/repos {:optional true} [:vector [:vector :string]]]
    [:post/articles {:optional true} [:vector [:vector :string]]]
    [:post/image

@@ -27,7 +27,7 @@
     --bg-primary-color: #e9f6ff;
     --bg-secondary-color: #f5fff4;
 
-    --text-primary-color: #1f167b;
+    --text-primary-color: #5c7b9f;
     --text-secondary-color: #08080a;
 
     --button-primary-color: white;
@@ -330,6 +330,7 @@ svg:hover {
 header {
     position: sticky;
     top: 0;
+    z-index: 1;
     margin: auto;
     text-align: center;
     border-bottom-style: groove;
@@ -633,6 +634,26 @@ footer .contact-icons img {
     width: 5rem;
 }
 
+/* Tags */
+
+.tags {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    font-size: 0.8rem;;
+    padding: 0.3rem;
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+    border-style: groove;
+    border-width: 1px;
+    border-color: var(--border-primary-color);
+}
+
 /* Vignettes */
 
 .vignettes {
@@ -643,15 +664,32 @@ footer .contact-icons img {
 
 .vignette {
     flex-basis: 40%;
-    margin: 2rem;
+    margin: 1rem;
     padding: 1rem;
     flex-grow: 1;
     text-align: justify;
-    border-style: groove;
+    border-style: solid;
     border-width: 1px;
-    border-color: var(--border-primary-color);
+    border-color: var(--text-primary-color);
     background-color: var(--bg-secondary-color);
+
+    --g: 1px;     /* the gap */
+    --b: 2px;    /* border thickness*/
+    --c: var(--text-primary-color); /* the color */
+    
+    --_c: var(--text-secondary-color) 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+        var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+        var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    transition: .3s;
 }
+
+.vignette:hover {
+    --_p: 75%;
+  }
 
 @media (max-width: 1024px) {
     .vignette {
@@ -661,7 +699,7 @@ footer .contact-icons img {
 }
 
 .vignette .image {
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .vignette a {
@@ -679,6 +717,10 @@ footer .contact-icons img {
 
 .post-body .links {
     padding: 0
+}
+
+.post-body .resources {
+    padding-top: 0;
 }
 
 .links .link {
@@ -702,14 +744,18 @@ footer .contact-icons img {
     flex-basis: 10%;
 }
 
+.post .links .img {
+    flex-basis: 4%;
+}
+
 @media (max-width: 1024px) {
     .vignette .links .img {
         flex-basis: 15%;
     }
-}
 
-.post .links .img {
-    flex-basis: 4%;
+    .post .links .img {
+        flex-basis: 15%;
+    }
 }
 
 /* Page - all pages */
@@ -777,37 +823,4 @@ section .socials {
 section .socials img {
     margin: 1rem;
     width: 3rem;
-}
-
-/* Post */
-
-
-
-.post-dates {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-bottom: groove;
-    border-bottom-width: thin;
-    border-color: var(--border-primary-color);
-}
-
-.post-dates h4 {
-    font-size: 0.8rem;
-    margin: 0rem 1rem;
-    color: var(--border-primary-color);
-}
-
-@media (max-width: 1024px) {
-    .post-dates {
-        justify-content: center;
-    }
-}
-
-.post-author>div {
-    padding: 0.3rem;
-}
-
-.error {
-    color: var(--error-primary-color);
 }

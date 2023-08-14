@@ -11,9 +11,10 @@
                   ["Pack, Push and Import Clojure to Unity" "https://blog.loicblanchard.me/post/4"]]
        :title "Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
+       :tags ["Clojure" "C#" "JVM" "CLR" "Compiler" "Interop" "NuGet" "Unity"]
        :image #:image{:src "/assets/datawp.jpg"
-                             :src-dark "/assets/datawp.jpg"
-                             :alt "Data Light Wallpaper"}}
+                      :src-dark "/assets/datawp.jpg"
+                      :alt "Data Light Wallpaper"}}
 +++
 More acting as a devops this time, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
 

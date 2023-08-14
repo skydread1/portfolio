@@ -4,9 +4,10 @@
        :date "2023"
        :title "Portfolio Website"
        :css-class "portfolio"
+       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent" "Lasagna-pull" "Reitit"]
        :image #:image{:src "/assets/loic-logo.png"
-                             :src-dark "/assets/loic-logo.png"
-                             :alt "Logo referencing Aperture Science"}}
+                      :src-dark "/assets/loic-logo.png"
+                      :alt "Logo referencing Aperture Science"}}
 +++
 This website is a Single Page Application written in ClojureScript.
 

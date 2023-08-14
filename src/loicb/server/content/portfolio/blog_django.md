@@ -2,9 +2,10 @@
        :order 5
        :page :portfolio
        :date "2023"
-       :articles [["Deploy Django Blog in AWS Beantalk" "https://blog.loicblanchard.me/post/8"]]
+       :articles [["Deploy Django Blog in AWS Beanstalk" "https://blog.loicblanchard.me/post/8"]]
        :title "Tech Blog with Django"
        :css-class "blog-django"
+       :tags ["Python" "Django" "Elastic Beanstalk" "RDS PostgreSQL" "S3" "AWS"]
        :image #:image{:src "/assets/loic-blog-logo.png"
                              :src-dark "/assets/loic-blog-logo.png"
                              :alt "Logo referencing Aperture Science"}}
