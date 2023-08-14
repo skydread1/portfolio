@@ -714,7 +714,8 @@ footer .contact-icons img {
     padding: 1rem;
 }
 
-.vignette a {
+.vignette a, .post a {
+    padding: 0;
     text-decoration: none;
     display: inline-block;
 }
