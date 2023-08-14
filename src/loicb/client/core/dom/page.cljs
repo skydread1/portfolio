@@ -3,6 +3,14 @@
             [loicb.client.core.dom.common.link :refer [internal-link]]
             [re-frame.core :as rf]))
 
+(defn all-tags
+  [tags]
+  (h/post-hiccup
+   [:div.tags
+    (when tags
+      (for [tag tags]
+        [:div.tag tag]))]))
+
 (defn git-repos
   [repos]
   (h/post-hiccup
@@ -45,7 +53,7 @@
      "No articles yet")])
 
 (defn post-content
-  [{:post/keys [articles css-class date employer image md-content md-content-short title repos]} content-type & [link-params]]
+  [{:post/keys [articles css-class date employer image md-content md-content-short repos tags title]} content-type & [link-params]]
   (let [{:image/keys [src src-dark alt]} image
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
               src-dark src)
@@ -62,9 +70,11 @@
      (when src
        [:div.image
         [:img {:src src :alt alt}]])
+     [all-tags tags]
      (h/md->hiccup content)
-     [git-repos repos]
-     [blog-articles articles]]))
+     [:div.resources
+      [git-repos repos]
+      [blog-articles articles]]]))
 
 (defn post
   "Full post including the post content."

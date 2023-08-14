@@ -6,12 +6,13 @@
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :articles [["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
        :title "Flybot Mobile App"
+       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent React Native"]
        :css-class "flybot-mobile-app"
        :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}
 +++
-The goal was to have a mobile app targeting both iOS and Android, written in ClojureScript, which can reuse most of our web frontend logic.
+The goal was to have a mobile app targeting both iOS and Android, written in ClojureScript, which can reuse most of our web frontend state management logic (re-frame).
 +++
 ## Rational
 

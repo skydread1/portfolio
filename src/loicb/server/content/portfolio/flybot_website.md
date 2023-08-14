@@ -8,6 +8,7 @@
                   ["Lasagna-pull Pattern applied to flybot.sg backend" "https://blog.loicblanchard.me/post/7"]
                   ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
        :title "Flybot Website"
+       :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
        :css-class "flybot-website"
        :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
