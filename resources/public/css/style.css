@@ -698,6 +698,15 @@ footer .contact-icons img {
     .vignette {
         margin: 0;
         text-align: left;
+        background: none;
+        border: none;
+        background-color: var(--bg-primary-color);
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: var(--text-primary-color);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: var(--text-primary-color);
     }
 }
 
