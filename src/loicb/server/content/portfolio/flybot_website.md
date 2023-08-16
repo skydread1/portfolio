@@ -66,7 +66,7 @@ A preview option is also available to see how the post would look like once subm
 
 ### Oauth2
 
-We use google oauth2 for authentification. Once an employee is logged in via google, the ring session is updated server side and a ring cookie is sent to the client to ensure proper authorisation on post submission. There is also an Admin panel to add admin permissions to employees that require specific admin roles. Only admins can edit/delete posts of others.
+We use google oauth2 for authentication. Once an employee is logged in via google, the ring session is updated server side and a ring cookie is sent to the client to ensure proper authorization on post submission. There is also an Admin panel to add admin permissions to employees that require specific admin roles. Only admins can edit/delete posts of others.
 
 ## Design
 

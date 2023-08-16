@@ -1,3 +1,4 @@
-^{:css-dirs   ["resources/public/css"]}
+^{:watch-dirs ["src" "test"]
+  :css-dirs   ["resources/public/css"]}
 {:main loicb.client.core
  :optimizations :none}
