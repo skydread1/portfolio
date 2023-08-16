@@ -338,7 +338,7 @@ header {
     text-align: center;
     border-bottom-style: groove;
     border-bottom-width: 1px;
-    border-bottom-color: var(--text-primary-color);
+    border-bottom-color: var(--border-primary-color);
 }
 
 header.full-screen {
@@ -665,7 +665,7 @@ footer .contact-icons img {
     flex-wrap: wrap;
 }
 
-.vignette {
+.vignette, .post {
     flex-basis: 40%;
     margin: 1rem;
     padding: 1rem;
@@ -690,12 +690,12 @@ footer .contact-icons img {
     transition: .3s;
 }
 
-.vignette:hover {
+.vignette:hover, .post:hover {
     --_p: 75%;
   }
 
 @media (max-width: 1024px) {
-    .vignette {
+    .vignette, .post {
         margin: 0;
         text-align: left;
         background: none;
