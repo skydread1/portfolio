@@ -16,13 +16,15 @@
                       :src-dark "/assets/datawp.jpg"
                       :alt "Data Light Wallpaper"}}
 +++
-More acting as a devops this time, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
+More acting as a devops, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
+
+`Magic` is a bootstrapped compiler written in Clojure that takes Clojure code as input and produces dotnet assemblies (.dll) as output. The dlls produced by Magic can be run in the Game engine `Unity` which Flybot uses for their card games. The goal was to be able to compile our backend Clojure APIs to dlls so we can used that logic in Unity directly.
 
 Working closely with the author of the Magic compiler [Ramsey Nasser](https://github.com/nasser), I help improving the tooling around the Magic compiler so it integrates well with our workflow Clojure Backend/Unity Frontend.
 +++
 ## Rational
 
-More acting as a devops this time, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
+More acting as a devops, I worked on integrating the Magic Compiler and its tooling to our own development workflow.
 
 There are 4 main open-source libraries involved:
 - [nasser/magic](https://github.com/nasser/magic): clojure->dotnet compiler written in Clojure
@@ -86,7 +88,7 @@ Also, I added the `.nuspec` and `dotnet..clj` to the repo so we can easily nuget
 
 ### What is the Magic Compiler
 
-Magic is a bootsrapped compiler writhen in Clojure that take Clojure code as input and produces dotnet assemblies (.dll) as output.
+Magic is a bootstrapped compiler written in Clojure that takes Clojure code as input and produces dotnet assemblies (.dll) as output.
 
 Compiler Bootstrapping is the technique for producing a self-compiling compiler that is written in the same language it intends to compile. In our case, MAGIC is a **Clojure** compiler that compiles **Clojure** code to .**NET** assemblies (.dll and .exe files).
 
@@ -112,4 +114,4 @@ Since all the Clojure libraries and the Magic.Unity were packaged via nugget and
 
 ## Learn more
 
-I will write articles on how to port a library to Magic soon.
+You can learn more about `Magic` in my blog articles below.

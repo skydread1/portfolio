@@ -10,21 +10,19 @@
                       :src-dark "/assets/cards.jpg"
                       :alt "Card Deck"}}
 +++
-At Flybot, I had the opportunity to create popular Asian Card Games API.
+At Flybot, I had the opportunity to create popular Asian Card Games APIs in `Clojure`.
 
-I worked on game such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
+I developed the backend of games such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
 
-I also worked on a Library we called MetaGame that allows us to compose several `pdk` or `big-two` (or a mix of both) in tournaments for instance.
-
-The repositories are closed-source because private to Flybot Pte. Ltd.
+I also worked on a Library we called MetaGame that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both) in tournaments for instance.
 +++
 ## Rational
 
-At Flybot, I had the opportunity to create popular Asian Card Games API.
+At Flybot, I had the opportunity to create popular Asian Card Games APIs in `Clojure`.
 
-I worked on game such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
+I developed the backend of games such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
 
-I also worked on a Library we called MetaGame that allows us to compose several `pdk` or `big-two` (or a mix of both) in tournaments for instance.
+I also worked on a Library we called MetaGame that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both) in tournaments for instance.
 
 The repositories are closed-source because private to Flybot Pte. Ltd.
 

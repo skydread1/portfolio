@@ -12,7 +12,11 @@
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}
 +++
-The goal was to have a mobile app targeting both iOS and Android, written in ClojureScript, which can reuse most of our web frontend state management logic (re-frame).
+At Flybot, I developed a mobile app using `ClojureScript` with `React Native` using `Figwheel` and `Reagent React Native` (to interact with reagent in ClojureScript).
+
+The code for the mobile app resides in the same repo as the server and the web client of the [flybot.sg](https://www.flybot.sg/) website.
+
+The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs (which appears it does).
 +++
 ## Rational
 
@@ -72,11 +76,12 @@ The backend is the same as for the web app.
 The mobile frontend is very similar as the web frontend.
 
 The main differences with the web front end are the following:
+- markup: RN using native components, we cannot reuse the hiccup markup used in the web frontend (hence the use of `reagent-react-native`)
 - navigation: Tab and Stack Navigators for mobile instead of reitit.frontend.easy for web
 - markdown support: convert markdown to native components instead of react components for the web
 - cookie management: I manually store the cookie in AsyncStorage and manually pass it to the request
 
-For the rest, most re-frame events remain the same between the 2 frontends, hence most of the re-frame logic is done in the client.common namespace.
+For the rest, most re-frame events remain the same between the 2 UIs, hence most of the re-frame logic is done in the client.common namespace.
 
 ## Hot reloading
 
