@@ -30,17 +30,15 @@
 (deftest initialize
   (rf-test/run-test-sync
    (test-fixtures)
-   (let [current-page      (rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
-         theme             (rf/subscribe [:subs/pattern '{:app/theme ?x}])
-         main-navbar-open? (rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
-         left-navbar-open? (rf/subscribe [:subs/pattern '{:nav.left-menu/open? ?x}])
-         posts             (rf/subscribe [:subs.post/posts :home])]
+   (let [current-page (rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
+         theme        (rf/subscribe [:subs/pattern '{:app/theme ?x}])
+         navbar-open? (rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
+         posts        (rf/subscribe [:subs.post/posts :home])]
      (rf/dispatch [:evt.app/initialize])
      (testing "Initial db state is accurate"
        (is (= :home @current-page))
        (is (= :dark @theme))
-       (is (true? @main-navbar-open?))
-       (is (true? @left-navbar-open?))
+       (is (true? @navbar-open?))
        (is (some? @posts))))))
 
 (deftest theme
@@ -60,18 +58,16 @@
 (deftest navbars
   (rf-test/run-test-sync
    (test-fixtures)
-   (let [main-navbar-open? (rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
-         left-navbar-open? (rf/subscribe [:subs/pattern '{:nav.left-menu/open? ?x}])]
-     (testing "navbars are initially opened"
-       (is (true? @main-navbar-open?))
-       (is (true? @left-navbar-open?)))
+   (let [navbar-open? (rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]
+     (testing "Navbar is initially opened."
+       (is (true? @navbar-open?)))
 
      ;; Close navbar
-     (rf/dispatch [:evt.nav/close-navbar :main])
-     (testing "main navbar is now closed."
-       (is (false? @main-navbar-open?)))
+     (rf/dispatch [:evt.nav/close-navbar])
+     (testing "Navbar is now closed."
+       (is (false? @navbar-open?)))
 
      ;; Toggle navbar
-     (rf/dispatch [:evt.nav/toggle :left-menu])
-     (testing "left navbar is now closed."
-       (is (false? @left-navbar-open?))))))
+     (rf/dispatch [:evt.nav/toggle])
+     (testing "Navbar is now opened."
+       (is (true? @navbar-open?))))))

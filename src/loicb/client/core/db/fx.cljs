@@ -5,13 +5,6 @@
             [re-frame.core :as rf]
             [reagent.core :as reagent]))
 
-;; ---------- Logging ----------
-
-(rf/reg-fx
- :fx.log/message
- (fn [messages]
-   (.log js/console (apply str messages))))
-
 ;; ---------- Theme ----------
 
 ;; html tag css manipulation

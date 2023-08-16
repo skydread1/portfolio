@@ -1,9 +1,5 @@
 (ns loicb.common.utils)
 
-(defn temporary-id?
-  [id]
-  (= "new-post-temp-id" id))
-
 (defn to-indexed-maps
   "Transforms a vector of maps `v` to a map of maps using the given key `k` as index.
    i.e: [{:a :a1 :b :b1} {:a :a2 :b :b2}]
