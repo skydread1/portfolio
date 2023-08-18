@@ -65,8 +65,7 @@
       [svg/right-arrow]
       [:div.txt "Contact"]]
      {:page-name :contact
-      :with-reitit? false
-      :fragment "footer-contact"})]])
+      :with-reitit? false})]])
 
 (defn navbar [navbar-content]
   (if @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
