@@ -25,9 +25,11 @@
     next-theme)))
 
 (rf/reg-fx
- :fx.app/scroll-to-top
- (fn []
-   (reagent/after-render #(.scrollIntoView (.getElementById js/document "app")))))
+ :fx.app/scroll-to
+ (fn [fragment]
+   (reagent/after-render #(let [el (or (.getElementById js/document fragment)
+                                       (.getElementById js/document "app"))]
+                            (.scrollIntoView el)))))
 
 ;; ---------- Local Storage ----------
 

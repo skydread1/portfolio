@@ -6,7 +6,7 @@
   "Reitit internal link for the navbar.
    - mobile? is to allow separate keys in case we use different components for web and mobile."
   [content {:keys [page-name with-reitit? mobile? post-id]
-            :or [with-reitit? true]}] 
+            :or [with-reitit? true]}]
   [:a {:class                    (if mobile? "mobile-only" "browser-only")
        :href                     (rfe/href page-name {:post-id post-id})
        :on-click                 #(rf/dispatch [:evt.nav/close-navbar])

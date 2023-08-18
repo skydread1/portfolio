@@ -6,10 +6,6 @@
             [reitit.frontend.history :as rfh]
             [re-frame.core :as rf]))
 
-(def route-controllers
-  [{:start (fn [_]
-             (rf/dispatch [:evt.nav/close-navbar]))}])
-
 (def routes
   [["/"
     {:name :home
@@ -21,8 +17,7 @@
       :db-page-name :portfolio
       :post-route :portfolio/post
       :title "Portfolio"
-      :view  page-with-vignettes
-      :controllers route-controllers}]
+      :view  page-with-vignettes}]
     
     ["/:post-id"
      {:name :portfolio/post
@@ -35,8 +30,7 @@
      :db-page-name :about
      :post-route :about/post
      :title "About Me"
-     :view about-page
-     :controllers route-controllers}]
+     :view about-page}]
    
    ["#footer-contact"
     {:name :contact}]])

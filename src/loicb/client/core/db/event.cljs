@@ -39,10 +39,8 @@
 (rf/reg-event-fx
  :evt.page/set-current-view
  (fn [{:keys [db]} [_ new-match]]
-   (let [old-match (-> db :app/current-view)
-         match (assoc new-match :controllers (rfc/apply-controllers (:controllers old-match) new-match))]
-     {:db (assoc db :app/current-view match)
-      :fx [[:fx.app/scroll-to-top]]})))
+   {:db (assoc db :app/current-view new-match)
+    :fx [[:fx.app/scroll-to (:fragment new-match)]]}))
 
 ;; ---------- Navbars ----------
 
