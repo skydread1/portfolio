@@ -2,7 +2,6 @@
   (:require [loicb.common.utils :as utils :refer [toggle]]
             [loicb.client.core.md :as md]
             [re-frame.core :as rf]
-            [reitit.frontend.controllers :as rfc]
             [reitit.frontend.easy :as rfe]))
 
 ;; ---------- App ----------
