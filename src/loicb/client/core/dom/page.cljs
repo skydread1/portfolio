@@ -9,7 +9,9 @@
    [:div.tags
     (when tags
       (for [tag tags]
-        [:div.tag tag]))]))
+        [:div.tag
+         {:key (str "tag-" tag)}
+         tag]))]))
 
 (defn git-repos
   [repos]
