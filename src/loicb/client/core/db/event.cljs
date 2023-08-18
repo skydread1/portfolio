@@ -2,7 +2,6 @@
   (:require [loicb.common.utils :as utils :refer [toggle]]
             [loicb.client.core.md :as md]
             [re-frame.core :as rf]
-            [reitit.frontend.controllers :as rfc]
             [reitit.frontend.easy :as rfe]))
 
 ;; ---------- App ----------
@@ -39,10 +38,8 @@
 (rf/reg-event-fx
  :evt.page/set-current-view
  (fn [{:keys [db]} [_ new-match]]
-   (let [old-match (-> db :app/current-view)
-         match (assoc new-match :controllers (rfc/apply-controllers (:controllers old-match) new-match))]
-     {:db (assoc db :app/current-view match)
-      :fx [[:fx.app/scroll-to-top]]})))
+   {:db (assoc db :app/current-view new-match)
+    :fx [[:fx.app/scroll-to (:fragment new-match)]]}))
 
 ;; ---------- Navbars ----------
 

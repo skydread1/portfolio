@@ -4,7 +4,8 @@
        :employer "Flybot Pte Ltd" 
        :date "2023"
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
+       :articles [["Reagent React Native Mobile App" "https://blog.loicblanchard.me/post/9"]
+                  ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
        :title "Flybot Mobile App"
        :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent React Native"]
        :css-class "flybot-mobile-app"
