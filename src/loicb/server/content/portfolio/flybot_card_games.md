@@ -3,12 +3,14 @@
        :page :portfolio
        :employer "Flybot Pte Ltd" 
        :date "2020-2021"
+       :repos [["Magic" "https://github.com/nasser/magic"]]
+       :articles [["Port your Clojure lib to the CLR with MAGIC" "https://blog.loicblanchard.me/post/1"]]
        :title "Clojure Card Games Backend APIs"
        :css-class "card-games"
        :tags ["Clojure" "Clojure Spec" "Magic Compiler" "Interop CLR"]
-       :image #:image{:src "/assets/cards.jpg"
-                      :src-dark "/assets/cards.jpg"
-                      :alt "Card Deck"}}
+       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
+                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
+                      :alt "Flybot Logo"}}
 +++
 At Flybot, I had the opportunity to create popular Asian Card Games APIs in `Clojure`.
 
@@ -28,17 +30,21 @@ The repositories are closed-source because private to Flybot Pte. Ltd.
 
 ## Immutable data
 
-Since we use Clojure, the game state can be represented as pure edn data levering `records`, `protocols` and `datafy`.
+Since we use Clojure, the game state can be represented as pure edn data leveraging `records`, `protocols` and `datafy`.
 
 There is no need for any atoms, agent or vars as the new state is just another Clojure pure data structure.
 
 This allows us to represent the game setup and rules as clojure pure data as well so the game is easy to custom.
 
+For non-clojure developers, you can imagine that you could represent your entire game state using a simple JSON file. In clojure, we use the EDN format (which has a similar syntax to JSON).
+
 ## Data validation and Generation
 
-We used
+The Clojure libraries I used are:
 - [clojure/spec.alpha](https://github.com/clojure/spec.alpha) for the data registry that is used for data validation and generation.
 - [clojure/test.check](https://github.com/clojure/test.check) to create custom generators to overcome the interdependence between the API functions inputs.
+
+Using the libraries above, I design an integration test suite that can run hundreds for semi-random generated games (can be run in the CI as well) which ensure proper behavior of the API.
 
 ## CLR interoperability
 
@@ -57,7 +63,7 @@ We wanted to be able to play several games up to a certain `score` target or up 
 
 The second objective was to allow the user to set up and run `tournaments`. A tournament is a sequence of stages in which we play `meta-games`.
 
-Once again, we could leverage the Clojure data immutability to "describe" our `meta-game` in pure EDN format.
+Once again, we could leverage the Clojure data immutability to "describe" our `meta-game` in EDN format.
 
 You can view a `meta-game` as a wrapper around a given sub-game such as `big-two` for instance.
 
@@ -74,6 +80,8 @@ Therefore, it is possible to describe the rules of the `meta-game` using pure Cl
 All our games work with any number of players (relevant to the rules of course), so for the tournaments stages, we can have 3 group of 4 players playing `big-two` in the semi, and the 3 winners playing `pdk` in the finals without any issues.
 
 Note: the `meta-game` was also ported to the CLR successfully.
+
+Once again, for non-clojure developers, you can imagine that your are describing a whole tournament setup using just a JSON file which is very powerful (but instead of JSON, we use EDN, the clojure equivalent).
 
 ## Learn more
 

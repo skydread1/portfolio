@@ -13,6 +13,8 @@
 I developed my tech blog in python using the Django framework. It is then Server-Side Rendered.
 
 The blog is deployed on AWS Beanstalk, the static files are served from an AWS S3 bucket, and the production data is stored in an AWS RDS Postgres database.
+
+It uses HTMX for the search bar.
 +++
 ## Stack
 
@@ -29,6 +31,7 @@ The different features of the blog are the following:
 - There is syntax highlighting for the code blocks
 - The UI supports light/dark mode toggle
 - Posts can be sorted in different categories (such as `clojure`, `python` for instance)
+- Users can search a post using the search bar.
 
 ## CI/CD
 
@@ -46,23 +49,23 @@ I use `Django-storages` as a storage backend system for my Django app. Django-st
 
 Then I use `boto3` which is the official AWS SDK for Python so I can programmatically interact with AWS S3.
 
-FInally, I can run the `collectstatic` django command to gather and upload the static files to the S3 bucket
+Finally, I can run the `collectstatic` django command to gather and upload the static files to the S3 bucket
 
 ### Storage
 
 In production, the data is stored in an AWS RDS PostgreSQL database.
 
-I use `psycopg2-binary` allow my app to communicate with a PostgreSQL database.
+The library `psycopg2-binary` allows my app to communicate with a PostgreSQL database.
 
 For dev, I used the default SQLite configuration provided by Django.
 
 ### Run the server
 
-In production, I use a AWS Elastic Beanstalk.
+In production, I use an AWS Elastic Beanstalk.
 
 I use `gunicorn` as HTTP server.
 
-To deploy new app versions, I use the `AWS CLI EB` so I just have to run `eb deploy` to deploy the new app version.
+To deploy new app versions, I rely on the `AWS CLI EB` so I just have to run `eb deploy` to deploy the new app version on the AWS beanstalk.
 
 ### Domain
 

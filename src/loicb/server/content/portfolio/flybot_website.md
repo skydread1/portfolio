@@ -6,6 +6,7 @@
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :articles [["How to deploy full stack Clojure website to AWS" "https://blog.loicblanchard.me/post/3"]
                   ["Lasagna-pull Pattern applied to flybot.sg backend" "https://blog.loicblanchard.me/post/7"]
+                  ["Pull Pattern: Query in deep nested data structure" "https://blog.loicblanchard.me/post/2"]
                   ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
        :title "Flybot Website"
        :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
@@ -35,13 +36,13 @@ The [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg) repo was then 
 - [malli](https://github.com/metosin/malli) for data validation
 - [aleph](https://github.com/clj-commons/aleph) as http server
 - [reitit-oauth2](https://github.com/skydread1/reitit-oauth2) for oauth2
-- [datalevin](https://github.com/juji-io/datalevin) :as datalog db
+- [datalevin](https://github.com/juji-io/datalevin) as datalog database
 - **[fun-map](https://github.com/robertluo/fun-map) for systems**
 - **[lasagna-pull](https://github.com/flybot-sg/lasagna-pull) to precisely select from deep data structure**
 
 ### Frontend
 
-- [figwheel-main](https://github.com/bhauman/figwheel-main) for live code reloading
+- [figwheel-main](https://github.com/bhauman/figwheel-main) for live code clj/cljs reloading
 - [hiccup](https://github.com/weavejester/hiccup) for DOM representation
 - [reitit](https://github.com/metosin/reitit) for frontend routing
 - [malli](https://github.com/metosin/malli) for data validation
@@ -56,13 +57,49 @@ You can have a look at the code on my [GitHub repo](https://github.com/skydread1
 We use a mono repo structure where the `server` (clj files), and `client` (cljs files) reside alongside each others.
 A `common` (cljc files) top folder is also used for data validation that applies for both server and client.
 
+We actually have 2 clients: web and mobile.
+So the web app frontend resides in the same repo as the mobile frontend and the 2 share most of the re-frame events.
+
+The mono-repo structure is as followed:
+
+```clojure
+├── client
+│   ├── common
+│   │   ├── src
+│   │   │   └── flybot.client.common
+│   │   └── test
+│   │       └── flybot.client.common
+│   ├── mobile
+│   │   ├── src
+│   │   │   └── flybot.client.mobile
+│   │   └── test
+│   │       └── flybot.client.mobile
+│   └── web
+│       ├── src
+│       │   └── flybot.client.web
+│       └── test
+│           └── flybot.client.web
+├── common
+│   ├── src
+│   │   └── flybot.common
+│   └── test
+│       └── flybot.common
+├── server
+│   ├── src
+│   │   └── flybot.server
+│   └── test
+│       └── flybot.server
+```
+
+You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://blog.loicblanchard.me/post/5).
+
 ## Features
 
 ### Markdown to write the content
 
-Once logged in, a software engineer or HR can create/edit a post using Markdown for the the post content. Some configuration such as adding an illustrative image for light mode and dark mode or display author name and date of the articles is also available.
+Once logged in, a software engineer or HR can create/edit/delete a post using Markdown for the post content. Some configurations such as adding an illustrative image for light mode and dark mode or to display author name and date of the articles are also available.
 
-A preview option is also available to see how the post would look like once submitted.
+A preview option is also available to see how the post would look like before being submitted.
 
 ### Oauth2
 
@@ -81,19 +118,24 @@ We used [datalevin](https://github.com/juji-io/datalevin) as DB, which is an ope
 ### Data validation
 
 We use [malli](https://github.com/metosin/malli) for data validation for both backend and frontend.
-ALso, [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) can accept a malli schema as optional parameter to be sure the pull pattern provided respects the malli schema for that specific query. It is very convenient as if the query shape does not match the schema provided by the API, a detailed error is thrown and no query is performed.
+Furthermore, [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) can accept a malli schema as optional parameter to be sure the pull pattern provided respects the malli schema for that specific query. It is very convenient as if the query shape does not match the schema provided by the API, a detailed error is thrown and no query is performed.
 
 ## Lasagna Stack
 
 - [fun-map](https://github.com/robertluo/fun-map) allows us to define a system and perform associative dependency injections.
 - [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) makes selecting data in nested structure more intuitive via a pattern that describes the data to be pulled following the shape of the data.
 
+I wrote articles about how these 2 libraries benefit web development and design in my tech blog:
+- [Lasagna-pull Pattern applied to flybot.sg backend](https://blog.loicblanchard.me/post/7)
+- [Pull Pattern: Query in deep nested data structure](https://blog.loicblanchard.me/post/2)
+
 ## CI/CD
 
 ### CI
 
 The GitHub actions run both backend (clj) and frontend (cljs) tests.
-If all the tests pass, the action proceed to the js bundle generation and the docker image creation and deployment.
+
+If all the CI tests pass, the GitHub action proceeds to create the js bundle and finally the app docker image is created and deployed to AWS ECR.
 
 ### CD
 
@@ -105,12 +147,12 @@ We also have the possibility to create an uberjar using [clojure/tools.build](ht
 
 When new GitHub PR is merged, the new container image is automatically generated and sent to AWS ECR via Github Actions.
 
+You can read more about how I deployed the app to AWS in this article: [How to deploy full stack Clojure website to AWS](https://blog.loicblanchard.me/post/3).
+
 ## Hot reloading
 
-[figwheel-main](https://github.com/bhauman/figwheel-main) allows us to do hot reloading when a file is saved and provide clj/cljs REPL to print at anytime the re-frame DB for instant feedback. It also allow us to generate an optimized js bundle from the cljs files. The configuration params are very well thought and the library makes the development experience a bliss. Figwheel also allows us to run our own ring server by providing a ring-handler in the config. This feature works very well with our fun-map system.
+[figwheel-main](https://github.com/bhauman/figwheel-main) allows us to do hot reloading when a file is saved and provide clj/cljs REPL to print at anytime the re-frame DB for instant feedback. It also allow us to generate an optimized js bundle from the cljs files. The configuration parameters are very well thought and the library makes the development experience a bliss. Figwheel also allows us to run our own ring server by providing a ring-handler in the config. This feature works very well with our fun-map system.
 
 ## Learn more
 
 Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
-
-You can also have a look at the code on my [GitHub repo](https://github.com/skydread1/flybot.sg)
