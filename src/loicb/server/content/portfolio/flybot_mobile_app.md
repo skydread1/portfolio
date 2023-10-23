@@ -17,7 +17,7 @@ At Flybot, I developed a mobile app using `ClojureScript` with `React Native` us
 
 The code for the mobile app resides in the same repo as the server and the web client of the [flybot.sg](https://www.flybot.sg/) website.
 
-The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs (which appears it does).
+The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs (which it does).
 +++
 ## Rational
 
@@ -38,7 +38,7 @@ We use a mono repo structure where the `server` (clj files), and `client` (cljs 
 A `common` (cljc files) top folder is also used for data validation that applies for both server and client.
 
 We actually have 2 clients: web and mobile.
-So the mobile app frontend reside in the same repo as the web frontend and the 2 shares most of the re-frame events.
+So the mobile app frontend resides in the same repo as the web frontend and the 2 share most of the re-frame events.
 
 The mono-repo structure is as followed:
 
@@ -70,19 +70,22 @@ The mono-repo structure is as followed:
 │   └── test
 │       └── flybot.server
 ```
+
+You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://blog.loicblanchard.me/post/5).
+
 ## Stack
 
 The backend is the same as for the web app.
 
-The mobile frontend is very similar as the web frontend.
+The `mobile` frontend is very similar to the `web` frontend.
 
-The main differences with the web front end are the following:
+The main differences with the web frontend are the following:
 - markup: RN using native components, we cannot reuse the hiccup markup used in the web frontend (hence the use of `reagent-react-native`)
 - navigation: Tab and Stack Navigators for mobile instead of reitit.frontend.easy for web
 - markdown support: convert markdown to native components instead of react components for the web
 - cookie management: I manually store the cookie in AsyncStorage and manually pass it to the request
 
-For the rest, most re-frame events remain the same between the 2 UIs, hence most of the re-frame logic is done in the client.common namespace.
+For the rest, most re-frame events remain the same between the 2 UIs, hence most of the re-frame logic is done in the `client.common` namespace.
 
 ## Hot reloading
 
@@ -96,5 +99,3 @@ The app has not been deployed on any Store yet.
 ## Learn more
 
 Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
-
-You can also have a look at the code on my [GitHub repo](https://github.com/skydread1/flybot.sg)

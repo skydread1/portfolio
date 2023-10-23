@@ -10,16 +10,14 @@
     --bg-primary-color: #010c12;
     --bg-secondary-color: #212e42;
 
-    --text-primary-color: #f3c30e;
-    --text-secondary-color: #ffffff;
+    --text-primary-color: #ffffff;
+    --text-secondary-color: #bdcbe0;
 
     --button-primary-color: black;
 
     --error-primary-color: #f09295;
 
-    --border-primary-color: #7c7c7c;
-
-    --active-primary-color: #f3c30e;
+    --border-primary-color: #6f6f6f;
 }
 
 :root.light {
@@ -35,8 +33,6 @@
     --error-primary-color: #991b1b;
 
     --border-primary-color: #375271c2;
-
-    --active-primary-color: #1f167b;
 }
 
 /* General */
@@ -56,7 +52,7 @@
 }
 
 html {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family: Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
 body {
@@ -136,7 +132,8 @@ p {
 
 pre {
     overflow-x: scroll;
-    white-space: pre-wrap;
+    white-space-collapse: preserve;
+    text-wrap: nowrap;
     font-size: 1rem;
     margin: 1rem 0rem;
     padding: 1rem;
@@ -395,10 +392,6 @@ nav a:hover {
 
 nav a:hover svg {
     fill: var(--link-primary-color);
-}
-
-.active {
-    color: var(--active-primary-color);
 }
 
 header .nav-btn {
@@ -665,7 +658,7 @@ footer .contact-icons img {
     flex-wrap: wrap;
 }
 
-.vignette, .post {
+.vignette{
     flex-basis: 40%;
     margin: 1rem;
     padding: 1rem;
@@ -673,29 +666,26 @@ footer .contact-icons img {
     text-align: justify;
     border-style: solid;
     border-width: 1px;
-    border-color: var(--text-primary-color);
-
-    --g: 1px;     /* the gap */
-    --b: 2px;    /* border thickness*/
-    --c: var(--text-primary-color); /* the color */
-    
-    --_c: var(--text-secondary-color) 0 25%, var(--c) 0 50%;
-    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
-    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
-    background:
-        var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
-        var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
-    background-size: 200% var(--b),var(--b) 200%;
+    border-color: var(--border-primary-color);
     background-color: var(--bg-primary-color);
-    transition: .3s;
+    transition: 0.3s;
 }
 
-.vignette:hover, .post:hover {
-    --_p: 75%;
-  }
+.post {
+    text-align: justify;
+}
+
+.post h1 {
+    text-transform: uppercase;
+}
+
+.vignette:hover {
+    background-color: var(--bg-secondary-color);
+}
 
 @media (max-width: 1024px) {
     .vignette, .post {
+        flex-basis: 100%;
         margin: 0;
         text-align: left;
         background: none;
@@ -818,4 +808,24 @@ section .socials {
 section .socials img {
     margin: 1rem;
     width: 3rem;
+}
+
+/* Page: about */
+
+section#about i, section#about em{
+    color: var(--text-primary-color)
+}
+
+section#about h2 {
+    border-bottom-style: groove;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--border-primary-color);
+}
+
+section#about a {
+    text-decoration: underline;
+}
+
+section#about li {
+    padding: 1rem;
 }

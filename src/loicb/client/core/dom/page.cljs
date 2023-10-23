@@ -32,7 +32,7 @@
              :title "github"}
             nil]]
           [:div.title repo-title]]])
-      "Repositories are private")]))
+      [:p "Repositories are private"])]))
 
 (defn blog-articles
   [articles]
@@ -52,7 +52,7 @@
             :title article-title}
            nil]]
          [:div.title article-title]]])
-     "No articles yet")])
+     [:p "No articles yet"])])
 
 (defn post-content
   [{:post/keys [articles css-class date employer image md-content md-content-short repos tags title]} content-type & [link-params]]
@@ -131,8 +131,8 @@
                              (filter #(= active-post-id (:post/id %)))
                              first)]
     [:section.container
-     {:id  (name page-name)
-      :key (name page-name)}
+     {:id  (str (name page-name) "-" active-post-id)
+      :key (str (name page-name) "-" active-post-id)}
      (post active-post)]))
 
 (defn about-page

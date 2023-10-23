@@ -13,6 +13,8 @@ This portfolio website you are currently visiting is a Single Page Application w
 
 The website contains a list of the projects I worked on as a Software Engineer and the stacks I used. It also contains a page with my resume.
 
+The content is written in markdown and compiled to hiccup.
+
 The website is fully responsive and support light/dark mode.
 +++
 ## Stack
@@ -32,6 +34,8 @@ I have the following stack:
 ## Features
 
 The website contains a list of the projects I worked on as a Software Engineer and the stack I used. It also contains a page with my resume.
+
+The content is written in markdown and compiled to hiccup.
 
 The website is fully responsive and support light/dark mode.
 
@@ -56,7 +60,7 @@ Each post has its own markdown files in the folder of the page it belongs to.
 
 ### Vignette and Post
 
-In the `/portfolio` route, I showcase all the projects via what I called `vignette`. They contain a short description fo the post instead of the full content.
+In the `/portfolio` route, I showcase all the projects via what I called `vignette`. They contain a short description of the post instead of the full content.
 
 When the user clicks on a vignette, he goes to a new route with the full post content.
 
