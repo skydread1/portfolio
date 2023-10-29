@@ -13,12 +13,13 @@
  [(rf/inject-cofx :cofx.app/local-store-theme :theme)]
  (fn [{:keys [db local-store-theme]} _]
    (let [app-theme    (or local-store-theme :dark)
-         current-view (or (:app/current-view db) (rfe/push-state :home))]
+         current-view (or (:app/current-view db) (rfe/push-state :home))
+         nav-bar-open? (= :home (-> db :app/current-view :data :name))]
      {:db         (assoc
                    db
                    :app/current-view current-view
                    :app/theme        app-theme
-                   :nav.main/open? true
+                   :nav.main/open? nav-bar-open?
                    :app/posts (utils/to-indexed-maps :post/id md/posts))
       :fx         [[:fx.app/update-html-class app-theme]]})))
 
