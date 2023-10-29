@@ -15,7 +15,7 @@
 
     --button-primary-color: black;
 
-    --error-primary-color: #f09295;
+    --error-primary-color: #ea4f15;
 
     --border-primary-color: #6f6f6f;
 }
@@ -92,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     padding: 1rem;
     text-align: center;
+    text-transform: uppercase;
     color: var(--text-primary-color);
     border-bottom-style: groove;
     border-bottom-width: 1px;
@@ -317,14 +318,6 @@ svg:hover {
     fill: var(--text-secondary-color);
 }
 
-.done, .plus {
-    fill: var(--border-primary-color);
-}
-
-.close, .trash {
-    fill: var(--error-primary-color);
-}
-
 /* Header */
 
 header {
@@ -421,6 +414,14 @@ header .name h3 {
     border-bottom: groove;
     border-bottom-width: thin;
     border-color: var(--border-primary-color);
+}
+
+.error h1 {
+    color: var(--error-primary-color);
+}
+
+.post.error a {
+    text-decoration: underline;
 }
 
 /* Header: navbar */
@@ -673,10 +674,6 @@ footer .contact-icons img {
 
 .post {
     text-align: justify;
-}
-
-.post h1 {
-    text-transform: uppercase;
 }
 
 .vignette:hover {

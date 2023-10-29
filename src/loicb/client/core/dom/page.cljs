@@ -125,15 +125,24 @@
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
                          (sort-by :post/order)
                          reverse)
-        active-post-id  (or @(rf/subscribe [:subs/pattern '{:app/current-view {:path-params {:post-id ?x}}}])
-                            (-> posts first :post/id))
+        active-post-id  @(rf/subscribe [:subs/pattern '{:app/current-view {:path-params {:post-id ?x}}}])
         active-post     (->> posts
                              (filter #(= active-post-id (:post/id %)))
                              first)]
-    [:section.container
-     {:id  (str (name page-name) "-" active-post-id)
-      :key (str (name page-name) "-" active-post-id)}
-     (post active-post)]))
+    (if active-post
+      [:section.container
+       {:id  (str (name page-name) "-" active-post-id)
+        :key (str (name page-name) "-" active-post-id)}
+       (post active-post)]
+      [:section.container
+       {:id  (str (name page-name) "-" "invalid-post-id")
+        :key (str (name page-name) "-" "invalid-post-id")}
+       [:div.post.error
+        [:h1 "There is no content at this URL"]
+        (internal-link
+        [:div.post-body
+          [:p "Go to PORTFOLIO"]]
+         {:page-name :portfolio})]])))
 
 (defn about-page
   []
