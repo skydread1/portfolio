@@ -23,8 +23,8 @@ jobs:
       - name: Run the clj tests
         run: clojure -A:server/test
 
-      #- name: Run the cljs tests
-      #  run: clojure -A:web/test-headless
+      - name: Run the cljs tests
+        run: clojure -A:web/test-headless
 
       - name: Build main.js
         run: clojure -T:build js-bundle
