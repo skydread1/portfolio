@@ -101,6 +101,26 @@ clojure -T:build deploy
 
 This command compiles the cljs to the optimized js bundle that Netlify will use to generate the preview in the PR.
 
+## Tests
+
+### Clj tests
+
+```clojure
+clj -A:server/test  
+```
+
+### Cljs tests
+
+```clojure
+clj -A:web/test
+```
+
+### Cljs tests (headless) - for CI
+
+```clojure
+clj -A::web/test-headless
+```
+
 ## Continuous integration
 
 Adding of modifying a markdown file and merging to master will recompile the cljs to the js bundle before automatically publishing the last version of the website via Netlify.
