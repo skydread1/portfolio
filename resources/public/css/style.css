@@ -757,7 +757,8 @@ section .post-body>div {
 }
 
 section .post-body {
-    width: 100%;
+    width: 70%;
+    margin: auto;
 }
 
 section .post-body .info {
@@ -773,6 +774,7 @@ section img {
     section .post .post-body {
         padding: 0.5rem;
         display: block;
+        width: 100%;
     }
 }
 

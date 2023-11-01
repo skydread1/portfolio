@@ -1,5 +1,5 @@
 #:post{:id "blog-django"
-       :order 5
+       :order 6
        :page :portfolio
        :date "2023"
        :articles [["Deploy Django Blog in AWS Beanstalk" "https://blog.loicblanchard.me/post/8"]]
