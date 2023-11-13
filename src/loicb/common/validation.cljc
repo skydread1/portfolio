@@ -1,10 +1,4 @@
 (ns loicb.common.validation
-  "The schemas can be used for both validation and pull pattern.
-   The main difference between validation schema and pull pattern schema is
-   that pull pattern schems has all keys optional as we do not want to
-   force the client to require any fields.
-   However, for validation schema (form inputs for frontend, request params for backend),
-   we often need the client to provide some mandatory fields."
   (:require [malli.core :as m]
             [malli.util :as mu]))
 
