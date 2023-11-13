@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.1
 
       - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@11.0
+        uses: DeLaGuardo/setup-clojure@12.1
         with:
           cli: latest
           
@@ -25,6 +25,11 @@ jobs:
 
       - name: Run the cljs tests
         run: clojure -A:web/test-headless
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build main.js
         run: clojure -T:build js-bundle
