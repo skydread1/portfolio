@@ -29,6 +29,11 @@ jobs:
       - name: Build main.js
         run: clojure -T:build js-bundle
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
       - uses: EndBug/add-and-commit@v9
         with:
           add: 'resources/public/main.js'
