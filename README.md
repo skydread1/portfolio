@@ -238,3 +238,9 @@ Note that the server will be hosted in the US by default, and you cannot change 
 ## 🔷 Contributing
 
 Feel free to open new issues if you discover bugs or wish to add new features.
+
+## 🔷 License
+
+Copyright © 2023 Loic Blanchard
+
+Distributed under the MIT License - see the [LICENSE](./LICENSE) file for details.
