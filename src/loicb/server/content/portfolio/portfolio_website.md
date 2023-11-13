@@ -2,6 +2,7 @@
        :order 5
        :page :portfolio
        :date "2023"
+       :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
        :title "Portfolio Website"
        :css-class "portfolio"
        :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent" "Lasagna-pull" "Reitit"]
@@ -13,7 +14,7 @@ This portfolio website you are currently visiting is a Single Page Application w
 
 The website contains a list of the projects I worked on as a Software Engineer and the stacks I used. It also contains a page with my resume.
 
-The content is written in markdown and compiled to hiccup.
+The markdown content is converted into hiccup (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a malli schema.
 
 The website is fully responsive and support light/dark mode.
 +++
@@ -124,12 +125,23 @@ clojure -T:build js-bundle
 
 This command compiles the cljs to the optimized js bundle that Netlify will use to generate the preview in the PR.
 
-## Continuous integration
+## Continuous Integration
 
-Adding of modifying a markdown file and merging to master will recompile the cljs to the js bundle before automatically publishing the last version of the website via Netlify.
+The Ci does the following:
+- run the clj tests
+- run the cljs tests in headless mode
+- compile the cljs file into the js bundle `main.js` and commit it to the repo.
 
-The markdown files are converted to hiccup via Clojure macros, so they are converted at compile time.
+## Continuous Deployment
 
-## Hosting
+**Opening a pull request (PR)** to merge your changes to master, makes `Netlify` create a preview for you to see how the new version of the website would look like.
 
-I use Netlify for hosting platform because it is easy to setup and the previews of the new website version on GitHub PR is convenient.
+**Merging to master** automatically publishes the last version of the website via Netlify.
+
+## Hosted with Netlify
+
+I use **Netlify** for hosting platform because it is easy to setup and the previews of the new website version on GitHub MR is convenient.
+
+## Learn More
+
+Have a look at the repo [README](https://github.com/skydread1/portfolio/blob/master/README.md) for more information.

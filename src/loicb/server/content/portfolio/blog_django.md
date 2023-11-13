@@ -2,6 +2,7 @@
        :order 6
        :page :portfolio
        :date "2023"
+       :repos [["Blog" "https://github.com/skydread1/blog"]]
        :articles [["Deploy Django Blog in AWS Beanstalk" "https://blog.loicblanchard.me/post/8"]]
        :title "Tech Blog with Django"
        :css-class "blog-django"
@@ -10,7 +11,7 @@
                              :src-dark "/assets/loic-blog-logo.png"
                              :alt "Logo referencing Aperture Science"}}
 +++
-I developed my tech blog in python using the Django framework. It is then Server-Side Rendered.
+I developed my tech blog in python using the Django framework. Thus, it is Server-Side Rendered.
 
 The blog is deployed on AWS Beanstalk, the static files are served from an AWS S3 bucket, and the production data is stored in an AWS RDS Postgres database.
 
@@ -73,4 +74,4 @@ The blog is hosted at `blog.loicblanchard.me`. I used a CNAME record to map my p
 
 ## Learn more
 
-I wrote an article on how I deploy my Django app to AWS, you can click on the link below.
+Have a look at the repo [README](https://github.com/skydread1/blog/blob/master/README.md) for more information.

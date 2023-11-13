@@ -15,10 +15,10 @@
 
 (defn git-repos
   [repos]
-  (h/post-hiccup
-   [:div.links
-    [:h3 "Git Repos"]
-    (if repos
+  (when repos
+    (h/post-hiccup
+     [:div.links
+      [:h3 "Git Repos"]
       (for [repo repos
             :let [[repo-title repo-link] repo]]
         [:a
@@ -31,14 +31,13 @@
              :srcdark "/assets/github-mark-logo-dark-mode.png"
              :title "github"}
             nil]]
-          [:div.title repo-title]]])
-      [:p "Repositories are private"])]))
+          [:div.title repo-title]]])])))
 
 (defn blog-articles
   [articles]
-  [:div.links
-   [:h3 "Related Articles"]
-   (if articles
+  (when articles
+    [:div.links
+     [:h3 "Related Articles"]
      (for [article articles
            :let [[article-title article-link] article]]
        [:a
@@ -51,8 +50,7 @@
             :srcdark "/assets/loic-blog-logo.png"
             :title article-title}
            nil]]
-         [:div.title article-title]]])
-     [:p "No articles yet"])])
+         [:div.title article-title]]])]))
 
 (defn post-content
   [{:post/keys [articles css-class date employer image md-content md-content-short repos tags title]} content-type & [link-params]]
