@@ -2,7 +2,7 @@
        :order 1
        :page :portfolio
        :date "2021"
-       :articles [["MCTS applied to card games" "https://blog.loicblanchard.me/post/10"]]
+       :articles [["MCTS applied to card games" "../blog/article-mcts"]]
        :title "MCTS applied to card games"
        :css-class "mcts"
        :tags ["MCTS" "Monte Carlo Tree Search" "Clojure" "Card Game"]

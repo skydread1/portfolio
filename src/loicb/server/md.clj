@@ -9,7 +9,7 @@
 (def directory "./src/loicb/server/content/")
 (def sub-dirs
   "pages to be published."
-  ["about" "portfolio"])
+  ["about" "blog" "portfolio"])
 
 (defn files-of
   "Returns a map with the
@@ -36,9 +36,9 @@
   [file-path]
   (let [raw (slurp file-path)
         [post-full post-short config] (->> (str/split raw #"\+\+\+")
-                              (take 3)
-                              reverse)
-        post (-> config 
+                                           (take 3)
+                                           reverse)
+        post (-> config
                  edn/read-string
                  (assoc :post/md-content post-full
                         :post/md-content-short post-short))]

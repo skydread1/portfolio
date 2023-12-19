@@ -4,7 +4,7 @@
        :employer "Flybot Pte Ltd" 
        :date "2020-2021"
        :repos [["Magic" "https://github.com/nasser/magic"]]
-       :articles [["Port your Clojure lib to the CLR with MAGIC" "https://blog.loicblanchard.me/post/1"]]
+       :articles [["Port your Clojure lib to the CLR with MAGIC" "../blog/port-clj-lib-to-clr"]]
        :title "Clojure Card Games Backend APIs"
        :css-class "card-games"
        :tags ["Clojure" "Clojure Spec" "Magic Compiler" "Interop CLR"]

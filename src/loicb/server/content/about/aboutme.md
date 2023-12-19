@@ -4,7 +4,6 @@
        :date "As of 2023"
        :employer "CV"
        :repos [["My GitHub" "https://github.com/skydread1"]]
-       :articles [["My Tech Blog" "https://blog.loicblanchard.me"]]
        :title "About Me"
        :css-class "about-me"
        :image #:image{:src "/assets/loic-logo.png"
