@@ -6,10 +6,11 @@
         com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
         org.clojure/clojurescript             {:mvn/version "1.11.121"}
         reagent/reagent                       {:mvn/version "1.2.0"}
+        cljsjs/highlight                      {:mvn/version "11.7.0-0"}
         cljsjs/react                          {:mvn/version "18.2.0-1"}
         cljsjs/react-dom                      {:mvn/version "18.2.0-1"}
         markdown-to-hiccup/markdown-to-hiccup {:mvn/version "0.6.2"}
-        re-frame/re-frame                     {:mvn/version "1.4.0"}
+        re-frame/re-frame                     {:mvn/version "1.4.2"}
         day8.re-frame/test                    {:mvn/version "0.1.5"}}
  :paths ["src" "resources" "target" "test"]
  :aliases
@@ -29,7 +30,7 @@
   ;; build the optimised js bundle
   :web/prod {:main-opts ["--main"       "figwheel.main"
                          "--build-once" "prod"]}
-  
+
   ;; Run the cljs tests
   :web/test {:main-opts ["-m" "figwheel.main"
                          "-m" "loicb.client.test-runner"]}
