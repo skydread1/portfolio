@@ -7,8 +7,8 @@
                ["Nostrand" "https://github.com/nasser/nostrand"]
                ["Magic.Unity" "https://github.com/nasser/Magic.Unity"] 
                ["magic-pipeline" "https://github.com/magic-clojure/magic"]]
-       :articles [["Port your Clojure lib to the CLR with MAGIC" "https://blog.loicblanchard.me/post/1"]
-                  ["Pack, Push and Import Clojure to Unity" "https://blog.loicblanchard.me/post/4"]]
+       :articles [["Port your Clojure lib to the CLR with MAGIC" "../blog/port-clj-lib-to-clr"]
+                  ["Pack, Push and Import Clojure to Unity" "../blog/clojure-in-unity"]]
        :title "Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
        :tags ["Clojure" "C#" "JVM" "CLR" "Compiler" "Interop" "NuGet" "Unity"]

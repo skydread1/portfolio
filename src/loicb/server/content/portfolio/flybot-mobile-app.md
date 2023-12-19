@@ -4,8 +4,8 @@
        :employer "Flybot Pte Ltd" 
        :date "2023"
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["Reagent React Native Mobile App" "https://blog.loicblanchard.me/post/9"]
-                  ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
+       :articles [["Reagent React Native Mobile App" "../blog/reagent-native-app"]
+                  ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
        :title "Flybot Mobile App"
        :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent React Native"]
        :css-class "flybot-mobile-app"
@@ -71,7 +71,7 @@ The mono-repo structure is as followed:
 │       └── flybot.server
 ```
 
-You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://blog.loicblanchard.me/post/5).
+You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](../blog/clojure-mono-repo).
 
 ## Stack
 

@@ -78,12 +78,12 @@ Here is an example of clojure config map for a post:
 #:post{:id "clojure-full-stack-webapp"
        :order 2
        :page :portfolio
-       :employer "Flybot Pte Ltd" 
+       :employer "Flybot Pte Ltd"
        :date "2022"
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["How to deploy full stack Clojure website to AWS" "https://blog.loicblanchard.me/post/3"]
-                  ["Lasagna-pull Pattern applied to flybot.sg backend" "https://blog.loicblanchard.me/post/7"]
-                  ["Clojure Mono Repo example : server + 2 clients" "https://blog.loicblanchard.me/post/5"]]
+       :articles [["How to deploy full stack Clojure website to AWS" "../blog/deploy-clj-app-to-aws"]
+                  ["Lasagna-pull Pattern applied to flybot.sg backend" "../blog/lasagna-pull-applied-to-flybot"]
+                  ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
        :title "Flybot Website"
        :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
        :css-class "flybot-website"

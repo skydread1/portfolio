@@ -3,7 +3,7 @@
        :page :portfolio
        :date "2023"
        :repos [["Blog" "https://github.com/skydread1/blog"]]
-       :articles [["Deploy Django Blog in AWS Beanstalk" "https://blog.loicblanchard.me/post/8"]]
+       :articles [["Deploy Django Blog in AWS Beanstalk" "../blog/deploy-django-aws-beanstalk"]]
        :title "Tech Blog with Django"
        :css-class "blog-django"
        :tags ["Python" "Django" "Elastic Beanstalk" "RDS PostgreSQL" "S3" "AWS"]
@@ -11,7 +11,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
-I developed my tech blog in python using the Django framework. Thus, it is Server-Side Rendered.
+I developed a tech blog in python using the Django framework. Thus, it is Server-Side Rendered.
 
 The blog is deployed on AWS Beanstalk, the static files are served from an AWS S3 bucket, and the production data is stored in an AWS RDS Postgres database.
 
@@ -70,7 +70,9 @@ To deploy new app versions, I rely on the `AWS CLI EB` so I just have to run `eb
 
 ### Domain
 
-The blog is hosted at `blog.loicblanchard.me`. I used a CNAME record to map my personal subdomain to the Application Load Balancer's DNS.
+The blog used to be hosted at `blog.loicblanchard.me`. I used a CNAME record to map my personal subdomain to the Application Load Balancer's DNS.
+
+However I moved the blog content to my clojure SPA instead because after my AWS free tier expired, the monthly cost for hosting the blog was around $50 which was too much for a simple blog.
 
 ## Learn more
 
