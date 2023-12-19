@@ -70,7 +70,7 @@
            (if (= :blog page)
              "Blog Article"
              (if employer employer "Personal Project")))]
-     (when src
+     (when (and (not= :simple-link-body content-type) src)
        [:div.image
         [:img {:src src :alt alt}]])
      [all-tags tags]
@@ -78,6 +78,24 @@
      [:div.resources
       [git-repos repos]
       [blog-articles articles]]]))
+
+(defn simple-link
+  "Simple link to a blog article."
+  [{:post/keys [date image tags title]}]
+  (let [{:image/keys [src src-dark alt]} image
+        src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
+              src-dark src)]
+    [:<>
+     (when src
+       [:div.image
+        [:img {:src src :alt alt}]])
+     [:div.text
+      [:div
+       [:h2 title]]
+      [:div.info
+       [:h5.info
+        (str date " | " "Loic Blanchard")]
+       [all-tags tags]]]]))
 
 (defn post
   "Full post including the post content."
@@ -89,16 +107,27 @@
    [:h1 title]
    [post-content post :post-body]])
 
-(defn vignette
-  "Short version of a post without the content of the post."
-  [{:post/keys [id] :as post} link-params]
-  [:div.vignette
-   {:key (str "vignette-" id)
-    :id (str "vignette-" id)}
-   [post-content post :vignette-body link-params]])
+(defn post-link
+  "Represnetation of a link to a post.
+   A link to a post can be represented as:
+   - [[vignette]] for the portfolio page
+   - [[simple-link]] for the blog page."
+  [{:post/keys [css-class id page] :as post} link-params]
+  (if (= :blog page)
+    (internal-link
+     [:div.simple-link
+      {:key (str "simple-link-" id)
+       :id (str "simple-link-" id)
+       :class css-class}
+      [simple-link post link-params]]
+     link-params)
+    [:div.vignette
+     {:key (str "vignette-" id)
+      :id (str "vignette-" id)}
+     [post-content post :vignette-body link-params]]))
 
-(defn page-with-vignettes
-  "Page with post vignettes."
+(defn page-with-post-links
+  "Page with post links."
   []
   (let [page-title @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])
         page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
@@ -111,11 +140,13 @@
      {:id  (name page-name)
       :key (name page-name)}
      [:h1 page-title]
-     [:div.vignettes
+     [:div.post-links
+      {:class (if (= :blog page-name)
+                "simple-links" "vignettes")}
       (doall
        (for [post posts]
-         (vignette post {:post-id (:post/id post)
-                         :page-name (or post-route page-name)})))]]))
+         (post-link post {:post-id (:post/id post)
+                          :page-name (or post-route page-name)})))]]))
 
 (defn page-with-a-post
   "Page that displays the full post content.
