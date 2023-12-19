@@ -76,50 +76,52 @@
     (assoc-in navbar-content [1 :class] "hidden")))
 
 (defn top-browser
-  [nav-open?]
-  (let [home-page? (= :home @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}]))]
-    [:div.top
-     {:class "browser-only"}
-     (when-not home-page?
-       [:button.nav-btn.hidden
-        {:on-click #(rf/dispatch [:evt.nav/toggle])}
-        [svg/menu]])
-     [:div.name
-      [:h2 "Loïc Blanchard"]
-      (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure)"])]
-     (when-not home-page?
-       [:button.nav-btn.hidden
-        {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-        [svg/diamond]])]))
+  [nav-open? home-page?]
+  [:div.top
+   {:class "browser-only"}
+   (when-not home-page?
+     [:button.nav-btn.hidden
+      {:on-click #(rf/dispatch [:evt.nav/toggle])}
+      [svg/menu]])
+   [:div.name
+    [:h2 "Loïc Blanchard"]
+    (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure)"])]
+   (when-not home-page?
+     [:button.nav-btn.hidden
+      {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+      [svg/diamond]])])
 
 (defn top-mobile
-  [nav-open?]
-  (let [home-page? (= :home @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}]))]
-    [:<>
-     [:div.top
+  [nav-open? home-page?]
+  [:<>
+   [:div.top
+    {:class "mobile-only"}
+    (when-not home-page?
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.nav/toggle])}
+       [svg/menu]])
+    (when-not nav-open?
+      [:div.name
+       [:h2 "Loïc Blanchard"]])
+    (when-not home-page?
+      [:button.nav-btn.hidden
+       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
+       [svg/diamond]])]
+   (when nav-open?
+     [:div.name
       {:class "mobile-only"}
-      (when-not home-page?
-        [:button.nav-btn.hidden
-         {:on-click #(rf/dispatch [:evt.nav/toggle])}
-         [svg/menu]])
-      (when-not nav-open?
-        [:div.name
-         [:h2 "Loïc Blanchard"]])
-      (when-not home-page?
-        [:button.nav-btn.hidden
-         {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
-         [svg/diamond]])]
-     (when nav-open?
-       [:div.name
-        {:class "mobile-only"}
-        [:h2 "Loïc Blanchard"]
-        [:h3 "Software Engineer in Functional Programming (Clojure)"]])]))
+      [:h2 "Loïc Blanchard"]
+      [:h3 "Software Engineer in Functional Programming (Clojure)"]])])
 
 (defn header-comp []
-  (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])]
+  (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])
+        home-page? (let [view-info @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?name}
+                                                                                      :fragment ?fragment}}])]
+                     (and (= :home (get view-info '?name))
+                          (not (get view-info '?fragment))))]
     [:header.container
      (when nav-open? {:class "full-screen"})
-     [top-browser nav-open?]
-     [top-mobile nav-open?]
+     [top-browser nav-open? home-page?]
+     [top-mobile nav-open? home-page?]
      [navbar (navbar-content-browser)]
      [navbar (navbar-content-mobile)]]))
