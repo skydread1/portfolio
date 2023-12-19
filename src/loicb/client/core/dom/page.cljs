@@ -52,29 +52,47 @@
            nil]]
          [:div.title article-title]]])]))
 
-(defn post-content
-  [{:post/keys [articles css-class date employer image page md-content md-content-short repos tags title]} content-type & [link-params]]
+(defn post
+  "Representation of a post."
+  [{:post/keys [articles css-class date employer id image page md-content repos tags title]}]
   (let [{:image/keys [src src-dark alt]} image
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
-              src-dark src)
-        content (if (= :post-body content-type) md-content md-content-short)]
-    [:div
-     {:class (str css-class " " (name content-type))}
-     (when link-params
-       [:h2
-        (internal-link
-         title
-         link-params)])
+              src-dark src)]
+    [:div.post
+     {:key id
+      :id id}
+     [:h1 title]
+     [:div.post-body
+      {:class css-class}
+      [:h5.info
+       (str date " | "
+            (if (= :blog page)
+              "Blog Article"
+              (if employer employer "Personal Project")))]
+      (when src
+        [:div.image
+         [:img {:src src :alt alt}]])
+      [all-tags tags]
+      (h/md->hiccup md-content)
+      [:div.resources
+       [git-repos repos]
+       [blog-articles articles]]]]))
+
+(defn vignette-link
+  "Vignette link to a portfolio project article."
+  [{:post/keys [articles date employer image md-content-short repos tags title]}]
+  (let [{:image/keys [src src-dark alt]} image
+        src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
+              src-dark src)]
+    [:<>
+     [:h2 title]
      [:h5.info
-      (str date " | "
-           (if (= :blog page)
-             "Blog Article"
-             (if employer employer "Personal Project")))]
-     (when (and (not= :simple-link-body content-type) src)
+      (str date " | " (if employer employer "Personal Project"))]
+     (when src
        [:div.image
         [:img {:src src :alt alt}]])
      [all-tags tags]
-     (h/md->hiccup content)
+     (h/md->hiccup md-content-short)
      [:div.resources
       [git-repos repos]
       [blog-articles articles]]]))
@@ -97,20 +115,10 @@
         (str date " | " "Loic Blanchard")]
        [all-tags tags]]]]))
 
-(defn post
-  "Full post including the post content."
-  [{:post/keys [id title]
-    :as post}]
-  [:div.post
-   {:key id
-    :id id}
-   [:h1 title]
-   [post-content post :post-body]])
-
 (defn post-link
-  "Represnetation of a link to a post.
+  "Represnetation of a link to a post depending on the page.
    A link to a post can be represented as:
-   - [[vignette]] for the portfolio page
+   - [[vignette-link]] for the portfolio page
    - [[simple-link]] for the blog page."
   [{:post/keys [css-class id page] :as post} link-params]
   (if (= :blog page)
@@ -119,12 +127,16 @@
       {:key (str "simple-link-" id)
        :id (str "simple-link-" id)
        :class css-class}
-      [simple-link post link-params]]
+      [simple-link post]]
      link-params)
-    [:div.vignette
-     {:key (str "vignette-" id)
-      :id (str "vignette-" id)}
-     [post-content post :vignette-body link-params]]))
+    [:div.vignette-container
+     (internal-link
+      [:div.vignette
+       {:key (str "vignette-link-" id)
+        :id (str "vignette-link-" id)
+        :class css-class}
+       [vignette-link post]]
+      link-params)]))
 
 (defn page-with-post-links
   "Page with post links."
@@ -172,9 +184,9 @@
        [:div.post.error
         [:h1 "There is no content at this URL"]
         (internal-link
-         [:div.post-body
-          [:p "Go to PORTFOLIO"]]
-         {:page-name :portfolio})]])))
+         [:div
+          [:p "Go back to Home Page"]]
+         {:page-name :home})]])))
 
 (defn about-page
   []

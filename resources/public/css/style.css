@@ -437,6 +437,10 @@ header .name h3 {
     color: var(--error-primary-color);
 }
 
+.post.error p {
+    padding: 1rem;
+}
+
 .post.error a {
     text-decoration: underline;
 }
@@ -679,7 +683,7 @@ footer .contact-icons img {
     flex-wrap: wrap;
 }
 
-.vignette {
+.vignette-container {
     flex-basis: 40%;
     margin: 1rem;
     padding: 1rem;
@@ -692,11 +696,18 @@ footer .contact-icons img {
     transition: 0.3s;
 }
 
+.vignettes a {
+    color: inherit;
+    display: block;
+    padding: 0;
+    text-decoration: none;
+}
+
 .post {
     text-align: justify;
 }
 
-.vignette:hover {
+.vignette-container:hover {
     background-color: var(--bg-secondary-color);
 }
 
@@ -766,7 +777,7 @@ footer .contact-icons img {
 
 /* Simple links */
 
-.post-links a {
+.simple-links a {
     display: block;
     padding: 0;
     text-decoration: none;
