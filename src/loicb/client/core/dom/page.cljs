@@ -58,6 +58,7 @@
   (let [{:image/keys [src src-dark alt]} image
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
               src-dark src)]
+    (rf/dispatch [:evt.app/highlight-code id])
     [:div.post
      {:key id
       :id id}
