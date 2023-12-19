@@ -1,5 +1,5 @@
 (ns loicb.client.core.router
-  (:require [loicb.client.core.dom.page :refer [about-page page-with-vignettes page-with-a-post]] 
+  (:require [loicb.client.core.dom.page :refer [about-page page-with-vignettes page-with-a-post]]
             [goog.object :as gobj]
             [reitit.frontend :as rei]
             [reitit.frontend.easy :as rfe]
@@ -10,7 +10,7 @@
   [["/"
     {:name :home
      :view (constantly [:<>])}]
-   
+
    ["/portfolio"
     [""
      {:name :portfolio
@@ -18,20 +18,34 @@
       :post-route :portfolio/post
       :title "Portfolio"
       :view  page-with-vignettes}]
-    
+
     ["/:post-id"
      {:name :portfolio/post
       :db-page-name :portfolio
       :title "Portfolio"
       :view  page-with-a-post}]]
-   
+
+   ["/blog"
+    [""
+     {:name :blog
+      :db-page-name :blog
+      :post-route :blog/post
+      :title "Blog"
+      :view  page-with-vignettes}]
+
+    ["/:post-id"
+     {:name :blog/post
+      :db-page-name :blog
+      :title "Blog"
+      :view  page-with-a-post}]]
+
    ["/about"
     {:name :about
      :db-page-name :about
      :post-route :about/post
      :title "About Me"
      :view about-page}]
-   
+
    ["#footer-contact"
     {:name :contact}]])
 

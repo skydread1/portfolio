@@ -1,4 +1,4 @@
-(ns loicb.client.core.dom.header 
+(ns loicb.client.core.dom.header
   (:require [loicb.client.core.dom.common.link :refer [internal-link]]
             [loicb.client.core.dom.common.svg :as svg]
             [re-frame.core :as rf]))
@@ -28,10 +28,11 @@
      [:div.menu-mid
       (theme-link
        [svg/diamond])]
-     [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
+     (internal-link
       [:div.menu-right
        [svg/right-arrow]
-       [:div.txt "Blog"]]]]
+       [:div.txt "Blog"]]
+      {:page-name :blog})]
     (internal-link
      [:div.menu-bottom
       [:div
@@ -56,11 +57,13 @@
       [:div.txt "Portfolio"]]
      {:page-name :portfolio
       :mobile? true})
-    [:a {:href "https://blog.loicblanchard.me" :target "_blank"}
+    (internal-link
      [:div.menu-right
       [svg/right-arrow]
-      [:div.txt "Blog"]]]
-    (internal-link 
+      [:div.txt "Blog"]]
+     {:page-name :blog
+      :mobile? true})
+    (internal-link
      [:div.menu-right
       [svg/right-arrow]
       [:div.txt "Contact"]]

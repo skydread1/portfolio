@@ -8,8 +8,8 @@
        :css-class "blog-django"
        :tags ["Python" "Django" "Elastic Beanstalk" "RDS PostgreSQL" "S3" "AWS"]
        :image #:image{:src "/assets/loic-blog-logo.png"
-                             :src-dark "/assets/loic-blog-logo.png"
-                             :alt "Logo referencing Aperture Science"}}
+                      :src-dark "/assets/loic-blog-logo.png"
+                      :alt "Logo referencing Aperture Science"}}
 +++
 I developed my tech blog in python using the Django framework. Thus, it is Server-Side Rendered.
 

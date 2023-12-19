@@ -84,11 +84,11 @@ Here is an example of clojure map for a post:
 +++
 My project consists in...
 +++
-## 🔷 Rational
+## Rational
 
 The goal of my project is...
 
-## 🔷 Stack
+## Stack
 
 To achieve this...
 ...

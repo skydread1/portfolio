@@ -53,7 +53,7 @@
          [:div.title article-title]]])]))
 
 (defn post-content
-  [{:post/keys [articles css-class date employer image md-content md-content-short repos tags title]} content-type & [link-params]]
+  [{:post/keys [articles css-class date employer image page md-content md-content-short repos tags title]} content-type & [link-params]]
   (let [{:image/keys [src src-dark alt]} image
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
               src-dark src)
@@ -66,7 +66,10 @@
          title
          link-params)])
      [:h5.info
-      (str date " | " (if employer employer "Personal Project"))]
+      (str date " | "
+           (if (= :blog page)
+             "Blog Article"
+             (if employer employer "Personal Project")))]
      (when src
        [:div.image
         [:img {:src src :alt alt}]])
@@ -138,7 +141,7 @@
        [:div.post.error
         [:h1 "There is no content at this URL"]
         (internal-link
-        [:div.post-body
+         [:div.post-body
           [:p "Go to PORTFOLIO"]]
          {:page-name :portfolio})]])))
 
