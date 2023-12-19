@@ -80,12 +80,15 @@
 
 (defn vignette-link
   "Vignette link to a portfolio project article."
-  [{:post/keys [articles date employer image md-content-short repos tags title]}]
+  [{:post/keys [articles date employer image md-content-short repos tags title]} link-params]
   (let [{:image/keys [src src-dark alt]} image
         src (if (= :dark @(rf/subscribe [:subs/pattern '{:app/theme ?x}]))
               src-dark src)]
     [:<>
-     [:h2 title]
+     [:h2
+      (internal-link
+       title
+       link-params)]
      [:h5.info
       (str date " | " (if employer employer "Personal Project"))]
      (when src
@@ -126,17 +129,17 @@
      [:div.simple-link
       {:key (str "simple-link-" id)
        :id (str "simple-link-" id)
-       :class css-class}
+       :class (str "simple-link-" css-class)}
       [simple-link post]]
      link-params)
     [:div.vignette-container
-     (internal-link
-      [:div.vignette
-       {:key (str "vignette-link-" id)
-        :id (str "vignette-link-" id)
-        :class css-class}
-       [vignette-link post]]
-      link-params)]))
+     {:key (str "vignette-container-" id)
+      :id (str "vignette-container-" id)}
+     [:div.vignette
+      {:key (str "vignette-link-" id)
+       :id (str "vignette-link-" id)
+       :class (str "vignette-link-" css-class)}
+      [vignette-link post link-params]]]))
 
 (defn page-with-post-links
   "Page with post links."
