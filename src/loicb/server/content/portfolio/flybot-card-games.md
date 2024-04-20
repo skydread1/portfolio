@@ -34,7 +34,7 @@ Since we use Clojure, the game state can be represented as pure edn data leverag
 
 There is no need for any atoms, agent or vars as the new state is just another Clojure pure data structure.
 
-This allows us to represent the game setup and rules as clojure pure data as well so the game is easy to custom.
+This allows us to represent the game setup and rules as clojure pure data as well so the game is easy to customize.
 
 For non-clojure developers, you can imagine that you could represent your entire game state using a simple JSON file. In clojure, we use the EDN format (which has a similar syntax to JSON).
 
@@ -67,7 +67,7 @@ Once again, we could leverage the Clojure data immutability to "describe" our `m
 
 You can view a `meta-game` as a wrapper around a given sub-game such as `big-two` for instance.
 
-We can have a `meta-game` of `meta-game` to create a `tournaments`.
+We can have a `meta-game` of `meta-game` to create a `tournament`.
 
 This is made possible via making the different projects implements a specific Game protocol.
 
@@ -79,7 +79,7 @@ Therefore, it is possible to describe the rules of the `meta-game` using pure Cl
 
 All our games work with any number of players (relevant to the rules of course), so for the tournaments stages, we can have 3 group of 4 players playing `big-two` in the semi, and the 3 winners playing `pdk` in the finals without any issues.
 
-Note: the `meta-game` was also ported to the CLR successfully.
+Note: `meta-game` was also ported to the CLR successfully.
 
 Once again, for non-clojure developers, you can imagine that your are describing a whole tournament setup using just a JSON file which is very powerful (but instead of JSON, we use EDN, the clojure equivalent).
 

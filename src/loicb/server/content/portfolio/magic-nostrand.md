@@ -34,7 +34,7 @@ There are 4 main open-source libraries involved:
 - [nasser/Magic.Unity](https://github.com/nasser/Magic.Unity): runtime for Unity
 - [magic-clojure/magic](https://github.com/magic-clojure/magic): pipeline to build magic and update tools
 
-Working closely with the author of the Magic compiler [Ramsey Nasser](https://github.com/nasser), I help improving the tooling around the Magic compiler so it integrates well with our workflow Clojure Backend/Unity Frontend.
+Working closely with the author of the Magic compiler [Ramsey Nasser](https://github.com/nasser), I helped improving the tooling around the Magic compiler so it integrates well with our workflow Clojure Backend/Unity Frontend.
 
 My contributions were to:
 - Fix some high level issues on the compiler that were preventing us from compiling our Clojure projects
