@@ -1,16 +1,29 @@
 (ns loicb.common.validation
   (:require [malli.core :as m]
-            [malli.util :as mu]))
+            [malli.util :as mu]
+            [tick.core :as t]
+            [tick.alpha.interval :as t.i]))
+
+(defn date-valid?
+  "Returns true if the given the given coll of `dates` is valid."
+  [[date1 date2]]
+  (try
+    (if date2
+      (= :precedes (t.i/relation (t/date date1)
+                                 (t/date date2)))
+      (t/date? (t/date date1)))
+    (catch #?(:clj Exception :cljs js/Error) _ false)))
 
 ;;---------- Validation Schemas ----------
 
 (def post-schema
   [:map {:closed true}
    [:post/id :string]
-   [:post/order :int]
    [:post/page :keyword]
    [:post/title :string]
-   [:post/date :string]
+   [:post/date [:and
+                [:vector :string]
+                [:fn #(date-valid? %)]]]
    [:post/employer {:optional true} :string]
    [:post/css-class {:optional true} :string]
    [:post/md-content :string]

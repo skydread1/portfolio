@@ -1,7 +1,6 @@
 #:post{:id "deploy-clj-app-to-aws"
-       :order 6
        :page :blog
-       :date "2023" ;; 20/01
+       :date ["2023-01-20"]
        :title "Deploy full stack Clojure website to AWS"
        :css-class "blog-deploy-clj-aws"
        :tags ["Clojure" "AWS" "Full-Stack"]

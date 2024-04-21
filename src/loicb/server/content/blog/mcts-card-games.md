@@ -1,7 +1,6 @@
 #:post{:id "article-mcts"
-       :order 0
        :page :blog
-       :date "2021" ;; 13/08
+       :date ["2021-08-13"]
        :title "MCTS applied to card games"
        :css-class "blog-post-mcts"
        :tags ["Clojure" "MCTS"]

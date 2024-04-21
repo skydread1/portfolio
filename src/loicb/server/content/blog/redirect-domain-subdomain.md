@@ -1,7 +1,6 @@
 #:post{:id "redirect-domain-to-subdomain"
-       :order 11
        :page :blog
-       :date "2023" ;; 09/11
+       :date ["2023-11-09"]
        :title "Redirecting Domain to Subdomain using AWS ALB+NLB"
        :css-class "blog-redirect-domain"
        :tags ["AWS" "Load Balancers" "DNS" "GoDaddy"]

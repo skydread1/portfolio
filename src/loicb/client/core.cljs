@@ -1,5 +1,5 @@
 (ns loicb.client.core
-  (:require [loicb.client.core.dom :refer [app]] 
+  (:require [loicb.client.core.dom :refer [app]]
             [loicb.client.core.db]
             [loicb.client.core.router :as router]
             [reagent.dom :as rdom]

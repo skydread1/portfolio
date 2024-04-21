@@ -1,8 +1,7 @@
 #:post{:id "deploy-django-aws-beanstalk"
-       :order 10
        :page :blog
-       :date "2023" ;; 08/08
-       :title "Deploy Django Blog in AWS Beantalk"
+       :date ["2023-08-08"]
+       :title "Deploy Django Blog in AWS Beanstalk"
        :css-class "blog-django-aws"
        :tags ["Python" "Django" "AWS" "Elastic Beanstalk"]
        :image #:image{:src "/assets/loic-blog-logo.png"

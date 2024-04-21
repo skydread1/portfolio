@@ -1,7 +1,6 @@
 #:post{:id "about-me"
-       :order 0
        :page :about
-       :date "As of 2023"
+       :date ["2023-12-30"]
        :employer "CV"
        :repos [["My GitHub" "https://github.com/skydread1"]]
        :title "About Me"

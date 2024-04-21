@@ -1,7 +1,6 @@
 #:post{:id "lasagna-pull"
-       :order 4
        :page :blog
-       :date "2022" ;; 04/12
+       :date ["2022-04-12"]
        :title "Lasagna Pull: Precisely select from deep nested data"
        :css-class "blog-lasagna-pull"
        :tags ["Clojure" "Pull Pattern" "Malli"]

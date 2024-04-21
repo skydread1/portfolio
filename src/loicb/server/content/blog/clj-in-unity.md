@@ -1,7 +1,6 @@
 #:post{:id "clojure-in-unity"
-       :order 2
        :page :blog
-       :date "2022" ;; 22/04
+       :date ["2022-04-22"]
        :title "Pack, Push and Import Clojure to Unity"
        :css-class "blog-clj-in-unity"
        :tags ["Clojure" "Compiler" "CLR" "Unity"]

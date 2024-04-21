@@ -1,8 +1,7 @@
 #:post{:id "card-games-api"
-       :order 0
        :page :portfolio
-       :employer "Flybot Pte Ltd" 
-       :date "2020-2021"
+       :employer "Flybot Pte Ltd"
+       :date ["2020-01-06" "2021-10-29"]
        :repos [["Magic" "https://github.com/nasser/magic"]]
        :articles [["Port your Clojure lib to the CLR with MAGIC" "../blog/port-clj-lib-to-clr"]]
        :title "Clojure Card Games Backend APIs"

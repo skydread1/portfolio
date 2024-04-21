@@ -1,7 +1,6 @@
 #:post{:id "lasagna-pull-applied-to-flybot"
-       :order 8
        :page :blog
-       :date "2023" ;; 04/08
+       :date ["2023-04-08"]
        :title "Lasagna-pull applied to flybot.sg"
        :css-class "blog-lasagna-pull-flybot"
        :tags ["Clojure" "Pull Pattern"]

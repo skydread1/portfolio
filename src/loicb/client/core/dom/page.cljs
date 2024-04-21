@@ -3,6 +3,10 @@
             [loicb.client.core.dom.common.link :refer [internal-link]]
             [re-frame.core :as rf]))
 
+(defn date-str
+  [dates]
+  (apply str (interpose " - " dates)))
+
 (defn all-tags
   [tags]
   (h/post-hiccup
@@ -66,7 +70,7 @@
      [:div.post-body
       {:class css-class}
       [:h5.info
-       (str date " | "
+       (str (date-str date) " | "
             (if (= :blog page)
               "Blog Article"
               (if employer employer "Personal Project")))]
@@ -91,7 +95,7 @@
        title
        link-params)]
      [:h5.info
-      (str date " | " (if employer employer "Personal Project"))]
+      (str (date-str date) " | " (if employer employer "Personal Project"))]
      (when src
        [:div.image
         [:img {:src src :alt alt}]])
@@ -116,7 +120,7 @@
        [:h2 title]]
       [:div.info
        [:h5.info
-        (str date " | " "Loic Blanchard")]
+        (str (date-str date) " | " "Loic Blanchard")]
        [all-tags tags]]]]))
 
 (defn post-link
@@ -150,7 +154,7 @@
         db-page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
         post-route @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:post-route ?x}}}])
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
-                         (sort-by :post/order)
+                         (sort-by #(first (:post/date %)))
                          reverse)]
     [:section.container
      {:id  (name page-name)
@@ -171,7 +175,7 @@
   (let [page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
         db-page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
-                         (sort-by :post/order)
+                         (sort-by #(first (:post/date %)))
                          reverse)
         active-post-id  @(rf/subscribe [:subs/pattern '{:app/current-view {:path-params {:post-id ?x}}}])
         active-post     (->> posts

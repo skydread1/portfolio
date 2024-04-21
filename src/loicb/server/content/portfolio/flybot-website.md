@@ -1,8 +1,7 @@
 #:post{:id "clojure-full-stack-webapp"
-       :order 3
        :page :portfolio
        :employer "Flybot Pte Ltd" 
-       :date "2022"
+       :date ["2022-05-20" "2023-08-04"]
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :articles [["Deploy full stack Clojure website to AWS" "../blog/deploy-clj-app-to-aws"]
                   ["Lasagna-pull applied to flybot.sg" "../blog/lasagna-pull-applied-to-flybot"]

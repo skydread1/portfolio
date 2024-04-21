@@ -1,7 +1,6 @@
 #:post{:id "port-clj-lib-to-clr"
-       :order 1
        :page :blog
-       :date "2022" ;; 08/02
+       :date ["2022-04-08"]
        :title "Port your Clojure lib to the CLR with MAGIC"
        :css-class "blog-port-clj-lib"
        :tags ["Clojure" "Compiler" "CLR" "Unity"]

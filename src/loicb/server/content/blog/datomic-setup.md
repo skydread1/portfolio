@@ -1,7 +1,6 @@
 #:post{:id "datomic-setup-examples"
-       :order 3
        :page :blog
-       :date "2022" ;; 02/12
+       :date ["2022-12-02"]
        :title "Datomic Setup examples: embedded, cassandra, docker."
        :css-class "blog-datomic-setup"
        :tags ["Clojure" "Datomic" "Cassandra" "Docker"]

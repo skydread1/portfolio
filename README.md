@@ -41,23 +41,19 @@ For development, starting a clj/cljs REPL with `fighweel` allows you to have the
 
 ### Organization
 
-Each post has its own markdown files in the folder of the page it belongs to.
+Each post has its own markdown file in the folder of the page it belongs to.
 
-For instance, I currently have 2 pages:
-
+For instance:
 ```
 .
 ├── about
 │   └── aboutme.md
 └── portfolio
-    ├── blog_django.md
-    ├── flybot_card_games.md
-    ├── flybot_mobile_app.md
-    ├── flybot_website.md
-    ├── magic_nostrand.md
-    ├── mcts.md
-    ├── portfolio_website.md
-    └── props_recommender.md
+    ├── blog-django.md
+    ├── flybot-website.md
+    └── props-recommender.md
+├── blog
+│   └── just-tick-lib.md
 ```
 
 ### Config Clojure map
@@ -71,16 +67,22 @@ post summary
 full post content
 ```
 
-Here is an example of clojure map for a post:
+Following is an example of clojure map for a post config:
 
 ```clojure
-#:post{:order 0
-       :page :home
+#:post{:date ["2024-02-01" "2024-04-01"]
+       :page :portfolio
        :title "My New Project"
        :css-class "my-project"
        :image-beside #:image{:src "/assets/some-illustrative-img.png"
                              :src-dark "/assets/some-illustrative-img-dark.png"
                              :alt "A logo"}}
+```
+
+This map goes at the top of a markdown file like so:
+
+```md
+post map here
 +++
 My project consists in...
 +++

@@ -21,7 +21,7 @@
    :cofx.app/local-store-theme
    (fn [coeffects _]
      (assoc coeffects :local-store-theme :dark)))
-  
+
   ;; Initialize db
   (rf/dispatch [:evt.app/initialize]))
 

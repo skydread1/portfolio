@@ -1,8 +1,7 @@
 #:post{:id "clojure-mobile-app"
-       :order 4
        :page :portfolio
        :employer "Flybot Pte Ltd" 
-       :date "2023"
+       :date ["2023-02-13" "2023-08-08"]
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :articles [["Reagent React Native Mobile App" "../blog/reagent-native-app"]
                   ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
