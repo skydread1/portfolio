@@ -1,7 +1,6 @@
 #:post{:id "fun-map"
-       :order 5
        :page :blog
-       :date "2022" ;; 04/12
+       :date ["2022-04-12"]
        :title "Fun-Map: a solution to deps injection in Clojure"
        :css-class "blog-fun-map"
        :tags ["Clojure" "System" "Component" "Deps Injection"]

@@ -1,7 +1,6 @@
 #:post{:id "reagent-native-app"
-       :order 7
        :page :blog
-       :date "2023" ;; 03/02
+       :date ["2023-02-03"]
        :title "Reagent React Native Mobile App"
        :css-class "blog-reagent-native"
        :tags ["Clojure" "React Native" "Reagent" "Figwheel"]

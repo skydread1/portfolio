@@ -1,8 +1,7 @@
 #:post{:id "game-challenge-recommender"
-       :order 7
        :page :portfolio
        :employer "Flybot Pte Ltd" 
-       :date "2023"
+       :date ["2023-08-08"]
        :title "Challenge Recommender"
        :tags ["Clojure" "Kafka" "Datomic" "Kubernetes" "AWS EKS"]
        :css-class "props-recommender"

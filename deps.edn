@@ -1,17 +1,21 @@
-{:deps {org.clojure/clojure                   {:mvn/version "1.11.1"}
-        metosin/malli                         {:mvn/version "0.13.0"}
-        metosin/reitit                        {:mvn/version "0.7.0-alpha7"}
-        metosin/muuntaja                      {:mvn/version "0.6.8"}
-        sg.flybot/lasagna-pull                {:mvn/version "0.4.156"}
-        com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
-        org.clojure/clojurescript             {:mvn/version "1.11.121"}
-        reagent/reagent                       {:mvn/version "1.2.0"}
+{:deps {com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
+        day8.re-frame/test                    {:mvn/version "0.1.5"}
         cljsjs/highlight                      {:mvn/version "11.7.0-0"}
+        cljsjs/js-joda-timezone               {:mvn/version "2.2.0-0"}
         cljsjs/react                          {:mvn/version "18.2.0-1"}
         cljsjs/react-dom                      {:mvn/version "18.2.0-1"}
+        org.clojure/clojure                   {:mvn/version "1.11.1"}
+        org.clojure/clojurescript             {:mvn/version "1.11.121"}
+        henryw374/js-joda                     {:mvn/version "3.2.0-0"}
+        henryw374/js-joda-locale-en-us {:mvn/version "1.0.0-1"}
         markdown-to-hiccup/markdown-to-hiccup {:mvn/version "0.6.2"}
+        metosin/malli                         {:mvn/version "0.13.0"}
+        metosin/muuntaja                      {:mvn/version "0.6.8"}
+        metosin/reitit                        {:mvn/version "0.7.0-alpha7"}
         re-frame/re-frame                     {:mvn/version "1.4.2"}
-        day8.re-frame/test                    {:mvn/version "0.1.5"}}
+        reagent/reagent                       {:mvn/version "1.2.0"}
+        sg.flybot/lasagna-pull                {:mvn/version "0.4.156"}
+        tick/tick                             {:mvn/version "0.7.5"}}
  :paths ["src" "resources" "target" "test"]
  :aliases
  {;; Run clj tests

@@ -1,8 +1,7 @@
 #:post{:id "magic-clojure-compiler-to-clr"
-       :order 2
        :page :portfolio
        :employer "Flybot Pte Ltd" 
-       :date "2021-2022"
+       :date ["2021-02-01" "2022-12-09"]
        :repos [["Magic" "https://github.com/nasser/magic"] 
                ["Nostrand" "https://github.com/nasser/nostrand"]
                ["Magic.Unity" "https://github.com/nasser/Magic.Unity"] 

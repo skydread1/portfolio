@@ -1,7 +1,6 @@
 #:post{:id "mcts"
-       :order 1
        :page :portfolio
-       :date "2021"
+       :date ["2021-07-19" "2021-08-13"]
        :articles [["MCTS applied to card games" "../blog/article-mcts"]]
        :title "MCTS applied to card games"
        :css-class "mcts"

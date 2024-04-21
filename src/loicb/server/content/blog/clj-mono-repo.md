@@ -1,7 +1,6 @@
 #:post{:id "clojure-mono-repo"
-       :order 8
        :page :blog
-       :date "2023" ;; 16/02
+       :date[ "2023-02-16"]
        :title "Clojure Mono Repo example : server + 2 clients"
        :css-class "blog-mono-repo"
        :tags ["Clojure" "Reagent" "Figwheel" "Mono Repo"]

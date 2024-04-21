@@ -1,7 +1,6 @@
 #:post{:id "tick"
-       :order 12
        :page :blog
-       :date "2024" ;; 04/20
+       :date ["2024-04-20"]
        :title "Time as a value with Tick"
        :css-class "juxt-tick"
        :tags ["Clojure" "Java 8 time" "Tick" "Duration/Period"]

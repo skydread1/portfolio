@@ -1,7 +1,6 @@
 #:post{:id "fun-map-applied-to-flybot"
-       :order 9
        :page :blog
-       :date "2023" ;; 05/08
+       :date ["2023-05-08"]
        :title "Fun-Map applied to flybot.sg"
        :css-class "blog-fun-map-flybot"
        :tags ["Clojure" "System" "Component" "Deps Injection"]

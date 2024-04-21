@@ -1,7 +1,6 @@
 #:post{:id "portfolio-clojurescript-spa"
-       :order 5
        :page :portfolio
-       :date "2023"
+       :date ["2023-04-07" "2024-04-21"]
        :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
        :title "Portfolio Website"
        :css-class "portfolio"
@@ -76,7 +75,6 @@ Here is an example of clojure config map for a post:
 
 ```
 #:post{:id "clojure-full-stack-webapp"
-       :order 2
        :page :portfolio
        :employer "Flybot Pte Ltd"
        :date "2022"
