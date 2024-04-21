@@ -19,7 +19,10 @@ jobs:
         uses: DeLaGuardo/setup-clojure@12.1
         with:
           cli: latest
-          
+
+      - name: Verify code base format
+        run: clojure -T:cljfmt check
+
       - name: Run the clj tests
         run: clojure -A:server/test
 
@@ -31,7 +34,7 @@ jobs:
 
       - uses: EndBug/add-and-commit@v9
         with:
-          add: 'resources/public/main.js'
+          add: "resources/public/main.js"
           committer_name: GitHub Action
           default_author: github_actions
-          message: 'Compiled the cljs to the js bundle: main.js'
+          message: "Compiled the cljs to the js bundle: main.js"

@@ -48,6 +48,9 @@
   :build {:deps       {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}
           :ns-default build}
 
+  :cljfmt {:deps       {io.github.weavejester/cljfmt {:git/tag "0.11.2", :git/sha "fb26b22"}}
+           :ns-default cljfmt.tool}
+
   :outdated {;; Note that it is `:deps`, not `:extra-deps`
              :deps {com.github.liquidz/antq {:mvn/version "RELEASE"}}
              :main-opts ["-m" "antq.core"]}}}

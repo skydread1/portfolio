@@ -1,8 +1,8 @@
 (ns loicb.client.test-runner
   (:require
-    [figwheel.main.testing :refer-macros [run-tests-async]]
+   [figwheel.main.testing :refer-macros [run-tests-async]]
     ;; require all the namespaces that have tests in them
-    [loicb.client.core.db-test]))
+   [loicb.client.core.db-test]))
 
 (defn -main [& _]
   ;; this needs to be the last statement in the main function so that it can
