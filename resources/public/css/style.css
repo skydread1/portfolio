@@ -99,12 +99,11 @@ h6 {
 
 h1 {
     padding: 1rem;
+    margin: 0 1rem;
     text-align: center;
     text-transform: uppercase;
-    color: var(--text-primary-color);
-    border-bottom-style: groove;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--text-primary-color);
+    color: var(--bg-primary-color);
+    background-color: var(--text-secondary-color);
 }
 
 h2 {
@@ -148,6 +147,10 @@ pre code {
 }
 
 @media (max-width: 1024px) {
+    h1 {
+        margin: 0;
+    }
+
     pre code {
         font-size: 0.8rem;
     }
@@ -332,9 +335,6 @@ header {
     z-index: 1;
     margin: auto;
     text-align: center;
-    border-bottom-style: groove;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--border-primary-color);
 }
 
 header.full-screen {
@@ -680,15 +680,19 @@ footer .contact-icons img {
     border-style: solid;
     border-width: 1px;
     border-color: var(--border-primary-color);
-    background-color: var(--bg-primary-color);
     transition: 0.3s;
 }
 
-.vignettes a {
-    color: inherit;
-    display: block;
-    padding: 0;
-    text-decoration: none;
+@media (max-width: 1024px) {
+
+    .vignette-container {
+        flex-basis: 100%;
+        margin: 0;
+        padding: 1rem;
+        text-align: justify;
+        border-style: solid none;
+        transition: 0.3s;
+    }
 }
 
 .post {
@@ -708,13 +712,6 @@ footer .contact-icons img {
         text-align: left;
         background: none;
         border: none;
-        background-color: var(--bg-primary-color);
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-top-color: var(--text-primary-color);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--text-primary-color);
     }
 }
 
@@ -725,12 +722,11 @@ footer .contact-icons img {
 .vignette a,
 .post a {
     padding: 0;
-    text-decoration: none;
     display: inline-block;
 }
 
-.vignette h2 {
-    text-decoration: none;
+.vignette h5 {
+    padding: 0;
 }
 
 .vignette h2,
@@ -743,7 +739,51 @@ footer .contact-icons img {
 }
 
 .post-body .resources {
+    display: flex;
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.post-body .resources .links {
+    padding: 0.5rem;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: var(--border-primary-color);
+}
+
+.post-body .resources h3 {
     padding-top: 0;
+}
+
+.post-body .contribute {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: var(--border-primary-color);
+    background-color: var(--bg-primary-color);
+}
+
+.post-body .contribute>* {
+    font-style: italic;
+}
+
+@media (max-width: 1024px) {
+    .post-body .resources {
+        display: block;
+        padding: 1rem 0;
+        border-style: solid none;
+        border-width: 1px;
+        border-color: var(--border-primary-color);
+    }
+
+    .post-body .resources .links {
+        border: none;
+    }
+
+    .post-body .resources h3 {
+        text-align: left;
+    }
+
 }
 
 .links .link {
@@ -773,14 +813,12 @@ footer .contact-icons img {
 
 .simple-link {
     display: flex;
+    margin: 0 1rem;
     align-items: center;
     justify-content: flex-start;
-    margin: 1rem;
-    padding: 1rem;
-    border-style: solid;
+    border-style: solid none;
     border-width: 1px;
     border-color: var(--border-primary-color);
-    background-color: var(--bg-primary-color);
     transition: 0.3s;
 }
 
@@ -791,12 +829,12 @@ footer .contact-icons img {
 .simple-link h2 {
     margin: 0;
     padding: 0;
+    font-size: 1.4rem;
 }
 
 .simple-link .image {
     flex-basis: 10%;
     margin: 1rem;
-    padding: 1rem;
 }
 
 .simple-link .text {
@@ -823,17 +861,13 @@ footer .contact-icons img {
 
     .simple-link {
         display: block;
+        padding: 1rem;
         margin: 0;
-        text-align: left;
-        background: none;
-        border: none;
-        background-color: var(--bg-primary-color);
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-top-color: var(--text-primary-color);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--text-primary-color);
+    }
+
+    .simple-link .image,
+    .simple-link .tags {
+        display: none;
     }
 
     .simple-link .info {

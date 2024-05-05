@@ -78,10 +78,18 @@
         [:div.image
          [:img {:src src :alt alt}]])
       [all-tags tags]
+      (when (or repos articles)
+        [:div.resources
+         [git-repos repos]
+         [blog-articles articles]])
       (h/md->hiccup md-content)
-      [:div.resources
-       [git-repos repos]
-       [blog-articles articles]]]]))
+      (when (= :blog page)
+        [:div.contribute
+         [:h2 "Contribute"]
+         [:p "Found any typo, errors or parts that need clarification? Feel free to raise a PR on the "
+          [:a {:href "https://github.com/skydread1/portfolio" :rel "noreferrer" :target "_blank"}
+           "GitHub repo"]
+          " and become a co-author."]])]]))
 
 (defn vignette-link
   "Vignette link to a portfolio project article."
