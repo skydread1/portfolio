@@ -99,12 +99,11 @@ h6 {
 
 h1 {
     padding: 1rem;
+    margin: 0 1rem;
     text-align: center;
     text-transform: uppercase;
-    color: var(--text-primary-color);
-    border-bottom-style: groove;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--text-primary-color);
+    color: var(--bg-primary-color);
+    background-color: var(--text-secondary-color);
 }
 
 h2 {
@@ -148,6 +147,10 @@ pre code {
 }
 
 @media (max-width: 1024px) {
+    h1 {
+        margin: 0;
+    }
+
     pre code {
         font-size: 0.8rem;
     }
@@ -332,9 +335,6 @@ header {
     z-index: 1;
     margin: auto;
     text-align: center;
-    border-bottom-style: groove;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--border-primary-color);
 }
 
 header.full-screen {
@@ -680,8 +680,19 @@ footer .contact-icons img {
     border-style: solid;
     border-width: 1px;
     border-color: var(--border-primary-color);
-    background-color: var(--bg-primary-color);
     transition: 0.3s;
+}
+
+@media (max-width: 1024px) {
+
+    .vignette-container {
+        flex-basis: 100%;
+        margin: 0;
+        padding: 1rem;
+        text-align: justify;
+        border-style: solid none;
+        transition: 0.3s;
+    }
 }
 
 .vignettes a {
@@ -708,13 +719,6 @@ footer .contact-icons img {
         text-align: left;
         background: none;
         border: none;
-        background-color: var(--bg-primary-color);
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-top-color: var(--text-primary-color);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--text-primary-color);
     }
 }
 
@@ -773,14 +777,12 @@ footer .contact-icons img {
 
 .simple-link {
     display: flex;
+    margin: 0 1rem;
     align-items: center;
     justify-content: flex-start;
-    margin: 1rem;
-    padding: 1rem;
-    border-style: solid;
+    border-style: solid none;
     border-width: 1px;
     border-color: var(--border-primary-color);
-    background-color: var(--bg-primary-color);
     transition: 0.3s;
 }
 
@@ -791,12 +793,12 @@ footer .contact-icons img {
 .simple-link h2 {
     margin: 0;
     padding: 0;
+    font-size: 1.4rem;
 }
 
 .simple-link .image {
     flex-basis: 10%;
     margin: 1rem;
-    padding: 1rem;
 }
 
 .simple-link .text {
@@ -823,17 +825,13 @@ footer .contact-icons img {
 
     .simple-link {
         display: block;
+        padding: 1rem;
         margin: 0;
-        text-align: left;
-        background: none;
-        border: none;
-        background-color: var(--bg-primary-color);
-        border-top-style: solid;
-        border-top-width: 1px;
-        border-top-color: var(--text-primary-color);
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: var(--text-primary-color);
+    }
+
+    .simple-link .image,
+    .simple-link .tags {
+        display: none;
     }
 
     .simple-link .info {
