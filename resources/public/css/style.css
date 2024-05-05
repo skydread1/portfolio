@@ -695,13 +695,6 @@ footer .contact-icons img {
     }
 }
 
-.vignettes a {
-    color: inherit;
-    display: block;
-    padding: 0;
-    text-decoration: none;
-}
-
 .post {
     text-align: justify;
 }
@@ -729,12 +722,11 @@ footer .contact-icons img {
 .vignette a,
 .post a {
     padding: 0;
-    text-decoration: none;
     display: inline-block;
 }
 
-.vignette h2 {
-    text-decoration: none;
+.vignette h5 {
+    padding: 0;
 }
 
 .vignette h2,
@@ -747,7 +739,51 @@ footer .contact-icons img {
 }
 
 .post-body .resources {
+    display: flex;
+    padding: 1rem;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.post-body .resources .links {
+    padding: 0.5rem;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: var(--border-primary-color);
+}
+
+.post-body .resources h3 {
     padding-top: 0;
+}
+
+.post-body .contribute {
+    border-style: solid none;
+    border-width: 1px;
+    border-color: var(--border-primary-color);
+    background-color: var(--bg-primary-color);
+}
+
+.post-body .contribute>* {
+    font-style: italic;
+}
+
+@media (max-width: 1024px) {
+    .post-body .resources {
+        display: block;
+        padding: 1rem 0;
+        border-style: solid none;
+        border-width: 1px;
+        border-color: var(--border-primary-color);
+    }
+
+    .post-body .resources .links {
+        border: none;
+    }
+
+    .post-body .resources h3 {
+        text-align: left;
+    }
+
 }
 
 .links .link {
