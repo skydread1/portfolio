@@ -179,6 +179,16 @@ li a {
     padding: 0;
 }
 
+img,
+svg {
+    display: block;
+    margin: auto;
+}
+
+.image img {
+    max-width: 10rem;
+}
+
 section button {
     padding: 0.5rem;
     background-color: var(--bg-primary-color);
@@ -187,10 +197,8 @@ section button {
     border-color: var(--text-primary-color);
 }
 
-img,
-svg {
-    display: block;
-    margin: auto;
+section img {
+    text-align: center;
 }
 
 .container {
@@ -734,6 +742,12 @@ footer .contact-icons img {
     text-align: center;
 }
 
+/* Posts */
+
+.post-body img {
+    width: 100%;
+}
+
 .post-body .links {
     padding: 0
 }
@@ -897,11 +911,6 @@ section .post-body {
 }
 
 section .post-body .info {
-    text-align: center;
-}
-
-section img {
-    max-width: 10rem;
     text-align: center;
 }
 
