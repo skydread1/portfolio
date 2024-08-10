@@ -1,5 +1,6 @@
 #:post{:id "mcts"
        :page :portfolio
+       :employer "Flybot Pte Ltd"
        :date ["2021-07-19" "2021-08-13"]
        :articles [["MCTS applied to card games" "../blog/article-mcts"]]
        :title "MCTS applied to card games"
