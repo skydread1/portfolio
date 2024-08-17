@@ -9,7 +9,7 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-## 🔸 Context
+## Context
 
 Our app [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg) is a full-stack Clojure **web** and **mobile** app.
 
@@ -22,11 +22,11 @@ Note that the web app does not use NPM at all. However, the React Native mobile 
 
 By using only one `deps.edn`, we can easily starts the different parts of the app.
 
-## 🔸 Goal
+## Goal
 
 The goal of this document is to highlight the mono-repo structure and how to run the different parts (dev, test, build etc).
 
-## 🔸 Repo structure
+## Repo structure
 
 ```
 ├── client
@@ -61,7 +61,7 @@ The goal of this document is to highlight the mono-repo structure and how to run
 - `common` dir the `.cljc` files
 - `clients` dir the `.cljs` files.
 
-## 🔸 Deps Management
+## Deps Management
 
 You can have a look at the [deps.edn](https://github.com/skydread1/flybot.sg/blob/master/deps.edn).
 
@@ -69,7 +69,7 @@ We can use namespaced aliases in `deps.edn` to make the process clearer.
 
 I will go through the different aliases and explain their purposes and how to I used them to develop the app.
 
-## 🔸 Common libraries
+## Common libraries
 
 ### clj and cljc deps
 
@@ -110,7 +110,7 @@ However, when you work on the frontend, you need to load the backend deps to hav
 
 You can see that the **common** `cljc` files are being watched in both scenarios which makes sense since they "become" clj or cljs code depending on what REPL type you are currently working in.
 
-## 🔸 Server aliases
+## Server aliases
 
 Following are the aliases used for the server:
 
@@ -118,7 +118,7 @@ Following are the aliases used for the server:
 - `:server/dev`: clj paths for the backend systems and tests
 - `:server/test`: Run clj tests
 
-## 🔸 Client common aliases
+## Client common aliases
 
 Following is the alias used for both web and mobile clients:
 
@@ -128,16 +128,16 @@ The extra-paths contains the `cljs` files.
 
 We can note the `client/common/src` path that contains most of the `re-frame` logic because most subscriptions and events work on both web and react native right away!
 
-The main differences between the re-frame logic for Reagent and Reagent Native are have to do with how to deal with Navigation and oauth2 redirection. That is the reason we have most of the logic in a **common** dir in `client`.
+The main differences between the re-frame logic for Reagent and Reagent Native have to do with how to deal with Navigation and oauth2 redirection. That is the reason we have most of the logic in a **common** dir in `client`.
 
-## 🔸 Mobile Client
+## Mobile Client
 
 Following are the aliases used for the **mobile** client:
 
 - `:mobile/rn`: contains the cljs deps only used for react native. They are added on top of the client deps.
 - `:mobile/ios`: starts the figwheel REPL to work on iOS.
 
-## 🔸 Web Client
+## Web Client
 
 Following are the aliases used for the **web** client:
 
@@ -146,7 +146,7 @@ Following are the aliases used for the **web** client:
 - `:web/test`: runs the cljs tests
 - `:web/test-headless`: runs the headless cljs tests (fot GitHub CI)
 
-## 🔸 CI/CD aliases
+## CI/CD aliases
 
 ### build.clj
 
@@ -166,20 +166,22 @@ Following is the alias used to build an image and push it to local docker or AWS
 
 - `:jib`: build image and push to image repo
 
-## 🔸 Antq
+## Antq
 
 Following is the alias used to points out outdated dependencies
 
 - `:outdated`: prints the outdated deps and their last available version
 
 
-## 🔸 Notes on Mobile CD
+## Notes on Mobile CD
 
 We have not released the mobile app yet, that is why there is no aliases related to CD for react native yet.
 
-## 🔸 Conclusion
+## Conclusion
 
 This is one solution to handle server and clients in the same repo.
+
+Feel free to consult the complete [deps.edn](https://github.com/skydread1/flybot.sg/blob/master/deps.edn) content.
 
 It is important to have a clear directory structure to only load required namespaces and avoid errors.
 

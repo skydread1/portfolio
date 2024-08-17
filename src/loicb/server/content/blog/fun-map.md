@@ -9,27 +9,25 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-## 🔸 Context
+## Context
 
-The Lasagna stack library [fun-map](https://github.com/robertluo/fun-map) by [@robertluo](https://github.com/robertluo). Fun-Map blurs the line between identity, state and function. As a results, it is a very convenient tool to define `system` in your applications by providing an elegant way to perform associative dependency injections.
+The Lasagna stack library [fun-map](https://github.com/robertluo/fun-map) by [@robertluo](https://github.com/robertluo) blurs the line between identity, state and function. As a results, it is a very convenient tool to define `system` in your applications by providing an elegant way to perform associative dependency injections.
 
-## 🔸 Goal
+## Goal
 
 In this document, I will show you the benefit of `fun-map`, and especially the `life-cycle-map` as dependency injection system.
 
-## 🔸 Rational
+## Rational
 
 ### Managing state
 
 In any kind of programs, we need to manage the state. In Clojure, we want to keep the mutation parts of our code as isolated and minimum as possible. The different components of our application such as the db connections, queues or servers for instance are mutating the world and sometimes need each other to do so. The talk [Components Just Enough Structure](https://www.youtube.com/watch?v=13cmHf_kt-Q) by Stuart Sierra explains this dependency injection problem very well and provides a Clojure solution to this problem with the library [component](https://github.com/stuartsierra/component).
 
-Our library to do so is [fun-map](https://github.com/robertluo/fun-map). In order to understand why fun-map is very convenient, it is interesting to look at other existing solutions first.
+[fun-map](https://github.com/robertluo/fun-map) is another way of dealing with inter-dependent components. In order to understand why `fun-map` is very convenient, it is interesting to look at other existing solutions first.
 
 ### Component
 
 Let’s first have a look at existing solution to deal with life cycle management of components in Clojure, especially the Component library which is a very good library to provide a way to define systems.
-
-#### stuartsierra/component
 
 In the Clojure word, we have stateful components (atom, channel etc) and we don’t want it to be scattered in our code without any clear way to link them and also know the order of which to start these external resources. 
 
@@ -48,9 +46,9 @@ A DB component could look like this for instance
     (assoc component :connection nil)))
 ```
 
-All these components are then combined together in a `system` map that just bound a keyword to each component. A system is a component that has its own start/stop implementation that is responsible to start all components in dependency order and shut them down in reverse order.
+All these components are then combined together in a `system` map that just bounds a keyword to each component. A system is a component that has its own start/stop implementation that is responsible to start all components in dependency order and shut them down in reverse order.
 
-If a component has dependencies on other components, they are then associated to the system and started first. Since all components return another state of the system; after all components are started, their return values are assoc back to the system.
+If a component has dependencies on other components, they are then associated to the system and started first. Since each component returns another state of the system; after all components are started, their return values are assoc back to the system.
 
 Here is an example of a system with 3 components. The `app` components depends on the `db` and `scheduler` components so they will be started first:
 
@@ -99,7 +97,7 @@ Other libraries were created as replacement of component such as [mount](https:/
 - Mount highlights their differences with Component in [here](https://github.com/tolitius/mount/blob/master/doc/differences-from-component.md#differences-from-component).
 - Integrant highlights their differences with Component in [here](https://github.com/weavejester/integrant/blob/master/README.md#rationale).
 
-## 🔸 Fun-map
+## Fun-map
 
 [fun-map](https://github.com/robertluo/fun-map) is yet another replacement of [component](https://github.com/stuartsierra/component), but it does more than just providing state management.
 
@@ -148,7 +146,7 @@ Calling the `:average` key will first call the keys it depends on, meaning `:cnt
 ;=> 7/2
 ```
 
-We recognized the same dependency injections process highlighted in the Component section.
+We recognize the same dependency injections process highlighted in the Component section.
 
 Furthermore, fun-map provides a convenient wrapper `fnk` macro to destructure directly the keys we want to focus on:
 
@@ -244,6 +242,6 @@ Same as for Component, you can easily dissoc/assoc/merge keys in your system for
 
 fun-map also support other features such as function call tracing, value caching or lookup for instance. More info in the readme.
 
-## 🔸 Fun-Map applied to flybot.sg
+## Fun-Map applied to flybot.sg
 
-To see Fun Map in action, refer to the doc [Fun-Map applied to flybot.sg](./fun-map-applied-to-flybot.md).
+To see Fun Map in action, refer to the doc [Fun-Map applied to flybot.sg](https://www.loicblanchard.me/blog/fun-map-applied-to-flybot).

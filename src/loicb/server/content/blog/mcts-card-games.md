@@ -96,18 +96,14 @@ In the algorithm behind **AlphaGo**, a **UCB** based policy is used. More specif
 
 The **UCB1** formula is the following:
 
-$$
-UCB(node_{i}) = \bar{x}_{i}+c\sqrt{\frac{\log_{10}N}{n_{i}}}
-$$
+![UCB1 formula](/assets/mcts/ucb1.png)
 
 > With `xi` the mean node value, `ni` the number of visits of node `i`, `N` the number of visits of the parent node.
 > 
 
 The equation includes the 2 following components:
 
-$$
-UCB(node_{i}) = exploitation + c.exploration
-$$
+![UCB1 formula parts](/assets/mcts/ucb1_2.png)
 
 The first part of the equation is the `exploitation` based on the *optimism in the fact of uncertainty*.
 
@@ -123,9 +119,7 @@ To recap, The `UCB` will often return the state that led to the most points in t
 
 The formula applied to **big-two** is the following:
 
-$$
-UCB = \frac{total\text{-}score}{nb\text{-}visits}+2\sqrt{\frac{\log_{10}(nb\text{-}visits\text{-}parent))}{nb\text{-}visits}}
-$$
+![UCB1 applied to BT](/assets/mcts/ucb_bt.png)
 
 ### Expansion
 
@@ -198,4 +192,4 @@ The details of this `game-plan` are confidential for obvious reasons.
 
 Having an hybrid approach, meaning using a `game-plan` for the first moves of the game when the possible plays are too numerous, and then use MCTS at the end of the game allowed us to have a decent AI we can use.
 
-As of the time I write this article (2023), the implementation is being tested (as part of a bigger system) and not yet in production.
+As of the time I write this article, the implementation is being tested (as part of a bigger system) and not yet in production.

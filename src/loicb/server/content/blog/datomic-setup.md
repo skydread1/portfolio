@@ -262,7 +262,7 @@ However, this will not work right away as we need to add a few configurations to
 
 Regarding the transactor properties (datomic provides a template for a transactor with Cassandra storage), when we use docker, we need to pay attention to 3 properties:
 
-- The [`localhost`](http://localhost) is now 0.0.0.0
+- The `localhost` is now 0.0.0.0
 - `alt-host` must be added with the container name (or IP) or the container running the app.
 - `storage-access` must be set to `remote`
 

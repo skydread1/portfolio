@@ -2,6 +2,9 @@
        :page :blog
        :date ["2022-04-22"]
        :title "Pack, Push and Import Clojure to Unity"
+       :repos [["Magic" "https://github.com/nasser/magic"] 
+               ["Nostrand" "https://github.com/nasser/nostrand"]
+               ["Magic.Unity" "https://github.com/nasser/Magic.Unity"]]
        :css-class "blog-clj-in-unity"
        :tags ["Clojure" "Compiler" "CLR" "Unity"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -11,7 +14,16 @@
 +++
 ## Prerequisites
 
-- Read the article: [Port your Clojure lib to the CLR with MAGIC](https://www.loicblanchard.me/#/blog/port-clojure-to-clr-with-magic)
+Your Clojure library is assumed to be already compiled to dotnet.
+
+To know how to do this, refer to the article: [Port your Clojure lib to the CLR with MAGIC](https://www.loicblanchard.me/blog/port-clj-lib-to-clr)
+
+## Goal
+
+In this article, I will show you:
+- how to package your lib to nuget
+- push it in to your host repo
+- import in Unity in this article
 
 ## Build the dlls with Nostrand
 
@@ -73,7 +85,7 @@ You can find an example here: [clr.test.check.nuspec](https://github.com/skydrea
 
 The `dependency` tag is required to indicate the targeted framework.
 
-The `file` (using a wild card to avoid adding the files one by one) is required to add the dlls files that will be available for the consumer. So the target must be `lib\{TFM}`.
+The `file` (using a wild card to avoid adding the files one by one) is required to add the dlls files that will be available for the consumer. So the target must be `lib\TFM`.
 
 In our case, Unity recommends to use `netstandard2.0` so our target is `lib\netstandard2.0`.
 
@@ -257,107 +269,8 @@ nuget restore -NoCache
 Here is the packages tree of our project for instance:
 
 ```bash
-~/workspaces/unity-projects/hjdcdd/Assets/ClojureLibs:tree
+~/workspaces/unity-projects/my-proj:
 .
-├── Magic.Unity.1.0.0
-│   ├── Magic.Unity.1.0.0.nupkg
-│   ├── content
-│   │   ├── Editor
-│   │   │   ├── Shell.cs
-│   │   │   └── Window.cs
-│   │   └── Magic.Unity.cs
-│   └── lib
-│       └── netstandard2.0
-│           ├── Clojure
-│           │   ├── clojure.clr.io.clj.dll
-│           │   ├── clojure.clr.shell.clj.dll
-│           │   ├── clojure.core.clj.dll
-│           │   ├── clojure.core.protocols.clj.dll
-│           │   ├── clojure.core.reducers.clj.dll
-│           │   ├── clojure.core.server.clj.dll
-│           │   ├── clojure.core.specs.alpha.clj.dll
-│           │   ├── clojure.core_clr.clj.dll
-│           │   ├── clojure.core_deftype.clj.dll
-│           │   ├── clojure.core_print.clj.dll
-│           │   ├── clojure.core_proxy.clj.dll
-│           │   ├── clojure.data.clj.dll
-│           │   ├── clojure.datafy.clj.dll
-│           │   ├── clojure.edn.clj.dll
-│           │   ├── clojure.genclass.clj.dll
-│           │   ├── clojure.gvec.clj.dll
-│           │   ├── clojure.instant.clj.dll
-│           │   ├── clojure.main.clj.dll
-│           │   ├── clojure.pprint.cl_format.clj.dll
-│           │   ├── clojure.pprint.clj.dll
-│           │   ├── clojure.pprint.column_writer.clj.dll
-│           │   ├── clojure.pprint.dispatch.clj.dll
-│           │   ├── clojure.pprint.pprint_base.clj.dll
-│           │   ├── clojure.pprint.pretty_writer.clj.dll
-│           │   ├── clojure.pprint.print_table.clj.dll
-│           │   ├── clojure.pprint.utilities.clj.dll
-│           │   ├── clojure.repl.clj.dll
-│           │   ├── clojure.set.clj.dll
-│           │   ├── clojure.spec.alpha.clj.dll
-│           │   ├── clojure.spec.gen.alpha.clj.dll
-│           │   ├── clojure.stacktrace.clj.dll
-│           │   ├── clojure.string.clj.dll
-│           │   ├── clojure.template.clj.dll
-│           │   ├── clojure.test.clj.dll
-│           │   ├── clojure.tools.analyzer.ast.clj.dll
-│           │   ├── clojure.tools.analyzer.clj.dll
-│           │   ├── clojure.tools.analyzer.env.clj.dll
-│           │   ├── clojure.tools.analyzer.passes.cleanup.clj.dll
-│           │   ├── clojure.tools.analyzer.passes.clj.dll
-│           │   ├── clojure.tools.analyzer.passes.elide_meta.clj.dll
-│           │   ├── clojure.tools.analyzer.passes.source_info.clj.dll
-│           │   ├── clojure.tools.analyzer.passes.trim.clj.dll
-│           │   ├── clojure.tools.analyzer.utils.clj.dll
-│           │   ├── clojure.uuid.clj.dll
-│           │   ├── clojure.walk.clj.dll
-│           │   └── clojure.zip.clj.dll
-│           ├── Clojure.Runtime
-│           │   └── Clojure.dll
-│           ├── IL2CPP
-│           │   ├── Magic.IL2CPP.CLI.exe
-│           │   ├── Magic.IL2CPP.CLI.exe.config
-│           │   ├── Magic.IL2CPP.CLI.pdb
-│           │   ├── Magic.IL2CPP.Patches.dll
-│           │   ├── Magic.IL2CPP.Patches.pdb
-│           │   ├── Mono.Cecil.Mdb.dll
-│           │   ├── Mono.Cecil.Pdb.dll
-│           │   ├── Mono.Cecil.Rocks.dll
-│           │   └── Mono.Cecil.dll
-│           ├── Magic
-│           │   ├── LineEditor.dll
-│           │   ├── mage.core.clj.dll
-│           │   ├── magic.analyzer.analyze_host_forms.clj.dll
-│           │   ├── magic.analyzer.binder.clj.dll
-│           │   ├── magic.analyzer.clj.dll
-│           │   ├── magic.analyzer.collect_closed_overs.clj.dll
-│           │   ├── magic.analyzer.errors.clj.dll
-│           │   ├── magic.analyzer.generated_types.clj.dll
-│           │   ├── magic.analyzer.intrinsics.clj.dll
-│           │   ├── magic.analyzer.literal_reinterpretation.clj.dll
-│           │   ├── magic.analyzer.loop_bindings.clj.dll
-│           │   ├── magic.analyzer.novel.clj.dll
-│           │   ├── magic.analyzer.reflection.clj.dll
-│           │   ├── magic.analyzer.remove_local_children.clj.dll
-│           │   ├── magic.analyzer.typed_passes.clj.dll
-│           │   ├── magic.analyzer.types.clj.dll
-│           │   ├── magic.analyzer.uniquify.clj.dll
-│           │   ├── magic.analyzer.untyped_passes.clj.dll
-│           │   ├── magic.analyzer.util.clj.dll
-│           │   ├── magic.api.clj.dll
-│           │   ├── magic.core.clj.dll
-│           │   ├── magic.emission.clj.dll
-│           │   ├── magic.flags.clj.dll
-│           │   ├── magic.interop.clj.dll
-│           │   ├── magic.intrinsics.clj.dll
-│           │   ├── magic.spells.lift_keywords.clj.dll
-│           │   ├── magic.spells.lift_vars.clj.dll
-│           │   └── magic.util.clj.dll
-│           └── Magic.Runtime
-│               └── Magic.Runtime.dll
 ├── clr.test.check-legacy.1.1.1
 │   ├── clr.test.check-legacy.1.1.1.nupkg
 │   └── lib
@@ -376,6 +289,17 @@ Here is the packages tree of our project for instance:
 │       └── netstandard2.0
 │           ├── domain.my_prate_lib.core.clj.dll
 │           └── domain.my_prate_lib.core.utils.clj.dll
+```
+
+Finally, You can add Magic.Unity (runtime for magic inside Unity) in the manifest.json like so:
+
+```json
+{
+  "dependencies": {
+	  ...,
+    "sr.nas.magic.unity": "https://github.com/nasser/Magic.Unity.git"
+	}
+}
 ```
 
 ## Conclusion

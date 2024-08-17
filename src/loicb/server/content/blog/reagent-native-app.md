@@ -2,6 +2,7 @@
        :page :blog
        :date ["2023-02-03"]
        :title "Reagent React Native Mobile App"
+       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :css-class "blog-reagent-native"
        :tags ["Clojure" "React Native" "Reagent" "Figwheel"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -182,7 +183,6 @@ We now should have all the tools installed to start a React Native project on Ma
 ```bash
 # setup project
 npx react-native init MyAwesomeProject
-
 ```
 
 ### Running the project
