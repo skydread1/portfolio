@@ -2,6 +2,8 @@
        :page :blog
        :date ["2022-04-08"]
        :title "Port your Clojure lib to the CLR with MAGIC"
+       :repos [["Magic" "https://github.com/nasser/magic"] 
+               ["Nostrand" "https://github.com/nasser/nostrand"]]
        :css-class "blog-port-clj-lib"
        :tags ["Clojure" "Compiler" "CLR" "Unity"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -332,5 +334,5 @@ My fork uses reader conditionals so it can be run and tested in both JVM and CLR
 
 ## Learn more
 
-Now that your library is compiled to dotnet, you can learn how to package it to nuget, push in to your host repo and import in Unity in this article:
-- TODO
+Now that your library is compiled to dotnet, you can learn how to package it to nuget, push it in to your host repo and import in Unity in this article:
+- [Pack, Push and Import Clojure to Unity](https://www.loicblanchard.me/blog/clojure-in-unity).

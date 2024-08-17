@@ -2,6 +2,7 @@
        :page :blog
        :date ["2023-05-08"]
        :title "Fun-Map applied to flybot.sg"
+       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :css-class "blog-fun-map-flybot"
        :tags ["Clojure" "System" "Component" "Deps Injection"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -9,15 +10,15 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-## 🔸 Prerequisites
+## Prerequisites
 
-If you are not familiar with [fun-map](https://github.com/robertluo/fun-map), please refer to the doc [Fun Map Rational](./fun-map)
+If you are not familiar with [fun-map](https://github.com/robertluo/fun-map), please refer to the doc [Fun-Map: a solution to deps injection in Clojure](https://www.loicblanchard.me/blog/fun-map).
 
-## 🔸 Goal
+## Goal
 
-In this document, I will show you how we leverage `fun-map` to create different systems: `prod-system`, `dev-system`, `test-system` and `figwheel-system`.
+In this document, I will show you how we leverage `fun-map` to create different systems in the website [flybot.sg](https://www.flybot.sg/): `prod-system`, `dev-system`, `test-system` and `figwheel-system`.
 
-## 🔸 Prod System
+## Prod System
 
 In our backend, we use `life-cycle-map` to manage the life cycle of all our stateful components.
 
@@ -139,7 +140,7 @@ clj꞉clj.flybot.core꞉>
      :hash nil}>}}
 ```
 
-## 🔸 Dev System
+## Dev System
 
 The `system` described above can easily be adapted to be used for development purposes.
 
@@ -172,13 +173,13 @@ Thus, we just have to assoc a new db component to the `system` and read some dev
       (assoc :db-conn (db-conn-system data/init-data))))
 ```
 
-The important thing to remember is that all the modifications to the system must be done before starting the system (via `touch` ). If some modifications need to be made to the running system:
+The important thing to remember is that all the modifications to the system must be done before starting the system (via `touch`). If some modifications need to be made to the running system:
 
 1. Shutdown the system (via `halt!`)
 2. Update the system logic
 3. Start the newly modified system (via `touch`)
 
-## 🔸 Test system
+## Test system
 
 Naturally, the fun-map system also plays well with testing.
 
@@ -215,7 +216,7 @@ This works well with the clojure.test fixtures:
 (use-fixtures :each system-fixture)
 ```
 
-## 🔸 Figwheel system
+## Figwheel system
 
 It is possible to [provide a ring-handler](https://figwheel.org/docs/ring-handler.html) to figwheel configs which will be passed to a server figwheel starts for us.
 

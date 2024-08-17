@@ -2,6 +2,7 @@
        :page :blog
        :date ["2023-04-08"]
        :title "Lasagna-pull applied to flybot.sg"
+       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :css-class "blog-lasagna-pull-flybot"
        :tags ["Clojure" "Pull Pattern"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -9,15 +10,15 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-## 🔸 Prerequisites
+## Prerequisites
 
-If you are not familiar with [lasagna-pull](https://github.com/flybot-sg/lasagna-pull), please refer to the doc [Lasagna Pull Rational](./lasagna-pull)
+If you are not familiar with [lasagna-pull](https://github.com/flybot-sg/lasagna-pull), please refer to the doc [Lasagna Pull: Precisely select from deep nested data](https://www.loicblanchard.me/blog/lasagna-pull)
 
-## 🔸 Goal
+## Goal
 
-In this document, I will show you how we leverage `lasagna-pull` in our [flybot app](https://github.com/skydread1/flybot.sg) to define a pure data API.
+In this document, I will show you how we leverage `lasagna-pull` in the [flybot app](https://github.com/skydread1/flybot.sg) to define a pure data API.
 
-## 🔸 Defines API as pure data
+## Defines API as pure data
 
 A good use case of the pattern is as parameter in a post request.
 
@@ -72,7 +73,7 @@ Therefore the pull pattern:
 - Describes what is asked by the client to only return relevant data
 - Can easily perform authorization
 
-## 🔸 Example: pull a post
+## Example: pull a post
 
 For instance, getting a specific post, meaning with the “route”: `:posts :post`, can be done this way:
 
@@ -157,11 +158,11 @@ We decided to fetch all the information of the post in our pattern but we could 
 
 The function `(fn [post-id] (get-post db post-id))` returned **all** the post keys but we only select the `post/id` and `post/page`.
 
-So we provided required param `s/post-1-id` to the endpoint `:post` and we also specified what information we want (`:post/id` and `:post/page`).
+So we provided the required param `s/post-1-id` to the endpoint `:post` and we also specified what information we want to pull: `:post/id` and `:post/page`.
 
 You can start to see how convenient that is as a frontend request to the backend. our post request body can just be a `pull-pattern`! (more on this further down in the doc).
 
-## 🔸 Post data validation
+## Post data validation
 
 It is common to use [malli](https://github.com/metosin/malli) schema to validate data.
 
@@ -191,7 +192,7 @@ Here is the malli schema for the post data structure we used above:
    [:post/default-order {:optional true} nat-int?]])
 ```
 
-## 🔸 Pattern data validation
+## Pattern data validation
 
 `lasagna-pull` also allows us to provide schema alongside the pattern to validate 2 things:
 
@@ -246,7 +247,7 @@ Plus, in case the params given to one of the routes are not valid, the function 
 
 So now we have a way to do post request to our backend providing a pull-pattern as the request body and our server can validate this pattern format and content as the data is being pulled.
 
-## 🔸 Pattern query context
+## Pattern query context
 
 ### How it works
 
@@ -379,9 +380,9 @@ Also, the effects can be executed in a dedicated executor functions all at once.
 
 This allows us to deal with pure data until the very last moment when we run all the side effects (db transaction and session) in one place only we call `executor`.
 
-## 🔸 Saturn handler
+## Saturn handler
 
-You might have noticed a component in our system called the `saturn-handler`. The `ring-handler` depends on it.
+In our system, we have a component called the `saturn-handler`. The component `ring-handler` depends on it.
 
 In order to isolate the side effects as much as we can, our endpoints from our `pullable-data`, highlighted previously, do not perform side effects but return **descriptions** in pure data of the side effects to be done. These side effects are the ones we gather in `:context/effects` and `:context/sessions` using the pull-pattern's query context.
 

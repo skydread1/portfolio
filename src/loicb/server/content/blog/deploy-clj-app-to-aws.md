@@ -2,6 +2,7 @@
        :page :blog
        :date ["2023-01-20"]
        :title "Deploy full stack Clojure website to AWS"
+       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :css-class "blog-deploy-clj-aws"
        :tags ["Clojure" "AWS" "Full-Stack"]
        :image #:image{:src "/assets/loic-blog-logo.png"
@@ -9,7 +10,7 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-This is an example of how to deploy a containerised full-stack Clojure app in AWS EC2.
+This is an example of how to deploy a containerized full-stack Clojure app in AWS EC2.
 
 I will use the [flybot.sg website](https://github.com/skydread1/flybot.sg) as example of app to deploy.
 

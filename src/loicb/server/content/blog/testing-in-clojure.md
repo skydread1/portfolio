@@ -88,7 +88,7 @@ The solution is to **isolate** the impure code:
 
 The `fib` function is now **pure** and the same input will always yield the same output. I can therefore write my unit tests and be confident of the result. You might have noticed I added `^:rct/test` above the comment block which is actually a unit test that can be run with RCT (more on this later).
 
-The impure code is isolated in the `config<-file` function, which handles reading the environment variable from a file.
+The **impure** code is isolated in the `config<-file` function, which handles reading the environment variable from a file.
 
 This may seem basic, but it's the essential first step in testing: ensuring the code is as pure as possible for easier testing is one of the strengths of **data-oriented** programming!
 
@@ -98,8 +98,8 @@ For all my personal and professional projects, I have used [kaocha](https://gith
 
 There are 2 main ways to run the tests that developers commonly use:
 
-- Within the **REPL** as they implement their features or fix bugs
-- In the **terminal**: to verify that all tests pass or to target a group of tests only like integration tests for instance.
+- Within the **REPL** as we implement our features or fix bugs
+- In the **terminal**: to verify that all tests pass or to target a specific group of tests
 
 Here is the `deps.edn` I will use in this example:
 
@@ -149,7 +149,7 @@ After I `jack-in` using my *dev* alias form the `deps.edn` file, I can load the 
 2. *ctrl+alt+c* *enter* (in the `fib-test` namespace): load the ns in the REPL
 3. *ctrl+alt+c* *t* (in the `fib-test` namespace): run the tests
 
-
+In the REPL, we see:
 ```clojure
 clj꞉user꞉>
 ; Evaluating file: fib_test.clj
@@ -164,7 +164,7 @@ clj꞉my-app.core.fib-test꞉> 
 
 ### Kaocha in terminal
 
-Before committing code, it's crucial to run all project tests to ensure new changes haven't broken existing functionality.
+Before committing code, it's crucial to run all project tests to ensure new changes haven't broken existing functionalities.
 
 I added a few other namespaces and some tests.
 
@@ -275,7 +275,7 @@ Writing HTML report to: /Users/loicblanchard/workspaces/clojure-proj-template/ta
 
 ### Kaocha in terminal with options
 
-There are a bunch of options to enhance the testing experience such as:
+There are a bunch of options to enhance the development experience such as:
 
 ```bash
 clj -M:dev:test --watch --fail-fast
@@ -288,7 +288,7 @@ These 2 options are very convenient for unit testing.
 
 However, when a code base contains slower tests, if the slower tests are run first, the watch mode is not so convenient because it won’t provide instant feedback.
 
-We saw that we can `focus` on tests with a specific metadata tag, we can also `skip` tests. Let’s pretend our `system` test is slow and it is important to skip it so we only run unit tests:
+We saw that we can `focus` on tests with a specific metadata tag, we can also `skip` tests. Let’s pretend our `system` test is slow and we want to skip it to only run unit tests:
 
 ```bash
  clj -M:dev:test --watch --fail-fast --skip-meta :system
@@ -318,7 +318,7 @@ malli: dev-mode started
 2 tests, 7 assertions, 0 failures.
 ```
 
-We can now leave the terminal always on, change a file and save it and the tests will be rerun and first failing tests (if any) will be reported first and if all tests pass just get the results without any profiling/coverage metrics for clarity.
+We can now leave the terminal always on, change a file and save it and the tests will be rerun using all the options mentioned above.
 
 ## Documentation as unit tests: Rich Comment Tests
 
@@ -381,11 +381,13 @@ This is possible by wrapping the RC Tests in a deftest like so:
     (rctr/run-tests-in-file-tree! :dirs #{"src"})))
 ```
 
-And if it is important to run just the `rct` tests, we can focus on the metadata (see the metadata in the deftest above).
+And if we want to run just the `rct` tests, we can focus on the metadata (see the metadata in the deftest above).
 
 ```clojure
 clj -M:dev:test --focus-meta :rct
 ```
+
+It is possible to run the RC Tests without using Kaocha of course, refer to their doc for that.
 
 ## clojure.test vs RCT?
 
@@ -499,7 +501,7 @@ Not going into too much details here but you can see that we define a `schema` t
 
 ### Malli: Data Generation
 
-Let’s have a look at a simple example of a test of our system which randomly generate a length and verify that the result is indeed a sequence of numbers with `length` element:
+Let’s have a look at a simple example of a test of our system which randomly generates a length and verifies that the result is indeed a sequence of numbers with `length` element:
 
 ```clojure
 (ns my-app.core-test
@@ -527,7 +529,7 @@ Let’s have a look at a simple example of a test of our system which randomly g
            [:sequential {:min length :max length} :int])))))
 ```
 
-The second `testing` highlights both data generation (the `length`) and data validation (result must be a sequence of int with `length` elements).
+The second `testing` highlights both data generation (the `length`) and data validation (result must be a sequence of `int` with `length` elements).
 
 The `dev/start!` starts malli instrumentation. It automatically detects functions which have malli specs and validate it. Let’s see what it does exactly in the next section.
 
@@ -554,7 +556,7 @@ Earlier, we saw tests for the `core/system` functions. Here is the core namespac
     (system cfg)))
 ```
 
-The `system` function is straight forward. It takes a config map and return the fib sequence.
+The `system` function is straight forward. It takes a config map and returns the fib sequence.
 
 Note the metadata of that function:
 
@@ -575,19 +577,21 @@ Clojure is a dynamically typed language, allowing us to write functions without 
 
 However, if we start adding type check to all functions in all namespaces (in our case with malli metadata for instance), we introduce strict typing to our entire code base and therefore all the constraints that come with it.
 
-Personally, I recommend adding validation for the entry point of the app only. For instance, if we develop a library, we will most likely have a top level namespace called `my-app.core.ns` or `my-app.main.ns` with the different functions our client can call. These functions are the ones we want to validate. All the internal logic, not supposed to be called by the clients, even though they can, do not need to be spec’ed as we want to maintain the flexibility I mentioned earlier.
+Personally, I recommend adding validation for the entry point of the app only. For instance, if we develop a library, we will most likely have a top level namespace called `my-app.core` or `my-app.main` with the different functions our client can call. These functions are the ones we want to validate. All the internal logic, not supposed to be called by the clients, even though they can, do not need to be spec’ed as we want to maintain the flexibility I mentioned earlier.
 
-A second example could be that we develop an app that has a `-main` function that will be called to start our system. A system can be whatever our app needs to perform, it can start servers, connect to databases, perform batch jobs etc. Note that in that case the entry point of our program is the `-main` function. What we want to validate is that the proper params are passed to the system that our `-main` function will start. Going back to our Fib app example, our system is very simple, it just returns the Fib sequence given the length. The length is what need to be validated in our case as it is provided externally via env variable. That is why we saw that the system function had malli metadata. However, our internal function have tests but no spec to keep that dynamic language flexibility that Clojure offers.
+A second example could be that we develop an app that has a `-main` function that will be called to start our system. A system can be whatever our app needs to perform. It can start servers, connect to databases, perform batch jobs etc. Note that in that case the entry point of our program is the `-main` function. What we want to validate is that the proper params are passed to the system that our `-main` function will start. Going back to our Fib app example, our system is very simple, it just returns the Fib sequence given the length. The length is what need to be validated in our case as it is provided externally via env variable. That is why we saw that the system function had malli metadata. However, our internal function have tests but no spec to keep that dynamic language flexibility that Clojure offers.
+
+Finally, note the distinction between `instrumentation`, that is used for development (the metadata with the function schemas) and data validation for production (call to `cfg/validate-cfg`). For overhead reasons, we don't want to instrument our functions in production, it is a development tool. However, we do want to have our system throws an error when wrong params are provided to our system, hence the call to `cfg/validate-cfg`.
 
 ## Load/stress/integration tests
 
-In functional programming, and especially in Clojure, it is important to avoid side effects (mutations, external factors, etc) as much as we can. Of course, we cannot avoid mutations as they are inevitable: start a server, connect to a database, IOs, update frontend web state and much more. What we can do is isolate these side effects so the rest of the code base remain pure and can enjoy the flexibility and thus predictable behavior and easy to maintain test suite.
+In functional programming, and especially in Clojure, it is important to avoid side effects (mutations, external factors, etc) as much as we can. Of course, we cannot avoid mutations as they are inevitable: start a server, connect to a database, IOs, update frontend web state and much more. What we can do is isolate these side effects so the rest of the code base remains pure and can enjoy the flexibility and thus predictable behavior.
 
 ### Mocking data
 
-Some might argue that we should never mock data. From my humble personal experience, this is impossible. An app I worked on consumes messages from different kafka topics, write/read from a datomic database, makes http calls to multiple remote servers and produces messages to several kafka topics. So if I don’t want to mock anything, I need to have several remote http servers in a test cluster just for testing. I need to have a real datomic database with production-like data. I need all the other apps that will produce kafka messages that my consumers will process. In other words, it is not possible.
+Some might argue that we should never mock data. From my humble personal experience, this is impossible for complex apps. An app I worked on consumes messages from different kafka topics, does write/read from a datomic database, makes http calls to multiple remote servers and produces messages to several kafka topics. So if I don’t mock anything, I need to have several remote http servers in a test cluster just for testing. I need to have a real datomic database with production-like data. I need all the other apps that will produce kafka messages that my consumers will process. In other words, it is not possible.
 
-We can mock functions using `with-redefs` which is very convenient for testing. Using the clojure.test fixtures is also great to start and tear down services after the tests are done.
+We can mock functions using [with-redefs](https://clojuredocs.org/clojure.core/with-redefs) which is very convenient for testing. Using the clojure.test [use-fixtures](https://clojuredocs.org/clojure.test/use-fixtures) is also great to start and tear down services after the tests are done.
 
 ### Integration tests
 
@@ -599,11 +603,11 @@ I have not touch on running tests in the CI, but integration tests should be run
 
 ### Load/stress tests
 
-To be sure an app performs well under heavy load, embedded services won’t work as they are limited in terms of performance, parallel processing etc. In our example above, If I want to start lots of kafka consumers and to use a big datomic transactor to cater lots of transactions, embedded datomic and embedded kafka won’t suffice. So I have to run a datomic transactor on my machine (maybe I want the DB to be pre-populated with millions or entities as well) and I will need to run kafka on my machine as well (maybe using confluent all-in-one solution). Let’s get fancy, and also run prometheus/grafana to monitor the performance of the stress tests.
+To be sure an app performs well under heavy load, embedded services won’t work as they are limited in terms of performance, parallel processing etc. In our example above, If I want to start lots of kafka consumers and to use a big datomic transactor to cater lots of transactions, embedded datomic and embedded kafka won’t suffice. So I have to run a datomic transactor on my machine (maybe I want the DB to be pre-populated with millions or entities as well) and I will need to run kafka on my machine as well (maybe using confluent [cp-all-in-one](https://github.com/confluentinc/cp-all-in-one) container setup). Let’s get fancy, and also run prometheus/grafana to monitor the performance of the stress tests.
 
-Your intuition is correct, it would be a nightmare for each developer of the project to setup all services. The solution is to containerized all these services. a datomic transactor can be run in docker, confluent kafka provide a docker compose to run kafka zookeeper, broker, control center etc, prometheus scrapper can be run in a container and same thing for grafana. So providing docker-compose files in our repo so each developer can just run `docker-compose up -d` to start all necessary services is the solution I recommend.
+Your intuition is correct, it would be a nightmare for each developer of the project to setup all services. One solution is to containerized all these services. a datomic transactor can be run in docker, confluent provides a docker-compose to run kafka zookeeper, broker, control center etc, prometheus scrapper can be run in a container as well as grafana. So providing docker-compose files in our repo so each developer can just run `docker-compose up -d` to start all necessary services is the solution I recommend.
 
-Note that I do not containerized my clojure app so I do not have to change snything in my workflow. I deal with load/stress tests the same way I deal with my unit tests. I just start the services and that’s it.
+Note that I do not containerized my clojure app so I do not have to change anything in my workflow. I deal with load/stress tests the same way I deal with my unit tests. I just start the services in the containers and my Clojure REPL as per usual.
 
 This setup is not the only solution to load/stress tests but it is the one I successfully implemented in my project and it really helps us being efficient.
 

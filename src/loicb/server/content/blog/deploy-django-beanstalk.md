@@ -1,6 +1,7 @@
 #:post{:id "deploy-django-aws-beanstalk"
        :page :blog
        :date ["2023-08-08"]
+       :repos [["Blog" "https://github.com/skydread1/blog"]]
        :title "Deploy Django Blog in AWS Beanstalk"
        :css-class "blog-django-aws"
        :tags ["Python" "Django" "AWS" "Elastic Beanstalk"]
@@ -11,7 +12,7 @@
 +++
 ## Context
 
-My tech blog used to be deployed on AWS (during my AWS free tier period).
+My open-source tech blog used to be deployed on AWS (during my AWS free tier period).
 
 In this article, I am going to highlight the different libraries/settings I used to develop and deploy my Django app.
 
@@ -66,17 +67,16 @@ python manage.py runserver
 It is very common to have a superuser to handle admin tasks:
 
 ```bash
-python manage.py createsuperuser --username=myname --email=me@gmail.com
+python manage.py createsuperuser --username=myname --email=me@mymail.com
 ```
 
 ## Start app
 
-One project can have multiple apps such as a blog, an authentication system etc
+One project can have multiple apps such as a blog, an authentication system etc.
 So `loicblog` is the project and `blog` is one app inside the project.
 
 ```bash
 python manage.py startapp blog
-
 ```
 
 - Add the `blog` app to the INSTALLED_APPS array in the project `loicblog/common.py`.
@@ -119,7 +119,6 @@ pip install pygments
 A common python library to deal with ENV variable in django is [django-environ](https://django-environ.readthedocs.io/en/latest/)
 
 ```bash
-## install
 pip install django-environ
 ```
 
@@ -129,7 +128,7 @@ I advise to separate your settings in multiple files instead of keeping one defa
 
 I use 3 settings files: `common.py` , `dev.py` and `prod.py`. 
 
-Here is the `common.py`:
+Here is the `common.py` (partial content):
 
 ```python
 from pathlib import Path
@@ -153,77 +152,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "blog",
-    "members",
-    "markdownx",
-    "fontawesomefree",
-]
-
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
-
-ROOT_URLCONF = "loicblog.urls"
-
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
-
-WSGI_APPLICATION = "loicblog.wsgi.application"
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
+...
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -481,7 +410,7 @@ For HTTPS, we can create a SSL certificate using AWS Certificate Manager for the
 
 *Note: ACM provides the CNAME record name and value. For the name, it will provide something like this `_SOME-NUMBERS-HERE.blog.loicblanchard.me.`*
 
-*However, we need to only enter `_SOME-NUMBERS-HERE.blog`for it to work in GoDaddy.*
+*However, we need to only enter `_SOME-NUMBERS-HERE.blog` for it to work in GoDaddy.*
 
 ### Mapping Subdomain to ALB
 
@@ -504,3 +433,5 @@ Using AWS S3 to serve the static files and AWS RDS to store your production data
 Be sure to keep your env variables safe and split dev and prod settings to avoid confusion and accidental sensitive data leak.
 
 Since EB comes with ALB, you can easily use a CNAME record to map your own personal subdomain to the ALB.
+
+Be aware of the hosting costs. I moved the blog content to my clojure SPA instead because after my AWS free tier expired, the monthly cost for hosting the blog was around $50 which was too much for a simple blog like that.

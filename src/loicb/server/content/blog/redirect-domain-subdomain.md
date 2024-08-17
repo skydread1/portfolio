@@ -19,7 +19,7 @@ The app is deployed in an AWS EC2 which resides behind an ALB (Application Load 
 
 We can map www.flybot.sg to the ALB DNS name with a `CNAME` record.
 
-**However, we cannot map flybot.sg (the naked domain) to the ALB because we cannot use CNAME for the domain, only A records are valid.**
+**However, we cannot map flybot.sg (the naked domain) to the ALB because we cannot use CNAME for the domain, only `A` records are valid.**
 
 ## GoDaddy forwarding
 
@@ -40,15 +40,15 @@ One solution is to use AWS route53 because AWS added the possibility to **regist
 
 So we could add NS records in GoDaddy to specify that for the domain `flybot.sg`, we let AWS handle it. However, we cannot add NS records for the `domain`, only for `subdomain`. The only way to make sure the domain is handled by AWS is to change the `default Name Servers` in our GoDaddy DNS.
 
-This would work, however, since we change the **default** Name Servers, all the subdomains will also be handle by AWS, so we are basically letting AWS handle all our subdomains which is not what we wanted.
+This would work, however, since we change the **default** Name Servers, all the subdomains will also be handled by AWS, so we are basically letting AWS handle all our subdomains which is not what we wanted.
 
 ### Note
 
-If we wanted to let AWS handles a subdomain such as `test.flybot.sg` for instance, that would be totally possible without affecting the other subdomains (and the domain), because we can add NS records for subdomain to specify what Name Servers to use. The problem arises when we deal with the naked domain.
+If we wanted to let AWS handle a subdomain such as `test.flybot.sg` for instance, that would be totally possible without affecting the other subdomains (and the domain), because we can add NS records for subdomain to specify what Name Servers to use. The problem arises when we deal with the naked domain.
 
 ## ALB+NLB
 
-The solution I chose was to add a Network Load Balancer (NLB) in front of the ALB. The NLB can provide a **static** IP so we can resolve our @ A record to the NLB subnet static IP.
+The solution I chose was to add a Network Load Balancer (NLB) in front of the ALB. The NLB can provide a **static** IP so we can resolve our @ `A` record to the NLB subnet static IP.
 
 Adding an ALB as target of NLB is a recent [feature](https://aws.amazon.com/blogs/networking-and-content-delivery/using-aws-lambda-to-enable-static-ip-addresses-for-application-load-balancers/) in AWS that allows us to combine the strength of both LBs.
 
@@ -74,11 +74,11 @@ Thus, we have for the NLB:
 
 The target group is where the traffic from the load balancers is sent. We have 3 target groups.
 
-The first target group contains the EC2 instance in which the ALB forward request.
+The first target group contains the **EC2** instance in which the ALB forward request.
 
-The second target group contains the ALB with the protocol TCP 80 in which the NLB forward http requests.
+The second target group contains the **ALB** with the protocol TCP 80 in which the NLB forward **http** requests.
 
-The third target group contains the ALB with the protocol TCP 443 in which the NLB forward https request.
+The third target group contains the **ALB** with the protocol TCP 443 in which the NLB forward **https** request.
 
 ### DNS records
 

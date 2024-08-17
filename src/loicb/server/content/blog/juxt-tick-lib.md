@@ -31,7 +31,7 @@ This article will answer these questions and will illustrate the answers with Cl
 
 The `time since epoch`, or `timestamp`, is a way of measuring time by counting the number of time units that have elapsed since a specific point in time, called the **epoch**. It is often represented in either milliseconds or seconds, depending on the level of precision required for a particular application.
 
-So basically, it is just an int such as `1705752000000`
+So basically, it is just an `int` such as `1705752000000`
 
 The obvious advantage is the universal simplicity of representing time. The disadvantage is the human readability. So we need to find a more human-friendly representation of time.
 
@@ -60,9 +60,9 @@ One of the difference between Bob and Alice times is due to the Coordinated Univ
 
 The United Kingdom is located on the prime meridian, which is the reference line for measuring longitude and the basis for the UTC time standard. Therefore, the local time in the UK is always the same as UTC time, and the time zone offset is `UTC+0` (also called `Z`). Alice is on the prime meridian, therefore the time she sees is the UTC time, the universal time reference.
 
-As you go east, the difference with UTC increase. For example, Singapore is located at approximately 103.8 degrees east longitude, which means that it is eight hours ahead of UTC, and its time zone offset is UTC+8. That is why Bob is 8 hours ahead of Alice (8 hours in the "future")
+As you go east, the difference with UTC increase. For example, Singapore is located at approximately 103.8 degrees east longitude, which means that it is eight hours ahead of UTC, and its time zone offset is `UTC+8`. That is why Bob is 8 hours ahead of Alice (8 hours in the "future")
 
-As you go west, the difference with UTC decrease. For example, New York City is located at approximately 74 degrees west longitude, which means that it is four hours behind UTC during standard time, and its time zone offset is UTC-4 (4 hours behind - 4 hours in the "past").
+As you go west, the difference with UTC decrease. For example, New York City is located at approximately 74 degrees west longitude, which means that it is four hours behind UTC during standard time, and its time zone offset is `UTC-4` (4 hours behind - 4 hours in the "past").
 
 So, going back to our example, Bob is 8 hours ahead (in the "future") of Alice as we can see via the `UTC+8`:
 
@@ -70,17 +70,14 @@ So, going back to our example, Bob is 8 hours ahead (in the "future") of Alice a
 ;; Alice time
 (-> (t/time "12:00")
     (t/on "2024-01-20")
-    (t/in "Europe/London")
-    (t/offset-date-time))
-#time/offset-date-time "2024-01-20T12:00Z"
-;=> #time/zoned-date-time "2024-01-20T12:00Z[Europe/London]"
+    (t/offset-by 0))
+;=> #time/offset-date-time "2024-01-20T12:00Z"
 
 ;; Bob time
 (-> (t/time "12:00")
     (t/on "2024-01-20")
-    (t/in "Asia/Singapore")
-    (t/offset-date-time))
-#time/offset-date-time "2024-01-20T12:00+08:00"
+    (t/offset-by 8))
+;=> #time/offset-date-time "2024-01-20T12:00+08:00"
 ```
 
 We added the offset to our time representation, note the tick name for that representation: `offset-date-time`. In java, it is called `java.time.OffsetDateTime`. We can see for Bob's time a `+08:00`. This represents The Coordinated Universal Time (**UTC**) offset.
@@ -125,10 +122,10 @@ So we can conclude that a UTC offset is not representative of a Zone because som
 (-> (t/time "12:00")
     (t/on "2024-01-20") ;; January - a winter month
     (t/in "Europe/London"))
-#time/zoned-date-time "2024-01-20T12:00Z[Europe/London]"
+;=> #time/zoned-date-time "2024-01-20T12:00Z[Europe/London]"
 ```
 
-You can notice that it is the same code as before but I remove the conversion to an `offset-date-time`. Indeed, Adding the zone like in `(t/in "Europe/London")` is already considering the Zone obviously and also the UTC thus creating a `zoned-date-time`. In order to highlight the limitation of the `offset-date-time`, I was converting that `zoned-date-time` to `offset-date-time`.
+You can notice that it is the same code as before but I remove the conversion to an `offset-date-time`. Indeed, Adding the zone like in `(t/in "Europe/London")` is already considering the **Zone** obviously (and therefore the  **UTC**) thus creating a `zoned-date-time`.
 
 A `#time/zoned-date-time` in Java is called a `java.time.ZonedDateTime`.
 
@@ -142,12 +139,20 @@ So the time for Bob is:
 (-> (t/time "12:00")
     (t/on "2024-01-20")
     (t/in "Asia/Singapore"))
-#time/zoned-date-time "2024-01-20T12:00+08:00[Asia/Singapore]"
+;=> #time/zoned-date-time "2024-01-20T12:00+08:00[Asia/Singapore]"
 ```
+
+So to recap:
+- the **Zone** `Asia/Singapore` always has the same **UTC** all year long because no **DST**
+- the **Zone** `Europe/London` has a different **UTC** in summer and winter
+- thus Bob is ahead of Alice by 8 hours during winter and Bob is ahead of Alice by 7 hours during summer.
+- This is due by the fact that the UK implements **DST** which makes its own **UTC** throughout the year.
+
+So a **Zone** encapsulates the notion of **UTC** and **DST**.
 
 ## instant
 
-You might thought we were done here but actually the recommended time representation would be an `instant`. In java, it is called `java.time.Instant`. Why do we want to use instant is actually to avoid confusion. When you store a time in your DB, or when you want to add 10 days to this time, you actually don't want to deal with time zone. In programming, we always want to have a solution as simple as possible. Remember the very first time representation I mentioned? The time since epoch. The time since epoch in the prime meridian (UTC+0) is the same for everybody. So the time since epoch (to current UTC+0 time) in ms is a universal way of representing the time.
+You might thought we were done here but actually the recommended time representation would be an `instant`. In java, it is called `java.time.Instant`. Why do we want to use instant is actually to avoid confusion. When you store a time in your DB, or when you want to add 10 days to this time, you actually don't want to deal with time zone. In programming, we always want to have a solution as simple as possible. Remember the very first time representation I mentioned? The **time since epoch**. The `epoch` in the prime meridian (`UTC+0`) is the same for everybody. So the time since epoch (to current UTC+0 time) in ms is a universal way of representing the time.
 
 ```clojure
 ;; instant time for Alice
@@ -162,7 +167,7 @@ You might thought we were done here but actually the recommended time representa
     (t/on "2024-01-20")
     (t/in "Asia/Singapore")
     (t/instant))
-#time/instant "2024-01-20T12:00:00Z"
+;=> #time/instant "2024-01-20T12:00:00Z"
 ```
 
 We can see in the example above, that since Singapore is 8 hours ahead of London, 12pm in London and 8pm in Singapore are indeed the same `instant`.
@@ -193,16 +198,16 @@ That is correct, if we have a web page, we want Alice to see the time in London 
 
 ## inst
 
-Last time format I promise you. As a clojure developer, you might often see `inst`. It is **different** than `instant`. In java `inst` is called `java.util.Date`. The `java.util.Date` class is an old and flawed class that was replaced by the Java 8 time API, and it should be avoided when possible.
+Last time format I promise. As a clojure developer, you might often see `inst`. It is **different** from `instant`. In java `inst` is called `java.util.Date`. The `java.util.Date` class is an old and flawed class that was replaced by the Java 8 time API, and it should be avoided when possible.
 
-However, some libraries might require you to pass `inst` instead of `instant`, and it is easy to convert between the two using the Tick library:
+However, some libraries might require you to pass `inst` instead of `instant` still, and it is easy to convert between the two using the Tick library:
 
 ```clojure
 (t/inst #time/instant "2024-01-20T04:00:00Z")
 ;=> #inst "2024-01-20T04:00:00.000-00:00"
 ```
 
-What about this other way around?
+What about the other way around?
 
 ```clojure
 (t/instant #inst "2024-01-20T04:00:00.000-00:00")
@@ -236,7 +241,9 @@ They are not interchangeable:
 ; No matching clause: :seconds
 ```
 
-So what is the difference? I will give you a clue: all units from `nanosecond` to `day` are `durations` and all units above a `day` such as a `week` for instance are a `period`.
+So what is the difference? I will give you a clue:
+- all units from `nanosecond` to `day` (included) are `durations`
+- all units from `day` such as a `week` for instance are a `period`.
 
 There is one unit that can be both a `duration` and a `period`: a `day`:
 
@@ -252,7 +259,7 @@ There is one unit that can be both a `duration` and a `period`: a `day`:
 
 Therefore, a simple definition could be:
 - a `duration` measures an amount of time using time-based values (seconds, nanoseconds). 
-- a `period` uses date-based values (years, months, days)
+- a `period` uses date-based (we can also calendar-based) values (years, months, days)
 - a `day` can be both `duration` and `period`: a duration of one day is exactly 24 hours long but a period of one day, when considering the calendar, may vary.
 
 First, here is how you would add a day as duration or as a period to the proper format:
@@ -260,8 +267,8 @@ First, here is how you would add a day as duration or as a period to the proper 
 ```clojure
 ;; time-based so use duration
 (-> (t/time "10:00")
-    (t/>> (t/new-duration 1 :days)))
-;=> #time/time "10:00"
+    (t/>> (t/new-duration 4 :hours)))
+;=> #time/time "14:00"
 
 ;; date-based so use period
 (-> (t/date "2024-04-01")
@@ -291,4 +298,10 @@ We can see that since in this specific DST update to summer month, the day 03/31
 
 ## Conclusion
 
-I hope that it clarifies the differences between the time formats and when to use them and go from one to the other. The differences between duration and period should be clearer now for you as well. Finally, for Clojure developers, I highly recommend using `juxt/tick` as it allows us to handle time in an efficient (conversion, operations) and elegant (readable, as values) way and I use it in several of my projects.
+A **Zone** encapsulates the notion of **UTC** and **DST**.
+
+The **time since epoch** is the universal *computer-friendly* of representing time whereas the **Instant** is the universal *human-friendly* of representing time.
+
+A `duration` measures an amount of time using time-based values whereas a `period` uses date-based (calendar) values.
+
+Finally, for Clojure developers, I highly recommend using `juxt/tick` as it allows us to handle time efficiently (conversion, operations) and elegantly (readable, as values) and I use it in several of my projects. It is also of course possible to do interop with the `java.time.Instant` class directly if you prefer.

@@ -9,27 +9,27 @@
                       :alt "Logo referencing Aperture Science"}}
 +++
 +++
-## 🔸 Context
+## Context
 
 [flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) by [@robertluo](https://github.com/robertluo) aims at precisely select from deep data structure in Clojure.
 
-## 🔸 Goal
+## Goal
 
 In this document, I will show you the benefit of `pull-pattern` in pulling nested data.
 
-## 🔸 Rational
+## Rational
 
 In Clojure, it is very common to have to precisely select data in nested maps. the Clojure core `select-keys` and `get-in` functions do not allow to easily select in deeper levels of the maps with custom filters or parameters.
 
-One of the libraries of our `lasagna-stack` is [flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull). It takes inspiration from the [datomic pull API](https://docs.datomic.com/on-prem/query/pull.html) and the library [redplanetlabs/specter](https://github.com/redplanetlabs/specter).
+One of the libraries of the `lasagna-stack` is [flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull). It takes inspiration from the [datomic pull API](https://docs.datomic.com/on-prem/query/pull.html) and the library [redplanetlabs/specter](https://github.com/redplanetlabs/specter).
 
-`lasagna-pull` aims at providing a clearer pattern that the datomic pull API.
+`lasagna-pull` aims at providing a clearer pattern than the datomic pull API.
 
 It also allows the user to add options on the selected keys (filtering, providing params to values which are functions etc). It supports less features than the `specter` library but the syntax is more intuitive and covers all major use cases you might need to select the data you want.
 
 Finally, a [metosin/malli](https://github.com/metosin/malli) schema can be provided to perform data validation directly using the provided pattern. This allows the client to prevent unnecessary pulling if the pattern does not match the expected shape (such as not providing the right params to a function, querying the wrong type etc).
 
-## 🔸 A query language to select deep nested structure
+## A query language to select deep nested structure
 
 Selecting data in nested structure is made intuitive via a pattern that describes the data to be pulled following the shape of the data.
 
@@ -95,7 +95,7 @@ A few things to note
 
 ### Query specific keys
 
-You might not want to fetch the whole path down to a leaf key, you might want to query that key and store it in a dedicated var. It is possible to do this providing a var name after the placeholder `?` such as `?a` for instance. The key `?a` will then be added to the result map along side the `&?` that contains the whole data structure.
+You might not want to fetch the whole path down to a leaf key, you might want to query that key and store it in a dedicated var. It is possible to do this by providing a var name after the placeholder `?` such as `?a` for instance. The key `?a` will then be added to the result map along side the `&?` that contains the whole data structure.
 
 Let’s have a look at an example.
 
@@ -131,7 +131,7 @@ Note that `'{:a [{:b1 ?b1}]}` does not work because the logical value cannot be 
 ;=> {&? {:a [{:b1 1} nil nil]}} ;; not your expected result
 ```
 
-## 🔸 A query language to select structure with params and filters
+## A query language to select structure with params and filters
 
 Most of the time, just selecting nested keys is not enough. We might want to select the key if certain conditions are met, or even pass a parameter if the value of the key is a function so we can run the function and get the value.
 
@@ -139,7 +139,7 @@ With library like [redplanetlabs/specter](https://github.com/redplanetlabs/spect
 
 `lasagna-pull` supports most of the features at a key level.
 
-Instead of just providing just the key you want to pull in the pattern, you can provide a list with the key as first argument and the options as the rest of the list.
+Instead of just providing the key you want to pull in the pattern, you can provide a list with the key as first argument and the options as the rest of the list.
 
 The transformation is done at the same time as the selection, the pattern can be enhanced with options:
 
@@ -186,18 +186,18 @@ Apply to sequence value of a query, useful for pagination:
 
 As you can see with the different options above, the transformations are specified within the selected keys. Unlike specter however, we do not have a way to apply transformation to all the keys for instance.
 
-## 🔸 Pattern validation with Malli schema
+## Pattern validation with Malli schema
 
 We can optionally provide a [metosin/malli](https://github.com/metosin/malli) schema to specify the shape of the data to be pulled.
 
 The client malli schema provided is actually internally "merged" to a internal schema that checks the pattern shape so both the pattern syntax and the pattern shape are validated.
 
-## 🔸 Context
+## Context
 
 You can provide a context to the query. You can provide a `modifier` and a `finalizer`.
 
 This context can help you gathering information from the query and apply a function on the results.
 
-## 🔸 Lasagna Pull applied to flybot.sg
+## Lasagna Pull applied to flybot.sg
 
-To see Lasagna Pull in action, refer to the doc [Lasagna Pull applied to flybot.sg](./lasagna-pull-applied-to-flybot.md).
+To see Lasagna Pull in action, refer to the doc [Lasagna Pull applied to flybot.sg](https://www.loicblanchard.me/blog/lasagna-pull-applied-to-flybot).
