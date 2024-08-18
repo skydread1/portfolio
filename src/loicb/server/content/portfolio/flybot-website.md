@@ -5,7 +5,7 @@
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
        :articles [["Deploy full stack Clojure website to AWS" "../blog/deploy-clj-app-to-aws"]
                   ["Lasagna-pull applied to flybot.sg" "../blog/lasagna-pull-applied-to-flybot"]
-                  ["Lasagna Pull: Precisely select from deep nested data" "../blog/lasagna-pull"]
+                  ["Fun-Map applied to flybot.sg" "../blog/fun-map-applied-to-flybot"]
                   ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
        :title "Flybot Website"
        :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
@@ -14,13 +14,13 @@
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}
 +++
-[flybot.sg](https://www.flybot.sg/) is an open-source full-stack Clojure web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
+[flybot.sg](https://www.flybot.sg/) is an open-source full-stack **Clojure** web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
 
 The purpose of this project was to demonstrate how the `lasagna stack` ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
 +++
 ## Rational
 
-[flybot.sg](https://www.flybot.sg/) is an open-source full-stack Clojure web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
+[flybot.sg](https://www.flybot.sg/) is an open-source full-stack **Clojure** web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
 
 The purpose of this project was to demonstrate how the "lasagna stack" ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
 
@@ -61,7 +61,7 @@ So the web app frontend resides in the same repo as the mobile frontend and the 
 
 The mono-repo structure is as followed:
 
-```clojure
+```
 ├── client
 │   ├── common
 │   │   ├── src
@@ -90,7 +90,7 @@ The mono-repo structure is as followed:
 │       └── flybot.server
 ```
 
-You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](../blog/clojure-mono-repo).
+You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://www.loicblanchard.me/blog/clojure-mono-repo).
 
 ## Features
 
@@ -124,9 +124,9 @@ Furthermore, [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) can accep
 - [fun-map](https://github.com/robertluo/fun-map) allows us to define a system and perform associative dependency injections.
 - [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) makes selecting data in nested structure more intuitive via a pattern that describes the data to be pulled following the shape of the data.
 
-I wrote articles about how these 2 libraries benefit web development and design in my tech blog:
-- [Lasagna-pull Pattern applied to flybot.sg backend](../blog/lasagna-pull-applied-to-flybot)
-- [Pull Pattern: Query in deep nested data structure](../blog/lasagna-pull)
+Learn more about how these 2 libraries enhanced the design of the flybot' website in the following articles:
+- [Lasagna-pull applied to flybot.sg](../blog/lasagna-pull-applied-to-flybot)
+- [Fun-Map applied to flybot.sg](../blog/fun-map-applied-to-flybot)
 
 ## CI/CD
 
@@ -150,7 +150,7 @@ You can read more about how I deployed the app to AWS in this article: [How to d
 
 ## Hot reloading
 
-[figwheel-main](https://github.com/bhauman/figwheel-main) allows us to do hot reloading when a file is saved and provide clj/cljs REPL to print at anytime the re-frame DB for instant feedback. It also allow us to generate an optimized js bundle from the cljs files. The configuration parameters are very well thought and the library makes the development experience a bliss. Figwheel also allows us to run our own ring server by providing a ring-handler in the config. This feature works very well with our fun-map system.
+[figwheel-main](https://github.com/bhauman/figwheel-main) allows us to do hot reloading when a file is saved and provide clj/cljs REPL to print at anytime the re-frame DB for instant feedback. It also allow us to generate an optimized js bundle from the cljs files. The configuration parameters are very well thought and the library makes the development experience a bliss. Figwheel also allows us to run our own ring server by providing a ring-handler in the config. This feature works very well with our `fun-map` system.
 
 ## Learn more
 

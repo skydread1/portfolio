@@ -9,7 +9,7 @@
             :or [with-reitit? true]}]
   [:a {:class                    (if mobile? "mobile-only" "browser-only")
        :href                     (rfe/href page-name {:post-id post-id})
-       :on-click                 #(rf/dispatch [:evt.nav/close-navbar])
+       :on-click                 #(rf/dispatch [:evt.nav/set-navbar false])
        :key                      (str (when mobile? "phone-") (or post-id page-name))
        :data-reitit-handle-click with-reitit?}
    content])

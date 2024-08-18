@@ -12,15 +12,15 @@
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}
 +++
-At Flybot, I developed a mobile app using `ClojureScript` with `React Native` using `Figwheel` and `Reagent React Native` (to interact with reagent in ClojureScript).
+At Flybot, I developed a mobile app using **ClojureScript** with `React Native` using `Figwheel` and `Reagent React Native` (to interact with reagent in ClojureScript).
 
 The code for the mobile app resides in the same repo as the server and the web client of the [flybot.sg](https://www.flybot.sg/) website.
 
-The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs (which it does).
+The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs.
 +++
 ## Rational
 
-The goal is to have a mobile app targeting both iOS and Android, written in ClojureScript, which can reuse most of our web frontend logic.
+The goal is to have a mobile app targeting both iOS and Android, written in **ClojureScript**, which can reuse most of our web frontend logic.
 
 To do so, I used React Native for the following reasons:
 
@@ -41,7 +41,7 @@ So the mobile app frontend resides in the same repo as the web frontend and the 
 
 The mono-repo structure is as followed:
 
-```clojure
+```
 ├── client
 │   ├── common
 │   │   ├── src
@@ -97,4 +97,6 @@ The app has not been deployed on any Store yet.
 
 ## Learn more
 
-Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
+You can learn more about how the mobile app was setup in the article linked at the top of the page.
+
+Also, feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
