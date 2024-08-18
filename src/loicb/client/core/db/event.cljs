@@ -58,7 +58,7 @@
    (update db :nav.main/open? not)))
 
 (rf/reg-event-db
- :evt.nav/close-navbar
- (fn [db _]
-   (assoc db :nav.main/open? false)))
+ :evt.nav/set-navbar
+ (fn [db [_ open?]]
+   (assoc db :nav.main/open? open?)))
 

@@ -11,19 +11,19 @@
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}
 +++
-At Flybot, I had the opportunity to create popular Asian Card Games APIs in `Clojure`.
+At Flybot, I had the opportunity to create popular Asian Card Games APIs in **Clojure**.
 
-I developed the backend of games such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
+I developed the backend of games such as *Pǎo Dé Kuài* (跑得快) and *Big two* (锄大地) which are climbing card games.
 
-I also worked on a Library we called MetaGame that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both) in tournaments for instance.
+I also worked on a Library we called **MetaGame** that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both). By composing games, I mean to play a few rounds of them up to a certain score for instance. This composition is generic enough to even allow us to make tournaments out of the underlying games.
 +++
 ## Rational
 
-At Flybot, I had the opportunity to create popular Asian Card Games APIs in `Clojure`.
+At Flybot, I had the opportunity to create popular Asian Card Games APIs in **Clojure**.
 
-I developed the backend of games such as Pǎo Dé Kuài (跑得快) and Big two (锄大地) which are climbing card games.
+I developed the backend of games such as *Pǎo Dé Kuài* (跑得快) and *Big two* (锄大地) which are climbing card games.
 
-I also worked on a Library we called MetaGame that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both) in tournaments for instance.
+I also worked on a Library we called **MetaGame** that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both) in tournaments for instance.
 
 The repositories are closed-source because private to Flybot Pte. Ltd.
 
@@ -33,9 +33,9 @@ Since we use Clojure, the game state can be represented as pure edn data leverag
 
 There is no need for any atoms, agent or vars as the new state is just another Clojure pure data structure.
 
-This allows us to represent the game setup and rules as clojure pure data as well so the game is easy to customize.
+This allows us to represent the game setup and rules as pure Clojure data as well so the game is easy to customize.
 
-For non-clojure developers, you can imagine that you could represent your entire game state using a simple JSON file. In clojure, we use the EDN format (which has a similar syntax to JSON).
+For non-clojure developers, you can imagine that you could represent your entire game state using a simple JSON file. In clojure, we use the [Extensible Data Notation](https://github.com/edn-format/edn)(EDN) format (which has a similar syntax to JSON).
 
 ## Data validation and Generation
 
@@ -49,8 +49,7 @@ Using the libraries above, I design an integration test suite that can run hundr
 
 It is more common to see interop with JavaScript for ClojureScript. However, in our case, we want our Clojure codebase to be run in the game engin Unity, so a dotnet environment.
 
-Is is now possible to compile a Clojure project to dotnet assemblies and make it work in Unity using the [nasser/magic](https://github.com/nasser/magic) compiler.
-([clojure-clr](https://github.com/clojure/clojure-clr), which is the default clojure compiler to dotnet cannot work in Unity because it relies on the DLR.)
+Is is now possible to compile a Clojure project to dotnet assemblies and make it work in Unity using the [nasser/magic](https://github.com/nasser/magic) compiler. [clojure-clr](https://github.com/clojure/clojure-clr), which is the default clojure compiler to dotnet, cannot work in Unity because it relies on the DLR.
 
 We use the reader conditionals in `.cljc` files to handle JVM/CLR interop in our project so we can run and test our Clojure project in both environments.
 

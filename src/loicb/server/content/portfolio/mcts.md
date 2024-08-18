@@ -71,4 +71,6 @@ One limitation of MCTS is its tendency to explore non-promising branches. To ove
 
 ## Conclusion
 
-In conclusion, the fusion of MCTS and domain knowledge has enabled us to create a functional AI for big-two that can replace human players and offer different levels of difficulty. As of the time of writing this article in 2023, the implementation is currently undergoing testing as part of a larger system and is not yet in production. This hybrid approach represents a promising solution for developing robust AI players in complex card games.
+In conclusion, the fusion of MCTS and domain knowledge has enabled us to create a functional AI for big-two that can replace human players and offer different levels of difficulty. As of the time of writing this article, the implementation is currently undergoing testing as part of a larger system and is not yet in production. This hybrid approach represents a promising solution for developing robust AI players in complex card games.
+
+You can learn more about the implementation strategy in my blog article listed at the top of the page.

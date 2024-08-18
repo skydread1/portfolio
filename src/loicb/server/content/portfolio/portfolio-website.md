@@ -9,17 +9,33 @@
                       :src-dark "/assets/loic-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
-This portfolio website you are currently visiting is a Single Page Application written in `ClojureScript`.
+This portfolio was implemented with **ClojureScript**. It is a Single Page Application that leverages [reagent](https://github.com/reagent-project/reagent), a minimalistic interface between ClojureScript and **React**.
 
-The website contains a list of the projects I worked on as a Software Engineer and the stacks I used. It also contains a page with my resume.
+For frontend management, [re-frame](https://github.com/day8/re-frame) is used. To compile the cljs code and perform hot reloading, I used [figwheel-main](https://figwheel.org/).
 
-The markdown content is converted into hiccup (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a malli schema.
+The routing is done with [reitit](https://github.com/metosin/reitit).
 
-The website is fully responsive and support light/dark mode.
+The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
+
+Light/dark mode and code block syntax highlighted are supported.
+
+The app is deployed on **Netlify** every time a branch is merged to master.
 +++
-## Stack
+## Rational
 
-This website is a Single Page Application written in ClojureScript.
+This portfolio was implemented with **ClojureScript**. It is a Single Page Application that leverages [reagent](https://github.com/reagent-project/reagent), a minimalistic interface between ClojureScript and **React**.
+
+For frontend management, [re-frame](https://github.com/day8/re-frame) is used. To compile the cljs code and perform hot reloading, I used [figwheel-main](https://figwheel.org/).
+
+The routing is done with [reitit](https://github.com/metosin/reitit).
+
+The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
+
+Light/dark mode and code block syntax highlighted are supported.
+
+The app is deployed on **Netlify** every time a branch is merged to master.
+
+## Stack
 
 I have the following stack:
 - [figwheel-main](https://figwheel.org/) for live code reloading
@@ -33,11 +49,9 @@ I have the following stack:
 
 ## Features
 
-The website contains a list of the projects I worked on as a Software Engineer and the stack I used. It also contains a page with my resume.
-
-The content is written in markdown and compiled to hiccup.
-
-The website is fully responsive and support light/dark mode.
+The website contains
+- a description of the personal/professional projects I worked on as a Software Engineer - my resume
+- technical articles related to Clojure for the most part
 
 ## Content
 
@@ -73,7 +87,7 @@ A markdown file of a post is divided into 3 parts:
 
 Here is an example of clojure config map for a post:
 
-```
+```clojure
 #:post{:id "clojure-full-stack-webapp"
        :page :portfolio
        :employer "Flybot Pte Ltd"
@@ -92,13 +106,13 @@ Here is an example of clojure config map for a post:
 
 ## Compile
 
-At CLJ compile time, the following steps happen:
+At **CLJ** compile time, the following steps happen:
 1. Read all markdown files
 2. Validate the post configs against a `Malli` schema
 3. Assoc the post markdown content to the configs 
 4. A macro stores a vector of the posts to be loaded in the re-frame DB
 
-At CLJS compile time, the following steps happen:
+At **CLJS** compile time, the following steps happen:
 1. A re-frame event initializes the re-frame DB, loading all the posts from the clojure macro and the theme from local storage.
 2. The `reitit` router is created
 3. The post markdowns are converted to hiccup via `markdown-to-hiccup`. 
@@ -125,20 +139,20 @@ This command compiles the cljs to the optimized js bundle that Netlify will use 
 
 ## Continuous Integration
 
-The Ci does the following:
-- run the clj tests
-- run the cljs tests in headless mode
-- compile the cljs file into the js bundle `main.js` and commit it to the repo.
+The CI does the following:
+- Run the clj tests
+- Run the cljs tests in headless mode
+- Compile the cljs file into the js bundle `main.js` and commit it to the repo.
 
 ## Continuous Deployment
 
-**Opening a pull request (PR)** to merge your changes to master, makes `Netlify` create a preview for you to see how the new version of the website would look like.
+**Opening a pull request (PR)** to merge changes to master makes `Netlify` create a preview of how the new version of the website would look like once deployed.
 
-**Merging to master** automatically publishes the last version of the website via Netlify.
+**Merging to master** automatically publishes the last version of the website on Netlify.
 
 ## Hosted with Netlify
 
-I use **Netlify** for hosting platform because it is easy to setup and the previews of the new website version on GitHub MR is convenient.
+I use **Netlify** for hosting platform because it is easy to setup and the previews of the new website version on GitHub PR are convenient.
 
 ## Learn More
 

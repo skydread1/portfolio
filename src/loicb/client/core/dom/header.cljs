@@ -119,6 +119,7 @@
                                                                                       :fragment ?fragment}}])]
                      (and (= :home (get view-info '?name))
                           (not (get view-info '?fragment))))]
+    (when home-page? (rf/dispatch [:evt.nav/set-navbar true])) ;; open navbar if home page
     [:header.container
      (when nav-open? {:class "full-screen"})
      [top-browser nav-open? home-page?]

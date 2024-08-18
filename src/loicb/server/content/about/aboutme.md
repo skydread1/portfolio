@@ -61,11 +61,11 @@
 ### ICTS             
 - **Back-End**: Clojure, Python, Java, PHP, Node.js, C, C++, C#
 - **HTTP**: Clojure Ring, Clojure Aleph
-- **Front-End**: ClojureScript, HTML, CSS, JS, C#, Re-frame/Reagent (React), figwheel-main
+- **Front-End**: ClojureScript, HTML, CSS, JS, C#, Reagent (React), Re-frame, figwheel-main
 - **Database**: MySQL, PostgreSQL, Datomic, Datalevin, Cassandra
-- **Mobile**: React Native, figwheel-main
+- **Mobile**: Reagent React Native, figwheel-main
 - **Cloud**: AWS, Vercel, Netlify
-- **Containers**: Docker, k8s, EKS
+- **Containers**: Docker, k8s, AWS EKS
 - **Event Streaming**: Kafka
 - **Proj Management**: GitHub, Gitlab, Bitbucket, Trello, Jira, Slack, Jenkins
 

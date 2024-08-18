@@ -10,17 +10,23 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
-I developed a tech blog in python using the Django framework. Thus, it is Server-Side Rendered.
+I developed a tech blog in **python** using the `Django` framework. Thus, it is Server-Side Rendered.
 
-The blog is deployed on AWS Beanstalk, the static files are served from an AWS S3 bucket, and the production data is stored in an AWS RDS Postgres database.
+The blog was deployed on AWS `Beanstalk`, the static files were served from an AWS `S3` bucket, and the production data was stored in an AWS `RDS Postgres` database.
 
-It uses HTMX for the search bar.
+It used `HTMX` for the search bar.
+
+After the AWS free tier expired, I moved the tech blog to the ClojureScript SPA.
 +++
-## Stack
+## Rational
 
-The blog is written in `python` and uses the web framework `Django`.
+I developed a tech blog in **python** using the `Django` framework. Thus, it is Server-Side Rendered.
 
-It is deployed in AWS Elastic Beanstalk, the production data is stored in an AWS RDS PostgreSQL database and the static files are served from an AWS S3 bucket.
+The blog was deployed on AWS `Beanstalk`, the static files were served from an AWS `S3` bucket, and the production data was stored in an AWS `RDS Postgres` database.
+
+It used `HTMX` for the search bar.
+
+After the AWS free tier expired, I moved the tech blog to the ClojureScript SPA.
 
 ## Features
 
@@ -31,7 +37,7 @@ The different features of the blog are the following:
 - There is syntax highlighting for the code blocks
 - The UI supports light/dark mode toggle
 - Posts can be sorted in different categories (such as `clojure`, `python` for instance)
-- Users can search a post using the search bar.
+- Users can search a post using the search bar that display the matching posts as they type in the search bar.
 
 ## CI/CD
 
@@ -74,5 +80,7 @@ The blog used to be hosted at `blog.loicblanchard.me`. I used a CNAME record to 
 However I moved the blog content to my clojure SPA instead because after my AWS free tier expired, the monthly cost for hosting the blog was around $50 which was too much for a simple blog.
 
 ## Learn more
+
+I wrote an article on how I deployed the Django app in AWS (link at the top of the page).
 
 Have a look at the repo [README](https://github.com/skydread1/blog/blob/master/README.md) for more information.

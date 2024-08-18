@@ -170,12 +170,12 @@ a {
 ul {
     list-style-type: disc;
     list-style-position: inside;
-    padding: 0.5rem 0;
+    padding-bottom: 1rem;
 }
 
 ol {
     list-style-position: inside;
-    padding: 0.5rem 0;
+    padding-bottom: 1rem;
 }
 
 li {
@@ -378,7 +378,7 @@ header .hidden {
 }
 
 header img:hover,
-svg:hover,
+header svg:hover,
 a:hover {
     animation: var(--pulse-animation);
 }
@@ -927,10 +927,6 @@ section .post-body .info {
         display: block;
         width: 100%;
     }
-}
-
-.post-body:hover img {
-    animation: var(--pulse-animation);
 }
 
 section button {

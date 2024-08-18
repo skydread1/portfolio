@@ -63,7 +63,7 @@
        (is (true? @navbar-open?)))
 
      ;; Close navbar
-     (rf/dispatch [:evt.nav/close-navbar])
+     (rf/dispatch [:evt.nav/set-navbar false])
      (testing "Navbar is now closed."
        (is (false? @navbar-open?)))
 
