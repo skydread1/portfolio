@@ -39,7 +39,7 @@ Here is an example of unpredictable **impure** logic:
          (take n))))
 
 (comment
-  ;; env.edn has the content {:FIB 10}
+  ;; env.edn has the content {:FIB {:length 10}}
   (fib :FIB) ;=> 10
   ;; env.edn is empty
   (fib :FIB) ;=> nil
