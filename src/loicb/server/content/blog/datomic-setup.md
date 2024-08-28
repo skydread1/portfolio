@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+How to run an embedded version of Datomic. How to run Datomic with a Cassandra cluster. How to run it in Docker.
 +++
 ## Introduction
 

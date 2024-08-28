@@ -9,6 +9,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+What libraries/settings I used to develop a Django app and how to deploy it on AWS Elastic Beanstalk.
 +++
 ## Context
 

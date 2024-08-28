@@ -82,12 +82,12 @@
                  :description "Articles related to Clojure"
                  :language "en-us"
                  :lastBuildDate (t/now)}
-        items (for [{:post/keys [id date md-content title]} clojure-blog-posts]
+        items (for [{:post/keys [id date md-content md-content-short title]} clojure-blog-posts]
                 {:title title
                  :link (str blog-url "/" id)
                  :guid (str blog-url "/" id)
                  :pubDate (-> (t/time) (t/on (first date)) (t/in "Asia/Singapore") t/instant)
-                 :description "todo"
+                 :description md-content-short
                  "content:encoded" (str "<![CDATA["
                                         (md/md-to-html-string md-content
                                                               :custom-transformers

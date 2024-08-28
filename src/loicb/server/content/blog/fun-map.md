@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Rational of `fun-map`, including the benefit of the `life-cycle-map` as dependency injection system.
 +++
 ## Context
 

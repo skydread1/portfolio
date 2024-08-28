@@ -9,6 +9,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+How we leverage `lasagna-pull` in the flybot.sg Clojure web app to define a pure data API.
 +++
 ## Prerequisites
 

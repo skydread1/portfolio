@@ -10,6 +10,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+How to port your Clojure lib to the CLR. Then how to be build with the MAGIC compiler allowing you to obtain DLLs compatible with Unity (no DLR used by MAGIC).
 +++
 In this article, I will show you:
 

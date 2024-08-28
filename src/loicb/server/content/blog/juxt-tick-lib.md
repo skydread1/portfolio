@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Illustrate date and time concepts in programming using the Clojure Tick library: timestamp, date-time, offset, zone, instant, inst, UTC, DST, duration, period etc.
 +++
 ## Introduction
 

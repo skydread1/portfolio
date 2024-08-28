@@ -9,6 +9,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Reagent React Native mobile app reusing re-frame logic from exiting web client.
 +++
 ## Prerequisites
 

@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Introducing some popular testing tools to developers new to Clojure. Highlight solutions for how to do unit testing with Rich Comment Tests, data validation and generative testing with Malli, running test suites and metrics with Kaocha and how to do integration testing using external containerized services.
 +++
 ## Introduction
 
