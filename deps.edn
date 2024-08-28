@@ -45,6 +45,8 @@
   :web/test-headless {:main-opts ["-m" "figwheel.main"
                                   "-co" "tests.cljs.edn"
                                   "-m" "loicb.client.test-runner"]}
+  ;; RSS
+  :rss {:main-opts ["-m" "loicb.server.rss"]}
 
   ;;---------- BUILD ----------
   :build {:deps       {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}
