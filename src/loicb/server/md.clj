@@ -73,7 +73,9 @@
   []
   (let [clojure-blog-posts (->> (files-of "blog")
                                 (mapv load-post)
-                                (filter (fn [{:post/keys [tags]}] (some #{"Clojure"} tags))))
+                                (filter #(some #{"Clojure"} (:post/tags %)))
+                                (sort-by #(first (:post/date %)))
+                                reverse)
         base-url "https://www.loicblanchard.me"
         blog-url (str base-url "/blog")
         channel {:title "Loic Blanchard - Clojure Blog Feed"
