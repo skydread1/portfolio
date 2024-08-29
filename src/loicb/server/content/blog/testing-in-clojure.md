@@ -298,7 +298,7 @@ Finally, I don’t want to use the `plugins` (profiling and code coverage) on wa
 
 We can actually create another kaocha config file for our watch mode.
 
-`tests-watch.edn`:
+`tests_watch.edn`:
 
 ```clojure
 #kaocha/v1
