@@ -376,7 +376,7 @@ This is possible by wrapping the RC Tests in a deftest like so:
   (:require [clojure.test :refer [deftest testing]]
             [com.mjdowney.rich-comment-tests.test-runner :as rctr]))
 
-(deftest ^rct rich-comment-tests
+(deftest ^:rct rich-comment-tests
   (testing "all white box small tests"
     (rctr/run-tests-in-file-tree! :dirs #{"src"})))
 ```
