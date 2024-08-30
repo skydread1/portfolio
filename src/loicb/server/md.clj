@@ -76,7 +76,7 @@
                                 (filter #(some #{"Clojure"} (:post/tags %)))
                                 (sort-by #(first (:post/date %)))
                                 reverse)
-        base-url "https://deploy-preview-64--loicblanchard.netlify.app" ;; to be replaced before merging to main
+        base-url "https://www.loicblanchard.me"
         blog-url (str base-url "/blog")
         channel {:title "Loic Blanchard - Clojure Blog Feed"
                  :link "https://www.loicblanchard.me"
