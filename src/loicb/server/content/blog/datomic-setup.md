@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+How to run an embedded version of Datomic. How to run Datomic with a Cassandra cluster. How to run it in Docker.
 +++
 ## Introduction
 
@@ -17,7 +18,7 @@ While working on [flybot.sg](http://flybot.sg) , I experimented with `datomic-fr
 
 You can read the rationale of Datomic from their [on-prem documentation](https://docs.datomic.com/on-prem/getting-started/brief-overview.html)
 
-Stuart Sierra explained very well how datomic works in the video [Intro to Datomic](https://www.youtube.com/watch?v=R6ObrDWTlYA&t=2776s).
+Stuart Sierra explained very well how datomic works in the video [Intro to Datomic](https://www.youtube.com/watch?v=R6ObrDWTlYA).
 
 Basically, Datomic works as a layer on top of your underlying storage (in this case, we will use Cassandra db).
 

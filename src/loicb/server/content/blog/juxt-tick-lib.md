@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Illustrate date and time concepts in programming using the Clojure Tick library: timestamp, date-time, offset, zone, instant, inst, UTC, DST, duration, period etc.
 +++
 ## Introduction
 
@@ -42,6 +43,7 @@ The obvious advantage is the universal simplicity of representing time. The disa
 The local time is the time in a specific time zone, usually represented using a date and time-of-day without any time zone information. In java it is called `java.time.LocalDateTime`. However, `tick` mentioned that when you asked someone the time, it is always going to be "local", so they prefer to call it `date-time` as the local part is implicit.
 
 So if we ask Alice for the time and date, she will reply:
+
 ```clojure
 (-> (t/time "12:00")
     (t/on "2024-01-20"))
@@ -94,6 +96,7 @@ So far we have the following components to define a time:
 However, counter-intuitively, the UTC offset for Alice is not the same all year long. Sometimes it is `UTC+0` (`Z`) in winter (as we saw earlier) but sometimes it is `UTC+1` in summer.
 
 Let me prove it to you:
+
 ```clojure
 ;; time for Alice in winter
 (-> (t/time "12:00")
@@ -135,6 +138,7 @@ So we now have a complete way to describe the time:
 - a zone (that includes the location and the UTC encapsulating the DST)
 
 So the time for Bob is:
+
 ```clojure
 (-> (t/time "12:00")
     (t/on "2024-01-20")
@@ -175,6 +179,7 @@ We can see in the example above, that since Singapore is 8 hours ahead of London
 The `instant` is the human-friendly time representation of the timestamp (time since epoch). You can then store that format in your DB or do operation on it such as adding/substituting duration or period to it (more on this later).
 
 The `epoch` in time-since-epoch is equivalent to #time/instant "1970-01-01T00:00:00Z":
+
 ```clojure
 (t/epoch)
 ;=> #time/instant "1970-01-01T00:00:00Z"
@@ -235,6 +240,7 @@ We now know that we need to use `instant` to perform operations on time. However
 ```
 
 They are not interchangeable:
+
 ```clojure
 (t/new-period 10 :seconds)
 ; Execution error (IllegalArgumentException) at tick.core/new-period (core.cljc:649).

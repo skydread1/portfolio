@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+General principle of MCTS applied to a Clojure use case.
 +++
 ## Objective
 

@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Domain to subdomain forwarding using AWS ALB+NLB setup.
 +++
 ## Context
 

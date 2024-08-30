@@ -15,7 +15,9 @@
         re-frame/re-frame                     {:mvn/version "1.4.2"}
         reagent/reagent                       {:mvn/version "1.2.0"}
         sg.flybot/lasagna-pull                {:mvn/version "0.4.156"}
-        tick/tick                             {:mvn/version "0.7.5"}}
+        tick/tick                             {:mvn/version "0.7.5"}
+        markdown-clj/markdown-clj             {:mvn/version "1.12.1"}
+        clj-rss/clj-rss                       {:mvn/version "0.4.0"}}
  :paths ["src" "resources" "target" "test"]
  :aliases
  {;; Run clj tests
@@ -43,6 +45,8 @@
   :web/test-headless {:main-opts ["-m" "figwheel.main"
                                   "-co" "tests.cljs.edn"
                                   "-m" "loicb.client.test-runner"]}
+  ;; RSS
+  :rss {:main-opts ["-m" "loicb.server.rss"]}
 
   ;;---------- BUILD ----------
   :build {:deps       {io.github.clojure/tools.build {:git/tag "v0.9.6" :git/sha "8e78bcc"}}

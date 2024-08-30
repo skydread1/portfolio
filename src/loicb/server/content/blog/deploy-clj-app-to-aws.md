@@ -9,6 +9,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Example of how to deploy a containerized full-stack Clojure app in AWS EC2.
 +++
 This is an example of how to deploy a containerized full-stack Clojure app in AWS EC2.
 
@@ -58,6 +59,7 @@ Example of jibbit config to just create a local docker image:
 ```
 
 Then we can run the container:
+
 ```
 docker run \
 --rm \

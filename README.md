@@ -24,6 +24,8 @@ The routing is done with [reitit](https://github.com/metosin/reitit).
 
 The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
 
+At compile time, a RSS feed is generated for the clojure blog posts using [clj-rss](https://github.com/yogthos/clj-rss).
+
 The app is deployed on **Netlify** every time a branch is merged to master.
 
 ## 🔷 Features
@@ -165,6 +167,8 @@ However, if you change the content of a markdown file, you will need to save the
 
 ### Prod
 
+#### Js bundle
+
 The GitHub action is triggered when code is pushed.
 
 I use [clojure/tools.build](https://github.com/clojure/tools.build) to create tasks related to the build.
@@ -179,6 +183,16 @@ This command compiles the cljs to the optimized js bundle that Netlify will use 
 
 Note: be sure to not forget to use `main.js` as script source in [index.html](./resources/public/index.html): that is where figwheel will produce the optimize js from your cljs file when you push your update to your online repo.
 
+#### RSS feed
+
+A RSS feed of the Clojure blog posts is also generated when code is pushed:
+
+```
+clojure -T:build rss-feed
+```
+
+The RSS **clojure** feed is accessible at the url [blog/rss/clojure-feed.xml](https://www.loicblanchard.me/blog/rss/clojure-feed.xml)
+
 ## 🔷 Tests
 
 ### Clj tests
@@ -186,7 +200,7 @@ Note: be sure to not forget to use `main.js` as script source in [index.html](./
 The clj macro that loads the markdown files is tested and the test can be run like so:
 
 ```clojure
-clj -A:server/test  
+clj -M:server/test  
 ```
 
 This test ensure that all your markdown files respect the malli schema.
@@ -196,7 +210,7 @@ This test ensure that all your markdown files respect the malli schema.
 The cljs state management tests can be run like so:
 
 ```clojure
-clj -A:web/test
+clj -M:web/test
 ```
 
 These frontend cljs tests ensure that the state (in our re-frame DB) is as expected after user actions (navigation, theme, post interaction etc).
@@ -210,7 +224,7 @@ The tests mentioned above are also run on every save and the results are display
 In the CI, there is no browser, so we need a specific alias to run the test in headless mode:
 
 ```clojure
-clj -A::web/test-headless
+clj -M::web/test-headless
 ```
 
 ## 🔷 Continuous Integration

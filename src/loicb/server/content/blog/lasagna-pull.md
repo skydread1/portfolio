@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Rational of flybot-sg/lasagna-pull library: precisely select from deep data structure in Clojure.
 +++
 ## Context
 
@@ -81,6 +82,7 @@ Let’s compare datomic pull and lasagna pull query with a simple example:
 ```
 
 - Lasagna pull
+
 ```clojure
 ((pull/query '[{:a ? :b {:b1 ?}}])
  sample-data)
