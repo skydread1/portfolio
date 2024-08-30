@@ -29,7 +29,6 @@ python -m venv blog_venv
 
 # activate env (mac)
 source blog_venv/bin/activate
-
 ```
 
 ### Install Django

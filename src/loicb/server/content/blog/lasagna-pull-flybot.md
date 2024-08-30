@@ -55,7 +55,7 @@ In our backend, we have a structure representing all our endpoints:
 
 This resembles a REST API structure.
 
-Since the API “route” information is contained within the pattern keys themselves, all the http requests with a pattern as params can hit the same backend URI.
+Since the API "route" information is contained within the pattern keys themselves, all the http requests with a pattern as params can hit the same backend URI.
 
 So we have a single route for all pattern http request:
 
@@ -76,7 +76,7 @@ Therefore the pull pattern:
 
 ## Example: pull a post
 
-For instance, getting a specific post, meaning with the “route”: `:posts :post`, can be done this way:
+For instance, getting a specific post, meaning with the "route": `:posts :post`, can be done this way:
 
 ```clojure
 ((pull/qfn
@@ -151,10 +151,10 @@ We decided to fetch all the information of the post in our pattern but we could 
     {:post/id '?
      :post/page '?}}}
   '&?))
-=> {:posts
-    {:post
-     {:post/id #uuid "64cda032-b4e4-431e-bd85-0dbe34a8feeb"
-      :post/page :home}}}
+;=> {:posts
+     {:post
+      {:post/id #uuid "64cda032-b4e4-431e-bd85-0dbe34a8feeb"
+       :post/page :home}}}
 ```
 
 The function `(fn [post-id] (get-post db post-id))` returned **all** the post keys but we only select the `post/id` and `post/page`.
@@ -242,9 +242,9 @@ It corresponds to the pattern part:
 (list :post :with [s/post-1-id])
 ```
 
-And `lasagna-pull` provides validation of the function’s params which is very good to be sure the proper data is sent to the server!
+And `lasagna-pull` provides validation of the function's params which is very good to be sure the proper data is sent to the server!
 
-Plus, in case the params given to one of the routes are not valid, the function won’t even be executed.
+Plus, in case the params given to one of the routes are not valid, the function won't even be executed.
 
 So now we have a way to do post request to our backend providing a pull-pattern as the request body and our server can validate this pattern format and content as the data is being pulled.
 
@@ -331,7 +331,7 @@ In our case, we have a `mk-query` function that uses a `modifier` and `finalizer
 
 ### Example of post creation
 
-Let’s have a look at an example:
+Let's have a look at an example:
 
 We want to add a new post. When we make a request for a new post, if everything works fine, the pullable-data function at the route `:new-post` returns a map such as:
 
@@ -371,7 +371,7 @@ Running this pattern with the pattern **context** above returns:
  :context/sessions {}}
 ```
 
-- the response has been returned from the :with function to the pattern in the ‘&? key
+- the response has been returned from the :with function to the pattern in the `'&?` key
 - the effects have been accumulated and assoc in `:context/effects`
 - there was no data to be added to the session
 

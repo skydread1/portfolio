@@ -238,6 +238,7 @@ Note the vector required with the **splicing** reader conditional `#?@`.
 Since magic was created before `tools.deps` or `leiningen`, it has its own deps management system and the dedicated file for it is `project.edn`.
 
 Here is an example of a project.edn:
+
 ```clojure
 {:name         "My project"
  :source-paths ["src" "test"]
@@ -273,6 +274,7 @@ In my case I named my nostrand namespace `dotnet.clj`.
 You cna have a look at the [clr.test.check/dotnet.clj](https://github.com/skydread1/clr.test.check/blob/magic/dotnet.clj), it is a port of clojure/test.check that compiles in both JVM and CLR.
 
 We have the following require:
+
 ```clojure
 (:require [clojure.test :refer [run-all-tests]]
           [magic.flags :as mflags])

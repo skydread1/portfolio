@@ -82,6 +82,7 @@ Let’s compare datomic pull and lasagna pull query with a simple example:
 ```
 
 - Lasagna pull
+
 ```clojure
 ((pull/query '[{:a ? :b {:b1 ?}}])
  sample-data)

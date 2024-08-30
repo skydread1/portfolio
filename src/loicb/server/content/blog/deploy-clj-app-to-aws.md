@@ -59,6 +59,7 @@ Example of jibbit config to just create a local docker image:
 ```
 
 Then we can run the container:
+
 ```
 docker run \
 --rm \

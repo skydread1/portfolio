@@ -175,7 +175,6 @@ As explained above, we could add some more diverse values, it wouldn’t be perc
 
 m
 ;=> {:numbers [3 4] :cnt 2 :multiply 12 :average 7/2}
-
 ```
 
 ### System

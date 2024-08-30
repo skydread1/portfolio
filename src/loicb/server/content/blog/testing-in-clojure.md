@@ -151,6 +151,7 @@ After I `jack-in` using my *dev* alias form the `deps.edn` file, I can load the 
 3. *ctrl+alt+c* *t* (in the `fib-test` namespace): run the tests
 
 In the REPL, we see:
+
 ```clojure
 clj꞉user꞉>
 ; Evaluating file: fib_test.clj

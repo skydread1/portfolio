@@ -307,13 +307,17 @@ Finally, You can add Magic.Unity (runtime for magic inside Unity) in the manifes
 
 Once you have the proper required config files ready, you can use `Nostrand` to
 Build your dlls:
+
 ```
 nos dotnet/build
 ```
+
 Pack your dlls in a nuget package and push to a remote host:
+
 ```
 nos dotnet/nuget-push
 ```
+
 Import your packages in Unity:
 ```
 nuget restore
