@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+Example of a Clojure mono-repo structure for a web server and 2 clients (web and mobile).
 +++
 ## Context
 

@@ -9,6 +9,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+how we leverage `fun-map` to create different systems in the website flybot.sg: `prod-system`, `dev-system`, `test-system` and `figwheel-system`.
 +++
 ## Prerequisites
 

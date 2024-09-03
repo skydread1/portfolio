@@ -8,6 +8,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+What Git workflow is suitable for your project: trunk-based, feature branching, forking, release branching, release candidate workflow, Feature branching to develop, GitFlow
 +++
 ## Introduction
 
@@ -152,7 +153,9 @@ I see `GitFlow` as the opposite of `Continuous Integration` (in the sense of mer
 - main ⚔️ develop
 - develop ⚔️ feature
 
-I am grateful that I never had to work with `GitFlow` and I have the feeling that implementing it would mean having a dedicated engineer to take care of the branching, a sort of *Git gardener*.
+I have the feeling that implementing it would mean having a dedicated engineer to take care of the branching, a sort of *Git gardener*.
+
+For legacy big projects, it might still be in use or necessary but I personally think it should be avoided.
 
 ## Feature branching on develop
 

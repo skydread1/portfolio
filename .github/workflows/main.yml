@@ -24,17 +24,23 @@ jobs:
         run: clojure -T:cljfmt check
 
       - name: Run the clj tests
-        run: clojure -A:server/test
+        run: clojure -M:server/test
 
       - name: Run the cljs tests
-        run: clojure -A:web/test-headless
+        run: clojure -M:web/test-headless
 
       - name: Build main.js
         run: clojure -T:build js-bundle
 
-      - uses: EndBug/add-and-commit@v9
+      - name: Generate RSS feed
+        run: clojure -T:build rss-feed
+
+      - name: Commit js bundle and rss feed
+        uses: EndBug/add-and-commit@v9
         with:
-          add: "resources/public/main.js"
+          add: |
+            resources/public/main.js
+            resources/public/blog/rss/clojure-feed.xml
           committer_name: GitHub Action
           default_author: github_actions
-          message: "Compiled the cljs to the js bundle: main.js"
+          message: "Compile the cljs to the js bundle and update RSS feed"

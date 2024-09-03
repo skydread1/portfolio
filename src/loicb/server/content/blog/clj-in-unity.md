@@ -11,6 +11,7 @@
                       :src-dark "/assets/loic-blog-logo.png"
                       :alt "Logo referencing Aperture Science"}}
 +++
+How to package a Compiled Clojure lib (With MAGIC compiler) to NuGet, push it to remote and import it to Unity.
 +++
 ## Prerequisites
 
@@ -21,7 +22,7 @@ To know how to do this, refer to the article: [Port your Clojure lib to the CLR 
 ## Goal
 
 In this article, I will show you:
-- how to package your lib to nuget
+- how to package your lib to NuGet
 - push it in to your host repo
 - import in Unity in this article
 
@@ -306,13 +307,17 @@ Finally, You can add Magic.Unity (runtime for magic inside Unity) in the manifes
 
 Once you have the proper required config files ready, you can use `Nostrand` to
 Build your dlls:
+
 ```
 nos dotnet/build
 ```
+
 Pack your dlls in a nuget package and push to a remote host:
+
 ```
 nos dotnet/nuget-push
 ```
+
 Import your packages in Unity:
 ```
 nuget restore
