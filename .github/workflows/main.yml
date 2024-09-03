@@ -4,8 +4,13 @@ on:
   push:
     branches-ignore:
       - master
+  pull_request:
+    types: [opened, ready_for_review, review_requested]
+  pull_request_review:
+    types: [submitted]
 
-permissions: write-all
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -30,12 +35,15 @@ jobs:
         run: clojure -M:web/test-headless
 
       - name: Build main.js
+        if: github.event_name == 'push' || github.event.action == 'review_requested' || github.event.action == 'ready_for_review'
         run: clojure -T:build js-bundle
 
       - name: Generate RSS feed
+        if: github.event_name == 'push' || github.event.action == 'review_requested' || github.event.action == 'ready_for_review'
         run: clojure -T:build rss-feed
 
       - name: Commit js bundle and rss feed
+        if: github.event_name == 'push' || github.event.review.state == 'approved'
         uses: EndBug/add-and-commit@v9
         with:
           add: |
