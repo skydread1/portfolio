@@ -88,7 +88,7 @@
                 {:title title
                  :link (str blog-url "/" id)
                  :guid (str blog-url "/" id)
-                 :pubDate (-> (t/time) (t/on (first date)) (t/in "Asia/Singapore") t/instant)
+                 :pubDate (-> (t/time "18:00") (t/on (first date)) (t/in "Asia/Singapore") t/instant)
                  :description md-content-short
                  "content:encoded" (str "<![CDATA["
                                         (md/md-to-html-string md-content
