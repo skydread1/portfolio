@@ -40,7 +40,7 @@ Here is an example of unpredictable **impure** logic:
          (take n))))
 
 (comment
-  ;; env.edn has the content {:FIB 10}
+  ;; env.edn has the content {:FIB {:length 10}}
   (fib :FIB) ;=> 10
   ;; env.edn is empty
   (fib :FIB) ;=> nil
@@ -300,7 +300,7 @@ Finally, I don’t want to use the `plugins` (profiling and code coverage) on wa
 
 We can actually create another kaocha config file for our watch mode.
 
-`tests-watch.edn`:
+`tests_watch.edn`:
 
 ```clojure
 #kaocha/v1
@@ -378,7 +378,7 @@ This is possible by wrapping the RC Tests in a deftest like so:
   (:require [clojure.test :refer [deftest testing]]
             [com.mjdowney.rich-comment-tests.test-runner :as rctr]))
 
-(deftest ^rct rich-comment-tests
+(deftest ^:rct rich-comment-tests
   (testing "all white box small tests"
     (rctr/run-tests-in-file-tree! :dirs #{"src"})))
 ```
