@@ -1,5 +1,6 @@
 #:post{:id "magic-clojure-compiler-to-clr"
-       :page :portfolio
+       :page :blog
+       :home-page? true
        :employer "Flybot Pte Ltd" 
        :date ["2021-02-01" "2022-12-09"]
        :repos [["Magic" "https://github.com/nasser/magic"] 
@@ -11,8 +12,8 @@
        :title "Magic Compiler and Nostrand"
        :css-class "magic-nostrand"
        :tags ["Clojure" "C#" "JVM" "CLR" "Compiler" "Interop" "NuGet" "Unity"]
-       :image #:image{:src "/assets/magic-book.jpg"
-                      :src-dark "/assets/magic-book.jpg"
+       :image #:image{:src "/assets/magic-hat.png"
+                      :src-dark "/assets/magic-hat.png"
                       :alt "Data Light Wallpaper"}}
 +++
 I worked on integrating the Magic Compiler and its tooling to Flybot's development workflow.

@@ -85,7 +85,7 @@
       [svg/menu]])
    [:div.name
     [:h2 "Loïc Blanchard"]
-    (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure)"])]
+    (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure) 📍 Singapore"])]
    (when-not home-page?
      [:button.nav-btn.hidden
       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
@@ -111,7 +111,7 @@
      [:div.name
       {:class "mobile-only"}
       [:h2 "Loïc Blanchard"]
-      [:h3 "Software Engineer in Functional Programming (Clojure)"]])])
+      [:h3 "Software Engineer in Functional Programming (Clojure) 📍 Singapore"]])])
 
 (defn header-comp []
   (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])

@@ -1,5 +1,6 @@
 #:post{:id "game-challenge-recommender"
-       :page :portfolio
+       :page :blog
+       :home-page? true
        :employer "Flybot Pte Ltd" 
        :date ["2023-08-08"]
        :title "Challenge Recommender"

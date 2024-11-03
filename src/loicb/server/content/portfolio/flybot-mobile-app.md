@@ -1,5 +1,6 @@
 #:post{:id "clojure-mobile-app"
-       :page :portfolio
+       :page :blog
+       :home-page? true
        :employer "Flybot Pte Ltd" 
        :date ["2023-02-13" "2023-08-08"]
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]

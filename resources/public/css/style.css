@@ -84,6 +84,7 @@ h5,
 h6 {
     padding-bottom: 1rem;
     padding-top: 1rem;
+    overflow: auto;
 }
 
 @media (max-width: 1024px) {
@@ -747,6 +748,11 @@ footer .contact-icons img {
 .vignette h2,
 .vignette h5 {
     text-align: center;
+}
+
+.vignette h2 a {
+    color: var(--text-second-color);
+    text-decoration: none;
 }
 
 /* Posts */

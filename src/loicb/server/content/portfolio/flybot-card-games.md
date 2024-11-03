@@ -1,5 +1,6 @@
 #:post{:id "card-games-api"
-       :page :portfolio
+       :page :blog
+       :home-page? true
        :employer "Flybot Pte Ltd"
        :date ["2020-01-06" "2021-10-29"]
        :repos [["Magic" "https://github.com/nasser/magic"]]

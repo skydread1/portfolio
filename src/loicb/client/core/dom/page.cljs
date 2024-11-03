@@ -45,7 +45,7 @@
      (for [article articles
            :let [[article-title article-link] article]]
        [:a
-        {:key (str "article-" article-title) :href article-link :rel "noreferrer" :target "_blank"}
+        {:key (str "article-" article-title) :href article-link}
         [:div.link
          [:div.img
           [:img
@@ -89,7 +89,7 @@
          [:p "Found any typo, errors or parts that need clarification? Feel free to raise a PR on the "
           [:a {:href "https://github.com/skydread1/portfolio" :rel "noreferrer" :target "_blank"}
            "GitHub repo"]
-          " and become a co-author."]])]]))
+          " and become a contributor."]])]]))
 
 (defn vignette-link
   "Vignette link to a portfolio project article."
@@ -100,7 +100,7 @@
     [:<>
      [:h2
       (internal-link
-       title
+       (str "🔗 " title)
        link-params)]
      [:h5.info
       (str (date-str date) " | " (if employer employer "Personal Project"))]
@@ -131,50 +131,59 @@
         (str (date-str date) " | " "Loic Blanchard")]
        [all-tags tags]]]]))
 
-(defn post-link
-  "Represnetation of a link to a post depending on the page.
-   A link to a post can be represented as:
-   - [[vignette-link]] for the portfolio page
-   - [[simple-link]] for the blog page."
-  [{:post/keys [css-class id page] :as post} link-params]
-  (if (= :blog page)
-    (internal-link
-     [:div.simple-link
-      {:key (str "simple-link-" id)
-       :id (str "simple-link-" id)
-       :class (str "simple-link-" css-class)}
-      [simple-link post]]
-     link-params)
-    [:div.vignette-container
-     {:key (str "vignette-container-" id)
-      :id (str "vignette-container-" id)}
-     [:div.vignette
-      {:key (str "vignette-link-" id)
-       :id (str "vignette-link-" id)
-       :class (str "vignette-link-" css-class)}
-      [vignette-link post link-params]]]))
-
-(defn page-with-post-links
-  "Page with post links."
+(defn portfolio-page
   []
   (let [page-title @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])
-        page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:name ?x}}}])
-        db-page-name @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:db-page-name ?x}}}])
+        page-name "portfolio"
+        db-page-name :blog
         post-route @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:post-route ?x}}}])
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
                          (sort-by #(first (:post/date %)))
                          reverse)]
     [:section.container
-     {:id  (name page-name)
-      :key (name page-name)}
+     {:id  page-name
+      :key page-name}
      [:h1 page-title]
      [:div.post-links
-      {:class (if (= :blog page-name)
-                "simple-links" "vignettes")}
+      {:class "vignettes"}
       (doall
-       (for [post posts]
-         (post-link post {:post-id (:post/id post)
-                          :page-name (or post-route page-name)})))]]))
+       (for [{:post/keys [id css-class home-page?] :as post} posts]
+         (when home-page?
+           [:div.vignette-container
+            {:key (str "vignette-container-" id)
+             :id (str "vignette-container-" id)}
+            [:div.vignette
+             {:key (str "vignette-link-" id)
+              :id (str "vignette-link-" id)
+              :class (str "vignette-link-" css-class)}
+             [vignette-link post {:post-id id
+                                  :page-name (or post-route "blog")}]]])))]]))
+
+(defn blog-page
+  []
+  (let [page-title @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])
+        page-name "blog"
+        db-page-name :blog
+        post-route @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:post-route ?x}}}])
+        posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])
+                         (sort-by #(first (:post/date %)))
+                         reverse)]
+    [:section.container
+     {:id  page-name
+      :key page-name}
+     [:h1 page-title]
+     [:div.post-links
+      {:class "simple-links"}
+      (doall
+       (for [{:post/keys [id css-class] :as post} posts]
+         (internal-link
+          [:div.simple-link
+           {:key (str "simple-link-" id)
+            :id (str "simple-link-" id)
+            :class (str "simple-link-" css-class)}
+           [simple-link post]]
+          {:post-id id
+           :page-name (or post-route "blog")})))]]))
 
 (defn page-with-a-post
   "Page that displays the full post content.

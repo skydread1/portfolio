@@ -1,5 +1,6 @@
 #:post{:id "blog-django"
-       :page :portfolio
+       :page :blog
+       :home-page? true
        :date ["2023-05-27" "2023-11-12"]
        :repos [["Blog" "https://github.com/skydread1/blog"]]
        :articles [["Deploy Django Blog in AWS Beanstalk" "../blog/deploy-django-aws-beanstalk"]]

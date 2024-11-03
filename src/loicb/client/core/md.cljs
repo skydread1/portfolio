@@ -4,3 +4,4 @@
 (def posts
   "Read posts config and content from the md files"
   (macro/load-posts-macro))
+
