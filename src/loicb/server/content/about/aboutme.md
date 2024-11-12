@@ -1,73 +1,52 @@
 #:post{:id "about-me"
        :page :about
-       :date ["2024-01-06"]
+       :date ["2024-11-12"]
        :employer "My journey so far"
        :repos [["My GitHub" "https://github.com/skydread1"]]
        :articles [["My Tech Blog" "../blog"]]
        :title "About Me"
+       :tags ["🛠️ Staff SE" "📍 Singapore" "🎫 Pass: EP" "💻 5+ years of experience" "🎓 Master in CS" "🇫🇷 French Citizen"]
        :css-class "about-me"
        :image #:image{:src "/assets/loic-logo.png"
                       :src-dark "/assets/loic-logo.png"
                       :alt "Loic Logo"}}
 +++
 +++
-## Work Experiences
+## In short
 
-### 2024-now: Staff Software Engineer | [Flybot Pte Ltd](https://www.flybot.sg/), Singapore
+👋🏻 Hi, I'm Loic Blanchard, a Staff Software Engineer based in Singapore with over 5 years of experience in building scalable software solutions. My expertise lies in designing and leading the development of high-quality software systems, primarily using the Functional Programming language **Clojure** and its ecosystem. I am currently leading the engineering team at [Flybot Pte Ltd](https://www.flybot.sg/).
 
-- Lead the Flybot's engineering team into meeting our client's expectations.
-- Report to the CEO directly to gather client's needs and plan accordingly
-- Design software architecture and delegate project responsibilities to the team's engineers. 
+## My journey
 
-### 2023: Senior Software Engineer | [Flybot Pte Ltd](https://www.flybot.sg/), Singapore
-- Designed a challenge recommender that suggests personal challenges to Golden Island's players. The recommender is a Clojure application deployed in a POD in AWS EKS that consume events from kafka topics and produces personalized challenges to a dedicated kafka topic. It uses Datomic as storage solution within the EKS cluster | *Clojure, AWS EKS, k8s, datomic, kafka*
-- Developed the company blog mobile app with React Native framework. The mobile frontend and web frontend share most of the re-frame (state management) logic | *ClojureScript, ReactNative* (open-source)
-- Conducted technical interviews for junior developers and onboarding of new employees
+After I got my Master in CS at [🇫🇷 CPE Lyon](https://www.cpe.fr/en/), I started my career as a software engineer with at [🇸🇬 Flybot Pte Ltd](https://www.flybot.sg/) developing pure Game backend API solutions using the **Functional Programming** paradigm with **Clojure**. I then worked on porting our Clojure logic to the CLR using the [Magic Compiler](https://github.com/nasser/magic) that generates .NET assemblies from Clojure code and which is compatible with Unity, the frontend used for our games.
 
-### 2020-2023: Software Engineer | [Flybot Pte Ltd](https://www.flybot.sg/), Singapore
+I also created the company's website using a Clojure(Script) **full-stack**, leveraging some of our CEO's open-source libraries to showcase our custom web stack. I also experimented with mobile app development demonstrating that we could reuse most of the ClojureScript frontend state management (Re-Frame) from the web app.
 
-- Developed the company full-stack web app. The website has a blog. Oauth2 is used for authentication. The website is deployed in a docker container on AWS. It showcases some of Flybot's open-source libs for dependency injections and data pulling | *Clojure, ClojureScript, React* (open-source)
-- Developed a basic Monte Carlo Tree Search bot for our card games | *Clojure*
-- Ported our Clojure backend libraries to Unity so the Unity frontend developers can use the Clojure logic in Unity | *Clojure, C#*
-- Improved the Nostrand project management to ease the compilation with the Magic compiler (compile Clojure file to .NET assemblies) | *Clojure, C#* (open-source)
-- Developed a library called `MetaGame` to compose card games (play multiple rounds, make it a tournament). An entire tournament can be sent up using pure Clojure data | *Clojure*
-- Developed online Chinese card games (Pǎo Dé Kuài (跑得快) and Big two (锄大地) ) backend | *Clojure*
+I then worked on a **event-driven** multi-recommender system to send personal challenges to our players. It uses `Kafka` for event streaming, `Datomic` for storage, `Prometheus/Grafana` for monitoring, and it is containerized. The **CI/CD** is done in `Gitlab`. The apps are deployed in `AWS EKS`.
 
-### 2019: End of study project | [Bosch SEA Pte Ltd](https://www.bosch.com.sg/our-company/bosch-in-singapore/), Singapore
-- Modeled and provisioned infrastructure using AWS CloudFormation for a project that consists in facilitating the diagnosis of damaged automobile pieces via trend detection
-- Deployed and maintained AWS resources with Jenkins
-- Cohered Agile Software Development using Jira Kanban and Scrum as frameworks, Git for version-control system and Atlassian software *| Bitbucket, Jira and SourceTree*
+Finally, I am currently working on a data aggregator using Red Planet Labs's [RAMA](https://redplanetlabs.com/learn-rama) platform which simplifies building distributed systems by providing a high-level, declarative framework that abstracts away the complexities of managing state, concurrency, and communication.
 
-### 2017-2018: One-year internship | [Electriduct Inc](https://www.electriduct.com/), Fort Lauderdale, Florida, USA
-- Improved Web Design and responsivity | *HTML, CSS, JS, 3dcart templates*
-- Optimized online ad campaigns | *Google AdWords/Shopping/Analytics*
-- Developed an inventory management program using UPC barcode reading | *PHP, SQL, HTML, CSS, JS*
-- Developed a customized barcode generator for either sheet printers or thermal printer | *C#, SQL*
+### Responsibilities:
 
-## Education
-
-### 2015-2019: Master’s Degree | [CPE](https://www.cpe.fr/en/) Lyon, France
-
-- **Specialization**: Software Engineering
-- **Major Project**: Full-stack JS web app and Mobile App development allowing users to find new friends to go to common interest nearby events together *| Node.js, ReactJS, React Native*
-- **Secondary Projects**: Android Chat App *(Java)*, Big Data hackathon *(Hadoop, Tableau)*, Chess Game *(Java)*, Siam Game *(C)*, UX design *(Balsamiq)*
-
-### 2014-2015: Undergraduate in Engineering Sciences | [CPE](https://www.cpe.fr/en/) Lyon, France
-- **Major**: mathematics and physics
-- **Minor**: computer sciences and automatism
+- **Leading** software architecture design and project management, reporting directly to the CEO.
+- **Conducting** technical interviews and **onboarding** new engineers.
+- **Developing** scalable and robust backend systems using `Clojure`, `Kafka`, and `Datomic`.
+- **Designing** mobile and web applications that share logic using `ClojureScript`, `Re-frame`, `Reagent (React)` and `Reagent React Native`.
+- Building **Containerized** applications to enhance our gaming platforms.
+- **Porting** Clojure backend logic to .NET to allow Clojure backend APIs to be used in Unity.
 
 ## Skills
 
-### ICTS             
-- **Back-End**: Clojure, Python, Java, PHP, Node.js, C, C++, C#
-- **HTTP**: Clojure Ring, Clojure Aleph
-- **Front-End**: ClojureScript, HTML, CSS, JS, C#, Reagent (React), Re-frame, figwheel-main
-- **Database**: MySQL, PostgreSQL, Datomic, Datalevin, Cassandra
+### ICTS
+
+- **Back-End**: Clojure, Java, C#
+- **Front-End**: ClojureScript, HTML, CSS, JS, Reagent (React), Re-frame, figwheel-main
+- **Database**: PostgreSQL, Datomic, Datalevin
 - **Mobile**: Reagent React Native, figwheel-main
 - **Cloud**: AWS, Vercel, Netlify
 - **Containers**: Docker, k8s, AWS EKS
 - **Event Streaming**: Kafka
-- **Proj Management**: GitHub, Gitlab, Bitbucket, Trello, Jira, Slack, Jenkins
+- **Project Management**: GitHub, Gitlab, Bitbucket, Trello, Jira, Slack, Jenkins
 
 ### Certifications
 - **AWS**: Solutions Architect - Associate

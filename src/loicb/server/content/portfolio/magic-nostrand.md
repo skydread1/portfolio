@@ -96,6 +96,7 @@ Finally, You can add Magic.Unity (runtime for magic inside Unity) in the manifes
     "sr.nas.magic.unity": "https://github.com/nasser/Magic.Unity.git"
 	}
 }
+```
 
 ## Magic compiler
 
