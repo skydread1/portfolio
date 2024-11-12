@@ -84,6 +84,7 @@ h5,
 h6 {
     padding-bottom: 1rem;
     padding-top: 1rem;
+    overflow: auto;
 }
 
 @media (max-width: 1024px) {
@@ -691,7 +692,6 @@ footer .contact-icons img {
     margin: 1rem;
     padding: 1rem;
     flex-grow: 1;
-    text-align: justify;
     border-style: solid;
     border-width: 1px;
     border-color: var(--border-primary-color);
@@ -704,13 +704,13 @@ footer .contact-icons img {
         flex-basis: 100%;
         margin: 0;
         padding: 1rem;
-        text-align: justify;
         border-style: solid none;
         transition: 0.3s;
     }
 }
 
-.post {
+.post p,
+.vignette-container p {
     text-align: justify;
 }
 
@@ -747,6 +747,11 @@ footer .contact-icons img {
 .vignette h2,
 .vignette h5 {
     text-align: center;
+}
+
+.vignette h2 a {
+    color: var(--text-second-color);
+    text-decoration: none;
 }
 
 /* Posts */

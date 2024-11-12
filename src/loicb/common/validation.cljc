@@ -21,6 +21,7 @@
    [:post/id :string]
    [:post/page :keyword]
    [:post/title :string]
+   [:post/home-page? {:optional true} :boolean]
    [:post/date [:and
                 [:vector :string]
                 [:fn #(date-valid? %)]]]

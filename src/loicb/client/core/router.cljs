@@ -1,5 +1,5 @@
 (ns loicb.client.core.router
-  (:require [loicb.client.core.dom.page :refer [about-page page-with-post-links page-with-a-post]]
+  (:require [loicb.client.core.dom.page :refer [about-page blog-page portfolio-page page-with-a-post]]
             [goog.object :as gobj]
             [reitit.frontend :as rei]
             [reitit.frontend.easy :as rfe]
@@ -14,16 +14,10 @@
    ["/portfolio"
     [""
      {:name :portfolio
-      :db-page-name :portfolio
-      :post-route :portfolio/post
+      :db-page-name :blog
+      :post-route :blog/post
       :title "Portfolio"
-      :view  page-with-post-links}]
-
-    ["/:post-id"
-     {:name :portfolio/post
-      :db-page-name :portfolio
-      :title "Portfolio"
-      :view  page-with-a-post}]]
+      :view  portfolio-page}]]
 
    ["/blog"
     [""
@@ -31,7 +25,7 @@
       :db-page-name :blog
       :post-route :blog/post
       :title "Blog"
-      :view  page-with-post-links}]
+      :view  blog-page}]
 
     ["/:post-id"
      {:name :blog/post
