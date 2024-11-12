@@ -9,6 +9,19 @@
   [:a {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
    text])
 
+(defn tags
+  []
+  [:div.tags
+   (for [tag ["🛠️ Staff SE"
+              "📍 Singapore"
+              "🎫 Pass: EP"
+              "💻 5+ years of experience"
+              "🎓 Master in CS"
+              "🇫🇷 French Citizen"]]
+     [:div.tag
+      {:key (str "tag-" tag)}
+      tag])])
+
 (defn navbar-content-browser []
   [:nav.browser
    {:id "browser-nav" :class "browser-only"}
@@ -85,7 +98,7 @@
       [svg/menu]])
    [:div.name
     [:h2 "Loïc Blanchard"]
-    (when nav-open? [:h3 "Software Engineer in Functional Programming (Clojure) 📍 Singapore"])]
+    (when nav-open? [tags])]
    (when-not home-page?
      [:button.nav-btn.hidden
       {:on-click #(rf/dispatch [:evt.app/toggle-theme])}
@@ -111,7 +124,7 @@
      [:div.name
       {:class "mobile-only"}
       [:h2 "Loïc Blanchard"]
-      [:h3 "Software Engineer in Functional Programming (Clojure) 📍 Singapore"]])])
+      [tags]])])
 
 (defn header-comp []
   (let [nav-open? @(rf/subscribe [:subs/pattern '{:nav.main/open? ?x}])

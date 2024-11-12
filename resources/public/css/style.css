@@ -692,7 +692,6 @@ footer .contact-icons img {
     margin: 1rem;
     padding: 1rem;
     flex-grow: 1;
-    text-align: justify;
     border-style: solid;
     border-width: 1px;
     border-color: var(--border-primary-color);
@@ -705,13 +704,13 @@ footer .contact-icons img {
         flex-basis: 100%;
         margin: 0;
         padding: 1rem;
-        text-align: justify;
         border-style: solid none;
         transition: 0.3s;
     }
 }
 
-.post {
+.post p,
+.vignette-container p {
     text-align: justify;
 }
 
