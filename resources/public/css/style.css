@@ -754,6 +754,17 @@ footer .contact-icons img {
     text-decoration: none;
 }
 
+@media (max-width: 1024px) {
+
+    .vignette h2 a {
+        font-size: 1.2rem;
+    }
+
+    .vignette h5 {
+        font-size: 1rem;
+    }
+}
+
 /* Posts */
 
 .post-body img {
@@ -855,7 +866,7 @@ footer .contact-icons img {
 .simple-link h2 {
     margin: 0;
     padding: 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .simple-link .image {
@@ -875,6 +886,7 @@ footer .contact-icons img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 1rem;
 }
 
 .simple-link .info>* {
