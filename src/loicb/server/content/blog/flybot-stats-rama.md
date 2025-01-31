@@ -5,7 +5,7 @@
        :date ["2024-08-12"]
        :title "Gaming Stats Aggregation with Rama"
        :css-class "stats-rama"
-       :tags ["Clojure1.12" "Rama" "AWS" "EKS"]
+       :tags ["Clojure" "Rama" "AWS" "EKS" "Kafka"]
        :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
                       :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
                       :alt "Flybot Logo"}}

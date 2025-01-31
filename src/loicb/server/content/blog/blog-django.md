@@ -1,6 +1,5 @@
 #:post{:id "blog-django"
        :page :blog
-       :home-page? true
        :date ["2023-05-27" "2023-11-12"]
        :repos [["Blog" "https://github.com/skydread1/blog"]]
        :articles [["Deploy Django Blog in AWS Beanstalk" "../blog/deploy-django-aws-beanstalk"]]
@@ -31,8 +30,8 @@ After the AWS free tier expired, I moved the tech blog to the ClojureScript SPA.
 
 ## Features
 
-The different features of the blog are the following:
-- Users can create an account and login/logout
+The different features of the` blog are the following:
+- Users can create an account `and login/logout
 - Logged-in users can create/edit/delete posts
 - The posts are written in markdown with preview of what the post will look like before submission
 - There is syntax highlighting for the code blocks

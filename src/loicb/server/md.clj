@@ -12,7 +12,7 @@
 (def directory "./src/loicb/server/content/")
 (def sub-dirs
   "pages to be published."
-  ["about" "blog" "portfolio"])
+  ["about" "blog"])
 
 (defn files-of
   "Returns a map with the

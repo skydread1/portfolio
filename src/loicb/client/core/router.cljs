@@ -16,7 +16,7 @@
      {:name :portfolio
       :db-page-name :blog
       :post-route :blog/post
-      :title "Portfolio"
+      :title "Featured"
       :view  portfolio-page}]]
 
    ["/blog"
