@@ -134,7 +134,7 @@
 (defn portfolio-page
   []
   (let [page-title @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:title ?x}}}])
-        page-name "portfolio"
+        page-name "featured"
         db-page-name :blog
         post-route @(rf/subscribe [:subs/pattern '{:app/current-view {:data {:post-route ?x}}}])
         posts       (->> @(rf/subscribe [:subs.post/posts db-page-name])

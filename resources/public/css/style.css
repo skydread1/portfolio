@@ -52,7 +52,7 @@
 }
 
 html {
-    font-size: 18px;
+    font-size: 16px;
     font-family: Helvetica, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     background-image: linear-gradient(to right, var(--bg-secondary-color) 15%, var(--bg-primary-color) 85%);
 }
@@ -754,6 +754,17 @@ footer .contact-icons img {
     text-decoration: none;
 }
 
+@media (max-width: 1024px) {
+
+    .vignette h2 a {
+        font-size: 1.2rem;
+    }
+
+    .vignette h5 {
+        font-size: 1rem;
+    }
+}
+
 /* Posts */
 
 .post-body img {
@@ -855,7 +866,7 @@ footer .contact-icons img {
 .simple-link h2 {
     margin: 0;
     padding: 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .simple-link .image {
@@ -875,6 +886,7 @@ footer .contact-icons img {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 1rem;
 }
 
 .simple-link .info>* {

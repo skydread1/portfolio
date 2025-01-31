@@ -1,6 +1,5 @@
 #:post{:id "portfolio-clojurescript-spa"
        :page :blog
-       :home-page? true
        :date ["2023-04-07" "2024-04-21"]
        :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
        :title "Portfolio Website"
@@ -64,7 +63,7 @@ Each post has its own markdown files in the folder of the page it belongs to.
 .
 ├── about
 │   └── aboutme.md
-└── portfolio
+└── blog
     ├── blog_django.md
     ├── flybot_card_games.md
     ├── flybot_mobile_app.md
@@ -75,7 +74,7 @@ Each post has its own markdown files in the folder of the page it belongs to.
 
 ### Vignette and Post
 
-In the `/portfolio` route, I showcase all the projects via what I called `vignette`. They contain a short description of the post instead of the full content.
+Some `blog` posts have a flag to display the post in the home page via what I called `vignette`. They contain a short description of the post instead of the full content.
 
 When the user clicks on a vignette, he goes to a new route with the full post content.
 
@@ -90,7 +89,8 @@ Here is an example of clojure config map for a post:
 
 ```clojure
 #:post{:id "clojure-full-stack-webapp"
-       :page :portfolio
+       :page :blog
+       :home-page? true ;; display vignette in home page
        :employer "Flybot Pte Ltd"
        :date "2022"
        :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
