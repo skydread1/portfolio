@@ -338,4 +338,4 @@ My fork uses reader conditionals so it can be run and tested in both JVM and CLR
 ## Learn more
 
 Now that your library is compiled to dotnet, you can learn how to package it to nuget, push it in to your host repo and import in Unity in this article:
-- [Pack, Push and Import Clojure to Unity](https://www.loicblanchard.me/blog/clojure-in-unity).
+- [Pack, Push and Import Clojure to Unity](https://www.loicb.dev/blog/clojure-in-unity).

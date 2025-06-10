@@ -200,9 +200,9 @@ from loicblog.settings.common import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["blog.loicblanchard.me", "*"] # add localhost for local testing
+ALLOWED_HOSTS = ["blog.loicb.dev", "*"] # add localhost for local testing
 
-CSRF_TRUSTED_ORIGINS = ['https://blog.loicblanchard.me']
+CSRF_TRUSTED_ORIGINS = ['https://blog.loicb.dev']
 
 # Amazon S3 configuration
 AWS_ACCESS_KEY_ID = env.str('AWS_ACCESS_KEY_ID')
@@ -404,17 +404,17 @@ By default, creating an EB also setup an Application Load Balancer (ALB). The AL
 
 ### SSL Certificate
 
-In my case, I own the domain `loicblanchard.me`. I want to have my blog on the subdomain `blog.loicblanchard.me`. I use GoDaddy for DNS provider but the process is quite similar for most providers.
+In my case, I own the domain `loicb.dev`. I want to have my blog on the subdomain `blog.loicb.dev`. I use GoDaddy for DNS provider but the process is quite similar for most providers.
 
-For HTTPS, we can create a SSL certificate using AWS Certificate Manager for the subdomain `blog.loicblanchard.me`.
+For HTTPS, we can create a SSL certificate using AWS Certificate Manager for the subdomain `blog.loicb.dev`.
 
-*Note: ACM provides the CNAME record name and value. For the name, it will provide something like this `_SOME-NUMBERS-HERE.blog.loicblanchard.me.`*
+*Note: ACM provides the CNAME record name and value. For the name, it will provide something like this `_SOME-NUMBERS-HERE.blog.loicb.dev.`*
 
 *However, we need to only enter `_SOME-NUMBERS-HERE.blog` for it to work in GoDaddy.*
 
 ### Mapping Subdomain to ALB
 
-Then in GoDaddy, to resolve `blog.loicblanchard.me` to the ALB name, we need to add another CNAME record for the `blog` subdomain.
+Then in GoDaddy, to resolve `blog.loicb.dev` to the ALB name, we need to add another CNAME record for the `blog` subdomain.
 
 After that, we need to add rules to the ALB to redirect http to https using the ACM certificate.
 

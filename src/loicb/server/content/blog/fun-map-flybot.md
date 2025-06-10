@@ -13,7 +13,7 @@ how we leverage `fun-map` to create different systems in the website flybot.sg: 
 +++
 ## Prerequisites
 
-If you are not familiar with [fun-map](https://github.com/robertluo/fun-map), please refer to the doc [Fun-Map: a solution to deps injection in Clojure](https://www.loicblanchard.me/blog/fun-map).
+If you are not familiar with [fun-map](https://github.com/robertluo/fun-map), please refer to the doc [Fun-Map: a solution to deps injection in Clojure](https://www.loicb.dev/blog/fun-map).
 
 ## Goal
 

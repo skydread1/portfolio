@@ -67,7 +67,7 @@
 
 (defn link-relative->absolute
   [text state]
-  [(str/replace text #"src=\"/" "src=\"https://www.loicblanchard.me/") state])
+  [(str/replace text #"src=\"/" "src=\"https://www.loicb.dev/") state])
 
 (defn blog-rss-clojure-feed
   []
@@ -76,10 +76,10 @@
                                 (filter #(some #{"Clojure"} (:post/tags %)))
                                 (sort-by #(first (:post/date %)))
                                 reverse)
-        base-url "https://www.loicblanchard.me"
+        base-url "https://www.loicb.dev"
         blog-url (str base-url "/blog")
         channel {:title "Loic Blanchard - Clojure Blog Feed"
-                 :link "https://www.loicblanchard.me"
+                 :link "https://www.loicb.dev"
                  :feed-url (str blog-url "/rss/clojure-feed.xml")
                  :description "Articles related to Clojure"
                  :language "en-us"

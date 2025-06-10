@@ -13,7 +13,7 @@ How we leverage `lasagna-pull` in the flybot.sg Clojure web app to define a pure
 +++
 ## Prerequisites
 
-If you are not familiar with [lasagna-pull](https://github.com/flybot-sg/lasagna-pull), please refer to the doc [Lasagna Pull: Precisely select from deep nested data](https://www.loicblanchard.me/blog/lasagna-pull)
+If you are not familiar with [lasagna-pull](https://github.com/flybot-sg/lasagna-pull), please refer to the doc [Lasagna Pull: Precisely select from deep nested data](https://www.loicb.dev/blog/lasagna-pull)
 
 ## Goal
 
