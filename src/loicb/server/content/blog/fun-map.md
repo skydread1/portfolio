@@ -244,4 +244,4 @@ fun-map also support other features such as function call tracing, value caching
 
 ## Fun-Map applied to flybot.sg
 
-To see Fun Map in action, refer to the doc [Fun-Map applied to flybot.sg](https://www.loicblanchard.me/blog/fun-map-applied-to-flybot).
+To see Fun Map in action, refer to the doc [Fun-Map applied to flybot.sg](https://www.loicb.dev/blog/fun-map-applied-to-flybot).

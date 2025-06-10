@@ -17,7 +17,7 @@ How to package a Compiled Clojure lib (With MAGIC compiler) to NuGet, push it to
 
 Your Clojure library is assumed to be already compiled to dotnet.
 
-To know how to do this, refer to the article: [Port your Clojure lib to the CLR with MAGIC](https://www.loicblanchard.me/blog/port-clj-lib-to-clr)
+To know how to do this, refer to the article: [Port your Clojure lib to the CLR with MAGIC](https://www.loicb.dev/blog/port-clj-lib-to-clr)
 
 ## Goal
 

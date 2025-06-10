@@ -63,7 +63,7 @@ The gaming platform we have follows an **event-driven** architecture using `Kafk
 The first scope of the app was to just provide a **random** recommender. The app consumes from the different relevant event topics, stores data in Datomic and produces recommendation to a recommendation kafka topic.
 
 Regarding our Clojure stack I use almost exclusively open-source libraries. We can note a few excellent libraries from the CEO himself [robertluo](https://github.com/robertluo):
-- [fun-map](https://github.com/robertluo/fun-map): for systems (associative dependency injection), you can read more about it in this article [Fun-Map: a solution to deps injection in Clojure](https://www.loicblanchard.me/blog/fun-map).
+- [fun-map](https://github.com/robertluo/fun-map): for systems (associative dependency injection), you can read more about it in this article [Fun-Map: a solution to deps injection in Clojure](https://www.loicb.dev/blog/fun-map).
 - [waterfall](https://github.com/robertluo/waterfall):  minimalist kafka interaction library with additional optional batteries included.
 
 Regarding CI/CD, I just needed to generate a container image in our Gitlab container registry for the devops to pick up for deployment in the EKS cluster. I use [jibbit](https://github.com/atomisthq/jibbit), a docker-less clojure image builder for the deps.edn (project dependencies).
@@ -97,7 +97,7 @@ While I assigned my colleague to work on the recommender algo, I improved the ka
 
 ## Test and monitoring
 
-Of course, throughout the development we had a good test suite with integration tests. You can have a look at my article regarding [Testing in Clojure](https://www.loicblanchard.me/blog/testing-in-clojure).
+Of course, throughout the development we had a good test suite with integration tests. You can have a look at my article regarding [Testing in Clojure](https://www.loicb.dev/blog/testing-in-clojure).
 
 For the local load/stress tests, I opted for the following strategy: the external services are containerized but the Clojure REPL runs outside of Docker so I use it the same way I would use it for embedded services and regular unit tests.
 

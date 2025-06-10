@@ -202,4 +202,4 @@ This context can help you gathering information from the query and apply a funct
 
 ## Lasagna Pull applied to flybot.sg
 
-To see Lasagna Pull in action, refer to the doc [Lasagna Pull applied to flybot.sg](https://www.loicblanchard.me/blog/lasagna-pull-applied-to-flybot).
+To see Lasagna Pull in action, refer to the doc [Lasagna Pull applied to flybot.sg](https://www.loicb.dev/blog/lasagna-pull-applied-to-flybot).

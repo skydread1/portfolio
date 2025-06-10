@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://www.loicblanchard.me/" target="_blank" rel="noopener noreferrer"><img src="./resources/public/assets/loic-logo.png" alt="Loic logo" width="25%"></a>
+    <a href="https://www.loicb.dev/" target="_blank" rel="noopener noreferrer"><img src="./resources/public/assets/loic-logo.png" alt="Loic logo" width="25%"></a>
 </div>
 
 <div align="center">
@@ -191,7 +191,7 @@ A RSS feed of the Clojure blog posts is also generated when code is pushed:
 clojure -T:build rss-feed
 ```
 
-The RSS **clojure** feed is accessible at the url [blog/rss/clojure-feed.xml](https://www.loicblanchard.me/blog/rss/clojure-feed.xml)
+The RSS **clojure** feed is accessible at the url [blog/rss/clojure-feed.xml](https://www.loicb.dev/blog/rss/clojure-feed.xml)
 
 ## 🔷 Tests
 

@@ -91,7 +91,7 @@ The mono-repo structure is as followed:
 │       └── flybot.server
 ```
 
-You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://www.loicblanchard.me/blog/clojure-mono-repo).
+You can read more about it in my article: [Clojure Mono Repo example : server + 2 clients](https://www.loicb.dev/blog/clojure-mono-repo).
 
 ## Features
 

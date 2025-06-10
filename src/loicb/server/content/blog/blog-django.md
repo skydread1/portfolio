@@ -75,7 +75,7 @@ To deploy new app versions, I rely on the `AWS CLI EB` so I just have to run `eb
 
 ### Domain
 
-The blog used to be hosted at `blog.loicblanchard.me`. I used a CNAME record to map my personal subdomain to the Application Load Balancer's DNS.
+The blog used to be hosted at `blog.loicb.dev`. I used a CNAME record to map my personal subdomain to the Application Load Balancer's DNS.
 
 However I moved the blog content to my clojure SPA instead because after my AWS free tier expired, the monthly cost for hosting the blog was around $50 which was too much for a simple blog.
 
