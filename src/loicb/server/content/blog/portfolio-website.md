@@ -1,6 +1,7 @@
 #:post{:id "portfolio-clojurescript-spa"
        :page :blog
        :date ["2023-04-07" "2024-04-21"]
+       :home-page? true
        :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
        :title "Portfolio Website"
        :css-class "portfolio"
