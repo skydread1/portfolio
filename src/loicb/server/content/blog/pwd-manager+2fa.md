@@ -1,4 +1,4 @@
-#:post{:id "pwd-manager+2FA"
+#:post{:id "pwd-manager-2FA"
        :page :blog
        :date ["2025-06-27"]
        :title "Password manager + 2FA"
