@@ -10,15 +10,15 @@
 +++
 CD-SL-P (Custom Domain + SimpleLogin + Proton) method to organize your email flow.
 +++
-## 👁️ Rational
+## 👁️ Rationale
 
 In this article, I will show you the CD-SL-P (Custom Domain + SimpleLogin + Proton) method that is good to balance privacy and convenience.
 
-I will give you indication on how to do it on your own as well as the principle behind it.
+I will guide you through the steps of setting it up yourself, as well as explain the principles behind it.
 
-This article assumes you have a Proton Unlimited Plan (which comes with SimpleLogin Premium) and it is not sponsored in any way. They are just tools I enjoy using.
+This article assumes you have a Proton Unlimited Plan (which comes with SimpleLogin Premium), and it is not sponsored in any way. These are just tools I enjoy using.
 
-You can take inspiration to use this method with the email/alias services of your choice, the principles remain the same.
+You can use this method with the email/alias services of your choice; the principles remain the same.
 
 ### Reasons to move to this Email setup
 
@@ -27,23 +27,23 @@ You can take inspiration to use this method with the email/alias services of you
 I migrated from Gmail to Proton for the following reasons:
 
 - I’d rather pay with money for an encrypted email service like Proton than pay Google with my personal data.
-- Proton Unlimited comes with VPN, drive (now with albums), SimpleLogin Premium that I regularly use (it also has password manager etc)
+- Proton Unlimited comes with VPN, Drive (now with albums), SimpleLogin Premium (which I regularly use), and it also includes a password manager, etc.
 
 #### SimpleLogin (Alias service)
 
-SimpleLogin allows us to create aliases that forward emails to our mailboxes. In our case they forward emails to our proton mailboxes. It is a good way to deal with spam because you can create one alias per website you register to.
+SimpleLogin allows us to create aliases that forward emails to our mailboxes. In our case they forward emails to our proton mailboxes. It is a good way to deal with spam because you can create one alias per website you register with.
 
 Therefore, if one website leaks your data (voluntarily or not) and you start getting spams in your Proton mailbox, you will be able to see, from the message headers, from which alias these spams came from.
 
-You then know exactly which website leaked your address and you can block the alias you created for it. The website and spammers did not know your proton address making this setup easy to deal with spams.
+You then know exactly which website leaked your address and you can block the alias you created for it. The website and spammers do not know your Proton address, making this setup easy to deal with spam.
 
 #### Custom Domain
 
 Proton helps with data privacy and SimpleLogin acts has a proxy between your Proton mailbox and the website you log into.
 
-Custom Domain help you, well, to avoid being stuck with Proton or SimpleLogin if for whatever reason you want to change email/alias services.
+A custom domain helps you avoid being stuck with Proton or SimpleLogin if, for whatever reason, you want to change email/alias services.
 
-A custom domain is a domain you buy with a Domain Registrar such as Cloudflare or PorkBun for instance. A domain looks like this for instance `gandalf.com`, `gandalf.me`, `gandalf.sg`. Depending on the extension, the price to rent the domain varies. If the domain is already bought by someone or a company, you can buy it from them. I advise to stick to trusted extensions such as `.com` (very expensive, often used for business), `.me` (good for personal email address and personal website), `.dev` / `.tech` if you are a software engineer. If you can, it might be a good idea to buy a few extensions for the same `label` (i.e. `gandalf.me` and `gandalf.pro`)
+A custom domain is a domain you buy with a Domain Registrar such as Cloudflare or PorkBun for instance. A domain looks like this for instance `gandalf.com`, `gandalf.me`, `gandalf.sg`. Depending on the extension, the price to rent the domain varies. If the domain is already bought by someone or a company, you can buy it from them. I advise sticking to trusted extensions such as `.com` (very expensive, often used for business), `.me` (good for personal email addresses and personal websites), and `.dev` / `.tech` if you are a software engineer. If you can, it might be a good idea to buy a few extensions for the same `label` (i.e. `gandalf.me` and `gandalf.pro`)
 
 A few other good reasons I use custom domains are the following:
 
@@ -56,11 +56,11 @@ A few other good reasons I use custom domains are the following:
 
 ### Proton additional addresses
 
-With the Unlimited Plan, you can add up to 15 proton aliases (also called “additional addresses”, I believe to avoid confusion with SimpleLogin aliases). You can view these additional addresses as separate email addresses. However, note that they live under the same Proton account (the `proton.me` or `pm.me` address you used upon Proton account creation).
+With the Unlimited Plan, you can add up to 15 proton aliases (also called “additional addresses”, I believe to avoid confusion with SimpleLogin aliases). You can view these additional addresses as separate email addresses. However, note that they are all part of the same Proton account (the `proton.me` or `pm.me` address you used upon Proton account creation).
 
-Therefore, you must setup 2FA and have a strong password for your proton account alongside a good recovery method.
+Therefore, you must set up 2FA and use a strong password for your Proton account, along with a reliable recovery method.
 
-To create a new proton address, you need to find an unused label for the proton domains `.proton.me` or `pm.me`. So `shopping@pm.me` or `shopping@proton.me` won’t be available because taken by others for sure. Most likely `gandalf.shopping@pm.me` is taken too.
+To create a new proton address, you need to find an unused label for the proton domains `.proton.me` or `pm.me`. So `shopping@pm.me` or `shopping@proton.me` will likely be unavailable, as they are probably already taken by someone else. Most likely `gandalf.shopping@pm.me` is taken too.
 
 However, you can use up to 3 custom domains to Proton so we can happily setup the DNS records to use `gandalf.me` and `gandalf.pro` in Proton. Therefore, I can create email addresses such as:
 
@@ -73,9 +73,9 @@ And I am sure none of them are taken by others since I am the only one owning th
 
 ### Compartimentation
 
-To organize your emails in ProtonMail, you can use `folders` and `labels`.
+To organize your emails in ProtonMail, you can use both `folders` and `labels`.
 
-I personally only use `folders` as it is enough for my use case. You can create multiple folders in ProtonMail and drag and drop the emails as they arrive in the proper folder. Here is an example of a folder structure we could have for Gandalf:
+I personally use only `folders` as it is sufficient for my use case. You can create multiple folders in ProtonMail and drag and drop emails as they arrive in the proper folder. Here's an example of a folder structure that Gandalf could use:
 
 ```bash
 ├── me ## for gandalf.me domain
@@ -86,9 +86,9 @@ I personally only use `folders` as it is enough for my use case. You can create 
 │   └── research
 ```
 
-In the above example, the folder structure mirrors the proton aliases I mentioned above.
+In the example above, the folder structure mirrors the Proton aliases I mentioned earlier.
 
-Of course, we don’t want to manually drag and drop every email and we can automate that process using `Filters`. Filters accepts [Sieve scripts](https://proton.me/support/sieve-advanced-custom-filters).
+Of course, we don’t want to manually drag and drop every email and we can automate that process using `Filters`. Filters accept [Sieve scripts](https://proton.me/support/sieve-advanced-custom-filters).
 
 Here is a Sieve script to move incoming emails to their respective folders:
 
@@ -110,31 +110,31 @@ This script checks the headers of the email and move the email to the proper fol
 
 ### Public Facing vs Private Facing
 
-We often see these terns in devops to highlight what should remain internal (”hidden” from the outside) and what should be external (public).
+We often see these terms in DevOps to highlight what should remain internal (“hidden” from the outside) and what should be external (public).
 
-A simple solution could be to give your proton address (or custom domain address used in Proton) to the website you want to register to. For instance, if Gandalf wants to register to `fireworks.xyz`, he could use `shopping@gandalf.me` as login. If he goes to `pipe-weed.express`, he can also use `shopping@gandalf.me` because it is related to the same activity and he wants to have them both under the same folder in his ProtonMail. 
+A simple solution could be to give your proton address (or custom domain address used in Proton) to the website you want to register with. For instance, if Gandalf wants to register to `fireworks.xyz`, he could use `shopping@gandalf.me` as login. If he goes to `pipe-weed.express`, he can also use `shopping@gandalf.me` because it is related to the same activity and he wants to have them both under the same folder in his ProtonMail. 
 
 To talk to his friend Galadriel, Gandalf will use `hi@gandalf.me`. 
 
-This works fine. It resembles what many people do with their Gmail addresses: they might split their emails into a few categories, one for personal life, on for professional life and maybe one trash email for not-so-trusted sources or social media.
+This works fine. It resembles what many people do with their Gmail addresses: they split their emails into categories, one for personal life, one for professional life, and maybe one trash email for not-so-trusted sources or social media.
 
-The inconvenience of this setup is that all your proton addresses are public facing. We can trust Galadriel to not leak Gandalf email `hi@gandalf.me` but can we trust `fireworks.xyz`, what about `pipe-weed.express`? And if one of the 2 websites leak `shopping@gandalf.me`, how can we know who did it? Also, if the leak spreads, my `shopping@gandalf.me` address might become almost unusable unless I add a lot of filtering at the ProtonMail level to prevent all the spams.
+The downside of this setup is that all your Proton addresses are public-facing. We can trust Galadriel to not leak Gandalf email `hi@gandalf.me` but can we trust `fireworks.xyz`, what about `pipe-weed.express`? And if one of the 2 websites leak `shopping@gandalf.me`, how can we know who did it? Also, if the leak spreads, my `shopping@gandalf.me` address might become almost unusable unless I add a lot of filtering at the ProtonMail level to prevent all the spams.
 
-The solution for that problem is to use an Alias service such as SimpleLogin.
+The solution to this problem is to use an alias service, such as SimpleLogin.
 
 ## 👁️ SimpleLogin
 
 ### Rational
 
-The solution to the problem above is to use SL as a proxy that forwards emails to the proton addresses thus hiding them form the outside.
+The solution to the problem above is to use SL as a proxy that forwards emails to the Proton addresses, thus hiding them from the outside.
 
-SimpleLogin offers you to choose from its domains such as `@simplelogin.co` or `@mailaliases.com` .  The limitation to use SL domains instead of using your own are the exact same as the one highlighted for Proton. On top of that, sometimes, SL domains are blacklisted by some websites.
+SimpleLogin allows you to choose from its domains such as `@simplelogin.co` or `@mailaliases.com` .  The limitations of using SL domains instead of your own are the same as those highlighted for Proton. On top of that, SL domains are sometimes blacklisted by some websites.
 
-SL allows you to use your custom domain to create aliases that you will give to all the websites you register to. I recommend using something a bit random such as `poTaToes.me` Websites do not care about how your domain looks as long as you can access it.
+SL allows you to use your custom domain to create aliases that you will give to all the websites you register with. I recommend using something a bit random such as `poTaToes.me` Websites do not care about how your domain looks as long as you can access it.
 
-Without SL Premium, you cannot send email from the alias; you can only reply to an email you received. With SL Premium, you can send an email from an alias but the mailbox features of SL are very limited.
+Without SL Premium, you cannot send emails from the alias; you can only reply to an email you received. With SL Premium, you can send an email from an alias but the mailbox features of SL are very limited.
 
-Of course, it is not possible to use the same custom domain in ProtonMail and SL because it makes no sense and also it is not technically possible anyway.
+Of course, it’s not possible to use the same custom domain in ProtonMail and SL because it doesn’t make sense, and it’s also not technically possible.
 
 Finally, upon alias creation, you chose to which mailbox you want to forward emails to. You can change that anytime!
 
@@ -148,9 +148,9 @@ To create an alias, the most convenient way is to use the SimpleLogin browser ex
 
 When you visit a website, clicking on the extension generate an alias with the name of the website with your custom domain such as `fireworks@poTatoes.me`.
 
-Personally, I toggle in the settings `Random Prefix Generation` with `random combination of 5 letters or digits` for suffix generator.
+Personally, I enable `Random Prefix Generation` in the settings, using `random combinations of 5 letters or digits` for the suffix generator.
 
-This allows us to add some extra characters to our generated alias such as `fireworks.42tu7@poTatoes.me` . This is good practice because if one website leaks `reddit@poTaToes.me` , the spammer could easily guess what is our alias for Instagram (`instagram@poTaToes.me`), Facebook (`facebook@poTaToes.me`) and so on.
+This allows us to add extra characters to our generated alias, such as `fireworks.42tu7@poTatoes.me` . This is good practice because if one website leaks `reddit@poTaToes.me` , the spammer could easily guess what is our alias for Instagram (`instagram@poTaToes.me`), Facebook (`facebook@poTaToes.me`) and so on.
 
 Let’s remember that our public facing domain will be given to possibly hundreds of website/news letters etc. We can be sure that one of our aliases will be leaked at some point, so having these 5 random digits will prevent spammers from guessing our other aliases.
 
@@ -158,21 +158,21 @@ Let’s remember that our public facing domain will be given to possibly hundred
 
 Gandalf created 2 aliases `fireworks.42tu7@poTatoes.me` and `pipe-weed.8eerf@poTatoes.me` and used them to register to the respective websites `fireworks.xyz` and `pip-weed.express`. Gandalf set `shopping@gandalf.me` as mailbox to forward to for both alias (remember that he wants all shopping related stuff under the same proton address). 
 
-A few months pass and `shopping@gandalf.me` proton folder is bombarded with tons of unsolicited emails. Gandalf checks the header of the email and see that the alias that forwarded all these emails is `pipe-weed.8eerf@poTatoes.me`. Thus, Gandalf knows that `pipe-weed.express` leaked his address and he can therefore disable the alias in SL (so he will stop receiving the spams). He can then login to `pipe-weed.express` and change his email with a new alias such as `pipe-weed.abg65@poTatoes.me` or he can just delete his account and move on with his life (if deleting his account his made impossible, at least the old alias has been disabled so no more spams).
+A few months pass and `shopping@gandalf.me` proton folder is bombarded with tons of unsolicited emails. Gandalf checks the header of the email and sees that the alias that forwarded all these emails is `pipe-weed.8eerf@poTatoes.me`. Thus, Gandalf knows that `pipe-weed.express` leaked his address and he can therefore disable the alias in SL (so he will stop receiving the spams). He can then log in to `pipe-weed.express` and change his email address to a new alias, such as `pipe-weed.abg65@poTatoes.me`. Also, he could just delete his account and move on with his life (if deleting his account his made impossible, at least the old alias has been disabled so no more spams).
 
-You noticed that at no point `shopping@gandalf.me` was exposed.
+You’ll notice that at no point was `shopping@gandalf.me` exposed.
 
 ### Changing mailboxes
 
 What if we want to change the proton email we forward a specific alias to? We can just change it in the SimpleLogin dashboard and it takes effect immediately. Maybe Gandalf wants to have a dedicated proton address where he forwards all websites related to the parties he throws in the Shire: `party@gandalf.me`. Naturally he wants to forward `fireworks.xyz` emails to this new address. So he goes to SL and update the mailbox of the `fireworks.42tu7@poTatoes.me` alias and that’s it.
 
-We can extend that to the extreme case where you change Email service! You want to move from ProtonMail to another email service, you can change the mailbox address in SL. Instead of changing each alias one by one, you just change the mailbox from the proton mail address to the new email address and all affected aliases will start forwarding to the new address. Very convenient!
+We can extend this to the extreme case where you switch email services! If you want to move from ProtonMail to another email service, you can simply change the mailbox address in SL. Instead of changing each alias one by one, you just change the mailbox from the proton mail address to the new email address and all affected aliases will start forwarding to the new address. Very convenient!
 
 ### When to avoid creating an alias
 
-There are some cases where we might be willing to give our proton address instead. For example, to email your friends or family. I don’t think Galadriel will find appropriate to be emailed by `friends.234rt@poTaToes.me`. In that case Gandalf would use `hi@gandalf.me`. Also, it is not convenient to email from SL so if you need to message them first, you are stuck (especially without SL Premium). 
+There are some cases where we might be willing to give our proton address instead. For example, to email your friends or family. I don’t think Galadriel will find it appropriate to be emailed by `friends.234rt@poTaToes.me`. In that case, Gandalf would use `hi@gandalf.me`. Also, it is not convenient to email from SL so if you need to message them first, you are stuck (especially without SL Premium). 
 
-Another case could be for a professional contact. If Gandalf wants to start freelancing his fireworks shows, he might want to have a professional email address such as `contact@gandalf.pro` instead of something like `contact.show.gandalf.sdfgh@poTaToes.me`.
+Another case could be for professional contacts. If Gandalf wants to start freelancing his fireworks shows, he might want to have a professional email address such as `contact@gandalf.pro` instead of something like `contact.show.gandalf.sdfgh@poTaToes.me`.
 
 Another scenario could be for government related services.
 
@@ -214,6 +214,6 @@ Finally, you might want to keep a few Gmail addresses for the accounts that coul
 
 ## Conclusion
 
-This setup is working fine for me and the transition was smooth. Some websites don’t make it easy to change email address but ultimately, only a handful of websites did not allow me to change my email address.
+This setup is working fine for me and the transition was smooth. Some websites don’t make it easy to change email addresses, but ultimately, only a handful of websites didn’t allow me to change my email address.
 
-This setup obviously comes at a cost (Custom domain cost + Proton Unlimited cost) but the services justifies it in my opinion (VPN, SL Premium, Drive with 500Gb of storage).
+This setup obviously comes at a cost (Custom domain cost + Proton Unlimited cost), but the services justify it in my opinion (VPN, SL Premium, Drive with 500GB of storage).

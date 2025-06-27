@@ -1018,3 +1018,21 @@ section#about li {
         width: 50%;
     }
 }
+
+.pwd-man-2fa img {
+    width: 30%;
+}
+
+.pwd-man-2fa img {
+    width: 30%;
+}
+
+@media (max-width: 1024px) {
+    .pwd-man-2fa img {
+        width: 50%;
+    }
+}
+
+.pwd-man-2fa img[alt="Bitwarden extension icon"] {
+    width: 10%;
+}
