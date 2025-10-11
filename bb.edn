@@ -9,7 +9,7 @@
                                   (clojure "-M:test"))}
          test-ci    {:doc     "Run tests"
                      :task    (do (clojure "-M:server/test")
-                                  (clojure "-M::test-headless"))}
+                                  (clojure "-M:test-headless"))}
          dev        {:doc     "Start develop environment, you can connect editor to .nrepl-port"
                      :task    (clojure "-M:dev -m nrepl.cmdline --middleware \"[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]\"")}
          build      {:doc      "Build js bundle and index.html to target/public"
