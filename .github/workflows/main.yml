@@ -56,7 +56,6 @@ jobs:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
       - name: Netlify deploy (preview)
-        id: netlify
         uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
           build_directory: dist
