@@ -15,7 +15,9 @@
         sg.flybot/lasagna-pull                {:mvn/version "0.4.162"}
         tick/tick                             {:mvn/version "1.0"}
         markdown-clj/markdown-clj             {:mvn/version "1.12.4"}
-        clj-rss/clj-rss                       {:mvn/version "0.4.0"}}
+        clj-rss/clj-rss                       {:mvn/version "0.4.0"}
+        com.bhauman/figwheel-main             {:mvn/version "0.2.20"}
+        day8.re-frame/test                    {:mvn/version "0.1.7"}}
  :paths ["src" "resources" "target" "test"]
  :aliases
  {;; Run clj tests
@@ -27,18 +29,16 @@
   ;;---------- WEB ----------
   ;; cljs repl for figwheel hot reloading development/testing
   ;; be sure to not have a main.js in resources/public
-  :dev {:extra-deps {cider/cider-nrepl         {:mvn/version "0.57.0"}
-                     cider/piggieback          {:mvn/version "0.6.1"}
-                     com.bhauman/figwheel-main {:mvn/version "0.2.20"}
-                     day8.re-frame/test        {:mvn/version "0.1.7"}}}
+  :dev {:extra-deps {cider/cider-nrepl {:mvn/version "0.57.0"}
+                     cider/piggieback  {:mvn/version "0.6.1"}}}
 
   ;; build the optimised js bundle
-  :prod {:extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.20"}}
-         :main-opts ["--main"       "figwheel.main"
+  :prod {:main-opts ["--main"       "figwheel.main"
                      "--build-once" "prod"]}
 
   ;; Run the cljs tests
-  :test {:main-opts ["-m" "figwheel.main"
+  :test {:extra-deps {}
+         :main-opts ["-m" "figwheel.main"
                      "-m" "loicb.client.test-runner"]}
 
   ;; Run the cljs tests with chrome headless
