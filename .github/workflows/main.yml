@@ -34,37 +34,64 @@ jobs:
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
-      - run: bb fmt-check
-      - run: bb test-ci
+          restore-keys: |
+            m2-
+
+      - name: Format check
+        run: bb fmt-check
+
+      - name: Tests (JVM + CLJS headless)
+        run: bb test-ci
 
   preview_deploy:
+    name: Netlify Deploy (Preview)
     needs: build_test
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
+
       - uses: DeLaGuardo/setup-clojure@13.4
         with:
           cli: latest
           bb: latest
+
       - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
-      - uses: nelonoel/branch-name@v1.0.1
+          restore-keys: |
+            m2-
+
+      - name: Build site (dist/)
+        run: bb dist
+
       - name: Netlify deploy (preview)
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        id: deploy
+        uses: netlify/actions/cli@v4
         with:
-          build_directory: dist
-          install_command: "echo Skipping installing the dependencies"
-          build_command: "bb dist"
+          args: >
+            deploy
+            --dir=dist
+            --alias=pr-${{ github.event.pull_request.number }}
+            --message="PR #${{ github.event.pull_request.number }} ${{ github.sha }}"
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          deploy_alias: ${{ env.BRANCH_NAME }}
+
+      - name: Compose preview URL
+        id: url
+        run: |
+          alias="pr-${{ github.event.pull_request.number }}"
+          echo "url=https://${alias}--loicblanchard.netlify.app" >> "$GITHUB_OUTPUT"
+
+      - run: echo "Preview → ${{ steps.url.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+
       - name: Status check (link to preview)
         if: github.event.pull_request.head.repo.fork == false
         uses: Sibz/github-status-action@v1.1.1
@@ -72,33 +99,40 @@ jobs:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: Netlify preview
           state: success
-          target_url: ${{ env.NETLIFY_PREVIEW_URL }}
+          target_url: ${{ steps.url.outputs.url }}
 
   prod_deploy:
+    name: Netlify Deploy (Production)
     needs: build_test
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
+
       - uses: DeLaGuardo/setup-clojure@13.4
         with:
           cli: latest
           bb: latest
+
       - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
+          restore-keys: |
+            m2-
+
+      - name: Build site (dist/)
+        run: bb dist
+
       - name: Netlify deploy (prod)
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        uses: netlify/actions/cli@v4
         with:
-          build_directory: dist
-          install_command: "echo Skipping installing the dependencies"
-          build_command: "bb dist"
+          args: deploy --dir=dist --prod --message="Prod ${{ github.sha }}"
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
-          NETLIFY_DEPLOY_TO_PROD: true
