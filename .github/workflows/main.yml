@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 jobs:
   build_test:
@@ -33,43 +34,30 @@ jobs:
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
-
-      - name: Format check
-        run: bb fmt-check
-
-      - name: Tests (JVM + CLJS headless)
-        run: bb test-ci
+      - run: bb fmt-check
+      - run: bb test-ci
 
   preview_deploy:
-    name: Netlify Deploy (Preview)
     needs: build_test
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Set up Temurin JDK 21
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
-      - name: Install Clojure CLI + Babashka
-        uses: DeLaGuardo/setup-clojure@13.4
+      - uses: DeLaGuardo/setup-clojure@13.4
         with:
           cli: latest
           bb: latest
-
-      - name: Cache Maven
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
-
-      # Sets the branch name as environment variable
-      - uses: nelonoel/branch-name@v1.0.1
-      - uses: jsmrcaga/action-netlify-deploy@master
+      - name: Netlify deploy (preview)
+        id: netlify
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
           build_directory: dist
           install_command: "echo Skipping installing the dependencies"
@@ -77,9 +65,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           deploy_alias: ${{ env.BRANCH_NAME }}
-
-      # Creates a status check with link to preview
-      - name: Status check
+      - name: Status check (link to preview)
+        if: github.event.pull_request.head.repo.fork == false
         uses: Sibz/github-status-action@v1.1.1
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
@@ -88,33 +75,25 @@ jobs:
           target_url: ${{ env.NETLIFY_PREVIEW_URL }}
 
   prod_deploy:
-    name: Netlify Deploy (Production)
     needs: build_test
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Set up Temurin JDK 21
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
-      - name: Install Clojure CLI + Babashka
-        uses: DeLaGuardo/setup-clojure@13.4
+      - uses: DeLaGuardo/setup-clojure@13.4
         with:
           cli: latest
           bb: latest
-
-      - name: Cache Maven
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: m2-${{ hashFiles('**/deps.edn') }}
-
-      - uses: jsmrcaga/action-netlify-deploy@master
+      - name: Netlify deploy (prod)
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
           build_directory: dist
           install_command: "echo Skipping installing the dependencies"
@@ -123,3 +102,4 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
           NETLIFY_DEPLOY_TO_PROD: true
+          NETLIFY_DEPLOY_MESSAGE: "Prod deploy ${{ github.sha }}"
