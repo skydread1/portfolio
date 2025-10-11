@@ -1,6 +1,4 @@
-{:deps {com.bhauman/figwheel-main             {:mvn/version "0.2.20"}
-        day8.re-frame/test                    {:mvn/version "0.1.7"}
-        cljsjs/highlight                      {:mvn/version "11.7.0-0"}
+{:deps {cljsjs/highlight                      {:mvn/version "11.7.0-0"}
         cljsjs/js-joda-timezone               {:mvn/version "2.2.0-0"}
         cljsjs/react                          {:mvn/version "18.3.1-1"}
         cljsjs/react-dom                      {:mvn/version "18.3.1-1"}
@@ -29,12 +27,14 @@
   ;;---------- WEB ----------
   ;; cljs repl for figwheel hot reloading development/testing
   ;; be sure to not have a main.js in resources/public
-  :dev {:main-opts ["--main"  "figwheel.main"
-                    "--build" "dev"
-                    "--repl"]}
+  :dev {:extra-deps {cider/cider-nrepl         {:mvn/version "0.57.0"}
+                     cider/piggieback          {:mvn/version "0.6.1"}
+                     com.bhauman/figwheel-main {:mvn/version "0.2.20"}
+                     day8.re-frame/test        {:mvn/version "0.1.7"}}}
 
   ;; build the optimised js bundle
-  :prod {:main-opts ["--main"       "figwheel.main"
+  :prod {:extra-deps {com.bhauman/figwheel-main {:mvn/version "0.2.20"}}
+         :main-opts ["--main"       "figwheel.main"
                      "--build-once" "prod"]}
 
   ;; Run the cljs tests

@@ -17,7 +17,7 @@
                      :requires ([clojure.string :as str]
                                 [clojure.java.io :as io])
                      :task    (do (clojure "-M:prod")
-                                  (let [s (-> "resources/public/index.html" slurp (str/replace "/cljs-out/dev/main_bundle.js" "/main_bundle.js"))]
+                                  (let [s (-> "resources/public/index.html" slurp (str/replace "/cljs-out/dev-main.js" "/main_bundle.js"))]
                                     (spit (io/file "target/public/index.html") s)))}
          rss        {:doc      "Build clojure rss feed in resources/public"
                      :requires ([babashka.fs :as fs])
