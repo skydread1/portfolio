@@ -12,7 +12,7 @@
   "Compiles the sources cljs to a single main.js"
   [_]
   (clean nil)
-  (b/process {:command-args ["clojure" "-M:web/prod"]})
+  (b/process {:command-args ["clojure" "-M:prod"]})
   (clean nil))
 
 (defn rss-feed

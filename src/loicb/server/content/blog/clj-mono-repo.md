@@ -142,10 +142,10 @@ Following are the aliases used for the **mobile** client:
 
 Following are the aliases used for the **web** client:
 
-- `:web/dev`: starts the dev REPL
-- `:web/prod`: generates the optimized js bundle main.js
-- `:web/test`: runs the cljs tests
-- `:web/test-headless`: runs the headless cljs tests (fot GitHub CI)
+- `:dev`: starts the dev REPL
+- `:prod`: generates the optimized js bundle main.js
+- `:test`: runs the cljs tests
+- `:test-headless`: runs the headless cljs tests (fot GitHub CI)
 
 ## CI/CD aliases
 

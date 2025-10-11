@@ -1,54 +1,103 @@
-name: Test and Build
+name: CI & Netlify Deploy
 
 on:
-  push:
-    branches-ignore:
-      - master
   pull_request:
-    types: [opened, ready_for_review, review_requested]
-  pull_request_review:
-    types: [submitted]
+    types: [opened, reopened, synchronize, ready_for_review, review_requested]
+  push:
+    branches: [main] # prod deploys
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build:
+  build_test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v5
 
-      - name: Install clojure tools
-        uses: DeLaGuardo/setup-clojure@12.1
+      - name: Install Clojure CLI + Babashka
+        uses: DeLaGuardo/setup-clojure@13.4
         with:
           cli: latest
+          bb: latest
 
-      - name: Verify code base format
-        run: clojure -T:cljfmt check
-
-      - name: Run the clj tests
-        run: clojure -M:server/test
-
-      - name: Run the cljs tests
-        run: clojure -M:web/test-headless
-
-      - name: Build main.js
-        if: github.event_name == 'push' || github.event.action == 'review_requested' || github.event.action == 'ready_for_review'
-        run: clojure -T:build js-bundle
-
-      - name: Generate RSS feed
-        if: github.event_name == 'push' || github.event.action == 'review_requested' || github.event.action == 'ready_for_review'
-        run: clojure -T:build rss-feed
-
-      - name: Commit js bundle and rss feed
-        if: github.event_name == 'push' || github.event.review.state == 'approved'
-        uses: EndBug/add-and-commit@v9
+      - name: Cache Maven
+        uses: actions/cache@v4
         with:
-          add: |
-            resources/public/main.js
-            resources/public/blog/rss/clojure-feed.xml
-          committer_name: GitHub Action
-          default_author: github_actions
-          message: "Compile the cljs to the js bundle and update RSS feed"
+          path: ~/.m2/repository
+          key: m2-${{ hashFiles('**/deps.edn') }}
+
+      - name: Format check
+        run: bb fmt-check
+
+      - name: Tests
+        run: bb test-ci
+
+  preview_deploy:
+    name: Netlify Deploy (Preview)
+    needs: build_test
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install Clojure CLI + Babashka
+        uses: DeLaGuardo/setup-clojure@13.4
+        with:
+          cli: latest
+          bb: latest
+
+      - name: Cache Maven
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: m2-${{ hashFiles('**/deps.edn') }}
+
+      - name: Build site (dist/)
+        run: bb dist
+
+      - name: Netlify deploy (preview)
+        uses: netlify/actions/cli@master
+        with:
+          args: >
+            deploy
+            --dir=dist
+            --alias=pr-${{ github.event.pull_request.number }}
+            --message="PR #${{ github.event.pull_request.number }} ${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  prod_deploy:
+    name: Netlify Deploy (Production)
+    needs: build_test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install Clojure CLI + Babashka
+        uses: DeLaGuardo/setup-clojure@13.4
+        with:
+          cli: latest
+          bb: latest
+
+      - name: Cache Maven
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: m2-${{ hashFiles('**/deps.edn') }}
+
+      - name: Build site (dist/)
+        run: bb dist
+
+      - name: Netlify deploy (prod)
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=dist --prod --message="Build ${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

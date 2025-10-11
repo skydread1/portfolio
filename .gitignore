@@ -21,6 +21,8 @@ admin.edn
 
 ## build
 target
+dist
+
 
 ## datalevin
 datalevin
