@@ -72,8 +72,7 @@ jobs:
         run: bb dist
 
       - name: Netlify deploy (preview)
-        id: deploy
-        uses: netlify/actions/cli@v4
+        uses: netlify/actions/cli@master
         with:
           args: >
             deploy
@@ -130,7 +129,7 @@ jobs:
         run: bb dist
 
       - name: Netlify deploy (prod)
-        uses: netlify/actions/cli@v4
+        uses: netlify/actions/cli@master
         with:
           args: deploy --dir=dist --prod --message="Prod ${{ github.sha }}"
         env:
