@@ -1,0 +1,45 @@
+{:tasks {clean      {:doc  "Clean build"
+                     :task (shell "rm -rf target dist")}
+         fmt-check  {:doc "Check code format"
+                     :task (clojure "-T:cljfmt check")}
+         fmt-fix    {:doc "Fix code format"
+                     :task (clojure "-T:cljfmt fix")}
+         test       {:doc     "Run tests"
+                     :task    (do (clojure "-M:server/test")
+                                  (clojure "-M:test"))}
+         test-ci    {:doc     "Run tests"
+                     :task    (do (clojure "-M:server/test")
+                                  (clojure "-M:test-headless"))}
+         dev        {:doc     "Start develop environment, you can connect editor to .nrepl-port"
+                     :task    (clojure "-M:dev -m nrepl.cmdline --middleware \"[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]\"")}
+         build      {:doc      "Build js bundle and index.html to target/public"
+                     :depends [clean]
+                     :requires ([clojure.string :as str]
+                                [clojure.java.io :as io])
+                     :task    (do (clojure "-M:prod")
+                                  (let [s (-> "resources/public/index.html" slurp (str/replace "/cljs-out/dev-main.js" "/main_bundle.js"))]
+                                    (spit (io/file "target/public/index.html") s)))}
+         rss        {:doc      "Build clojure rss feed in resources/public"
+                     :requires ([babashka.fs :as fs])
+                     :task     (do
+                                 (fs/create-dirs "resources/public/blog/rss" {:replace-existing true})
+                                 (clojure "-T:build rss-feed"))}
+         dist       {:doc     "Gather static files under `dist` dir"
+                     :depends [build rss]
+                     :requires ([clojure.string :as str]
+                                [babashka.fs :as fs])
+                     :task (let [dist-dir "dist"
+                                 files [["target/public/index.html" "/index.html"]
+                                        ["target/public/cljs-out/prod-main.js" "/main_bundle.js"]
+                                        ["resources/public/favicon.ico" "/favicon.ico"]]
+                                 dirs  [["resources/public/assets" "/assets"]
+                                        ["resources/public/css" "/css"]
+                                        ["resources/public/blog/rss" "/blog/rss"]]]
+                             (fs/delete-tree dist-dir)
+                             (fs/create-dirs dist-dir)
+                             (doseq [[src dest] files]
+                               (fs/copy src (str dist-dir dest)))
+                             (doseq [[src dest] dirs]
+                               (fs/copy-tree src (str dist-dir dest))))}
+         outdated   {:doc "show outdated deps"
+                     :task (clojure "-M:outdated")}}}

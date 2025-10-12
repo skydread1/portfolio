@@ -146,7 +146,7 @@ For 2. since our app is only a frontend app, we don't need to load some clj back
 Jack-in `deps+figwheel`:
 
 - Deps: no alias to add so just press enter
-- REPL: tick `:web/dev` and press enter
+- REPL: tick `:dev` and press enter
 
 This should start a cljs REPL in VS Code and open your browser localhost in port 9500.
 
@@ -155,7 +155,7 @@ This should start a cljs REPL in VS Code and open your browser localhost in port
 If you use Emacs (or Doom Emacs, or Spacemacs) with CIDER, the CIDER jack-in is done in 3 steps:
 
 1. `C-u M-x cider-jack-in-clj&cljs` or `C-u M-x cider-jack-in-cljs`
-2. By default, emacs use the `cider/nrepl` alias such as in `-M:cider/nrepl`. You need to keep this alias at the end such as `-M:web/dev:cider/nrepl`
+2. By default, emacs use the `cider/nrepl` alias such as in `-M:cider/nrepl`. You need to keep this alias at the end such as `-M:dev:cider/nrepl`
 3. Select ClojureScript REPL type: `figwheel-main`
 4. Select figwheel-main build: `dev`
 
@@ -210,7 +210,7 @@ This test ensure that all your markdown files respect the malli schema.
 The cljs state management tests can be run like so:
 
 ```clojure
-clj -M:web/test
+clj -M:test
 ```
 
 These frontend cljs tests ensure that the state (in our re-frame DB) is as expected after user actions (navigation, theme, post interaction etc).
@@ -224,7 +224,7 @@ The tests mentioned above are also run on every save and the results are display
 In the CI, there is no browser, so we need a specific alias to run the test in headless mode:
 
 ```clojure
-clj -M::web/test-headless
+clj -M::test-headless
 ```
 
 ## 🔷 Continuous Integration
@@ -257,6 +257,6 @@ Feel free to open new issues if you discover bugs or wish to add new features.
 
 ## 🔷 License
 
-Copyright © 2023 Loic Blanchard
+Copyright © 2023-2025 Loic Blanchard
 
 Distributed under the MIT License - see the [LICENSE](./LICENSE) file for details.

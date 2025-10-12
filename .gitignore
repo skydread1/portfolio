@@ -21,6 +21,8 @@ admin.edn
 
 ## build
 target
+dist
+resources/public/blog/rss
 
 ## datalevin
 datalevin
