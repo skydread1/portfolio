@@ -18,7 +18,7 @@ As a **Clojure**-focused company, we decided to experiment with a new architectu
 +++
 ## Rationale
 
-I am currently working on a project that aims at moving our gaming platform stat aggregation and visualization project to a new stack.
+I worked on a POC on a project that aims at moving our gaming platform stat aggregation and visualization project to a new stack.
 
 We have an event-driven system that produces lots of events in multiple kafka topics. Our current solution to aggregate stats and visualize them in dashboards is the setup [Apache Druid](https://druid.apache.org/) + [Imply](https://imply.io/).
 
@@ -32,7 +32,7 @@ Rama being in Beta, it was quickly evolving as I was experimenting with it.
 
 When I started experimenting with Rama, Rama version was *0.18.0*.
 
-Nathan Marz guided me throughout the different releases and was always very prompt to help me understand Rama.
+[Nathan Marz](http://nathanmarz.com/about/) guided me throughout the different releases and was always very prompt to help me understand Rama.
 
 A very experienced colleague took care of the deployments in AWS as he is responsible for our servers and we worked together with Nathan to understand the AWS setup that could suit our needs the best.
 
@@ -69,7 +69,7 @@ Therefore, I uberjar the rama module and deployed it on a single-node cluster on
 
 ## test a Rama module on a AWS multi-node Cluster
 
-My colleague set up a multi-node Rama cluster on our AWS. We then deployed the telemetry module provided my Rama (to get the cluster UI metrics) amd our own module with success.
+My colleague set up a multi-node Rama cluster on our AWS. We then deployed the telemetry module provided my Rama (to get the cluster metrics showing in the UI) and our own module with success.
 
 ## Designing an API
 
@@ -92,7 +92,7 @@ We do not want the dashboard app (client) to require any knowledge about Rama de
  :group-by-keys [:reward-type :__time]}
 ```
 
-Actually, we even use the [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) to represent our API as pure clojure data (you can read more about it in [here](http://localhost:9500/blog/lasagna-pull-applied-to-flybot))
+Actually, we even use the [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) to represent our API as pure clojure data (you can read more about it in [here](http://loicb.dev/blog/lasagna-pull-applied-to-flybot))
 
 So to sum up, we use our own API instead of built-in Rama REST API. Our API only uses pull request and represents the API endpoints as one single pullable (via a pattern) EDN data structure. The client only hits the rama-api server so the rama logic is never exposed. The server also takes care of authorization.
 
@@ -114,7 +114,35 @@ We have many kafka topics and we have lots of different kind of metrics we want 
 
 As Red Planet Labs release new RAMA versions and with the feedback from Nathan Marz, we are able to improve the implementation of our rama app and also improve our AWS setup to have an acceptable performance. It is still work in progress but we are getting there.
 
-## Full-stack web app for the client
+## SPA web app for the client
 
-Instead of having the client being just a local clerk notebook, I am switching to a full-stack Clojure app so game operators can save their dashboards and also share dashboards with others etc (similar to what they could do with Imply). I already designed full-stack web-app before so it should not take us too long to have something ready. It is work in progress as well.
+Instead of having the client being just a local clerk notebook, we switched to a proper SPA using [Replicant](https://github.com/cjohansen/replicant) as rendering library.
+
+## Dashboards as Rama module
+
+At first, I was going to use Datomic to store our user dashboards by force of habits and because we already use Datomic for other apps in our EKS cluster.
+
+However, [Luo Tian](https://github.com/robertluo) mentioned to me: "why not store them with Rama since we are using it to store our analytics anyway, let's commit to it fully". It made total sense and writing the a simple Dashboard Rama module took my colleague just a few days because of how intuitive gets with time.
+
+## POC complete
+
+At this point, we were able to show our client some working dashboard builders with only rolled-up data per granularity.
+
+So we had 2 Rama modules: one for analytics and one for dashboards
+
+We had a pullable API server with authentication and that encapsulates the rama queries.
+
+The POC was complete in the sense that we were able to prove ourselves and our clients that we can use Rama for analytics.
+
+## Limitations
+
+The main limitations are the following:
+- only one big module for `analytics`
+- the `analytics` module implementation works for our current client but it is not generic and easy to maintain
+- the API pullable data implementation is too coupled with the Rama module: they do not share configs yet
+
+## Next goal
+
+The next step is to have a generic `analytics` module builder with clear configs. And we want these configs to be easily reusable for the API/frontend validation schema for the different queries.
+
 
