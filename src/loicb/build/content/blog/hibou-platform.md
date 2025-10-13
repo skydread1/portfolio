@@ -3,7 +3,7 @@ id: hibou-platform
 page: blog
 date: 
   - 2025-10-13
-title: Building a Generic Analytics Platform with Hibou
+title: Generic Analytics Platform with Rama
 home-page?: true
 employer: Flybot Pte Ltd
 css-class: hibou-platform

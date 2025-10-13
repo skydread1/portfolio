@@ -2,7 +2,7 @@
 id: about-me
 page: about
 date: 
-  - 2024-11-12
+  - 2025-10-13
 title: About Me
 employer: My journey so far
 css-class: about-me
@@ -10,7 +10,7 @@ tags:
   - 🛠️ Staff SE
   - 📍 Singapore
   - "🎫 Pass: EP"
-  - 💻 5+ years of experience
+  - 💻 6+ years of experience
   - 🎓 Master in CS
   - 🇫🇷 French Citizen
 rss-feeds:
