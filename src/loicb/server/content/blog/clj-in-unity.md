@@ -22,9 +22,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 How to package a Compiled Clojure lib (With MAGIC compiler) to NuGet, push it to remote and import it to Unity.
 
-+++
 
 ## Prerequisites
 
@@ -337,3 +338,5 @@ nuget restore
 ```
 
 `Magic.Unity` is the Magic runtime for Unity and is already nuget packaged on its public repo
+
+

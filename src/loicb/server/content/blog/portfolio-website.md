@@ -25,6 +25,8 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 This portfolio was implemented with **ClojureScript**. It is a Single Page Application that leverages [reagent](https://github.com/reagent-project/reagent), a minimalistic interface between ClojureScript and **React**.
 
 For frontend management, [re-frame](https://github.com/day8/re-frame) is used. To compile the cljs code and perform hot reloading, I used [figwheel-main](https://figwheel.org/).
@@ -37,7 +39,6 @@ Light/dark mode and code block syntax highlighted are supported.
 
 The app is deployed on **Netlify** via GitHub Actions every time a branch is merged to master. Build artifacts are generated during CI/CD and are not committed to the repository.
 
-+++
 
 ## Rational
 
@@ -198,3 +199,5 @@ The website is hosted on Netlify (US servers) and deployed via GitHub Actions us
 ## Learn More
 
 Have a look at the repo [README](https://github.com/skydread1/portfolio/blob/master/README.md) for more information.
+
+

@@ -20,9 +20,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Reagent React Native mobile app reusing re-frame logic from exiting web client.
 
-+++
 
 ## Prerequisites
 
@@ -449,3 +450,5 @@ I hope that this unusual mobile app stack made you want to consider `ClojureScri
 It is important to note that the state management logic (re-frame) is the same at 90% for both the web app and the mobile app which is very convenient.
 
 Finally, the web app is deployed but not the mobile app. All the codebase is open-source so feel free to take inspiration.
+
+

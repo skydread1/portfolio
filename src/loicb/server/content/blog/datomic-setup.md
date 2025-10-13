@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 How to run an embedded version of Datomic. How to run Datomic with a Cassandra cluster. How to run it in Docker.
 
-+++
 
 ## Introduction
 
@@ -296,3 +297,5 @@ storage-access=remote
 ```
 
 After updating the transactor properties, you should be able to see the app running on port 8123 and be able to perform transactions as expected.
+
+

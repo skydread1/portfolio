@@ -20,9 +20,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Introducing some popular testing tools to developers new to Clojure. Highlight solutions for how to do unit testing with Rich Comment Tests, data validation and generative testing with Malli, running test suites and metrics with Kaocha and how to do integration testing using external containerized services.
 
-+++
 
 ## Introduction
 
@@ -634,3 +635,5 @@ I highlighted some common testing tools and methods that the Clojure community u
 If you are starting your journey as a Clojure developer, I hope you can appreciate the quality of open-source testing libraries we have access to. Also, please remember that keeping things pure is the key to easy testing and debugging; a luxury not so common in the programming world. Inevitably, you will need to deal with side effects but isolate them as much as you can to make your code robust and your tests straight forward.
 
 Finally, there are some tools I didn’t mention to keep things short so feel free to explore what the Clojure community has to offer. The last advice I would give is to not try to use too many tools or only the shiny new ones you might find. Keep things simple and evaluate if a library is worth being added to your deps.
+
+

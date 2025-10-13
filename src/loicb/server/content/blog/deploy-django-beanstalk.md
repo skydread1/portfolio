@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 What libraries/settings I used to develop a Django app and how to deploy it on AWS Elastic Beanstalk.
 
-+++
 
 ## Context
 
@@ -446,3 +447,5 @@ Be sure to keep your env variables safe and split dev and prod settings to avoid
 Since EB comes with ALB, you can easily use a CNAME record to map your own personal subdomain to the ALB.
 
 Be aware of the hosting costs. I moved the blog content to my clojure SPA instead because after my AWS free tier expired, the monthly cost for hosting the blog was around $50 which was too much for a simple blog like that.
+
+

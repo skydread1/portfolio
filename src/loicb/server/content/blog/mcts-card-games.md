@@ -16,9 +16,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 General principle of MCTS applied to a Clojure use case.
 
-+++
 
 ## Objective
 
@@ -204,3 +205,5 @@ The details of this `game-plan` are confidential for obvious reasons.
 Having an hybrid approach, meaning using a `game-plan` for the first moves of the game when the possible plays are too numerous, and then use MCTS at the end of the game allowed us to have a decent AI we can use.
 
 As of the time I write this article, the implementation is being tested (as part of a bigger system) and not yet in production.
+
+

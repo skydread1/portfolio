@@ -23,9 +23,8 @@ image:
   alt: Loic Logo
 ---
 
+## TLDR
 
-
-+++
 
 ## In short
 
@@ -65,3 +64,5 @@ Finally, I am currently working on a data aggregator using Red Planet Labs's [RA
 
 ### Certifications
 - **AWS**: Solutions Architect - Associate
+
+

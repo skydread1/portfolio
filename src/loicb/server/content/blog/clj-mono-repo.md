@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Example of a Clojure mono-repo structure for a web server and 2 clients (web and mobile).
 
-+++
 
 ## Context
 
@@ -203,3 +204,5 @@ Using `:extra-paths` and `:extra-deps` in deps.edn is important because it preve
 Adding namespace to the aliases make the distinction between backend, common and client (web and mobile) clearer.
 
 Using `deps` jack-in for server only work and `deps+figwheel` for frontend work is made easy using `calva` in VSCode (work in other editors as well).
+
+

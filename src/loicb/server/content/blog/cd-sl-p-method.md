@@ -16,9 +16,10 @@ image:
   alt: ProtonMail Logo
 ---
 
+## TLDR
+
 CD-SL-P (Custom Domain + SimpleLogin + Proton) method to organize your email flow.
 
-+++
 
 ## 👁️ Rationale
 
@@ -227,3 +228,5 @@ Finally, you might want to keep a few Gmail addresses for the accounts that coul
 This setup is working fine for me and the transition was smooth. Some websites don’t make it easy to change email addresses, but ultimately, only a handful of websites didn’t allow me to change my email address.
 
 This setup obviously comes at a cost (Custom domain cost + Proton Unlimited cost), but the services justify it in my opinion (VPN, SL Premium, Drive with 500GB of storage).
+
+

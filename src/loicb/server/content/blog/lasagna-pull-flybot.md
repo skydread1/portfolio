@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 How we leverage `lasagna-pull` in the flybot.sg Clojure web app to define a pure data API.
 
-+++
 
 ## Prerequisites
 
@@ -422,3 +423,5 @@ Having no side-effects at all makes it way easier to tests and debug and it is m
 Finally, the `ring-handler` will be the component responsible to **execute** all the side effects at once. 
 
 So the `saturn-handler` purpose was to be sure the data is being pulled properly, validated using malli, and that the side effects descriptions are gathered in one place to be executed later on.
+
+

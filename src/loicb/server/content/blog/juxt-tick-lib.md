@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Illustrate date and time concepts in programming using the Clojure Tick library: timestamp, date-time, offset, zone, instant, inst, UTC, DST, duration, period etc.
 
-+++
 
 ## Introduction
 
@@ -323,3 +324,5 @@ The **time since epoch** is the universal *computer-friendly* of representing ti
 A `duration` measures an amount of time using time-based values whereas a `period` uses date-based (calendar) values.
 
 Finally, for Clojure developers, I highly recommend using `juxt/tick` as it allows us to handle time efficiently (conversion, operations) and elegantly (readable, as values) and I use it in several of my projects. It is also of course possible to do interop with the `java.time.Instant` class directly if you prefer.
+
+

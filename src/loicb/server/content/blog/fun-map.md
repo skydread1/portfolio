@@ -18,9 +18,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Rational of `fun-map`, including the benefit of the `life-cycle-map` as dependency injection system.
 
-+++
 
 ## Context
 
@@ -257,3 +258,5 @@ fun-map also support other features such as function call tracing, value caching
 ## Fun-Map applied to flybot.sg
 
 To see Fun Map in action, refer to the doc [Fun-Map applied to flybot.sg](https://www.loicb.dev/blog/fun-map-applied-to-flybot).
+
+

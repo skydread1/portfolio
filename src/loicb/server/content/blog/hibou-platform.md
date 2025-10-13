@@ -21,11 +21,12 @@ image:
   alt: Flybot Logo
 ---
 
+## TLDR
+
 Following our successful POC with Rama for analytics, we evolved the stack into a generic, reusable platform called **Hibou** (French for "owl", known for their excellent eyesight).
 
 The goal was to transform our client-specific implementation into a **business-agnostic** analytics suite that can serve multiple clients with different data requirements.
 
-+++
 
 ## Context
 
@@ -191,3 +192,5 @@ By treating everything as data (from module definitions to API endpoints to UI f
 The combination of Rama for distributed stream processing, lasagna-pull for pure data APIs, and Replicant for reactive UIs created a coherent full-stack platform that leverages Clojure's strengths at every layer.
 
 The key was resisting the temptation to optimize for the first client and instead investing time upfront to build generic, configurable components.
+
+

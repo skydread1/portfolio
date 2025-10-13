@@ -17,9 +17,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Rational of flybot-sg/lasagna-pull library: precisely select from deep data structure in Clojure.
 
-+++
 
 ## Context
 
@@ -214,3 +215,5 @@ This context can help you gathering information from the query and apply a funct
 ## Lasagna Pull applied to flybot.sg
 
 To see Lasagna Pull in action, refer to the doc [Lasagna Pull applied to flybot.sg](https://www.loicb.dev/blog/lasagna-pull-applied-to-flybot).
+
+

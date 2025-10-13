@@ -16,9 +16,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Domain to subdomain forwarding using AWS ALB+NLB setup.
 
-+++
 
 ## Context
 
@@ -108,3 +109,5 @@ GoDaddy domain to subdomain forwarding does not support path so it is not viable
 Using AWS route53 to enjoy the feature of mapping a domain to the ALB DNS name via the special record ALIAS comes at a cost: all subdomains would need to be resolved using AWS Name Servers.
 
 ALB+NLB is the setup that worked well for me. Having the internal ALB handling redirect to https and to the subdomain is very convenient. Using an internet-facing NLB solves the static IP problem to resolve the domain record at an extra cost of minimum $18 per month.
+
+

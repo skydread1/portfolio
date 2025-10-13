@@ -25,13 +25,14 @@ image:
   alt: Flybot Logo
 ---
 
+## TLDR
+
 At Flybot, I developed a mobile app using **ClojureScript** with `React Native` using `Figwheel` and `Reagent React Native` (to interact with reagent in ClojureScript).
 
 The code for the mobile app resides in the same repo as the server and the web client of the [flybot.sg](https://www.flybot.sg/) website.
 
 The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs.
 
-+++
 
 ## Rational
 
@@ -115,3 +116,5 @@ The app has not been deployed on any Store yet.
 You can learn more about how the mobile app was setup in the article linked at the top of the page.
 
 Also, feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
+
+

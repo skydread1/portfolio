@@ -16,9 +16,10 @@ image:
   alt: Bitwarden Logo
 ---
 
+## TLDR
+
 Using a password manager with strong passwords and enabling 2FA for critical accounts are simple yet powerful steps to protect your online security.
 
-+++
 
 ## Rationale
 
@@ -207,3 +208,5 @@ You want to create an account for a new website.
 7. Scan the QR code shown by the bank to add the code to your app.
 8. The website will expect you to enter the generated code to finalize the 2FA setup.
 9. The website will show the recovery codes (print them, label them, and hide them in your home).
+
+

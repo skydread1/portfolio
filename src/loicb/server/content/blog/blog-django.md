@@ -25,6 +25,8 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 I developed a tech blog in **python** using the `Django` framework. Thus, it is Server-Side Rendered.
 
 The blog was deployed on AWS `Beanstalk`, the static files were served from an AWS `S3` bucket, and the production data was stored in an AWS `RDS Postgres` database.
@@ -33,7 +35,6 @@ It used `HTMX` for the search bar.
 
 After the AWS free tier expired, I moved the tech blog to the ClojureScript SPA.
 
-+++
 
 ## Rational
 
@@ -101,3 +102,5 @@ However I moved the blog content to my clojure SPA instead because after my AWS 
 I wrote an article on how I deployed the Django app in AWS (link at the top of the page).
 
 Have a look at the repo [README](https://github.com/skydread1/blog/blob/master/README.md) for more information.
+
+

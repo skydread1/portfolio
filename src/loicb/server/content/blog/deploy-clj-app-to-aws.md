@@ -19,9 +19,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 Example of how to deploy a containerized full-stack Clojure app in AWS EC2.
 
-+++
 
 This is an example of how to deploy a containerized full-stack Clojure app in AWS EC2.
 
@@ -256,3 +257,5 @@ For the root domain `flybot.sg`, we use a `A` record for `@` resolving to the st
 ## Learn More
 
 You can have a look at the open-source repo: [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg)
+
+

@@ -16,9 +16,10 @@ image:
   alt: Logo referencing Aperture Science
 ---
 
+## TLDR
+
 What Git workflow is suitable for your project: trunk-based, feature branching, forking, release branching, release candidate workflow, Feature branching to develop, GitFlow
 
-+++
 
 ## Introduction
 
@@ -243,3 +244,5 @@ If you have a test/staging env that needs to go through integration testing befo
 I think people tend to refer to CI as the test jobs done on PRs from `feature` to `develop` and CD to refer to the build jobs happening on merge to `main`. Others refer to CI as the philosophy of merging short/partial (but working) features as quickly as possible. This can be applied in **Feature branching to develop** in my opinion.
 
 Taking the time to have the simplest branching strategy possible for your project can really make the development experience a bliss for all developers of your team. People should focus on implementing quality features and not doing some botanic (lots of branches… anybody?).
+
+

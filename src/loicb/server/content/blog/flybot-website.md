@@ -33,11 +33,12 @@ image:
   alt: Flybot Logo
 ---
 
+## TLDR
+
 [flybot.sg](https://www.flybot.sg/) is an open-source full-stack **Clojure** web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
 
 The purpose of this project was to demonstrate how the `lasagna stack` ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
 
-+++
 
 ## Rational
 
@@ -176,3 +177,5 @@ You can read more about how I deployed the app to AWS in this article: [How to d
 ## Learn more
 
 Feel free to visit [flybot.sg](https://www.flybot.sg/) and especially the [blog](https://www.flybot.sg/blog).
+
+
