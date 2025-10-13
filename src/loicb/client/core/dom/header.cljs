@@ -15,7 +15,7 @@
    (for [tag ["🛠️ Staff SE"
               "📍 Singapore"
               "🎫 Pass: EP"
-              "💻 5+ years of experience"
+              "💻 6+ years of experience"
               "🎓 Master in CS"
               "🇫🇷 French Citizen"]]
      [:div.tag

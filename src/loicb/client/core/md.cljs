@@ -1,5 +1,5 @@
 (ns loicb.client.core.md
-  (:require-macros [loicb.server.md :as macro]))
+  (:require-macros [loicb.build.md :as macro]))
 
 (def posts
   "Read posts config and content from the md files"

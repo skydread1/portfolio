@@ -46,7 +46,7 @@
                               "-co" "tests.cljs.edn"
                               "-m" "loicb.client.test-runner"]}
   ;; RSS
-  :rss {:main-opts ["-m" "loicb.server.rss"]}
+  :rss {:main-opts ["-m" "loicb.build.rss"]}
 
   ;;---------- BUILD ----------
   :build {:deps       {io.github.clojure/tools.build {:git/tag "v0.10.10" :git/sha "deedd62"}}
