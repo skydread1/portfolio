@@ -1,16 +1,25 @@
-#:post{:id "lasagna-pull-applied-to-flybot"
-       :page :blog
-       :date ["2023-04-08"]
-       :title "Lasagna-pull applied to flybot.sg"
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :css-class "blog-lasagna-pull-flybot"
-       :tags ["Clojure" "Pull Pattern"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: lasagna-pull-applied-to-flybot
+page: blog
+date: 
+  - 2023-04-08
+title: Lasagna-pull applied to flybot.sg
+css-class: blog-lasagna-pull-flybot
+tags: 
+  - Clojure
+  - Pull Pattern
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 How we leverage `lasagna-pull` in the flybot.sg Clojure web app to define a pure data API.
+
 +++
+
 ## Prerequisites
 
 If you are not familiar with [lasagna-pull](https://github.com/flybot-sg/lasagna-pull), please refer to the doc [Lasagna Pull: Precisely select from deep nested data](https://www.loicb.dev/blog/lasagna-pull)

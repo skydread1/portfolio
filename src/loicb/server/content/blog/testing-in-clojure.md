@@ -1,15 +1,27 @@
-#:post{:id "testing-in-clojure"
-       :page :blog
-       :date ["2024-08-10"]
-       :title "Testing in Clojure"
-       :css-class "testing-in-clojure"
-       :tags ["Clojure" "Kaocha" "Malli" "Rich Comment Tests" "Instrumentation" "Data validation/generation"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: testing-in-clojure
+page: blog
+date: 
+  - 2024-08-10
+title: Testing in Clojure
+css-class: testing-in-clojure
+tags: 
+  - Clojure
+  - Kaocha
+  - Malli
+  - Rich Comment Tests
+  - Instrumentation
+  - Data validation/generation
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Introducing some popular testing tools to developers new to Clojure. Highlight solutions for how to do unit testing with Rich Comment Tests, data validation and generative testing with Malli, running test suites and metrics with Kaocha and how to do integration testing using external containerized services.
+
 +++
+
 ## Introduction
 
 This article introduces effective testing libraries and methods for those new to Clojure.
@@ -620,4 +632,3 @@ I highlighted some common testing tools and methods that the Clojure community u
 If you are starting your journey as a Clojure developer, I hope you can appreciate the quality of open-source testing libraries we have access to. Also, please remember that keeping things pure is the key to easy testing and debugging; a luxury not so common in the programming world. Inevitably, you will need to deal with side effects but isolate them as much as you can to make your code robust and your tests straight forward.
 
 Finally, there are some tools I didn’t mention to keep things short so feel free to explore what the Clojure community has to offer. The last advice I would give is to not try to use too many tools or only the shiny new ones you might find. Keep things simple and evaluate if a library is worth being added to your deps.
-

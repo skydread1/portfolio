@@ -1,15 +1,25 @@
-#:post{:id "redirect-domain-to-subdomain"
-       :page :blog
-       :date ["2023-11-09"]
-       :title "Redirecting Domain to Subdomain using AWS ALB+NLB"
-       :css-class "blog-redirect-domain"
-       :tags ["AWS" "Load Balancers" "DNS" "GoDaddy"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: redirect-domain-to-subdomain
+page: blog
+date: 
+  - 2023-11-09
+title: Redirecting Domain to Subdomain using AWS ALB+NLB
+css-class: blog-redirect-domain
+tags: 
+  - AWS
+  - Load Balancers
+  - DNS
+  - GoDaddy
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Domain to subdomain forwarding using AWS ALB+NLB setup.
+
 +++
+
 ## Context
 
 My goal was to redirect the domain `flybot.sg` to the subdomain `www.flybot.sg`.

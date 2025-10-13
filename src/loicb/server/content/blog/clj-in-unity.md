@@ -1,18 +1,29 @@
-#:post{:id "clojure-in-unity"
-       :page :blog
-       :date ["2022-04-22"]
-       :title "Pack, Push and Import Clojure to Unity"
-       :repos [["Magic" "https://github.com/nasser/magic"] 
-               ["Nostrand" "https://github.com/nasser/nostrand"]
-               ["Magic.Unity" "https://github.com/nasser/Magic.Unity"]]
-       :css-class "blog-clj-in-unity"
-       :tags ["Clojure" "Compiler" "CLR" "Unity"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: clojure-in-unity
+page: blog
+date: 
+  - 2022-04-22
+title: Pack, Push and Import Clojure to Unity
+css-class: blog-clj-in-unity
+tags: 
+  - Clojure
+  - Compiler
+  - CLR
+  - Unity
+repos:
+  - ["Magic", "https://github.com/nasser/magic"]
+  - ["Nostrand", "https://github.com/nasser/nostrand"]
+  - ["Magic.Unity", "https://github.com/nasser/Magic.Unity"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 How to package a Compiled Clojure lib (With MAGIC compiler) to NuGet, push it to remote and import it to Unity.
+
 +++
+
 ## Prerequisites
 
 Your Clojure library is assumed to be already compiled to dotnet.

@@ -1,15 +1,25 @@
-#:post{:id "tick"
-       :page :blog
-       :date ["2024-04-20"]
-       :title "Time as a value with Tick"
-       :css-class "juxt-tick"
-       :tags ["Clojure" "Java 8 time" "Tick" "Duration/Period"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: tick
+page: blog
+date: 
+  - 2024-04-20
+title: Time as a value with Tick
+css-class: juxt-tick
+tags: 
+  - Clojure
+  - Java 8 time
+  - Tick
+  - Duration/Period
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Illustrate date and time concepts in programming using the Clojure Tick library: timestamp, date-time, offset, zone, instant, inst, UTC, DST, duration, period etc.
+
 +++
+
 ## Introduction
 
 It is always very confusing to deal with time in programming. In fact there are so many time representations, for legacy reasons, that sticking to one is not possible as our dependencies, databases or even programming languages might use different ways of representing time!

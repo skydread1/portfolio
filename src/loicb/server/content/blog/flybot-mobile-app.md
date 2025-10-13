@@ -1,23 +1,36 @@
-#:post{:id "clojure-mobile-app"
-       :page :blog
-       :employer "Flybot Pte Ltd" 
-       :date ["2023-02-13" "2023-08-08"]
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["Reagent React Native Mobile App" "../blog/reagent-native-app"]
-                  ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
-       :title "Flybot Mobile App"
-       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent React Native"]
-       :css-class "flybot-mobile-app"
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: clojure-mobile-app
+page: blog
+date: 
+  - 2023-02-13
+  - 2023-08-08
+title: Flybot Mobile App
+employer: Flybot Pte Ltd
+css-class: flybot-mobile-app
+tags: 
+  - ClojureScript
+  - Figwheel
+  - Re-Frame
+  - Reagent React Native
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+articles:
+  - ["Reagent React Native Mobile App", "../blog/reagent-native-app"]
+  - ["Clojure Mono Repo example : server + 2 clients", "../blog/clojure-mono-repo"]
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 At Flybot, I developed a mobile app using **ClojureScript** with `React Native` using `Figwheel` and `Reagent React Native` (to interact with reagent in ClojureScript).
 
 The code for the mobile app resides in the same repo as the server and the web client of the [flybot.sg](https://www.flybot.sg/) website.
 
 The goal of the mobile app was to allow employees to write blog posts using an app instead of the web UI and also to evaluate if our ClojureScript frontend stack could reuse most of the `re-frame` logic in both the mobile and web UIs.
+
 +++
+
 ## Rational
 
 The goal is to have a mobile app targeting both iOS and Android, written in **ClojureScript**, which can reuse most of our web frontend logic.

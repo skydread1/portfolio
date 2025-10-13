@@ -1,15 +1,25 @@
-#:post{:id "pwd-manager-2FA"
-       :page :blog
-       :date ["2025-06-27"]
-       :title "Password manager + 2FA"
-       :css-class "pwd-man-2fa"
-       :tags ["Bitwarden" "Password Manager" "2FA" "Security"]
-       :image #:image{:src "/assets/pwd-man-2fa/blue-shield.png"
-                      :src-dark "/assets/pwd-man-2fa/white-shield.png"
-                      :alt "Bitwarden Logo"}}
-+++
+---
+id: pwd-manager-2FA
+page: blog
+date: 
+  - 2025-06-27
+title: Password manager + 2FA
+css-class: pwd-man-2fa
+tags: 
+  - Bitwarden
+  - Password Manager
+  - 2FA
+  - Security
+image:
+  src: /assets/pwd-man-2fa/blue-shield.png
+  src-dark: /assets/pwd-man-2fa/white-shield.png
+  alt: Bitwarden Logo
+---
+
 Using a password manager with strong passwords and enabling 2FA for critical accounts are simple yet powerful steps to protect your online security.
+
 +++
+
 ## Rationale
 
 One of the best ways to store and organize your online credentials is to use a password manager.

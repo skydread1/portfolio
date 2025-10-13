@@ -1,17 +1,28 @@
-#:post{:id "port-clj-lib-to-clr"
-       :page :blog
-       :date ["2022-04-08"]
-       :title "Port your Clojure lib to the CLR with MAGIC"
-       :repos [["Magic" "https://github.com/nasser/magic"] 
-               ["Nostrand" "https://github.com/nasser/nostrand"]]
-       :css-class "blog-port-clj-lib"
-       :tags ["Clojure" "Compiler" "CLR" "Unity"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: port-clj-lib-to-clr
+page: blog
+date: 
+  - 2022-04-08
+title: Port your Clojure lib to the CLR with MAGIC
+css-class: blog-port-clj-lib
+tags: 
+  - Clojure
+  - Compiler
+  - CLR
+  - Unity
+repos:
+  - ["Magic", "https://github.com/nasser/magic"]
+  - ["Nostrand", "https://github.com/nasser/nostrand"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 How to port your Clojure lib to the CLR. Then how to be build with the MAGIC compiler allowing you to obtain DLLs compatible with Unity (no DLR used by MAGIC).
+
 +++
+
 In this article, I will show you:
 
 1. how to handle CLR interop to prepare your Clojure code for the CLR

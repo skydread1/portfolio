@@ -1,15 +1,25 @@
-#:post{:id "datomic-setup-examples"
-       :page :blog
-       :date ["2022-12-02"]
-       :title "Datomic Setup examples: embedded, cassandra, docker."
-       :css-class "blog-datomic-setup"
-       :tags ["Clojure" "Datomic" "Cassandra" "Docker"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: datomic-setup-examples
+page: blog
+date: 
+  - 2022-12-02
+title: "Datomic Setup examples: embedded, cassandra, docker."
+css-class: blog-datomic-setup
+tags: 
+  - Clojure
+  - Datomic
+  - Cassandra
+  - Docker
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 How to run an embedded version of Datomic. How to run Datomic with a Cassandra cluster. How to run it in Docker.
+
 +++
+
 ## Introduction
 
 While working on [flybot.sg](http://flybot.sg) , I experimented with `datomic-free`, datomic `starter-pro` with Cassandra and datomic starter-pro with embedded storage.

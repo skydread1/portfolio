@@ -1,15 +1,28 @@
-#:post{:id "blog-django"
-       :page :blog
-       :date ["2023-05-27" "2023-11-12"]
-       :repos [["Blog" "https://github.com/skydread1/blog"]]
-       :articles [["Deploy Django Blog in AWS Beanstalk" "../blog/deploy-django-aws-beanstalk"]]
-       :title "Tech Blog with Django"
-       :css-class "blog-django"
-       :tags ["Python" "Django" "Elastic Beanstalk" "RDS PostgreSQL" "S3" "AWS"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: blog-django
+page: blog
+date: 
+  - 2023-05-27
+  - 2023-11-12
+title: Tech Blog with Django
+css-class: blog-django
+tags: 
+  - Python
+  - Django
+  - Elastic Beanstalk
+  - RDS PostgreSQL
+  - S3
+  - AWS
+repos:
+  - ["Blog", "https://github.com/skydread1/blog"]
+articles:
+  - ["Deploy Django Blog in AWS Beanstalk", "../blog/deploy-django-aws-beanstalk"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 I developed a tech blog in **python** using the `Django` framework. Thus, it is Server-Side Rendered.
 
 The blog was deployed on AWS `Beanstalk`, the static files were served from an AWS `S3` bucket, and the production data was stored in an AWS `RDS Postgres` database.
@@ -17,7 +30,9 @@ The blog was deployed on AWS `Beanstalk`, the static files were served from an A
 It used `HTMX` for the search bar.
 
 After the AWS free tier expired, I moved the tech blog to the ClojureScript SPA.
+
 +++
+
 ## Rational
 
 I developed a tech blog in **python** using the `Django` framework. Thus, it is Server-Side Rendered.

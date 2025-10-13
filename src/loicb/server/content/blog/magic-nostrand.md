@@ -1,27 +1,44 @@
-#:post{:id "magic-clojure-compiler-to-clr"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd" 
-       :date ["2021-02-01" "2022-12-09"]
-       :repos [["Magic" "https://github.com/nasser/magic"] 
-               ["Nostrand" "https://github.com/nasser/nostrand"]
-               ["Magic.Unity" "https://github.com/nasser/Magic.Unity"] 
-               ["magic-pipeline" "https://github.com/magic-clojure/magic"]]
-       :articles [["Port your Clojure lib to the CLR with MAGIC" "../blog/port-clj-lib-to-clr"]
-                  ["Pack, Push and Import Clojure to Unity" "../blog/clojure-in-unity"]]
-       :title "Magic Compiler and Nostrand"
-       :css-class "magic-nostrand"
-       :tags ["Clojure" "C#" "JVM" "CLR" "Compiler" "Interop" "NuGet" "Unity"]
-       :image #:image{:src "/assets/magic-hat.png"
-                      :src-dark "/assets/magic-hat.png"
-                      :alt "Data Light Wallpaper"}}
-+++
+---
+id: magic-clojure-compiler-to-clr
+page: blog
+date: 
+  - 2021-02-01
+  - 2022-12-09
+title: Magic Compiler and Nostrand
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: magic-nostrand
+tags: 
+  - Clojure
+  - C#
+  - JVM
+  - CLR
+  - Compiler
+  - Interop
+  - NuGet
+  - Unity
+repos:
+  - ["Magic", "https://github.com/nasser/magic"]
+  - ["Nostrand", "https://github.com/nasser/nostrand"]
+  - ["Magic.Unity", "https://github.com/nasser/Magic.Unity"]
+  - ["magic-pipeline", "https://github.com/magic-clojure/magic"]
+articles:
+  - ["Port your Clojure lib to the CLR with MAGIC", "../blog/port-clj-lib-to-clr"]
+  - ["Pack, Push and Import Clojure to Unity", "../blog/clojure-in-unity"]
+image:
+  src: /assets/magic-hat.png
+  src-dark: /assets/magic-hat.png
+  alt: Data Light Wallpaper
+---
+
 I worked on integrating the Magic Compiler and its tooling to Flybot's development workflow.
 
 [Magic](https://github.com/nasser/magic) is an open-source bootstrapped compiler written in **Clojure** that takes Clojure code as input and produces dotnet assemblies (.dll) as output. The dlls produced by Magic can be run in the Game engine `Unity` which Flybot uses for their card game UIs. The goal was to be able to compile our backend Clojure APIs to dlls so we can used that logic in Unity directly.
 
 Working closely with the author of the Magic compiler [Ramsey Nasser](https://github.com/nasser), I helped improving the tooling around the Magic compiler so it integrates well with our workflow Clojure Backend/Unity Frontend. I notably simplified the way a clojure project and its dependencies are compiled to dlls, packed to NuGet, deployed to online repos and finally imported to Unity.
+
 +++
+
 ## Rational
 
 I worked on integrating the Magic Compiler and its tooling to Flybot's development workflow.

@@ -1,21 +1,33 @@
-#:post{:id "mcts"
-       :page :blog
-       :employer "Flybot Pte Ltd"
-       :date ["2021-07-19" "2021-08-13"]
-       :articles [["MCTS applied to card games" "../blog/article-mcts"]]
-       :title "MCTS applied to card games"
-       :css-class "mcts"
-       :tags ["MCTS" "Monte Carlo Tree Search" "Clojure" "Card Game"]
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: mcts
+page: blog
+date: 
+  - 2021-07-19
+  - 2021-08-13
+title: MCTS applied to card games
+employer: Flybot Pte Ltd
+css-class: mcts
+tags: 
+  - MCTS
+  - Monte Carlo Tree Search
+  - Clojure
+  - Card Game
+articles:
+  - ["MCTS applied to card games", "../blog/article-mcts"]
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 At Flybot, I had the opportunity to work on a Monte Carlo Tree Search (MCTS) **Clojure** implementation for our card games.
 
 I combined `MCTS` with `domain knowledge` of our games to balance quality and performance of the plays.
 
 A few of our games implement the same `Game` protocol so the MCTS implementation is independent of the underlying game.
+
 +++
+
 ## Rational
 
 At Flybot Pte Ltd, one of my projects was to develop a robot-player capable of playing multiple rounds of card games, such as the popular Chinese card game `big-two`.

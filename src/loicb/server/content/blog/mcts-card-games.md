@@ -1,15 +1,23 @@
-#:post{:id "article-mcts"
-       :page :blog
-       :date ["2021-08-13"]
-       :title "MCTS applied to card games"
-       :css-class "blog-post-mcts"
-       :tags ["Clojure" "MCTS"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: article-mcts
+page: blog
+date: 
+  - 2021-08-13
+title: MCTS applied to card games
+css-class: blog-post-mcts
+tags: 
+  - Clojure
+  - MCTS
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 General principle of MCTS applied to a Clojure use case.
+
 +++
+
 ## Objective
 
 At [Flybot Pte Ltd](https://www.flybot.sg/), we wanted to have a robot-player that can play several rounds of some of our card games (such as `big-two`) at a decent level.

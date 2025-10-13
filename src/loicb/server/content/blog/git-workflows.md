@@ -1,15 +1,25 @@
-#:post{:id "git-workflows"
-       :page :blog
-       :date ["2024-05-12"]
-       :title "What Git workflow is suitable for your project"
-       :css-class "git-workflows"
-       :tags ["Git" "Workflows" "Branching" "CI/CD"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: git-workflows
+page: blog
+date: 
+  - 2024-05-12
+title: What Git workflow is suitable for your project
+css-class: git-workflows
+tags: 
+  - Git
+  - Workflows
+  - Branching
+  - CI/CD
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 What Git workflow is suitable for your project: trunk-based, feature branching, forking, release branching, release candidate workflow, Feature branching to develop, GitFlow
+
 +++
+
 ## Introduction
 
 Depending on the size of the projects and its CI/CD requirements, one might choose one of the popular [Git Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows). Some are good for some scenarios, some are never good and some are questionable to say the least.

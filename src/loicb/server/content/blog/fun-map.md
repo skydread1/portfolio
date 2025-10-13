@@ -1,15 +1,25 @@
-#:post{:id "fun-map"
-       :page :blog
-       :date ["2022-04-12"]
-       :title "Fun-Map: a solution to deps injection in Clojure"
-       :css-class "blog-fun-map"
-       :tags ["Clojure" "System" "Component" "Deps Injection"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: fun-map
+page: blog
+date: 
+  - 2022-04-12
+title: "Fun-Map: a solution to deps injection in Clojure"
+css-class: blog-fun-map
+tags: 
+  - Clojure
+  - System
+  - Component
+  - Deps Injection
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Rational of `fun-map`, including the benefit of the `life-cycle-map` as dependency injection system.
+
 +++
+
 ## Context
 
 The Lasagna stack library [fun-map](https://github.com/robertluo/fun-map) by [@robertluo](https://github.com/robertluo) blurs the line between identity, state and function. As a results, it is a very convenient tool to define `system` in your applications by providing an elegant way to perform associative dependency injections.

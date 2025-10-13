@@ -1,17 +1,32 @@
-#:post{:id "about-me"
-       :page :about
-       :date ["2024-11-12"]
-       :employer "My journey so far"
-       :repos [["My GitHub" "https://github.com/skydread1"]]
-       :articles [["My Tech Blog" "../blog"]]
-       :title "About Me"
-       :tags ["🛠️ Staff SE" "📍 Singapore" "🎫 Pass: EP" "💻 5+ years of experience" "🎓 Master in CS" "🇫🇷 French Citizen"]
-       :css-class "about-me"
-       :image #:image{:src "/assets/loic-logo.png"
-                      :src-dark "/assets/loic-logo.png"
-                      :alt "Loic Logo"}}
+---
+id: about-me
+page: about
+date: 
+  - 2024-11-12
+title: About Me
+employer: My journey so far
+css-class: about-me
+tags: 
+  - 🛠️ Staff SE
+  - 📍 Singapore
+  - "🎫 Pass: EP"
+  - 💻 5+ years of experience
+  - 🎓 Master in CS
+  - 🇫🇷 French Citizen
+repos:
+  - ["My GitHub", "https://github.com/skydread1"]
+articles:
+  - ["My Tech Blog", "../blog"]
+image:
+  src: /assets/loic-logo.png
+  src-dark: /assets/loic-logo.png
+  alt: Loic Logo
+---
+
+
+
 +++
-+++
+
 ## In short
 
 👋🏻 Hi, I'm Loic Blanchard, a Staff Software Engineer based in Singapore with over 5 years of experience in building scalable software solutions. My expertise lies in designing and leading the development of high-quality software systems, primarily using the Functional Programming language **Clojure** and its ecosystem. I am currently leading the engineering team at [Flybot Pte Ltd](https://www.flybot.sg/).

@@ -1,21 +1,32 @@
-#:post{:id "game-stats-rama"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd"
-       :date ["2024-08-12"]
-       :title "Gaming Stats Aggregation with Rama"
-       :css-class "stats-rama"
-       :tags ["Clojure" "Rama" "AWS" "EKS" "Kafka"]
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: game-stats-rama
+page: blog
+date: 
+  - 2024-08-12
+title: Gaming Stats Aggregation with Rama
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: stats-rama
+tags: 
+  - Clojure
+  - Rama
+  - AWS
+  - EKS
+  - Kafka
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 I am currently working on a project that aims at moving our gaming platform stat aggregation and visualization project to a new stack.
 
 We have an event-driven system that produces lots of events in multiple kafka topics. Our current solution to aggregate stats and visualize them in dashboards is the setup [Apache Druid](https://druid.apache.org/) + [Imply](https://imply.io/).
 
 As a **Clojure**-focused company, we decided to experiment with a new architecture: [Rama](https://redplanetlabs.com/learn-rama) + in-house full-stack Clojure Visualization tool.
+
 +++
+
 ## Rationale
 
 I worked on a POC on a project that aims at moving our gaming platform stat aggregation and visualization project to a new stack.
@@ -144,5 +155,3 @@ The main limitations are the following:
 ## Next goal
 
 The next step is to have a generic `analytics` module builder with clear configs. And we want these configs to be easily reusable for the API/frontend validation schema for the different queries.
-
-

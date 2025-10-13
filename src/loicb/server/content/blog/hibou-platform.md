@@ -1,19 +1,30 @@
-#:post{:id "hibou-platform"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd"
-       :date ["2025-10-13"]
-       :title "Building a Generic Analytics Platform with Hibou"
-       :css-class "hibou-platform"
-       :tags ["Clojure" "Rama" "Analytics" "Mono Repo" "Full-Stack"]
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: hibou-platform
+page: blog
+date: 
+  - 2025-10-13
+title: Building a Generic Analytics Platform with Hibou
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: hibou-platform
+tags: 
+  - Clojure
+  - Rama
+  - Analytics
+  - Mono Repo
+  - Full-Stack
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 Following our successful POC with Rama for analytics, we evolved the stack into a generic, reusable platform called **Hibou** (French for "owl", known for their excellent eyesight).
 
 The goal was to transform our client-specific implementation into a **business-agnostic** analytics suite that can serve multiple clients with different data requirements.
+
 +++
+
 ## Context
 
 This project builds upon the foundation established in our [Gaming Stats Aggregation with Rama](http://loicb.dev/blog/game-stats-rama) POC.

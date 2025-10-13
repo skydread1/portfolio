@@ -1,15 +1,25 @@
-#:post{:id "clojure-mono-repo"
-       :page :blog
-       :date[ "2023-02-16"]
-       :title "Clojure Mono Repo example : server + 2 clients"
-       :css-class "blog-mono-repo"
-       :tags ["Clojure" "Reagent" "Figwheel" "Mono Repo"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: clojure-mono-repo
+page: blog
+date: 
+  - 2023-02-16
+title: "Clojure Mono Repo example : server + 2 clients"
+css-class: blog-mono-repo
+tags: 
+  - Clojure
+  - Reagent
+  - Figwheel
+  - Mono Repo
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Example of a Clojure mono-repo structure for a web server and 2 clients (web and mobile).
+
 +++
+
 ## Context
 
 Our app [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg) is a full-stack Clojure **web** and **mobile** app.

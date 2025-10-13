@@ -1,16 +1,27 @@
-#:post{:id "reagent-native-app"
-       :page :blog
-       :date ["2023-02-03"]
-       :title "Reagent React Native Mobile App"
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :css-class "blog-reagent-native"
-       :tags ["Clojure" "React Native" "Reagent" "Figwheel"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: reagent-native-app
+page: blog
+date: 
+  - 2023-02-03
+title: Reagent React Native Mobile App
+css-class: blog-reagent-native
+tags: 
+  - Clojure
+  - React Native
+  - Reagent
+  - Figwheel
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Reagent React Native mobile app reusing re-frame logic from exiting web client.
+
 +++
+
 ## Prerequisites
 
 This project is stored alongside the backend and the web frontend in the mono-repo: [skydread1/flybot.sg](https://github.com/skydread1/flybot.sg)

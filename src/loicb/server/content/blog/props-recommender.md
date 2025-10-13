@@ -1,15 +1,24 @@
-#:post{:id "game-challenge-recommender"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd" 
-       :date ["2023-08-08"]
-       :title "Challenge Recommender"
-       :tags ["Clojure" "Kafka" "Datomic" "Kubernetes" "AWS EKS"]
-       :css-class "props-recommender"
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: game-challenge-recommender
+page: blog
+date: 
+  - 2023-08-08
+title: Challenge Recommender
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: props-recommender
+tags: 
+  - Clojure
+  - Kafka
+  - Datomic
+  - Kubernetes
+  - AWS EKS
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 I worked on a recommender system stack that suggests user-based challenges to [Golden Island](https://www.80166.com/)'s players. `Golden Island` is a card/board game platforms that offers a dozen of games including *Pǎo Dé Kuài* (跑得快), *Dou dizhu* (鬥地主), *Mahjong* etc.
 
 Some game operators are already creating props (challenges) that are personalized in the sense that they apply only to a subset of users (game, levels, coin balance etc) in response to a subset of events (game, bet size etc).
@@ -17,7 +26,9 @@ Some game operators are already creating props (challenges) that are personalize
 The end goal was to ease the job of game operators by taking care of `when` to recommend challenges and to `whom`, so the game operators can focus on the `what` the challenges could be and have constant performance feedback.
 
 The recommender is made of **Clojure** applications deployed in PODs in `AWS EKS` that consume events from `kafka` topics and produces props (personalized challenges) to a dedicated kafka topic. It uses `Datomic` as storage solution. The app can query multiple recommender engines to perform A/B testing, meaning that we can run 2 recommenders at once and compare their performance.
+
 +++
+
 ## Rational
 
 I worked on a recommender system stack that suggests user-based challenges to [Golden Island](https://www.80166.com/)'s players. `Golden Island` is a card/board game platforms that offers a dozen of games including *Pǎo Dé Kuài* (跑得快), *Dou dizhu* (鬥地主), *Mahjong* etc.

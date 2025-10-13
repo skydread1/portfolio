@@ -1,15 +1,24 @@
-#:post{:id "lasagna-pull"
-       :page :blog
-       :date ["2022-04-12"]
-       :title "Lasagna Pull: Precisely select from deep nested data"
-       :css-class "blog-lasagna-pull"
-       :tags ["Clojure" "Pull Pattern" "Malli"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: lasagna-pull
+page: blog
+date: 
+  - 2022-04-12
+title: "Lasagna Pull: Precisely select from deep nested data"
+css-class: blog-lasagna-pull
+tags: 
+  - Clojure
+  - Pull Pattern
+  - Malli
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 Rational of flybot-sg/lasagna-pull library: precisely select from deep data structure in Clojure.
+
 +++
+
 ## Context
 
 [flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) by [@robertluo](https://github.com/robertluo) aims at precisely select from deep data structure in Clojure.

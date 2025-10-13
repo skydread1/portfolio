@@ -1,16 +1,27 @@
-#:post{:id "fun-map-applied-to-flybot"
-       :page :blog
-       :date ["2023-05-08"]
-       :title "Fun-Map applied to flybot.sg"
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :css-class "blog-fun-map-flybot"
-       :tags ["Clojure" "System" "Component" "Deps Injection"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: fun-map-applied-to-flybot
+page: blog
+date: 
+  - 2023-05-08
+title: Fun-Map applied to flybot.sg
+css-class: blog-fun-map-flybot
+tags: 
+  - Clojure
+  - System
+  - Component
+  - Deps Injection
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 how we leverage `fun-map` to create different systems in the website flybot.sg: `prod-system`, `dev-system`, `test-system` and `figwheel-system`.
+
 +++
+
 ## Prerequisites
 
 If you are not familiar with [fun-map](https://github.com/robertluo/fun-map), please refer to the doc [Fun-Map: a solution to deps injection in Clojure](https://www.loicb.dev/blog/fun-map).

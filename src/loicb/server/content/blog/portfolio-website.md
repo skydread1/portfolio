@@ -1,15 +1,28 @@
-#:post{:id "portfolio-clojurescript-spa"
-       :page :blog
-       :date ["2023-04-07" "2024-04-21"]
-       :home-page? true
-       :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
-       :title "Portfolio Website"
-       :css-class "portfolio"
-       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent" "Lasagna-pull" "Reitit" "Babashka"]
-       :image #:image{:src "/assets/loic-logo.png"
-                      :src-dark "/assets/loic-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: portfolio-clojurescript-spa
+page: blog
+date: 
+  - 2023-04-07
+  - 2024-04-21
+title: Portfolio Website
+home-page?: true
+css-class: portfolio
+tags: 
+  - ClojureScript
+  - Figwheel
+  - Re-Frame
+  - Reagent
+  - Lasagna-pull
+  - Reitit
+  - Babashka
+repos:
+  - ["Portfolio", "https://github.com/skydread1/portfolio"]
+image:
+  src: /assets/loic-logo.png
+  src-dark: /assets/loic-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 This portfolio was implemented with **ClojureScript**. It is a Single Page Application that leverages [reagent](https://github.com/reagent-project/reagent), a minimalistic interface between ClojureScript and **React**.
 
 For frontend management, [re-frame](https://github.com/day8/re-frame) is used. To compile the cljs code and perform hot reloading, I used [figwheel-main](https://figwheel.org/).
@@ -21,7 +34,9 @@ The markdown content is converted into [hiccup](https://github.com/weavejester/h
 Light/dark mode and code block syntax highlighted are supported.
 
 The app is deployed on **Netlify** via GitHub Actions every time a branch is merged to master. Build artifacts are generated during CI/CD and are not committed to the repository.
+
 +++
+
 ## Rational
 
 This portfolio was implemented with **ClojureScript**. It is a Single Page Application that leverages [reagent](https://github.com/reagent-project/reagent), a minimalistic interface between ClojureScript and **React**.

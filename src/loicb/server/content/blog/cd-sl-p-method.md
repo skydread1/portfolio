@@ -1,15 +1,25 @@
-#:post{:id "cd-sl-p-method"
-       :page :blog
-       :date ["2025-06-23"]
-       :title "Custom Domain + SimpleLogin + Proton"
-       :css-class "cd-sl-p"
-       :tags ["ProtonMail" "SimpleLogin" "Custom Domain" "Privacy"]
-       :image #:image{:src "/assets/cd-sl-p/proton-mail-icon.jpg"
-                      :src-dark "/assets/cd-sl-p/proton-mail-icon.jpg"
-                      :alt "ProtonMail Logo"}}
-+++
+---
+id: cd-sl-p-method
+page: blog
+date: 
+  - 2025-06-23
+title: Custom Domain + SimpleLogin + Proton
+css-class: cd-sl-p
+tags: 
+  - ProtonMail
+  - SimpleLogin
+  - Custom Domain
+  - Privacy
+image:
+  src: /assets/cd-sl-p/proton-mail-icon.jpg
+  src-dark: /assets/cd-sl-p/proton-mail-icon.jpg
+  alt: ProtonMail Logo
+---
+
 CD-SL-P (Custom Domain + SimpleLogin + Proton) method to organize your email flow.
+
 +++
+
 ## 👁️ Rationale
 
 In this article, I will show you the CD-SL-P (Custom Domain + SimpleLogin + Proton) method that is good to balance privacy and convenience.

@@ -1,24 +1,42 @@
-#:post{:id "clojure-full-stack-webapp"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd" 
-       :date ["2022-05-20" "2023-08-04"]
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["Deploy full stack Clojure website to AWS" "../blog/deploy-clj-app-to-aws"]
-                  ["Lasagna-pull applied to flybot.sg" "../blog/lasagna-pull-applied-to-flybot"]
-                  ["Fun-Map applied to flybot.sg" "../blog/fun-map-applied-to-flybot"]
-                  ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
-       :title "Flybot Website"
-       :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
-       :css-class "flybot-website"
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: clojure-full-stack-webapp
+page: blog
+date: 
+  - 2022-05-20
+  - 2023-08-04
+title: Flybot Website
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: flybot-website
+tags: 
+  - Clojure
+  - ClojureScript
+  - Figwheel
+  - Re-Frame
+  - Malli
+  - Lasagna-pull
+  - Fun-map
+  - Datalevin
+  - Reitit
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+articles:
+  - ["Deploy full stack Clojure website to AWS", "../blog/deploy-clj-app-to-aws"]
+  - ["Lasagna-pull applied to flybot.sg", "../blog/lasagna-pull-applied-to-flybot"]
+  - ["Fun-Map applied to flybot.sg", "../blog/fun-map-applied-to-flybot"]
+  - ["Clojure Mono Repo example : server + 2 clients", "../blog/clojure-mono-repo"]
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 [flybot.sg](https://www.flybot.sg/) is an open-source full-stack **Clojure** web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.
 
 The purpose of this project was to demonstrate how the `lasagna stack` ([flybot-sg/lasagna-pull](https://github.com/flybot-sg/lasagna-pull) and [robertluo/fun-map](https://github.com/robertluo/fun-map)) could ease the web development experience for any Clojure developers.
+
 +++
+
 ## Rational
 
 [flybot.sg](https://www.flybot.sg/) is an open-source full-stack **Clojure** web-app that allows company’s employees to write posts to showcase their open-source libraries, their contributions and all technical knowledge that could interest the functional programming community. HRs can also post job offers. Admins can edit any piece of content in any pages as the whole content can be written in Markdown.

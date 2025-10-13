@@ -1,23 +1,36 @@
-#:post{:id "card-games-api"
-       :page :blog
-       :home-page? true
-       :employer "Flybot Pte Ltd"
-       :date ["2020-01-06" "2021-10-29"]
-       :repos [["Magic" "https://github.com/nasser/magic"]]
-       :articles [["Port your Clojure lib to the CLR with MAGIC" "../blog/port-clj-lib-to-clr"]]
-       :title "Clojure Card Games Backend APIs"
-       :css-class "card-games"
-       :tags ["Clojure" "Clojure Spec" "Magic Compiler" "Interop CLR"]
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
-+++
+---
+id: card-games-api
+page: blog
+date: 
+  - 2020-01-06
+  - 2021-10-29
+title: Clojure Card Games Backend APIs
+home-page?: true
+employer: Flybot Pte Ltd
+css-class: card-games
+tags: 
+  - Clojure
+  - Clojure Spec
+  - Magic Compiler
+  - Interop CLR
+repos:
+  - ["Magic", "https://github.com/nasser/magic"]
+articles:
+  - ["Port your Clojure lib to the CLR with MAGIC", "../blog/port-clj-lib-to-clr"]
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+---
+
 At Flybot, I had the opportunity to create popular Asian Card Games APIs in **Clojure**.
 
 I developed the backend of games such as *Pǎo Dé Kuài* (跑得快) and *Big two* (锄大地) which are climbing card games.
 
 I also worked on a Library we called **MetaGame** that allows us to compose several `Pǎo Dé Kuài` or `Big two` games (or a mix of both). By composing games, I mean to play a few rounds of them up to a certain score for instance. This composition is generic enough to even allow us to make tournaments out of the underlying games.
+
 +++
+
 ## Rational
 
 At Flybot, I had the opportunity to create popular Asian Card Games APIs in **Clojure**.

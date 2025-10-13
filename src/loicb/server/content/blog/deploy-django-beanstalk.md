@@ -1,16 +1,27 @@
-#:post{:id "deploy-django-aws-beanstalk"
-       :page :blog
-       :date ["2023-08-08"]
-       :repos [["Blog" "https://github.com/skydread1/blog"]]
-       :title "Deploy Django Blog in AWS Beanstalk"
-       :css-class "blog-django-aws"
-       :tags ["Python" "Django" "AWS" "Elastic Beanstalk"]
-       :image #:image{:src "/assets/loic-blog-logo.png"
-                      :src-dark "/assets/loic-blog-logo.png"
-                      :alt "Logo referencing Aperture Science"}}
-+++
+---
+id: deploy-django-aws-beanstalk
+page: blog
+date: 
+  - 2023-08-08
+title: Deploy Django Blog in AWS Beanstalk
+css-class: blog-django-aws
+tags: 
+  - Python
+  - Django
+  - AWS
+  - Elastic Beanstalk
+repos:
+  - ["Blog", "https://github.com/skydread1/blog"]
+image:
+  src: /assets/loic-blog-logo.png
+  src-dark: /assets/loic-blog-logo.png
+  alt: Logo referencing Aperture Science
+---
+
 What libraries/settings I used to develop a Django app and how to deploy it on AWS Elastic Beanstalk.
+
 +++
+
 ## Context
 
 My open-source tech blog used to be deployed on AWS (during my AWS free tier period).
