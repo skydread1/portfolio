@@ -13,6 +13,8 @@ tags:
   - Datomic
   - Kubernetes
   - AWS EKS
+rss-feeds:
+  - clojure
 image:
   src: https://www.flybot.sg/assets/flybot-logo.png
   src-dark: https://www.flybot.sg/assets/flybot-logo.png

@@ -15,6 +15,8 @@ tags:
   - Lasagna-pull
   - Reitit
   - Babashka
+rss-feeds:
+  - clojure
 repos:
   - ["Portfolio", "https://github.com/skydread1/portfolio"]
 image:

@@ -12,6 +12,8 @@ tags:
   - Monte Carlo Tree Search
   - Clojure
   - Card Game
+rss-feeds:
+  - clojure
 articles:
   - ["MCTS applied to card games", "../blog/article-mcts"]
 image:

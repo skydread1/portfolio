@@ -10,6 +10,8 @@ tags:
   - Compiler
   - CLR
   - Unity
+rss-feeds:
+  - clojure
 repos:
   - ["Magic", "https://github.com/nasser/magic"]
   - ["Nostrand", "https://github.com/nasser/nostrand"]

@@ -13,6 +13,8 @@ tags:
   - Clojure Spec
   - Magic Compiler
   - Interop CLR
+rss-feeds:
+  - clojure
 repos:
   - ["Magic", "https://github.com/nasser/magic"]
 articles:

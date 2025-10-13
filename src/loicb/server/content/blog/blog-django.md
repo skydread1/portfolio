@@ -13,6 +13,8 @@ tags:
   - RDS PostgreSQL
   - S3
   - AWS
+rss-feeds:
+  - clojure
 repos:
   - ["Blog", "https://github.com/skydread1/blog"]
 articles:

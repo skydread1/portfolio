@@ -8,6 +8,8 @@ css-class: blog-lasagna-pull-flybot
 tags: 
   - Clojure
   - Pull Pattern
+rss-feeds:
+  - clojure
 repos:
   - ["Flybot", "https://github.com/skydread1/flybot.sg"]
 image:

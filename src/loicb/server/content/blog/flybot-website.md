@@ -18,6 +18,8 @@ tags:
   - Fun-map
   - Datalevin
   - Reitit
+rss-feeds:
+  - clojure
 repos:
   - ["Flybot", "https://github.com/skydread1/flybot.sg"]
 articles:

@@ -13,6 +13,8 @@ tags:
   - AWS
   - EKS
   - Kafka
+rss-feeds:
+  - clojure
 image:
   src: https://www.flybot.sg/assets/flybot-logo.png
   src-dark: https://www.flybot.sg/assets/flybot-logo.png

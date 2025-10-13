@@ -17,6 +17,8 @@ tags:
   - Interop
   - NuGet
   - Unity
+rss-feeds:
+  - clojure
 repos:
   - ["Magic", "https://github.com/nasser/magic"]
   - ["Nostrand", "https://github.com/nasser/nostrand"]

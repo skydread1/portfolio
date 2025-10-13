@@ -12,6 +12,8 @@ tags:
   - Figwheel
   - Re-Frame
   - Reagent React Native
+rss-feeds:
+  - clojure
 repos:
   - ["Flybot", "https://github.com/skydread1/flybot.sg"]
 articles:

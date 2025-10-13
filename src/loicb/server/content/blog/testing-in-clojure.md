@@ -12,6 +12,8 @@ tags:
   - Rich Comment Tests
   - Instrumentation
   - Data validation/generation
+rss-feeds:
+  - clojure
 image:
   src: /assets/loic-blog-logo.png
   src-dark: /assets/loic-blog-logo.png

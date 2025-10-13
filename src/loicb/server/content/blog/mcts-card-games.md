@@ -8,6 +8,8 @@ css-class: blog-post-mcts
 tags: 
   - Clojure
   - MCTS
+rss-feeds:
+  - clojure
 image:
   src: /assets/loic-blog-logo.png
   src-dark: /assets/loic-blog-logo.png

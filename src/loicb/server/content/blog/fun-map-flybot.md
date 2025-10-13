@@ -10,6 +10,8 @@ tags:
   - System
   - Component
   - Deps Injection
+rss-feeds:
+  - clojure
 repos:
   - ["Flybot", "https://github.com/skydread1/flybot.sg"]
 image:
