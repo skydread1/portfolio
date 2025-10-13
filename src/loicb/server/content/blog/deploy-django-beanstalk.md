@@ -10,6 +10,8 @@ tags:
   - Django
   - AWS
   - Elastic Beanstalk
+rss-feeds:
+  - all
 repos:
   - ["Blog", "https://github.com/skydread1/blog"]
 image:

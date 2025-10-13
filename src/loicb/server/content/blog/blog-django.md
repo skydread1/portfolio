@@ -14,6 +14,7 @@ tags:
   - S3
   - AWS
 rss-feeds:
+  - all
   - clojure
 repos:
   - ["Blog", "https://github.com/skydread1/blog"]

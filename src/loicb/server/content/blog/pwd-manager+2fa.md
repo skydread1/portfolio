@@ -10,6 +10,8 @@ tags:
   - Password Manager
   - 2FA
   - Security
+rss-feeds:
+  - all
 image:
   src: /assets/pwd-man-2fa/blue-shield.png
   src-dark: /assets/pwd-man-2fa/white-shield.png

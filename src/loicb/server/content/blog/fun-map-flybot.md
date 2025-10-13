@@ -11,6 +11,7 @@ tags:
   - Component
   - Deps Injection
 rss-feeds:
+  - all
   - clojure
 repos:
   - ["Flybot", "https://github.com/skydread1/flybot.sg"]

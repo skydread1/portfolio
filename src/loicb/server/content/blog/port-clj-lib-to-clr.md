@@ -11,6 +11,7 @@ tags:
   - CLR
   - Unity
 rss-feeds:
+  - all
   - clojure
 repos:
   - ["Magic", "https://github.com/nasser/magic"]

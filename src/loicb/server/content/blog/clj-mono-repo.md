@@ -11,6 +11,7 @@ tags:
   - Figwheel
   - Mono Repo
 rss-feeds:
+  - all
   - clojure
 image:
   src: /assets/loic-blog-logo.png

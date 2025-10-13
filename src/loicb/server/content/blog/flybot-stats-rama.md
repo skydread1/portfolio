@@ -14,6 +14,7 @@ tags:
   - EKS
   - Kafka
 rss-feeds:
+  - all
   - clojure
 image:
   src: https://www.flybot.sg/assets/flybot-logo.png

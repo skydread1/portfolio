@@ -10,6 +10,8 @@ tags:
   - Load Balancers
   - DNS
   - GoDaddy
+rss-feeds:
+  - all
 image:
   src: /assets/loic-blog-logo.png
   src-dark: /assets/loic-blog-logo.png

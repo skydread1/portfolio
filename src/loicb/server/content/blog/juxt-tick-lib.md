@@ -11,6 +11,7 @@ tags:
   - Tick
   - Duration/Period
 rss-feeds:
+  - all
   - clojure
 image:
   src: /assets/loic-blog-logo.png

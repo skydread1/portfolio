@@ -13,6 +13,7 @@ tags:
   - Clojure
   - Card Game
 rss-feeds:
+  - all
   - clojure
 articles:
   - ["MCTS applied to card games", "../blog/article-mcts"]

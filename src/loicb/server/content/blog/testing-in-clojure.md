@@ -13,6 +13,7 @@ tags:
   - Instrumentation
   - Data validation/generation
 rss-feeds:
+  - all
   - clojure
 image:
   src: /assets/loic-blog-logo.png

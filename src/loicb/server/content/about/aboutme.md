@@ -13,6 +13,8 @@ tags:
   - 💻 5+ years of experience
   - 🎓 Master in CS
   - 🇫🇷 French Citizen
+rss-feeds:
+  - all
 repos:
   - ["My GitHub", "https://github.com/skydread1"]
 articles:

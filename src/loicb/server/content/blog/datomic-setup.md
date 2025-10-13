@@ -11,6 +11,7 @@ tags:
   - Cassandra
   - Docker
 rss-feeds:
+  - all
   - clojure
 image:
   src: /assets/loic-blog-logo.png

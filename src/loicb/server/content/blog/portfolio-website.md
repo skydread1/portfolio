@@ -16,6 +16,7 @@ tags:
   - Reitit
   - Babashka
 rss-feeds:
+  - all
   - clojure
 repos:
   - ["Portfolio", "https://github.com/skydread1/portfolio"]
@@ -33,7 +34,7 @@ For frontend management, [re-frame](https://github.com/day8/re-frame) is used. T
 
 The routing is done with [reitit](https://github.com/metosin/reitit).
 
-The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
+The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations use standard YAML frontmatter which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
 
 Light/dark mode and code block syntax highlighted are supported.
 
@@ -48,7 +49,7 @@ For frontend management, [re-frame](https://github.com/day8/re-frame) is used. T
 
 The routing is done with [reitit](https://github.com/metosin/reitit).
 
-The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
+The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations use standard YAML frontmatter which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
 
 Light/dark mode and code block syntax highlighted are supported.
 
@@ -99,32 +100,53 @@ Some `blog` posts have a flag to display the post in the home page via what I ca
 
 When the user clicks on a vignette, he goes to a new route with the full post content.
 
-### Config Clojure map
+### Markdown Format
 
-A markdown file of a post is divided into 3 parts:
-- above the demarcation `+ + +` is a clojure map of configs (title, page, order etc.)
-- below the first demarcation `+ + +` is the post short description as markdown.
-- below the second demarcation `+ + +` is the post content as markdown.
+Each markdown file uses standard **YAML frontmatter** for metadata, followed by an optional **`## TLDR`** section for the summary:
 
-Here is an example of clojure config map for a post:
+```markdown
+---
+id: clojure-full-stack-webapp
+page: blog
+home-page?: true
+employer: Flybot Pte Ltd
+date:
+  - 2022-01-01
+title: Flybot Website
+tags:
+  - Clojure
+  - ClojureScript
+  - Re-Frame
+rss-feeds:
+  - all
+  - clojure
+css-class: flybot-website
+image:
+  src: https://www.flybot.sg/assets/flybot-logo.png
+  src-dark: https://www.flybot.sg/assets/flybot-logo.png
+  alt: Flybot Logo
+repos:
+  - ["Flybot", "https://github.com/skydread1/flybot.sg"]
+articles:
+  - ["Deploy Clojure app to AWS", "../blog/deploy-clj-app-to-aws"]
+  - ["Lasagna-pull Pattern", "../blog/lasagna-pull-applied-to-flybot"]
+---
 
-```clojure
-#:post{:id "clojure-full-stack-webapp"
-       :page :blog
-       :home-page? true ;; display vignette in home page
-       :employer "Flybot Pte Ltd"
-       :date "2022"
-       :repos [["Flybot" "https://github.com/skydread1/flybot.sg"]]
-       :articles [["How to deploy full stack Clojure website to AWS" "../blog/deploy-clj-app-to-aws"]
-                  ["Lasagna-pull Pattern applied to flybot.sg backend" "../blog/lasagna-pull-applied-to-flybot"]
-                  ["Clojure Mono Repo example : server + 2 clients" "../blog/clojure-mono-repo"]]
-       :title "Flybot Website"
-       :tags ["Clojure" "ClojureScript" "Figwheel" "Re-Frame" "Malli" "Lasagna-pull" "Fun-map" "Datalevin" "Reitit"]
-       :css-class "flybot-website"
-       :image #:image{:src "https://www.flybot.sg/assets/flybot-logo.png"
-                      :src-dark "https://www.flybot.sg/assets/flybot-logo.png"
-                      :alt "Flybot Logo"}}
+## TLDR
+
+A brief summary of the Flybot project.
+
+## Introduction
+
+Full article content starts here...
 ```
+
+**Key points:**
+- **YAML frontmatter** (between `---` markers) configures post metadata
+- **`## TLDR` section** (optional) provides a summary for vignettes
+- **Standard markdown** for the rest of the content
+- Posts with `home-page?: true` will display their vignette on the home page
+- Posts with `rss-feeds: ["clojure"]` will be included in the RSS feed
 
 ## Compile
 

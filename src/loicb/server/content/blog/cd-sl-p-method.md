@@ -10,6 +10,8 @@ tags:
   - SimpleLogin
   - Custom Domain
   - Privacy
+rss-feeds:
+  - all
 image:
   src: /assets/cd-sl-p/proton-mail-icon.jpg
   src-dark: /assets/cd-sl-p/proton-mail-icon.jpg

@@ -14,6 +14,7 @@ tags:
   - Kubernetes
   - AWS EKS
 rss-feeds:
+  - all
   - clojure
 image:
   src: https://www.flybot.sg/assets/flybot-logo.png
