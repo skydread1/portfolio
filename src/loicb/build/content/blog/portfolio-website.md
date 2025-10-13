@@ -146,7 +146,7 @@ Full article content starts here...
 - **`## TLDR` section** (optional) provides a summary for vignettes
 - **Standard markdown** for the rest of the content
 - Posts with `home-page?: true` will display their vignette on the home page
-- Posts with `rss-feeds: ["clojure"]` will be included in the RSS feed
+- Posts with `rss-feeds: ["all", "clojure"]` will be included in the respective RSS feeds
 
 ## Compile
 
@@ -186,12 +186,68 @@ bb fmt-fix   # Fix code formatting
 
 ```bash
 bb build  # Build optimized ClojureScript bundle
-bb rss    # Generate RSS feeds for blog posts
+bb rss    # Generate all configured RSS feeds (clojure, all, etc.)
 bb dist   # Create complete distribution in dist/ folder
 bb clean  # Clean build artifacts
 ```
 
 The `bb dist` command creates a complete static site in the `dist/` directory ready for deployment.
+
+## RSS Feeds
+
+The portfolio generates multiple RSS feeds using [clj-rss](https://github.com/yogthos/clj-rss) to allow readers to subscribe to blog updates.
+
+### Available Feeds
+
+Currently, two RSS feeds are available:
+
+1. **All Blog Posts**: [/blog/rss/all-feed.xml](https://www.loicb.dev/blog/rss/all-feed.xml)
+   - Contains all blog articles
+   - Updated whenever any blog post is published
+
+2. **Clojure Feed**: [/blog/rss/clojure-feed.xml](https://www.loicb.dev/blog/rss/clojure-feed.xml)
+   - Contains only Clojure-related articles
+   - Useful for readers specifically interested in Clojure content
+
+### How It Works
+
+Posts control which feeds they appear in via the `rss-feeds` field in their YAML frontmatter:
+
+```yaml
+rss-feeds:
+  - all      # Include in "all" feed
+  - clojure  # Include in "clojure" feed
+```
+
+The RSS generation is handled by a generic `rss-feed` function in `src/loicb/build/rss.clj` that:
+1. Loads all blog posts from `md.clj`
+2. Filters posts by the specified feed name
+3. Sorts by date (newest first)
+4. Generates the RSS XML with full content
+5. Writes to `resources/public/blog/rss/{feed-name}-feed.xml`
+
+A `rss-feeds` function generates all configured feeds at once during the build process.
+
+### Adding New Feeds
+
+To add a new feed (e.g., for Python content):
+
+1. Add the feed configuration to `feed-configs` in `src/loicb/build/rss.clj`:
+   ```clojure
+   "python" {:title "Loic Blanchard - Python Blog Feed"
+             :description "Articles related to Python"}
+   ```
+
+2. Add the feed identifier to relevant posts:
+   ```yaml
+   rss-feeds:
+     - all
+     - python
+   ```
+
+3. Run `bb rss` to generate the new feed
+
+The generated feeds include full article content (not just summaries), making them suitable for offline reading in RSS readers.
 
 ## Continuous Integration & Deployment
 

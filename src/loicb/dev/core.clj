@@ -1,4 +1,4 @@
-(ns loicb.server.core
+(ns loicb.dev.core
   (:require [clojure.java.io :as io]))
 
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}

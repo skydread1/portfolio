@@ -1,8 +1,8 @@
-(ns loicb.server.md-test
+(ns loicb.build.md-test
   (:require
    [clojure.string :as s]
    [clojure.test :refer [deftest is testing]]
-   [loicb.server.md :as sut]
+   [loicb.build.md :as sut]
    [markdown.core :as md]))
 
 ;; Test data

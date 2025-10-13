@@ -22,9 +22,9 @@ For frontend management, [re-frame](https://github.com/day8/re-frame) is used. T
 
 The routing is done with [reitit](https://github.com/metosin/reitit).
 
-The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations are made in EDN which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
+The markdown content is converted into [hiccup](https://github.com/weavejester/hiccup) (a clojure-friendly markup) and the post/vignette configurations use standard YAML frontmatter which is validated at compile time with a [malli](https://github.com/metosin/malli) schema.
 
-At compile time, a RSS feed is generated for the clojure blog posts using [clj-rss](https://github.com/yogthos/clj-rss).
+At compile time, RSS feeds are generated for blog posts using [clj-rss](https://github.com/yogthos/clj-rss). Multiple feeds can be configured (e.g., "clojure" for Clojure-specific posts, "all" for all blog posts).
 
 The app is deployed on **Netlify** via GitHub Actions every time a branch is merged to master. Build artifacts (JS bundles, RSS feeds) are generated during CI/CD and are not committed to the repository.
 
@@ -34,11 +34,12 @@ The app is deployed on **Netlify** via GitHub Actions every time a branch is mer
 
 ## 🔷 Features
 
-All the posts/vignettes are written in markdown files in [content](./src/loicb/server/content/) folder.
+All the posts/vignettes are written in standard markdown files in [content](./src/loicb/build/content/) folder.
 
 The UI supports light/dark mode and is responsive.
 
-At the top of each markdown file, you can provide an EDN config map to add additional properties to the post such as an illustrative image, the order on the page, the title in the URL, github and article links etc...
+At the top of each markdown file, you can provide YAML frontmatter to configure post metadata such as title, date, tags, image, github repos, article links, and RSS feed inclusion. A `## TLDR` section can be added to provide a summary that appears in post vignettes.
+
 When you create a pull request (PR) to master, **Netlify** provides a preview of what the new app version would look like.
 
 For development, starting a clj/cljs REPL with `figwheel` allows you to have the local changes reflected on port 9500 on file save.
@@ -58,41 +59,44 @@ For instance:
 │   └── some-article.md
 ```
 
-### Config Clojure map
+### Markdown Format
 
-A markdown file for a post is divided into three parts, separated by +++ demarcations:
+Each markdown file uses standard **YAML frontmatter** for metadata, followed by an optional **`## TLDR`** section for the summary, and then the full article content:
+
+```markdown
+---
+title: My New Project
+date: 2024-02-01
+page: blog
+id: my-new-project
+tags:
+  - Clojure
+  - Web
+rss-feeds:
+  - clojure
+css-class: my-project
+image:
+  src: /assets/some-illustrative-img.png
+  src-dark: /assets/some-illustrative-img-dark.png
+  alt: A logo
+repos:
+  - ["Project Name", "https://github.com/user/repo"]
+---
+
+## TLDR
+
+A brief summary of the project. This will appear in the vignette/preview.
+
+## Introduction
+
+The full article content starts here...
 ```
-some config map
-+++
-post summary
-+++
-full post content
-```
 
-Following is an example of clojure map for a post config:
-
-```clojure
-#:post{:date ["2024-02-01" "2024-04-01"]
-       :page :portfolio
-       :title "My New Project"
-       :css-class "my-project"
-       :image-beside #:image{:src "/assets/some-illustrative-img.png"
-                             :src-dark "/assets/some-illustrative-img-dark.png"
-                             :alt "A logo"}}
-```
-
-This map goes at the top of a markdown file like so:
-
-```
-post map here
-+++
-My article summary goes here
-+++
-My article content goes here
-...
-```
-
-I refer to the post summary part as the `vignette` because it can conveniently be used on a home page for instance to just display a recap of the projects.
+**Key points:**
+- **YAML frontmatter** (between `---` markers) configures post metadata
+- **`## TLDR` section** (optional) provides a summary shown in vignettes
+- **Standard markdown** for the rest of the content
+- The TLDR section is automatically extracted and removed from the full article view to avoid duplication
 
 ## 🔷 Getting Started
 
@@ -114,7 +118,7 @@ Then connect to the REPL server with project type `deps.edn + Figwheel Main` and
 
 Once the REPL started, saving a cljs file will automatically update the js in your localhost.
 
-However, if you change the content of a markdown file, you will need to save the file [md.clj](./src/loicb/server/md.clj) which is where the macro that reads all the markdown files resides. Refresh your browser and the new markdown content will appear.
+However, if you change the content of a markdown file, you will need to save the file [md.clj](./src/loicb/build/md.clj) which is where the macro that reads all the markdown files resides. Refresh your browser and the new markdown content will appear.
 
 ## 🔷 Tests
 
@@ -170,15 +174,30 @@ bb build
 
 Builds the optimized ClojureScript bundle and generates `index.html` in `target/public`.
 
-### RSS feed
+### RSS feeds
 
 ```sh
 bb rss
 ```
 
-Generates RSS feed for blog posts tagged with `clojure` in `resources/public/blog/rss/`.
+Generates all configured RSS feeds in `resources/public/blog/rss/`.
 
-The RSS **clojure** feed is accessible at [blog/rss/clojure-feed.xml](https://www.loicb.dev/blog/rss/clojure-feed.xml).
+Currently available feeds:
+- **clojure**: Posts tagged with Clojure content
+- **all**: All blog posts
+
+To include a post in specific RSS feeds, add to your YAML frontmatter:
+```yaml
+rss-feeds:
+  - clojure  # Include in Clojure feed
+  - all      # Include in all posts feed
+```
+
+Available RSS feeds:
+- [blog/rss/clojure-feed.xml](https://www.loicb.dev/blog/rss/clojure-feed.xml) - Clojure-related articles
+- [blog/rss/all-feed.xml](https://www.loicb.dev/blog/rss/all-feed.xml) - All blog articles
+
+New feeds can be added by updating the `feed-configs` in `src/loicb/build/rss.clj`.
 
 ### Production release
 
@@ -224,20 +243,22 @@ To enable deployments, configure these secrets in your GitHub repository setting
 
 ### Config validation
 
-To know what params can be provided to the config map, you can have a look at the malli schema in [validation](./src/loicb/common/validation.cljc). You can take inspiration from my own posts in [content](./src/loicb/server/content/).
+To know what params can be provided to the config map, you can have a look at the malli schema in [validation](./src/loicb/common/validation.cljc). You can take inspiration from my own posts in [content](./src/loicb/build/content/).
 
 ### Compile process
 
 At CLJ compile time, the following steps happen:
-1. Read all markdown files
-2. Validate the post configs against a `Malli` schema
-3. Assoc the post markdown content to the configs 
-4. A macro stores a vector of the posts to be loaded in the re-frame DB
+1. Read all markdown files with YAML frontmatter
+2. Parse YAML metadata using `markdown-clj`
+3. Extract `## TLDR` section as post summary
+4. Normalize metadata (convert YAML types to Clojure types)
+5. Validate the post configs against a `Malli` schema
+6. A macro stores a vector of the posts to be loaded in the re-frame DB
 
 At CLJS compile time, the following steps happen:
 1. A re-frame event initializes the re-frame DB, loading all the posts from the clojure macro and the theme from local storage.
 2. The `reitit` route table is created
-3. The post markdown are converted to hiccup via `markdown-to-hiccup`.
+3. The post markdown content is converted to hiccup via `markdown-to-hiccup`.
 
 ## 🔷 Contributing
 
