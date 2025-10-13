@@ -5,7 +5,7 @@
        :repos [["Portfolio" "https://github.com/skydread1/portfolio"]]
        :title "Portfolio Website"
        :css-class "portfolio"
-       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent" "Lasagna-pull" "Reitit"]
+       :tags ["ClojureScript" "Figwheel" "Re-Frame" "Reagent" "Lasagna-pull" "Reitit" "Babashka"]
        :image #:image{:src "/assets/loic-logo.png"
                       :src-dark "/assets/loic-logo.png"
                       :alt "Logo referencing Aperture Science"}}
@@ -20,7 +20,7 @@ The markdown content is converted into [hiccup](https://github.com/weavejester/h
 
 Light/dark mode and code block syntax highlighted are supported.
 
-The app is deployed on **Netlify** every time a branch is merged to master.
+The app is deployed on **Netlify** via GitHub Actions every time a branch is merged to master. Build artifacts are generated during CI/CD and are not committed to the repository.
 +++
 ## Rational
 
@@ -34,11 +34,12 @@ The markdown content is converted into [hiccup](https://github.com/weavejester/h
 
 Light/dark mode and code block syntax highlighted are supported.
 
-The app is deployed on **Netlify** every time a branch is merged to master.
+The app is deployed on **Netlify** via GitHub Actions every time a branch is merged to master. Build artifacts are generated during CI/CD and are not committed to the repository.
 
 ## Stack
 
 I have the following stack:
+- [babashka](https://github.com/babashka/babashka) for task automation and build scripts
 - [figwheel-main](https://figwheel.org/) for live code reloading
 - [reagent](https://github.com/reagent-project/reagent) for react components
 - [hiccup](https://github.com/weavejester/hiccup) for DOM representation
@@ -47,6 +48,7 @@ I have the following stack:
 - [markdown-to-hiccup](https://github.com/mpcarolin/markdown-to-hiccup) to allow me to write the page content in markdown.
 - [re-frame](https://github.com/day8/re-frame) a framework for building user interfaces, leveraging [reagent](https://github.com/reagent-project/reagent)
 - [lasagna-pull](https://github.com/flybot-sg/lasagna-pull) to precisely select from deep data structure
+- [clj-rss](https://github.com/yogthos/clj-rss) to generate RSS feeds for blog posts
 
 ## Features
 
@@ -119,42 +121,62 @@ At **CLJS** compile time, the following steps happen:
 2. The `reitit` router is created
 3. The post markdowns are converted to hiccup via `markdown-to-hiccup`. 
 
-## Build
+## Build Tasks with Babashka
 
-### Dev
+I use [babashka](https://github.com/babashka/babashka) to manage all build tasks through a `bb.edn` configuration file.
 
-I use clj/cljs REPL of `figwheel` for hot reloading on file save.
+### Development
 
-### Prod
-
-The github action is triggered when the code is pushed.
-
-I use [clojure/tools.build](https://github.com/clojure/tools.build) to create tasks related to the build.
-
-It runs the build.clj task to generate the main.js bundle:
-
-```
-clojure -T:build js-bundle
+```bash
+bb dev
 ```
 
-This command compiles the cljs to the optimized js bundle that Netlify will use to generate the preview in the PR.
+Starts a REPL server with the necessary middleware for ClojureScript development and figwheel hot reloading.
 
-## Continuous Integration
+### Testing
 
-The CI does the following:
-- Run the clj tests
-- Run the cljs tests in headless mode
-- Compile the cljs file into the js bundle `main.js` and commit it to the repo.
+```bash
+bb test      # Local development tests
+bb test-ci   # CI tests (headless mode)
+bb fmt-check # Check code formatting
+bb fmt-fix   # Fix code formatting
+```
 
-## Continuous Deployment
+### Production Build
 
-**Opening a pull request (PR)** to merge changes to master makes `Netlify` create a preview of how the new version of the website would look like once deployed.
+```bash
+bb build  # Build optimized ClojureScript bundle
+bb rss    # Generate RSS feeds for blog posts
+bb dist   # Create complete distribution in dist/ folder
+bb clean  # Clean build artifacts
+```
 
-**Merging to master** automatically publishes the last version of the website on Netlify.
+The `bb dist` command creates a complete static site in the `dist/` directory ready for deployment.
 
-## Hosted with Netlify
+## Continuous Integration & Deployment
 
-I use **Netlify** for hosting platform because it is easy to setup and the previews of the new website version on GitHub PR are convenient.
+The project uses GitHub Actions for CI/CD with separate workflows for pull requests and production deployments.
+
+### Pull Request Workflow
+1. Run tests with `bb test-ci`
+2. Check code formatting with `bb fmt-check`
+3. Build static files with `bb dist`
+4. Deploy preview to Netlify with unique URL (`pr-{number}`)
+
+### Production Deployment (main branch)
+1. Run tests with `bb test-ci` 
+2. Check code formatting with `bb fmt-check`
+3. Build static files with `bb dist`
+4. Deploy to production Netlify site
+
+## Hosting with Netlify
+
+The website is hosted on Netlify (US servers) and deployed via GitHub Actions using the Netlify CLI. This approach provides:
+
+- **Predictable deployments**: Build happens in controlled CI environment
+- **Preview deployments**: Each pull request gets its own preview URL
+- **No committed artifacts**: Clean git history without build files
+- **Environment separation**: Different deploy targets for previews vs production
 
 ## Learn More
 
