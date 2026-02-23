@@ -1,15 +1,14 @@
-<div align="center">
-    <a href="https://www.loicb.dev/" target="_blank" rel="noopener noreferrer"><img src="./resources/public/assets/loic-logo.png" alt="Loic logo" width="25%"></a>
-</div>
+> **Archived — This project is no longer maintained.**
+> The portfolio has been rebuilt with a lighter stack (ClojureScript + Replicant, no React).
+>
+> **New repository: [skydread1/me](https://github.com/skydread1/me)**
+>
+> The code still works if you're looking for an example of a Reagent + Re-frame SPA with Figwheel, Reitit routing, and compile-time markdown processing.
+
+---
 
 <div align="center">
-    <a href="https://clojure.org/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/clojure-v1.12.3-blue.svg" alt="Clojure Version"></a>
-    <a href="https://github.com/skydread1/portfolio/actions/workflows/main.yml"><img src="https://github.com/skydread1/portfolio/actions/workflows/main.yml/badge.svg" alt="CI"></a>
-    <a href="https://app.netlify.com/sites/loicblanchard/deploys"><img
-      src="https://api.netlify.com/api/v1/badges/e12042df-3f60-4b26-8823-8a77e6dc2d2f/deploy-status"
-      alt="Netlify Status" /></a>
-    <a href="https://codecov.io/gh/skydread1/portfolio" ><img src="https://codecov.io/gh/skydread1/portfolio/branch/master/graph/badge.svg"/></a>
-    <a href="https://github.com/skydread1/portfolio/issues" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/contributions-welcome-blue.svg" alt="Contributions welcome"></a>
+    <a href="https://www.loicb.dev/" target="_blank" rel="noopener noreferrer"><img src="./resources/public/assets/loic-logo.png" alt="Loic logo" width="25%"></a>
 </div>
 
 <h1 align="center">🔷 Portfolio SPA in ClojureScript 🔷</h1>
@@ -216,28 +215,7 @@ bb outdated
 
 ## 🔷 CI/CD
 
-The project uses GitHub Actions for continuous integration and deployment.
-
-### For Pull Requests
-1. Run tests with `bb test-ci`
-2. Run code formatting checks with `bb fmt-check`  
-3. Build static files with `bb dist`
-4. Deploy preview to Netlify with unique URL (`pr-{number}`)
-
-### For Main Branch (Production)
-1. Run tests with `bb test-ci`
-2. Run code formatting checks with `bb fmt-check`
-3. Build static files with `bb dist` 
-4. Deploy to production Netlify site
-
-## 🔷 Hosting with Netlify
-
-The website is hosted on Netlify (US servers by default).
-
-To enable deployments, configure these secrets in your GitHub repository settings:
-
-- `NETLIFY_AUTH_TOKEN`: Personal access token from Netlify
-- `NETLIFY_SITE_ID`: Site ID from your Netlify site settings
+CI/CD pipelines have been removed. This repo is archived and no longer deployed.
 
 ## 🔷 Implementation Details
 
@@ -260,12 +238,8 @@ At CLJS compile time, the following steps happen:
 2. The `reitit` route table is created
 3. The post markdown content is converted to hiccup via `markdown-to-hiccup`.
 
-## 🔷 Contributing
-
-Feel free to open new issues if you discover bugs or wish to add new features.
-
 ## 🔷 License
 
 Copyright © 2023-2025 Loic Blanchard
 
-Distributed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+Distributed under the MIT License — see the [LICENSE](./LICENSE) file for details.
